@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri/vite-plugin": "*",
+    "@capri-js/vite-plugin": "*",
     "preact-iso": "^2.3.0"
   },
   "peerDependencies": {

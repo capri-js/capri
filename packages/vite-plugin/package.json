@@ -1,5 +1,5 @@
 {
-  "name": "@capri/vite-plugin",
+  "name": "@capri-js/vite-plugin",
   "version": "1.0.0",
   "description": "Static site generator for Vite",
   "author": "Felix Gnass <fgnass@gmail.com>",

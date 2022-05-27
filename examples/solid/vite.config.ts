@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import capri from "@capri/solid";
+import capri from "@capri-js/solid";
 import solid from "vite-plugin-solid";
 
 export default defineConfig({

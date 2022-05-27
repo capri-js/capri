@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri/vite-plugin": "*",
+    "@capri-js/vite-plugin": "*",
     "@vitejs/plugin-react": "^1.3.2"
   },
   "devDependencies": {

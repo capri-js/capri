@@ -1,5 +1,5 @@
 {
-  "name": "@capri/example-react",
+  "name": "@capri-js/example-react",
   "private": true,
   "description": "Capri react example",
   "version": "1.0.0",
@@ -19,7 +19,7 @@
     "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@capri/react": "*",
+    "@capri-js/react": "*",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "vite": "^2.9.9"

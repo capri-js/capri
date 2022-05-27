@@ -4,9 +4,12 @@
   "scripts": {
     "build": "tsc --build packages",
     "dev": "tsc --build packages --watch",
-    "clean": "tsc --build packages --clean"
+    "clean": "tsc --build packages --clean",
+    "release": "multi-semantic-release --ignore-private-packages"
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/npm": "^9.0.1",
     "multi-semantic-release": "^2.13.0",
     "typescript": "^4.6.4"
   },
@@ -16,7 +19,12 @@
   ],
   "release": {
     "branches": [
-      "main"
+      "main",
+      "next"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/npm"
     ]
   }
 }
