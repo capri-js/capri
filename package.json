@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/github": "^8.0.4",
     "@semantic-release/npm": "^9.0.1",
     "multi-semantic-release": "^2.13.0",
     "typescript": "^4.6.4"
@@ -20,7 +21,10 @@
   "release": {
     "branches": [
       "main",
-      "next"
+      {
+        "name": "next",
+        "prerelease": true
+      }
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
