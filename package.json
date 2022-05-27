@@ -10,7 +10,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/github": "^8.0.4",
+    "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "multi-semantic-release": "^2.13.0",
@@ -33,7 +33,7 @@
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
       "@semantic-release/npm",
-      "@semantic-release/github"
+      "@semantic-release/git"
     ]
   }
 }
