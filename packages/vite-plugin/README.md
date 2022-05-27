@@ -1,0 +1,1 @@
+# Capri Vite plugin

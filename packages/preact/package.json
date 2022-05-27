@@ -1,0 +1,22 @@
+{
+  "name": "@capri-js/preact",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capri-js/capri",
+    "directory": "packages/preact"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@capri/vite-plugin": "*",
+    "preact-iso": "^2.3.0"
+  },
+  "peerDependencies": {
+    "preact": "^10.7.2"
+  }
+}

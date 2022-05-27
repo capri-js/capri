@@ -1,0 +1,22 @@
+{
+  "name": "@capri-js/monorepo",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build packages",
+    "dev": "tsc --build packages --watch",
+    "clean": "tsc --build packages --clean"
+  },
+  "devDependencies": {
+    "multi-semantic-release": "^2.13.0",
+    "typescript": "^4.6.4"
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  }
+}

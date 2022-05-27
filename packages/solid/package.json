@@ -1,0 +1,19 @@
+{
+  "name": "@capri-js/solid",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capri-js/capri",
+    "directory": "packages/solid"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {},
+  "peerDependencies": {
+    "solid-js": "^1.4.2"
+  }
+}

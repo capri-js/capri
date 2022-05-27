@@ -1,0 +1,22 @@
+{
+  "name": "react-render-to-string",
+  "version": "1.0.0",
+  "description": "Like renderToStaticMarkup but with suspense support.",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capri-js/capri",
+    "directory": "packages/react-render-to-string"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@types/react-dom": "^18.0.4"
+  },
+  "peerDependencies": {
+    "react-dom": "^18.1.0"
+  }
+}
