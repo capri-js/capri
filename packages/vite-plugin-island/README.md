@@ -1,4 +1,4 @@
-# vite-plugin-island 🏝
+# vite-plugin-island
 
 Vite plugin that provides virtual modules to support partial hydration.
 
