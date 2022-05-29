@@ -9,6 +9,7 @@
     "release": "multi-semantic-release --ignore-private-packages"
   },
   "devDependencies": {
+    "@qiwi/multi-semantic-release": "^6.4.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
@@ -20,7 +21,6 @@
     "@types/jsdom": "^16.2.14",
     "@vitejs/plugin-legacy": "^1.8.2",
     "jsdom": "^19.0.0",
-    "multi-semantic-release": "^2.13.0",
     "typescript": "^4.7.2",
     "vitest": "^0.12.9"
   },
