@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/vite-plugin",
-  "version": "0.0.0",
+  "version": "1.0.0-next.1",
   "description": "Static site generator for Vite",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -14,7 +14,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "htmlparser2": "^8.0.1",
-    "vite-plugin-island": "*"
+    "vite-plugin-island": "1.0.0-next.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
