@@ -1,3 +1,10 @@
+# @capri-js/solid [1.0.0-next.3](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.0-next.2...@capri-js/solid@1.0.0-next.3) (2022-05-29)
+
+
+### Bug Fixes
+
+* dependencies ([f204801](https://github.com/capri-js/capri/commit/f20480113fd3386f9cecd575115aeb260ef7c727))
+
 # @capri-js/solid [1.0.0-next.2](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.0-next.1...@capri-js/solid@1.0.0-next.2) (2022-05-29)
 
 
