@@ -1,3 +1,42 @@
-html {
-  color: red;
+html,
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #fafafa;
+  font-family: "Helvetica Neue", arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+}
+
+main {
+  max-width: 60ch;
+  margin: auto;
+  font-size: 1.5em;
+  padding: 2em;
+}
+
+h1 {
+  line-height: 1.1;
+}
+h1 i {
+  font-style: normal;
+}
+h1 i::after {
+  content: "";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.25ch;
+  background: url("./capri.svg") no-repeat;
+  background-size: contain;
+}
+
+.counter {
+  display: inline-flex;
+  gap: 0.2em;
+}
+
+a {
+  color: inherit;
 }

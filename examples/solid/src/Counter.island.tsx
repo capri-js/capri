@@ -4,12 +4,13 @@ import { island } from "virtual:island";
 type Props = {
   start?: number;
 };
-export function Counter(props: Props) {
-  const [counter, setCounter] = createSignal(props.start ?? 0);
+
+export function Counter({ start = 0 }: Props) {
+  const [counter, setCounter] = createSignal(start);
   return (
-    <div>
+    <div data-testid="counter">
       <button onClick={() => setCounter((c) => c - 1)}>-</button>
-      {counter()}
+      <span>{counter()}</span>
       <button onClick={() => setCounter((c) => c + 1)}>+</button>
     </div>
   );
