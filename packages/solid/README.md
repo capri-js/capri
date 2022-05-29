@@ -1,4 +1,4 @@
-# SolidJS bindings for Capri
+# SolidJS bindings for Capri 🍋
 
 ## Usage
 

@@ -1,6 +1,5 @@
 {
-  "name": "@capri-js/monorepo",
-  "private": true,
+  "name": "capri",
   "scripts": {
     "dev": "tsc --build packages --watch",
     "clean": "tsc --build packages --clean",

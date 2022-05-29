@@ -1,4 +1,4 @@
-# Preact bindings for Capri
+# Preact bindings for Capri 🍋
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# React bindings for Capri
+# React bindings for Capri 🍋
 
 ## Usage
 
