@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri-js/vite-plugin": "^1.0.0-next.1"
+    "@capri-js/vite-plugin": "*"
   },
   "peerDependencies": {
     "solid-js": "^1.4.2"

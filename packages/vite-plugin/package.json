@@ -14,7 +14,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "htmlparser2": "^8.0.1",
-    "vite-plugin-island": "^1.0.0-next.2"
+    "vite-plugin-island": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
