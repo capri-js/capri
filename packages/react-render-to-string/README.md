@@ -14,7 +14,3 @@ import { App } from "./App";
 
 const html = await render(<App />);
 ```
-
-# License
-
-MIT
