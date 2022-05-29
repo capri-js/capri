@@ -1,7 +1,6 @@
 import * as path from "path";
-import { writeFile } from "fs/promises";
-import { findLinks } from "./links.js";
-import { urlToFileName } from "./utils.js";
+import * as fs from "fs";
+import { getLinks } from "./html.js";
 
 type PrerenderOptions = {
   template: string;
@@ -24,9 +23,11 @@ export async function prerender(
     // Insert the rendered markup into the index.html template:
     const source = template.replace(appHtmlPlaceholder, html);
 
-    await writeFile(path.join(outDir, fileName), source);
+    const dest = path.join(outDir, fileName);
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, source);
 
-    const links = findLinks(source);
+    const links = getLinks(source);
     for (let link of links) {
       if (!seen.has(link)) {
         seen.add(link);
@@ -34,4 +35,14 @@ export async function prerender(
       }
     }
   }
+}
+
+function urlToFileName(url: string, extraDir: boolean) {
+  const file = stripSlashes(url);
+  if (!file) return "index.html";
+  return `${file}${extraDir ? "/index.html" : ".html"}`;
+}
+
+function stripSlashes(s: string) {
+  return s.replace(/^\/|\/$/g, "");
 }
