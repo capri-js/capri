@@ -1,11 +1,12 @@
 {
-  "name": "capri",
+  "name": "@capri-js/monorepo",
+  "private": true,
   "scripts": {
     "dev": "tsc --build packages --watch",
     "clean": "tsc --build packages --clean",
     "build": "tsc --build packages",
     "test": "vitest --run",
-    "release": "multi-semantic-release --sequential-init"
+    "release": "multi-semantic-release --sequential-init --deps.prefix ^"
   },
   "devDependencies": {
     "@qiwi/multi-semantic-release": "^6.4.0",
