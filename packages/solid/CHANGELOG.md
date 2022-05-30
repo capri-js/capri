@@ -1,3 +1,18 @@
+# @capri-js/solid 1.0.0 (2022-05-30)
+
+
+### Bug Fixes
+
+* prepare for initial release ([483f930](https://github.com/capri-js/capri/commit/483f9300986faba9cdd1d47f85b6e7173c11a797))
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.0.0
+
 # @capri-js/solid [1.0.0-next.3](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.0-next.2...@capri-js/solid@1.0.0-next.3) (2022-05-29)
 
 

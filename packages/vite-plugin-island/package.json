@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-island",
-  "version": "1.0.0-next.2",
+  "version": "1.0.0",
   "description": "Island architecture for Vite",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
