@@ -3,10 +3,12 @@
     "strict": true,
     "module": "ESNext",
     "moduleResolution": "Node",
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES2020",
     "lib": ["ES2020", "DOM"],
     "skipLibCheck": true,
     "noEmit": true
-  }
+  },
+  "include": ["./*.ts", "./.eslintrc.cjs", "./test"]
 }

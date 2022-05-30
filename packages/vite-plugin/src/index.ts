@@ -1,14 +1,15 @@
-import type { Plugin, ChunkMetadata, UserConfig, PluginOption } from "vite";
-import type { PluginContext, OutputBundle, OutputChunk } from "rollup";
-import * as path from "path";
 import * as fs from "fs";
-import island from "vite-plugin-island";
-import { findRenderChunk } from "./bundle.js";
-import { importServerChunk } from "./ssr.js";
 import { readFile } from "fs/promises";
-import { prerender } from "./prerender.js";
-import { CapriOptions } from "./types.js";
+import * as path from "path";
+import type { OutputBundle, OutputChunk,PluginContext } from "rollup";
+import type { ChunkMetadata, Plugin, PluginOption,UserConfig } from "vite";
+import island from "vite-plugin-island";
+
+import { findRenderChunk } from "./bundle.js";
 import { getEntrySrc } from "./html.js";
+import { prerender } from "./prerender.js";
+import { importServerChunk } from "./ssr.js";
+import { CapriOptions } from "./types.js";
 export * from "./types.js";
 
 export default function capri({

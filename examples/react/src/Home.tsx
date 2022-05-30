@@ -1,8 +1,9 @@
-import { CounterIsland } from "./Counter.island";
-import useSWR from "swr";
-import { Link } from "react-router-dom";
-
 import "./App.css";
+
+import { Link } from "react-router-dom";
+import useSWR from "swr";
+
+import { CounterIsland } from "./Counter.island";
 
 const fetcher = () =>
   new Promise<string>((resolve) => {
@@ -10,13 +11,16 @@ const fetcher = () =>
   });
 
 export function Home() {
-  //const { data } = useSWR("dummy", fetcher, { suspense: true });
+  const { data } = useSWR("This data has been fetched via SWR.", fetcher, {
+    suspense: true,
+  });
   return (
     <main>
       <h1>
         Welcome to <i>Capri</i>
       </h1>
       <p>This page is static, but contains some dynamic parts.</p>
+      <p>{data}</p>
       <p>
         Here is a simple counter: <CounterIsland />
       </p>

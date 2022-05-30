@@ -1,5 +1,6 @@
-import * as path from "path";
 import * as fs from "fs";
+import * as path from "path";
+
 import { getLinks } from "./html.js";
 
 type PrerenderOptions = {
@@ -28,7 +29,7 @@ export async function prerender(
     fs.writeFileSync(dest, source);
 
     const links = getLinks(source);
-    for (let link of links) {
+    for (const link of links) {
       if (!seen.has(link)) {
         seen.add(link);
         urls.push(link);

@@ -1,7 +1,7 @@
-/// <reference path="../types.d.ts" />
+import "../types.d.ts";
 
-import type { Plugin } from "vite";
 import * as fs from "fs";
+import type { Plugin } from "vite";
 
 export interface IslandPluginOptions {
   hydrate: string;

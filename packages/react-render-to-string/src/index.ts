@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { renderToPipeableStream } from "react-dom/server";
+
 import { StreamReader } from "./StreamReader.js";
 
 export default function render(element: ReactNode) {

@@ -1,6 +1,7 @@
 import retry from "async-retry";
 import chalk from "chalk";
 import path from "path";
+
 import {
   downloadAndExtractExample,
   downloadAndExtractRepo,
@@ -9,13 +10,13 @@ import {
   hasRepo,
   RepoInfo,
 } from "./helpers/examples";
-import { makeDir } from "./helpers/make-dir";
+import type { PackageManager } from "./helpers/get-pkg-manager";
 import { tryGitInit } from "./helpers/git";
 import { install } from "./helpers/install";
 import { isFolderEmpty } from "./helpers/is-folder-empty";
 import { getOnline } from "./helpers/is-online";
 import { isWriteable } from "./helpers/is-writeable";
-import type { PackageManager } from "./helpers/get-pkg-manager";
+import { makeDir } from "./helpers/make-dir";
 
 export class DownloadError extends Error {}
 
@@ -134,13 +135,6 @@ export async function createCapri({
       await retry(() => downloadAndExtractExample(root, example));
     }
   } catch (reason) {
-    function isErrorLike(err: unknown): err is { message: string } {
-      return (
-        typeof err === "object" &&
-        err !== null &&
-        typeof (err as { message?: unknown }).message === "string"
-      );
-    }
     throw new DownloadError(isErrorLike(reason) ? reason.message : reason + "");
   }
 
@@ -181,4 +175,12 @@ export async function createCapri({
     `  ${chalk.cyan(`${packageManager} ${useYarn ? "" : "run "}dev`)}`
   );
   console.log();
+}
+
+function isErrorLike(err: unknown): err is { message: string } {
+  return (
+    typeof err === "object" &&
+    err !== null &&
+    typeof (err as { message?: unknown }).message === "string"
+  );
 }

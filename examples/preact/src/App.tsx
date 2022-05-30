@@ -1,8 +1,16 @@
-import Router from "preact-router";
-import { CounterIsland } from "./Counter.island";
 import "./App.css";
 
-export function App({ url, history }: { url?: string; history?: any }) {
+import Router, { CustomHistory } from "preact-router";
+
+import { CounterIsland } from "./Counter.island";
+
+export function App({
+  url,
+  history,
+}: {
+  url?: string;
+  history?: CustomHistory;
+}) {
   return (
     <Router url={url} history={history}>
       <Home path="/" />

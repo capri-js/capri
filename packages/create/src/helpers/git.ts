@@ -6,7 +6,9 @@ function isInGitRepository() {
   try {
     execSync("git rev-parse --is-inside-work-tree", { stdio: "ignore" });
     return true;
-  } catch (_) {}
+  } catch (_) {
+    // ignore
+  }
   return false;
 }
 
@@ -14,7 +16,9 @@ function isInMercurialRepository() {
   try {
     execSync("hg --cwd . root", { stdio: "ignore" });
     return true;
-  } catch (_) {}
+  } catch (_) {
+    // ignore
+  }
   return false;
 }
 
@@ -40,7 +44,9 @@ export function tryGitInit(root: string) {
     if (didInit) {
       try {
         rimraf.sync(path.join(root, ".git"));
-      } catch (_) {}
+      } catch (_) {
+        // ignore
+      }
     }
     return false;
   }

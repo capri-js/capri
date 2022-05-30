@@ -1,5 +1,6 @@
-import { CounterIsland } from "./Counter.island";
 import "./App.css";
+
+import { CounterIsland } from "./Counter.island";
 
 export function App() {
   return (

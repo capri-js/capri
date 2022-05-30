@@ -1,7 +1,8 @@
-import { describe, expect, test } from "vitest";
-import * as path from "path";
 import { waitFor, within } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
+import * as path from "path";
+import { describe, expect, test } from "vitest";
+
 import { getExampleDOM } from "./dom";
 
 describe("examples", () => {

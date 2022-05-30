@@ -4,11 +4,12 @@ import chalk from "chalk";
 import Commander from "commander";
 import path from "path";
 import prompts from "prompts";
+
 import { createCapri, DownloadError } from "./create-capri";
 import { getPkgManager } from "./helpers/get-pkg-manager";
 import { validateNpmName } from "./helpers/validate-pkg";
 
-let projectPath: string = "";
+let projectPath = "";
 
 const program = new Commander.Command("create-capri")
   .arguments("<project-directory>")
@@ -114,9 +115,9 @@ async function run(): Promise<void> {
     process.exit(1);
   }
 
-  const packageManager = !!options.useNpm
+  const packageManager = options.useNpm
     ? "npm"
-    : !!options.usePnpm
+    : options.usePnpm
     ? "pnpm"
     : getPkgManager();
 

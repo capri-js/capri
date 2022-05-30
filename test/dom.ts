@@ -1,7 +1,7 @@
-import * as path from "path";
-import { JSDOM } from "jsdom";
-import { build } from "vite";
 import legacy from "@vitejs/plugin-legacy";
+import { JSDOM } from "jsdom";
+import * as path from "path";
+import { build } from "vite";
 
 export async function getExampleDOM(root: string) {
   const base = path.join(root, "dist") + "/";

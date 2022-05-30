@@ -2,8 +2,8 @@ import { renderMarkerFragment } from "virtual:island-renderMarkerFragment";
 const islands = import.meta.globEager("%ISLAND_GLOB_PATTERN%");
 
 function findIsland(island: unknown) {
-  for (let [id, module] of Object.entries(islands)) {
-    for (let [key, member] of Object.entries(module)) {
+  for (const [id, module] of Object.entries(islands)) {
+    for (const [key, member] of Object.entries(module)) {
       if (member === island) return { id, key };
     }
   }

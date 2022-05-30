@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import chalk from "chalk";
 import spawn from "cross-spawn";
+
 import type { PackageManager } from "./get-pkg-manager";
 
 interface InstallArgs {
@@ -41,7 +41,7 @@ export function install(
    */
   return new Promise<void>((resolve, reject) => {
     let args: string[];
-    let command = packageManager;
+    const command = packageManager;
     const useYarn = packageManager === "yarn";
 
     if (dependencies && dependencies.length) {
