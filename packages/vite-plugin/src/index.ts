@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import { readFile } from "fs/promises";
 import * as path from "path";
-import type { OutputBundle, OutputChunk,PluginContext } from "rollup";
-import type { ChunkMetadata, Plugin, PluginOption,UserConfig } from "vite";
+import type { OutputBundle, OutputChunk, PluginContext } from "rollup";
+import type { ChunkMetadata, Plugin, PluginOption, UserConfig } from "vite";
 import island from "vite-plugin-island";
 
 import { findRenderChunk } from "./bundle.js";
