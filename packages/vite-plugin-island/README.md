@@ -1,4 +1,4 @@
-# vite-plugin-island
+# vite-plugin-island 🏝
 
 Vite plugin that provides virtual modules to support partial hydration.
 
@@ -10,7 +10,7 @@ Vite plugin that provides virtual modules to support partial hydration.
 
 ## Hydration modules
 
-To hydrate component you have to provide a module that exports a `hydrate` function. For React 18 such a module would look lie this:
+To hydrate component you have to provide a module that exports a `hydrate` function. For React such a module would look lie this:
 
 ```js
 import { hydrateRoot } from "react-dom/client";

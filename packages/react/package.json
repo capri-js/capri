@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/react",
-  "version": "0.0.0",
+  "version": "1.0.0-next.2",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -13,8 +13,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri-js/vite-plugin": "*",
-    "@vitejs/plugin-react": "^1.3.2"
+    "@capri-js/vite-plugin": "^1.0.0-next.2"
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.4"

@@ -2,19 +2,27 @@
   "name": "@capri-js/monorepo",
   "private": true,
   "scripts": {
-    "build": "tsc --build packages",
     "dev": "tsc --build packages --watch",
     "clean": "tsc --build packages --clean",
-    "release": "multi-semantic-release --ignore-private-packages"
+    "build": "tsc --build packages",
+    "test": "vitest --run",
+    "release": "multi-semantic-release --sequential-init --deps.prefix ^"
   },
   "devDependencies": {
+    "@qiwi/multi-semantic-release": "^6.4.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
-    "multi-semantic-release": "^2.13.0",
-    "typescript": "^4.7.2"
+    "@testing-library/dom": "^8.13.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^14.2.0",
+    "@types/jsdom": "^16.2.14",
+    "@vitejs/plugin-legacy": "^1.8.2",
+    "jsdom": "^19.0.0",
+    "typescript": "^4.7.2",
+    "vitest": "^0.12.9"
   },
   "workspaces": [
     "packages/*",

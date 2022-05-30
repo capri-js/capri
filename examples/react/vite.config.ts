@@ -7,7 +7,6 @@ export default defineConfig({
     react(),
     capri({
       spa: "preview.html",
-      createIndexFiles: false,
     }),
   ],
 });

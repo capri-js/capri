@@ -1,7 +1,16 @@
 import { CounterIsland } from "./Counter.island";
+import useSWR from "swr";
+import { Link } from "react-router-dom";
+
 import "./App.css";
 
-export function App() {
+const fetcher = () =>
+  new Promise<string>((resolve) => {
+    setTimeout(() => resolve("Data fetched via SWR!"), 0);
+  });
+
+export function Home() {
+  //const { data } = useSWR("dummy", fetcher, { suspense: true });
   return (
     <main>
       <h1>
@@ -15,6 +24,7 @@ export function App() {
         And here is another one, independent from the one above:
         <CounterIsland start={100} />
       </p>
+      <Link to="/about">Link to another page</Link>
     </main>
   );
 }
