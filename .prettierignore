@@ -1,2 +1,4 @@
-# Ignore everything, the formatting is done by eslint.
-**/*.*
+node_modules
+dist
+lib
+CHANGELOG.md

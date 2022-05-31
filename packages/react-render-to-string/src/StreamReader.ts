@@ -7,7 +7,8 @@ import { EventEmitter } from "events";
  */
 export class StreamReader
   extends EventEmitter
-  implements NodeJS.WritableStream {
+  implements NodeJS.WritableStream
+{
   writable = true;
   private chunks: Buffer[] = [];
   constructor(private cb: (s: string) => void) {

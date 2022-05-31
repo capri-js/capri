@@ -118,8 +118,8 @@ async function run(): Promise<void> {
   const packageManager = options.useNpm
     ? "npm"
     : options.usePnpm
-      ? "pnpm"
-      : getPkgManager();
+    ? "pnpm"
+    : getPkgManager();
 
   const example = typeof options.example === "string" && options.example.trim();
   try {

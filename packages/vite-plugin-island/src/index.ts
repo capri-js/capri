@@ -1,4 +1,4 @@
-import "../types.d.ts";
+/// <reference path="../types.d.ts" />
 
 import * as fs from "fs";
 import type { Plugin } from "vite";
