@@ -13,6 +13,7 @@ main {
   max-width: 60ch;
   margin: auto;
   font-size: 1.5em;
+  line-height: 1.5;
   padding: 2em;
 }
 
@@ -32,8 +33,13 @@ h1 i::after {
   background-size: contain;
 }
 
+section {
+  margin-bottom: 1em;
+}
+
 .counter {
   display: inline-flex;
+  vertical-align: bottom;
   gap: 0.2em;
 }
 

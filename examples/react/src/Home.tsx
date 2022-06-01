@@ -17,15 +17,15 @@ export function Home() {
       <h1>
         Welcome to <i>Capri</i>
       </h1>
-      <p>This page is static, but contains some dynamic parts.</p>
-      <p>{data}</p>
-      <p>
+      <section>This page is static, but contains some dynamic parts.</section>
+      <section>{data}</section>
+      <section>
         Here is a simple counter: <CounterIsland />
-      </p>
-      <p>
-        And here is another one, independent from the one above:
+      </section>
+      <section>
+        And here is another one, independent from the one above:{" "}
         <CounterIsland start={100} />
-      </p>
+      </section>
       <Link to="/about">Link to another page</Link>
     </main>
   );
