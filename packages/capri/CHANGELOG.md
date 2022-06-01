@@ -1,3 +1,15 @@
+# capri [1.1.0](https://github.com/capri-js/capri/compare/capri@1.0.0...capri@1.1.0) (2022-06-01)
+
+
+### Bug Fixes
+
+* remove debug output ([74b33d5](https://github.com/capri-js/capri/commit/74b33d5309c5baa7156b9cefbe46b8edef0a17f6))
+
+
+### Features
+
+* let render return multiple chunks ([61f29f5](https://github.com/capri-js/capri/commit/61f29f5c64a0cb31cc624fbe8feaab90cf142491))
+
 # capri 1.0.0 (2022-05-30)
 
 
