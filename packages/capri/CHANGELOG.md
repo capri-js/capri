@@ -1,3 +1,12 @@
+## capri [1.1.1](https://github.com/capri-js/capri/compare/capri@1.1.0...capri@1.1.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* pass spa as pathname and respect createIndexFiles option ([e581bec](https://github.com/capri-js/capri/commit/e581bec431197bcd60c2849fd4612963a484655d))
+* remove hydration code if no islands are found ([83fc2ca](https://github.com/capri-js/capri/commit/83fc2ca55c9518f9245ee7dee02212585527e956))
+* support async html chunks ([4fb1b74](https://github.com/capri-js/capri/commit/4fb1b74c17e52463284ad89fedba10e53286eeb4))
+
 # capri [1.1.0](https://github.com/capri-js/capri/compare/capri@1.0.0...capri@1.1.0) (2022-06-01)
 
 
