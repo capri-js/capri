@@ -10,7 +10,7 @@ export type {
   ServerEntry,
 } from "@capri-js/vite-plugin";
 
-export default function (opts: CapriAdapterPluginOptions) {
+export default function (opts: CapriAdapterPluginOptions = {}) {
   return capri({
     ...opts,
     hydrate: "@capri-js/preact/lib/hydrate.js",

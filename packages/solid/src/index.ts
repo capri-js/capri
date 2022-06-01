@@ -9,7 +9,7 @@ export type {
   ServerEntry,
 } from "@capri-js/vite-plugin";
 
-export default function (opts: CapriAdapterPluginOptions) {
+export default function (opts: CapriAdapterPluginOptions = {}) {
   return [
     {
       name: "@capri-js/solid-config",
