@@ -1,5 +1,4 @@
 /// <reference types="vite-plugin-island/types" />
-
 import capri, { CapriAdapterPluginOptions } from "@capri-js/vite-plugin";
 
 export type {
@@ -12,13 +11,15 @@ export type {
 export default function (opts: CapriAdapterPluginOptions = {}) {
   return [
     {
-      name: "@capri-js/solid-config",
+      // In order to make solid-app-router work in SSR mode we have to
+      // prevent it from being externalized ...
+      name: "@capri-js/solid-router-fix",
       config() {
         return {
           ssr: {
             noExternal: ["solid-app-router"],
           },
-        };
+        } as any;
       },
     },
     capri({
