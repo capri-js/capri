@@ -1,6 +1,6 @@
 # Capri 🍋
 
-Capri is a static site generator that supports partial hydration, also known as [islands architecture](https://jasonformat.com/islands-architecture/).
+Capri is a static site generator that supports partial hydration, also known as [islands architecture](https://jasonformat.com/islands-architecture/), as well as live CMS that don't require a build-step!
 
 # Features
 
@@ -9,13 +9,13 @@ Capri is a static site generator that supports partial hydration, also known as 
 - 🔮 Optionally creates an SPA to render CMS previews
 - ⚡️ Takes advantage of Vite's asset handling
 
-## Router-less by default
+## Bring your own router
 
 In contrast to other frameworks of its kind, Capri does not come with a built-in router. This allows you to use any router you want. Depending on your site you might not even need a router at all. If for example all your pages share a common content model that consists of blocks (or page sections) you can use this simple pattern:
 
 Fetch the content for the requested URL from your headless CMS. Iterate over the content blocks and pick the appropriate component to render it.
 
-## No external data fetching
+## Bring your own data fetching
 
 Capri does not care about how you load your data. The provided framework adapters all support async rendering so that you can use suspense-style patterns to _render as you fetch_.
 
@@ -41,9 +41,12 @@ After a page has been rendered, Capri parses the output and looks for internal l
 
 `npm init capri -- -e preact`
 
-## Adding Capri to an existing Vite app
+## Server side entry script
 
-TODO
+To generate static markup, Capri expects a file called `<your-entry>.server.*` right next to your client side entry script. If for example your `index.html` points to `./src/main.tsx` Capri looks for a file called `./src/main.server.tsx`. Take a look at the different framework demos for an real world example.
+
+The render function receives the pathname of the page to be rendered as argument and returns the markup to be injected into the index.html file.
+The markup is returned as object with CSS selectors as keys. This makes it possible to inject different chunks of HTML into different locations of the template, for example `head` and `#root`.
 
 ## Creating an island
 
