@@ -1,3 +1,10 @@
+## react-render-to-string [1.0.1](https://github.com/capri-js/capri/compare/react-render-to-string@1.0.0...react-render-to-string@1.0.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* support async html chunks ([4fb1b74](https://github.com/capri-js/capri/commit/4fb1b74c17e52463284ad89fedba10e53286eeb4))
+
 # react-render-to-string 1.0.0 (2022-05-30)
 
 
