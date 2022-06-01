@@ -1,4 +1,4 @@
-import { getEntrySrc, prerender } from "capri";
+import { getEntrySrc, prerender, urlToFileName } from "capri";
 import * as fs from "fs";
 import { readFile } from "fs/promises";
 import * as path from "path";
@@ -14,6 +14,7 @@ import island from "vite-plugin-island";
 import { findRenderChunk } from "./bundle.js";
 import { importServerChunk } from "./ssr.js";
 import { CapriPluginOptions } from "./types.js";
+
 export * from "./types.js";
 
 export default function capri({
@@ -25,6 +26,7 @@ export default function capri({
 }: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
   let ssr: string;
+  if (spa) spa = urlToFileName(spa, createIndexFiles);
   return [
     island({
       islandGlobPattern,

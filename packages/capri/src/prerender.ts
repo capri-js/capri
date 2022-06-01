@@ -54,9 +54,10 @@ export async function prerender(
   }
 }
 
-function urlToFileName(url: string, extraDir: boolean) {
+export function urlToFileName(url: string, extraDir: boolean) {
   const file = stripSlashes(url);
   if (!file) return "index.html";
+  if (file.includes(".html")) return file;
   return `${file}${extraDir ? "/index.html" : ".html"}`;
 }
 
