@@ -1,3 +1,20 @@
+## @capri-js/preact [1.0.2](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.1...@capri-js/preact@1.0.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* add island wrapper div ([5baff01](https://github.com/capri-js/capri/commit/5baff01fecd492a4e5daac690183531431d773a0))
+* export types ([9377dbf](https://github.com/capri-js/capri/commit/9377dbf6cafe00e6e1de0137ddb525df40f603bc))
+* make plugin options optional ([152d371](https://github.com/capri-js/capri/commit/152d3717bfa4ed4f43eb3c0683a12bb9d5ac7351))
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.0.2
+
 ## @capri-js/preact [1.0.1](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.0...@capri-js/preact@1.0.1) (2022-06-01)
 
 
