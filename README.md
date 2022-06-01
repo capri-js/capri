@@ -1,6 +1,6 @@
 # Capri 🍋
 
-Capri is a static site generator that supports partial hydration, also known as [islands architecture](https://jasonformat.com/islands-architecture/), as well as live CMS that don't require a build-step!
+Capri is a static site generator that supports partial hydration, also known as [islands architecture](https://jasonformat.com/islands-architecture/), as well as live CMS previews that don't require a build-step!
 
 # Features
 
@@ -104,7 +104,7 @@ I was looking for the most carbon efficient way to create a rather small website
 - Generate static HTML pages, hosted on Firebase or Cloudflare
 - Ship as little JS to the client as possible
 - Use a cloud based, headless CMS to manage the content
-- Generate a SPA to support live previews while editing
+- Generate an SPA to support live previews while editing
 
 # Capri vs. X
 
