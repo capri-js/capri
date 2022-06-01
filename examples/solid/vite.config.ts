@@ -8,8 +8,7 @@ export default defineConfig({
       ssr: true,
     }),
     capri({
-      spa: "preview.html",
-      createIndexFiles: false,
+      spa: "/preview",
     }),
   ],
 });

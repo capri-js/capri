@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     capri({
-      spa: "preview.html",
+      spa: "/preview",
     }),
   ],
 });
