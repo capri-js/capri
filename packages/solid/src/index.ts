@@ -2,6 +2,13 @@
 
 import capri, { CapriAdapterPluginOptions } from "@capri-js/vite-plugin";
 
+export type {
+  GetStaticPaths,
+  RenderFunction,
+  RenderResult,
+  ServerEntry,
+} from "@capri-js/vite-plugin";
+
 export default function (opts: CapriAdapterPluginOptions) {
   return [
     {
