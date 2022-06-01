@@ -1,3 +1,13 @@
+## @capri-js/react [1.0.1](https://github.com/capri-js/capri/compare/@capri-js/react@1.0.0...@capri-js/react@1.0.1) (2022-06-01)
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.0.1
+
 # @capri-js/react 1.0.0 (2022-05-30)
 
 
