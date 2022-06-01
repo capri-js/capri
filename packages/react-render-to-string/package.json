@@ -1,6 +1,6 @@
 {
   "name": "react-render-to-string",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Like renderToStaticMarkup but with suspense support.",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {

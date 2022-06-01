@@ -1,3 +1,18 @@
+## @capri-js/react [1.0.2](https://github.com/capri-js/capri/compare/@capri-js/react@1.0.1...@capri-js/react@1.0.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* make plugin options optional ([152d371](https://github.com/capri-js/capri/commit/152d3717bfa4ed4f43eb3c0683a12bb9d5ac7351))
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.0.2
+
 ## @capri-js/react [1.0.1](https://github.com/capri-js/capri/compare/@capri-js/react@1.0.0...@capri-js/react@1.0.1) (2022-06-01)
 
 
