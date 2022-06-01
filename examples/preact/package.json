@@ -6,14 +6,13 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "vite dev --mode development",
-    "build": "vite build && vite build --ssr --mode development",
-    "preview": "vite preview"
+    "dev": "vite dev",
+    "build": "vite build && vite build --ssr",
+    "serve": "vite preview"
   },
   "dependencies": {
-    "history": "^5.3.0",
+    "@capri-js/preact-router": "^4.0.2",
     "preact": "^10.7.2",
-    "preact-router": "^4.0.1",
     "react-iso": "^1.0.3"
   },
   "devDependencies": {

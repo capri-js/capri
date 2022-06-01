@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [
     preact(),
     capri({
-      spa: "preview.html",
-      createIndexFiles: false,
+      spa: "/preview",
     }),
   ],
 });
