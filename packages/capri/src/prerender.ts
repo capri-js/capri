@@ -33,13 +33,9 @@ export async function prerender(
     const preload = getIslandChunks(html, manifest);
     if (preload.length) {
       // Insert modulepreload links for the included islands:
-      console.log(
-        `Found ${preload.length} islands. Injecting modulepreload links.`
-      );
       html = insertPreloadTags(html, preload);
     } else {
       // No islands present, remove the hydration script.
-      console.log(`No islands found. Removing hydration code.`);
       //html = removeHydrationCode(html);
     }
 
