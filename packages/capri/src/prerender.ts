@@ -36,7 +36,7 @@ export async function prerender(
       html = insertPreloadTags(html, preload);
     } else {
       // No islands present, remove the hydration script.
-      //html = removeHydrationCode(html);
+      html = removeHydrationCode(html);
     }
 
     const fileName = urlToFileName(url, createIndexFiles);
