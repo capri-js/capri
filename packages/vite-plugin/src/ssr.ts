@@ -1,8 +1,7 @@
+import type { GetStaticPaths, RenderFunction, ServerEntry } from "capri";
 import * as fs from "fs";
 import * as path from "path";
 import type { OutputChunk } from "rollup";
-
-import type { GetStaticPaths, RenderFunction, ServerEntry } from "./types";
 
 export async function importServerChunk(
   chunk: OutputChunk,

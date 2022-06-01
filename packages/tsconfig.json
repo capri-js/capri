@@ -1,5 +1,6 @@
 {
   "references": [
+    { "path": "capri" },
     { "path": "create" },
     { "path": "preact" },
     { "path": "react" },

@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "htmlparser2": "^8.0.1",
+    "capri": "*",
     "vite-plugin-island": "^1.0.0"
   },
   "devDependencies": {

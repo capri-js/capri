@@ -1,25 +1,28 @@
+import { getEntrySrc, prerender } from "capri";
 import * as fs from "fs";
 import { readFile } from "fs/promises";
 import * as path from "path";
-import type { OutputBundle, OutputChunk, PluginContext } from "rollup";
+import type {
+  OutputBundle,
+  OutputChunk,
+  PluginContext,
+  RollupOptions,
+} from "rollup";
 import type { ChunkMetadata, Plugin, PluginOption, UserConfig } from "vite";
 import island from "vite-plugin-island";
 
 import { findRenderChunk } from "./bundle.js";
-import { getEntrySrc } from "./html.js";
-import { prerender } from "./prerender.js";
 import { importServerChunk } from "./ssr.js";
-import { CapriOptions } from "./types.js";
+import { CapriPluginOptions } from "./types.js";
 export * from "./types.js";
 
 export default function capri({
   islandGlobPattern = "/src/**/*.island.*",
-  appHtmlPlaceholder = "<!--app-html-->",
   createIndexFiles = true,
   hydrate,
   renderMarkerFragment,
   spa,
-}: CapriOptions): Plugin[] {
+}: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
   let ssr: string;
   return [
@@ -59,15 +62,21 @@ export default function capri({
               },
             },
           };
-        } else if (spa) {
+        } else {
+          let rollupOptions: RollupOptions | undefined;
+          if (spa) {
+            // Generate two entry chunks:
+            rollupOptions = {
+              input: {
+                index: "/index.html",
+                spa,
+              },
+            };
+          }
           return {
             build: {
-              rollupOptions: {
-                input: {
-                  index: "/index.html",
-                  spa,
-                },
-              },
+              ssrManifest: true,
+              rollupOptions,
             },
           };
         }
@@ -101,8 +110,6 @@ export default function capri({
 
           let indexModuleId: string;
           let indexMetadata: ChunkMetadata;
-
-          //console.log(bundle);
 
           Object.values(bundle).forEach((chunk) => {
             if (
@@ -157,7 +164,6 @@ export default function capri({
             template: indexHtml,
             outDir: options.dir!,
             createIndexFiles,
-            appHtmlPlaceholder,
           });
         }
       },
