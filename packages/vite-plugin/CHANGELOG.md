@@ -1,3 +1,19 @@
+## @capri-js/vite-plugin [1.0.2](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.1...@capri-js/vite-plugin@1.0.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* export types ([9377dbf](https://github.com/capri-js/capri/commit/9377dbf6cafe00e6e1de0137ddb525df40f603bc))
+* pass spa as pathname and respect createIndexFiles option ([e581bec](https://github.com/capri-js/capri/commit/e581bec431197bcd60c2849fd4612963a484655d))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 1.1.1
+
 ## @capri-js/vite-plugin [1.0.1](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.0...@capri-js/vite-plugin@1.0.1) (2022-06-01)
 
 
