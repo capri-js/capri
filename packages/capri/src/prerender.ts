@@ -8,6 +8,7 @@ import {
   insertPreloadTags,
   removeHydrationCode,
 } from "./html.js";
+import { RenderFunction } from "./types.js";
 
 type PrerenderOptions = {
   template: string;
@@ -17,25 +18,29 @@ type PrerenderOptions = {
 
 export async function prerender(
   staticPaths: string[],
-  render: any,
+  render: RenderFunction,
   { template, createIndexFiles, outDir }: PrerenderOptions
 ) {
   const manifest = readManifest(outDir);
   const seen = new Set(staticPaths);
   const urls = [...seen];
   for (const url of urls) {
-    let html = await render(url);
-    const preload = getIslandChunks(html, manifest);
+    const markup = await render(url);
 
     // Insert the rendered markup into the index.html template:
-    html = insertMarkup(template, html);
+    let html = insertMarkup(template, markup);
 
+    const preload = getIslandChunks(html, manifest);
     if (preload.length) {
       // Insert modulepreload links for the included islands:
+      console.log(
+        `Found ${preload.length} islands. Injecting modulepreload links.`
+      );
       html = insertPreloadTags(html, preload);
     } else {
       // No islands present, remove the hydration script.
-      html = removeHydrationCode(html);
+      console.log(`No islands found. Removing hydration code.`);
+      //html = removeHydrationCode(html);
     }
 
     const fileName = urlToFileName(url, createIndexFiles);

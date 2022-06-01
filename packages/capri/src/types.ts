@@ -1,4 +1,7 @@
-export type RenderFunction = (url: string) => string | Promise<string>;
+export type RenderResult = Record<string, string>;
+export type RenderFunction = (
+  url: string
+) => RenderResult | Promise<RenderResult>;
 export type GetStaticPaths = () => string[] | Promise<string[]>;
 
 export interface ServerEntry {

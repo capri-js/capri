@@ -1,5 +1,7 @@
 import * as cheerio from "cheerio";
 
+import { RenderResult } from "./types";
+
 function isLocalUrl(href: string) {
   const url = new URL(href, "file:///");
   return url.protocol === "file:" && !url.host;
@@ -18,7 +20,6 @@ export function getIslands(html: string) {
   const islands = $('script[type="application/json"][data-island]')
     .map((i, el) => $(el).attr("data-island"))
     .toArray();
-
   const unique = new Set(islands);
   return [...unique];
 }
@@ -32,25 +33,22 @@ export function getEntrySrc(html: string) {
   return src[0];
 }
 
-export function insertMarkup(
-  template: string,
-  markup: Record<string, string> | string
-) {
+export function insertMarkup(template: string, markup: RenderResult) {
   const $ = cheerio.load(template);
   if (typeof markup === "string")
     markup = {
       "div[id]": markup,
     };
   Object.entries(markup).forEach(([selector, html]) => {
-    $(selector).first().html(html.trim());
+    $(selector).first().append($(html));
   });
   return $.html();
 }
 
 export function insertPreloadTags(html: string, preloads: string[]) {
   const $ = cheerio.load(html);
-  preloads.forEach((src) =>
-    $("head").append(`<link rel="modulepreload" src="${src}">`)
+  preloads.forEach((href) =>
+    $("head").append(`<link rel="modulepreload" href="${href}">`)
   );
   return $.html();
 }
@@ -92,7 +90,6 @@ function removeWhitespaceSiblings(
   let next = el?.nextSibling;
   while (next && next.nodeType === 3 && next.data.trim().length === 0) {
     const $t = $(next);
-    console.log("Removing '%s'", next.data);
     next = next.nextSibling;
     $t.remove();
   }
