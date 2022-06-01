@@ -28,7 +28,7 @@ export async function prerender(
     const markup = await render(url);
 
     // Insert the rendered markup into the index.html template:
-    let html = insertMarkup(template, markup);
+    let html = await insertMarkup(template, markup);
 
     const preload = getIslandChunks(html, manifest);
     if (preload.length) {

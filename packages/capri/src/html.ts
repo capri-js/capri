@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 
-import { RenderResult } from "./types";
+import { RenderResult } from "./types.js";
 
 function isLocalUrl(href: string) {
   const url = new URL(href, "file:///");
@@ -33,15 +33,13 @@ export function getEntrySrc(html: string) {
   return src[0];
 }
 
-export function insertMarkup(template: string, markup: RenderResult) {
+export async function insertMarkup(template: string, markup: RenderResult) {
   const $ = cheerio.load(template);
-  if (typeof markup === "string")
-    markup = {
-      "div[id]": markup,
-    };
-  Object.entries(markup).forEach(([selector, html]) => {
-    $(selector).first().append($(html));
-  });
+  for (const [selector, html] of Object.entries(markup)) {
+    $(selector)
+      .first()
+      .append($(await html));
+  }
   return $.html();
 }
 
