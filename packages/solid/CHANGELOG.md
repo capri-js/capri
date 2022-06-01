@@ -1,3 +1,18 @@
+## @capri-js/solid [1.0.1](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.0...@capri-js/solid@1.0.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* make solid-app-router work ([c53ed9e](https://github.com/capri-js/capri/commit/c53ed9eec7a0b93d730249b1df3d70672482da0e))
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.0.1
+
 # @capri-js/solid 1.0.0 (2022-05-30)
 
 
