@@ -1,5 +1,6 @@
 import "./App.css";
 
+// eslint-disable-next-line import/no-named-as-default
 import Router from "@capri-js/preact-router";
 
 import { About } from "./About";

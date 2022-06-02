@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import spawn from "cross-spawn";
 
-import type { PackageManager } from "./get-pkg-manager";
+import type { PackageManager } from "./get-pkg-manager.js";
 
 interface InstallArgs {
   /**

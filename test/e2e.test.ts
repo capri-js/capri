@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import * as path from "path";
 import { describe, expect, test } from "vitest";
 
-import { getExampleDOM } from "./dom";
+import { getExampleDOM } from "./dom.js";
 
 describe("examples", () => {
   test.each([["react"], ["solid"]])("%s", async (example) => {

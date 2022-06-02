@@ -6,14 +6,20 @@ module.exports = {
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: [
-      "./tsconfig.json",
-      "./packages/*/tsconfig.json",
-      "./examples/*/tsconfig.json",
-    ],
+    ecmaVersion: 12,
+    sourceType: "module",
   },
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+  },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+  ],
   plugins: ["@typescript-eslint", "simple-import-sort"],
   rules: {
     "@typescript-eslint/no-explicit-any": "off", // Sometimes it's okay to take shortcuts. Use responsibly!
@@ -26,6 +32,19 @@ module.exports = {
       },
     ],
     "@typescript-eslint/triple-slash-reference": "off", // We need them to surface our ambient module declarations.
+
+    // Enforce extensions for all imports except for jsx/tsx as they will be handled by Vite anyways.
+    // Unfortunately this doesn't work as we'd like: https://github.com/import-js/eslint-plugin-import/issues/2111
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        tsx: "never",
+        jsx: "never",
+      },
+    ],
+    "import/no-unresolved": "off", // Also see https://github.com/import-js/eslint-plugin-import/issues/2111
+
     "simple-import-sort/imports": "error", // Set to "error" so that --fix will do its magic
     "simple-import-sort/exports": "error", // Set to "error" so that --fix will do its magic
   },

@@ -6,8 +6,8 @@ import path from "path";
 import prompts from "prompts";
 
 import { createCapri, DownloadError } from "./create-capri.js";
-import { getPkgManager } from "./helpers/get-pkg-manager";
-import { validateNpmName } from "./helpers/validate-pkg";
+import { getPkgManager } from "./helpers/get-pkg-manager.js";
+import { validateNpmName } from "./helpers/validate-pkg.js";
 
 let projectPath = "";
 
