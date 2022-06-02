@@ -1,3 +1,10 @@
+## vite-plugin-island [1.0.1](https://github.com/capri-js/capri/compare/vite-plugin-island@1.0.0...vite-plugin-island@1.0.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* add .npmignore ([2ade226](https://github.com/capri-js/capri/commit/2ade2261eb4bd3918deea53a010bff5cd7322ca7))
+
 # vite-plugin-island 1.0.0 (2022-05-30)
 
 
