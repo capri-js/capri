@@ -1,4 +1,4 @@
-import { ComponentType } from "react";
+import { ComponentType, createElement } from "react";
 
 export function renderMarkerFragment(
   Component: ComponentType,
@@ -9,13 +9,13 @@ export function renderMarkerFragment(
   // In order to hydrate a React component it must be the first child element.
   // To guarantee this, we wrap it in an extra div and set it to
   // `display: contents` in order to not affect the styling.
-  return (
-    <div data-island-root style={{ display: "contents" }}>
-      <Component {...props} />
-      <script
-        {...scriptProps}
-        dangerouslySetInnerHTML={{ __html: scriptContent }}
-      />
-    </div>
+  return createElement(
+    "div",
+    { "data-island-root": true, style: { display: "contents" } },
+    createElement(Component, props),
+    createElement("script", {
+      ...scriptProps,
+      dangerouslySetInnerHTML: { __html: scriptContent },
+    })
   );
 }
