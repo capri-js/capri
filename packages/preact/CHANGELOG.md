@@ -1,3 +1,10 @@
+## @capri-js/preact [1.0.4](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.3...@capri-js/preact@1.0.4) (2022-06-02)
+
+
+### Bug Fixes
+
+* don't rely on jsx transform ([0f15e36](https://github.com/capri-js/capri/commit/0f15e36bd35024ef713f5a2e711ed32587690bb7))
+
 ## @capri-js/preact [1.0.3](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.2...@capri-js/preact@1.0.3) (2022-06-02)
 
 
