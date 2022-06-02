@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/preact",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri-js/vite-plugin": "^1.0.2",
+    "@capri-js/vite-plugin": "^1.0.3",
     "preact-iso": "^2.3.0"
   },
   "peerDependencies": {
