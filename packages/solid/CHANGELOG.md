@@ -1,3 +1,10 @@
+## @capri-js/solid [1.0.3](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.2...@capri-js/solid@1.0.3) (2022-06-02)
+
+
+### Bug Fixes
+
+* SSROptions are not in the UserConfig type ([f4358ee](https://github.com/capri-js/capri/commit/f4358ee632009171f77a4fb74e88919c4b752d15))
+
 ## @capri-js/solid [1.0.2](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.1...@capri-js/solid@1.0.2) (2022-06-01)
 
 
