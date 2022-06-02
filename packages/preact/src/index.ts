@@ -14,6 +14,6 @@ export default function (opts: CapriAdapterPluginOptions = {}) {
   return capri({
     ...opts,
     hydrate: "@capri-js/preact/lib/hydrate.js",
-    renderMarkerFragment: "@capri-js/preact/lib/renderMarkerFragment.jsx",
+    renderMarkerFragment: "@capri-js/preact/lib/renderMarkerFragment.js",
   });
 }
