@@ -1,3 +1,10 @@
+## create-capri [1.0.2](https://github.com/capri-js/capri/compare/create-capri@1.0.1...create-capri@1.0.2) (2022-06-02)
+
+
+### Bug Fixes
+
+* fix typo and add credits ([459ca59](https://github.com/capri-js/capri/commit/459ca59e16c31c8821d0c186b2a018fadca48b07))
+
 ## create-capri [1.0.1](https://github.com/capri-js/capri/compare/create-capri@1.0.0...create-capri@1.0.1) (2022-06-02)
 
 
