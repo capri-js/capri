@@ -1,3 +1,10 @@
+## create-capri [1.0.4](https://github.com/capri-js/capri/compare/create-capri@1.0.3...create-capri@1.0.4) (2022-06-02)
+
+
+### Bug Fixes
+
+* add .npmignore ([2ade226](https://github.com/capri-js/capri/commit/2ade2261eb4bd3918deea53a010bff5cd7322ca7))
+
 ## create-capri [1.0.3](https://github.com/capri-js/capri/compare/create-capri@1.0.2...create-capri@1.0.3) (2022-06-02)
 
 

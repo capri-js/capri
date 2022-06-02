@@ -1,3 +1,10 @@
+## capri [1.1.2](https://github.com/capri-js/capri/compare/capri@1.1.1...capri@1.1.2) (2022-06-02)
+
+
+### Bug Fixes
+
+* add .npmignore ([2ade226](https://github.com/capri-js/capri/commit/2ade2261eb4bd3918deea53a010bff5cd7322ca7))
+
 ## capri [1.1.1](https://github.com/capri-js/capri/compare/capri@1.1.0...capri@1.1.1) (2022-06-01)
 
 
