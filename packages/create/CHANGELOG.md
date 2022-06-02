@@ -1,3 +1,10 @@
+## create-capri [1.0.1](https://github.com/capri-js/capri/compare/create-capri@1.0.0...create-capri@1.0.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* add extension to import ([4eab986](https://github.com/capri-js/capri/commit/4eab986d834691786a880a53d829143cfb69e1a1))
+
 # create-capri 1.0.0 (2022-05-30)
 
 
