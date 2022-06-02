@@ -1,3 +1,19 @@
+## @capri-js/vite-plugin [1.0.3](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.2...@capri-js/vite-plugin@1.0.3) (2022-06-02)
+
+
+### Bug Fixes
+
+* add .npmignore ([2ade226](https://github.com/capri-js/capri/commit/2ade2261eb4bd3918deea53a010bff5cd7322ca7))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 1.1.2
+* **vite-plugin-island:** upgraded to 1.0.1
+
 ## @capri-js/vite-plugin [1.0.2](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.1...@capri-js/vite-plugin@1.0.2) (2022-06-01)
 
 
