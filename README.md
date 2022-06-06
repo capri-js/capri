@@ -47,9 +47,46 @@ By default, the project will use the preact example. You can specify a different
 npm init capri <my-project-name> -- -e react
 ```
 
-## Server side entry script
+For a full example with CMS integration and live preview click the button below:
 
-To generate static markup, Capri expects a file called `<your-entry>.server.*` right next to your client side entry script. If for example your `index.html` points to `./src/main.tsx` Capri looks for a file called `./src/main.server.tsx`. Take a look at the different framework demos for an real world example.
+[![Try on sanity.io](./sanity.svg)](https://www.sanity.io/create?template=capri-js%2Fsanity-template-capri-react)
+
+## Adding Capri to an existing Vite project
+
+If you have an existing Vite project for a single page app, you can add static site generation with a few steps:
+
+(1) Install the Capri Vite plugin for your framework of choice:
+
+`npm install --save-dev @capri-js/react` (or preact or solid)
+
+(2) Add the plugin to your `vite.config.ts` file:
+
+```ts
+import capri from "@capri-js/react";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [react(), capri()],
+});
+```
+
+(3) Modify the build script in your `package.json`:
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --ssr"
+  }
+}
+```
+
+(4) Add a server entry script (see below).
+
+## Server entry script
+
+To generate static markup, Capri expects a file called `<your-entry>.server.*` right next to your client side entry script. If for example your `index.html` points to `./src/main.tsx` Capri looks for a file called `./src/main.server.tsx`. Take a look at the different framework demos for a real world example.
 
 The render function receives the pathname of the page to be rendered as argument and returns the markup to be injected into the index.html file.
 The markup is returned as object with CSS selectors as keys. This makes it possible to inject different chunks of HTML into different locations of the template, for example `head` and `#root`.
@@ -84,7 +121,7 @@ export const CounterIsland = island(Counter);
 
 Use that wrapped component in your app to opt in to client-side hydration for that particular subtree.
 
-# How it works
+# Capri internals
 
 Internally, Capri uses the following ingredients to do its magic:
 
@@ -156,3 +193,7 @@ While [vite-plugin-ssr](https://vite-plugin-ssr.com/) doesn't support partial hy
 ## Others
 
 You can learn more about these and other available options in this [excellent article](https://ajcwebdev.com/what-is-partial-hydration-and-why-is-everyone-talking-about-it).
+
+# License
+
+MIT
