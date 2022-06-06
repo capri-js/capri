@@ -1,3 +1,10 @@
+## @capri-js/react [1.0.4](https://github.com/capri-js/capri/compare/@capri-js/react@1.0.3...@capri-js/react@1.0.4) (2022-06-02)
+
+
+### Bug Fixes
+
+* don't rely on jsx transforms ([eec21fd](https://github.com/capri-js/capri/commit/eec21fdcbc459f8c2e0834eb683e619c857adb23))
+
 ## @capri-js/react [1.0.3](https://github.com/capri-js/capri/compare/@capri-js/react@1.0.2...@capri-js/react@1.0.3) (2022-06-02)
 
 
