@@ -4,10 +4,10 @@ Capri is a static site generator that supports partial hydration, also known as 
 
 # Features
 
-- ⚛️ Supports React, Preact and SolidJS
-- 🏝 Selectively hydrates interactive parts (islands)
-- 🔮 Optionally creates an SPA to render CMS previews
-- ⚡️ Takes advantage of Vite's asset handling
+- ⚛️ Component-based workflow (React, Preact and SolidJS)
+- 🏝 Partial hydration of interactive islands
+- 🔮 Static SPA to render CMS previews
+- ⚡️ Broad range of styling options thanks to Vite
 
 ## Bring your own router
 
@@ -145,26 +145,9 @@ During the client-build, a hydration script is emitted that calls `import.meta.g
 
 The rest is a matter of finding all hydration marker scripts in the DOM and hydrating their preceding siblings.
 
-# Motivation
-
-We were looking for the most carbon efficient way to build small websites with modern tools and a component-based workflow.
-
-Since everyone on the team is familiar with React, it should be using React (or rather, Preact) under the hood.
-
-Apart from that, the content should be managed via a headless CMS so that even non-technical people can edit the site in a page-builder-style fashion.
-
-With regard to rendering strategies, it quickly became apparent that static site generation (SSG) is the most resource-efficient option for operating a website.
-
-So these were the requirements in a nutshell:
-
-- Generate static HTML pages, hosted on Firebase or Cloudflare
-- Ship as little JS to the client as possible
-- Use a cloud based, headless CMS to manage the content
-- Generate an SPA to support live previews while editing
-
 # Capri vs. X
 
-Before we went down the rabbit hole of writing a static site generator from scratch, we took a closer look at some other options:
+There a lot of different options when it comes to generating static websites. Unfortunately none of them makes it particularly easy to implement Capri's unique set of [features](#features). Read how Capri compares to some of its most popular alternatives:
 
 ## Astro
 
@@ -180,15 +163,11 @@ While [Next.js](https://nextjs.org/) supports a lot of different rendering strat
 
 ## 11ty
 
-[Eleventy](https://www.11ty.dev/) is known for its simplicity as well as its versatility. It is therefore not surprising that [with a](https://markus.oberlehner.net/blog/setting-up-eleventy-with-preact-and-htm/) [little work](https://markus.oberlehner.net/blog/building-partially-hydrated-progressively-enhanced-static-websites-with-isomorphic-preact-and-eleventy/) one can achieve very similar results. And if we resorted to [SSR](https://www.11ty.dev/docs/plugins/serverless/), we could even get the live preview working. So while this certainly is a viable solution, the developer experience could be much better for our particular use case.
+[Eleventy](https://www.11ty.dev/) is known for its simplicity as well as its versatility. It is therefore not surprising that [with a](https://markus.oberlehner.net/blog/setting-up-eleventy-with-preact-and-htm/) [little work](https://markus.oberlehner.net/blog/building-partially-hydrated-progressively-enhanced-static-websites-with-isomorphic-preact-and-eleventy/) one can achieve very similar results. And if you don't mind an [SSR-based approach](https://www.11ty.dev/docs/plugins/serverless/), you can even get a working live preview. So while this certainly is a viable solution, the developer experience could be much better for this particular use case.
 
 ## îles
 
 As its french name might suggest, [îles](https://iles-docs.netlify.app/) is also based on Vite. It is quite similar to Astro, but pages are written in Vue or MDX instead. You can write islands using Preact (or various other frameworks) but as with Astro, the static parts above have to be written in Vue or MDX.
-
-## vite-plugin-ssr
-
-While [vite-plugin-ssr](https://vite-plugin-ssr.com/) doesn't support partial hydration, it was that project which got me into the idea of creating my dream tool from scratch. I first tried to use it as a basis for Capri but quickly decided to follow Vite's own [SSR guide](https://vitejs.dev/guide/ssr.html) instead.
 
 ## Others
 
