@@ -88,7 +88,9 @@ function getIslandChunks(html: string, manifest: Record<string, string[]>) {
   const preload = new Set<string>();
   islands.forEach((src) => {
     const chunks = manifest[src];
-    chunks?.forEach((chunk) => preload.add(chunk));
+    chunks?.forEach((chunk) => {
+      if (chunk.endsWith(".js")) preload.add(chunk);
+    });
   });
   return [...preload];
 }
