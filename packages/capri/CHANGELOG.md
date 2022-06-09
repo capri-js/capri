@@ -1,3 +1,10 @@
+## capri [1.1.3](https://github.com/capri-js/capri/compare/capri@1.1.2...capri@1.1.3) (2022-06-09)
+
+
+### Bug Fixes
+
+* only preload .js chunks ([4138299](https://github.com/capri-js/capri/commit/4138299bf3673bd7bd6e4a7435737d6841c93e6f))
+
 ## capri [1.1.2](https://github.com/capri-js/capri/compare/capri@1.1.1...capri@1.1.2) (2022-06-02)
 
 
