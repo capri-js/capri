@@ -1,3 +1,10 @@
+## react-render-to-string [1.0.3](https://github.com/capri-js/capri/compare/react-render-to-string@1.0.2...react-render-to-string@1.0.3) (2022-06-10)
+
+
+### Bug Fixes
+
+* peer dependency versions ([37c2ddc](https://github.com/capri-js/capri/commit/37c2ddcbe5481b173eb685494048b74bf13faf5e))
+
 ## react-render-to-string [1.0.2](https://github.com/capri-js/capri/compare/react-render-to-string@1.0.1...react-render-to-string@1.0.2) (2022-06-02)
 
 
