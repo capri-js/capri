@@ -1,4 +1,5 @@
 {
+  "name": "my-capri-preact-site",
   "private": true,
   "description": "Capri Preact example",
   "version": "1.0.0",
@@ -12,7 +13,7 @@
   "dependencies": {
     "@capri-js/preact-router": "^4.0.2",
     "preact": "^10.7.2",
-    "react-iso": "^1.0.3"
+    "preact-iso": "^2.3.0"
   },
   "devDependencies": {
     "@capri-js/preact": "latest",
