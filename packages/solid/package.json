@@ -16,9 +16,9 @@
     "@capri-js/vite-plugin": "^1.0.4"
   },
   "devDependencies": {
-    "solid-js": "^1.4.2"
+    "solid-js": "^1.4.4"
   },
   "peerDependencies": {
-    "solid-js": "^1.4.2"
+    "solid-js": "^1.4.4"
   }
 }
