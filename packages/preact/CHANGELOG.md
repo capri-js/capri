@@ -1,3 +1,11 @@
+## @capri-js/preact [1.0.6](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.5...@capri-js/preact@1.0.6) (2022-06-10)
+
+
+### Bug Fixes
+
+* add back package names to examples ([3558ebf](https://github.com/capri-js/capri/commit/3558ebf1af8757e2f6aace36d4dc92cf74e1e9b2))
+* peer dependency versions ([37c2ddc](https://github.com/capri-js/capri/commit/37c2ddcbe5481b173eb685494048b74bf13faf5e))
+
 ## @capri-js/preact [1.0.5](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.4...@capri-js/preact@1.0.5) (2022-06-09)
 
 
