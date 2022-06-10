@@ -1,3 +1,10 @@
+## create-capri [1.0.5](https://github.com/capri-js/capri/compare/create-capri@1.0.4...create-capri@1.0.5) (2022-06-10)
+
+
+### Bug Fixes
+
+* change commit message ([0dddf7c](https://github.com/capri-js/capri/commit/0dddf7c77d0545a0f88bcbe70799ce98f6ff8d8d))
+
 ## create-capri [1.0.4](https://github.com/capri-js/capri/compare/create-capri@1.0.3...create-capri@1.0.4) (2022-06-02)
 
 
