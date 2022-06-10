@@ -1,6 +1,7 @@
 import { getEntrySrc, prerender, urlToFileName } from "capri";
 import * as fs from "fs";
 import { readFile } from "fs/promises";
+import { builtinModules } from "module";
 import * as path from "path";
 import type {
   OutputBundle,
@@ -66,7 +67,22 @@ export default function capri({
           };
         } else {
           let rollupOptions: RollupOptions | undefined;
-          if (spa) {
+          if (isServerEntryScript(config)) {
+            // index.html points to a .server.* file
+            // This implies that the site can't be rendered as SPA.
+            if (spa) {
+              throw new Error(
+                "In order to generate an SPA, index.html must point to a client entry file."
+              );
+            }
+            // We nevertheless want Vite to perform a client-build in order to
+            // extract all assets. As most server-side rendering solutions use
+            // node built-ins we mark them as external so that Rollup doesn't
+            // try to bundle them (which would fail).
+            rollupOptions = {
+              external: builtinModules,
+            };
+          } else if (spa) {
             // Generate two entry chunks:
             rollupOptions = {
               input: {
@@ -191,13 +207,21 @@ function getEntryScript(config: UserConfig) {
 
 function getServerEntryScript(config: UserConfig) {
   const clientEntryScript = getEntryScript(config);
-  const f = clientEntryScript.replace(/(\.client)?(\.[^.]+)$/, ".server$2");
+  const f = clientEntryScript.replace(
+    /(\.client|\.server)?(\.[^.]+)$/,
+    ".server$2"
+  );
   if (!fs.existsSync(f)) {
     throw new Error(
       `File not found: ${f}. Make sure to name your server entry file accordingly.`
     );
   }
   return f;
+}
+
+export function isServerEntryScript(config: UserConfig) {
+  const entryScript = getEntryScript(config);
+  return /\.server\.[^.]+$/.test(entryScript);
 }
 
 async function resolveFile(ctx: PluginContext, f: string) {
