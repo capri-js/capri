@@ -17,6 +17,6 @@
     "preact-iso": "^2.3.0"
   },
   "peerDependencies": {
-    "preact": "^10.7.2"
+    "preact": ">=10"
   }
 }
