@@ -1,5 +1,4 @@
 {
-  "name": "@capri-js/example-react",
   "private": true,
   "description": "Capri react example",
   "version": "1.0.0",
@@ -12,15 +11,14 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.3.2",
-    "history": "^5.3.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-render-to-string": "*",
+    "react-render-to-string": "^1.0.2",
     "react-router-dom": "^6.3.0",
     "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@capri-js/react": "*",
+    "@capri-js/react": "latest",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "vite": "^2.9.9"

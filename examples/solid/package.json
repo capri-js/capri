@@ -1,5 +1,4 @@
 {
-  "name": "@capri-js/example-solid",
   "private": true,
   "description": "Capri SolidJS example",
   "version": "1.0.0",
@@ -15,7 +14,7 @@
     "solid-js": "^1.4.2"
   },
   "devDependencies": {
-    "@capri-js/solid": "*",
+    "@capri-js/solid": "latest",
     "babel-preset-solid": "^1.4.2",
     "vite": "^2.9.9",
     "vite-plugin-solid": "^2.2.6"

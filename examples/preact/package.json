@@ -1,5 +1,4 @@
 {
-  "name": "@capri-js/example-preact",
   "private": true,
   "description": "Capri Preact example",
   "version": "1.0.0",
@@ -16,7 +15,7 @@
     "react-iso": "^1.0.3"
   },
   "devDependencies": {
-    "@capri-js/preact": "*",
+    "@capri-js/preact": "latest",
     "@preact/preset-vite": "^2.2.0",
     "vite": "^2.9.9"
   }
