@@ -1,0 +1,55 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/capri"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/create"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/preact"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/react"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/react-render-to-string"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/solid"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/vite-plugin"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/packages/vite-plugin-island"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/examples/preact"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/examples/react"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/examples/solid"
+    schedule:
+      interval: "daily"
