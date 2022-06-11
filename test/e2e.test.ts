@@ -6,7 +6,7 @@ import { describe, expect, test } from "vitest";
 import { getExampleDOM } from "./dom.js";
 
 describe("examples", () => {
-  test.each([["react"], ["solid"]])("%s", async (example) => {
+  test.each([["react"], ["preact"], ["solid"]])("%s", async (example) => {
     const root = path.resolve(__dirname, "../examples", example);
     const dom = await getExampleDOM(root);
 
