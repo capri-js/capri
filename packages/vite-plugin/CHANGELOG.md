@@ -1,3 +1,18 @@
+# @capri-js/vite-plugin [1.1.0](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.4...@capri-js/vite-plugin@1.1.0) (2022-06-11)
+
+
+### Features
+
+* support server entry only builds ([1812ef4](https://github.com/capri-js/capri/commit/1812ef4c657288187d3391b8da49133ac72dc4cc))
+
+
+
+
+
+### Dependencies
+
+* **vite-plugin-island:** upgraded to 1.0.2
+
 ## @capri-js/vite-plugin [1.0.4](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.3...@capri-js/vite-plugin@1.0.4) (2022-06-09)
 
 
