@@ -1,3 +1,10 @@
+## vite-plugin-island [1.0.2](https://github.com/capri-js/capri/compare/vite-plugin-island@1.0.1...vite-plugin-island@1.0.2) (2022-06-11)
+
+
+### Bug Fixes
+
+* don't require raw islands to be exported ([008e69d](https://github.com/capri-js/capri/commit/008e69d341a791d9ab11ddef10ab3375d379c5cf))
+
 ## vite-plugin-island [1.0.1](https://github.com/capri-js/capri/compare/vite-plugin-island@1.0.0...vite-plugin-island@1.0.1) (2022-06-02)
 
 
