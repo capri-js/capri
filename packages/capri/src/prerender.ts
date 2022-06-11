@@ -10,19 +10,41 @@ import {
 } from "./html.js";
 import { RenderFunction } from "./types.js";
 
-type PrerenderOptions = {
+export type PrerenderConfig =
+  | false
+  | string
+  | string[]
+  | (() => string[] | Promise<string[]>);
+
+export type FollowLinksConfig = boolean | ((pathname: string) => boolean);
+
+type StaticRenderConfig = {
   template: string;
   createIndexFiles: boolean;
   outDir: string;
+  prerender: PrerenderConfig;
+  followLinks: FollowLinksConfig;
 };
 
-export async function prerender(
-  staticPaths: string[],
+async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
+  if (prerender === false) return [];
+  if (typeof prerender === "string") return [prerender];
+  if (Array.isArray(prerender)) return prerender;
+  return getStaticPaths(await prerender());
+}
+
+export async function renderStaticPages(
   render: RenderFunction,
-  { template, createIndexFiles, outDir }: PrerenderOptions
+  {
+    template,
+    createIndexFiles,
+    outDir,
+    prerender,
+    followLinks,
+  }: StaticRenderConfig
 ) {
   const manifest = readManifest(outDir);
-  const seen = new Set(staticPaths);
+  const seen = new Set(await getStaticPaths(prerender));
   const urls = [...seen];
   for (const url of urls) {
     const markup = await render(url);
@@ -44,11 +66,14 @@ export async function prerender(
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.writeFileSync(dest, html);
 
-    const links = getLinks(html);
-    for (const link of links) {
-      if (!seen.has(link)) {
-        seen.add(link);
-        urls.push(link);
+    if (followLinks) {
+      const follow = typeof followLinks === "function" ? followLinks : Boolean;
+      const links = getLinks(html).filter(follow);
+      for (const link of links) {
+        if (!seen.has(link)) {
+          seen.add(link);
+          urls.push(link);
+        }
       }
     }
   }

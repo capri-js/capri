@@ -1,4 +1,4 @@
-import { getEntrySrc, prerender, urlToFileName } from "capri";
+import { getEntrySrc, renderStaticPages, urlToFileName } from "capri";
 import * as fs from "fs";
 import { readFile } from "fs/promises";
 import { builtinModules } from "module";
@@ -21,6 +21,8 @@ export * from "./types.js";
 export default function capri({
   islandGlobPattern = "/src/**/*.island.*",
   createIndexFiles = true,
+  prerender = "/",
+  followLinks = true,
   hydrate,
   renderMarkerFragment,
   spa,
@@ -168,20 +170,15 @@ export default function capri({
           );
 
           // Import the render function from the SSR bundle.
-          const { render, getStaticPaths } = await importServerChunk(
-            chunk,
-            options.dir!
-          );
+          const { render } = await importServerChunk(chunk, options.dir!);
 
           // Prerender pages...
-          const staticPaths: string[] = getStaticPaths
-            ? await getStaticPaths()
-            : ["/"];
-
-          await prerender(staticPaths, render, {
+          await renderStaticPages(render, {
             template: indexHtml,
             outDir: options.dir!,
             createIndexFiles,
+            prerender,
+            followLinks,
           });
         }
       },

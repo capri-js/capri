@@ -4,7 +4,6 @@ import capri, { CapriAdapterPluginOptions } from "@capri-js/vite-plugin";
 
 export { prerender } from "./prerender.js";
 export type {
-  GetStaticPaths,
   RenderFunction,
   RenderResult,
   ServerEntry,

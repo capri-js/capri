@@ -2,7 +2,6 @@
 import capri, { CapriAdapterPluginOptions } from "@capri-js/vite-plugin";
 
 export type {
-  GetStaticPaths,
   RenderFunction,
   RenderResult,
   ServerEntry,

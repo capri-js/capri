@@ -1,15 +1,13 @@
+import { FollowLinksConfig, PrerenderConfig } from "capri/src/prerender";
 import { IslandPluginOptions } from "vite-plugin-island";
 
-export type {
-  GetStaticPaths,
-  RenderFunction,
-  RenderResult,
-  ServerEntry,
-} from "capri";
+export type { RenderFunction, RenderResult, ServerEntry } from "capri";
 
 export interface CapriPluginOptions extends IslandPluginOptions {
   spa?: string;
   createIndexFiles?: boolean;
+  prerender?: PrerenderConfig;
+  followLinks?: FollowLinksConfig;
 }
 
 type AdapterProvidedOptions = Pick<

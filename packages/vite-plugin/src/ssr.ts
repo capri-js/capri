@@ -1,4 +1,4 @@
-import type { GetStaticPaths, RenderFunction, ServerEntry } from "capri";
+import type { RenderFunction, ServerEntry } from "capri";
 import * as fs from "fs";
 import * as path from "path";
 import type { OutputChunk } from "rollup";
@@ -7,10 +7,9 @@ export async function importServerChunk(
   chunk: OutputChunk,
   dir: string
 ): Promise<ServerEntry> {
-  const { render, getStaticPaths } = await importChunk(chunk, dir);
+  const { render } = await importChunk(chunk, dir);
   assertRenderFunction(render, chunk.fileName);
-  assertGetStaticPaths(getStaticPaths, chunk.fileName);
-  return { render, getStaticPaths };
+  return { render };
 }
 
 async function importChunk(chunk: any, dir: string) {
@@ -33,21 +32,6 @@ function assertRenderFunction(
   if (fn.length !== 1) {
     throw new Error(
       `Expected render function ${file} to have exactly 1 argument but got ${fn.length}`
-    );
-  }
-}
-
-function assertGetStaticPaths(
-  fn: unknown,
-  file: string
-): asserts fn is GetStaticPaths | undefined {
-  if (typeof fn === "undefined") return;
-  if (typeof fn !== "function") {
-    throw new Error(`Expected getStaticPaths in ${file} to be a function.`);
-  }
-  if (fn.length > 0) {
-    throw new Error(
-      `Expected getStaticPaths in ${file} to have no arguments but got ${fn.length}`
     );
   }
 }

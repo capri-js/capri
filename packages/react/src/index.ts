@@ -1,7 +1,6 @@
 /// <reference types="vite-plugin-island/types" />
 
 export type {
-  GetStaticPaths,
   RenderFunction,
   RenderResult,
   ServerEntry,
