@@ -19,6 +19,7 @@ jobs:
           key: npm-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - run: npm run build
+      - run: npm test
       - run: npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
