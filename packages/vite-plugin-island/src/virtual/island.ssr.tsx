@@ -4,16 +4,20 @@ const islands = import.meta.globEager("%ISLAND_GLOB_PATTERN%");
 function findIsland(island: unknown) {
   for (const [id, module] of Object.entries(islands)) {
     for (const [key, member] of Object.entries(module)) {
-      if (member === island) return { id, key };
+      if (
+        typeof member === "function" &&
+        "__island" in member &&
+        member.__island === island
+      )
+        return { id, key };
     }
   }
 }
 
 export function island<T>(component: T) {
-  return (props: any) => {
+  const IslandComponent = (props: any) => {
     const found = findIsland(component);
     if (!found) {
-      //TODO Add hint to export both island and raw component!
       throw new Error("Island not found in %ISLAND_GLOB_PATTERN%");
     }
     return renderMarkerFragment(
@@ -27,4 +31,6 @@ export function island<T>(component: T) {
       JSON.stringify(props)
     );
   };
+  IslandComponent.__island = component;
+  return IslandComponent;
 }

@@ -5,7 +5,7 @@ type Props = {
   start?: number;
 };
 
-export function Counter({ start = 0 }: Props) {
+function Counter({ start = 0 }: Props) {
   const [counter, setCounter] = createSignal(start);
   return (
     <div class="counter" data-testid="counter">
