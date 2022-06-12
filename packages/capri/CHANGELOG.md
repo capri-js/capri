@@ -1,3 +1,10 @@
+## capri [1.2.1](https://github.com/capri-js/capri/compare/capri@1.2.0...capri@1.2.1) (2022-06-12)
+
+
+### Bug Fixes
+
+* resolve relative urls ([7009329](https://github.com/capri-js/capri/commit/7009329f764ea110e42d285a103fc46c70875d36))
+
 # capri [1.2.0](https://github.com/capri-js/capri/compare/capri@1.1.3...capri@1.2.0) (2022-06-12)
 
 
