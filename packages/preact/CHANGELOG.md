@@ -1,3 +1,18 @@
+# @capri-js/preact [1.1.0](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.7...@capri-js/preact@1.1.0) (2022-06-12)
+
+
+### Features
+
+* add prerender and followLinks options ([8b390fe](https://github.com/capri-js/capri/commit/8b390fe24c08d57647c1b17af3bc8cc3934adbf3))
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.2.0
+
 ## @capri-js/preact [1.0.7](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.6...@capri-js/preact@1.0.7) (2022-06-11)
 
 

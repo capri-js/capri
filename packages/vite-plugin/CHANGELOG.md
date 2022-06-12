@@ -1,3 +1,23 @@
+# @capri-js/vite-plugin [1.2.0](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.1.0...@capri-js/vite-plugin@1.2.0) (2022-06-12)
+
+
+### Bug Fixes
+
+* allow setting spa to false ([3f6018f](https://github.com/capri-js/capri/commit/3f6018f2d78299d823a25aacfb9133dca2055b53))
+
+
+### Features
+
+* add prerender and followLinks options ([8b390fe](https://github.com/capri-js/capri/commit/8b390fe24c08d57647c1b17af3bc8cc3934adbf3))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 1.2.0
+
 # @capri-js/vite-plugin [1.1.0](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.0.4...@capri-js/vite-plugin@1.1.0) (2022-06-11)
 
 
