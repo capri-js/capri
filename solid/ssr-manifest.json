@@ -4,65 +4,65 @@
   "node_modules/@capri-js/solid/lib/hydrate.js": [],
   "\u0000virtual:island-hydration": [],
   "../../node_modules/solid-js/dist/solid.js": [
-    "/solid/assets/web.6cb06f90.js"
+    "/capri/solid/assets/web.6cb06f90.js"
   ],
   "../../node_modules/solid-js/web/dist/web.js": [
-    "/solid/assets/web.6cb06f90.js"
+    "/capri/solid/assets/web.6cb06f90.js"
   ],
   "vite/modulepreload-polyfill": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/integration.js": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/utils.js": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/routing.js": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/components.jsx": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "/solid/assets/main.d09734f3.js",
-    "/solid/assets/main.460e8e7e.css",
-    "/solid/assets/capri.ce1c56b3.svg"
+    "/capri/solid/assets/main.d09734f3.js",
+    "/capri/solid/assets/main.2273f45c.css",
+    "/capri/solid/assets/capri.ce1c56b3.svg"
   ],
   "\u0000virtual:island": [
-    "/solid/assets/Counter.island.334d1fe5.js"
+    "/capri/solid/assets/Counter.island.334d1fe5.js"
   ],
   "src/Counter.island.tsx": [
-    "/solid/assets/Counter.island.334d1fe5.js"
+    "/capri/solid/assets/Counter.island.334d1fe5.js"
   ]
 }

@@ -4,67 +4,67 @@
   "node_modules/@capri-js/preact/lib/hydrate.js": [],
   "\u0000virtual:island-hydration": [],
   "../../node_modules/preact/dist/preact.module.js": [
-    "/preact/assets/preact.module.4b7772f4.js"
+    "/capri/preact/assets/preact.module.4b7772f4.js"
   ],
   "vite/modulepreload-polyfill": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/@capri-js/preact-router/dist/preact-router.module.js": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/Preview.tsx": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "/preact/assets/main.437928ca.js",
-    "/preact/assets/main.effd5d75.css",
-    "/preact/assets/capri.ce1c56b3.svg"
+    "/capri/preact/assets/main.437928ca.js",
+    "/capri/preact/assets/main.339fb4ec.css",
+    "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/preact/hooks/dist/hooks.module.js": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ],
   "\u0000commonjsHelpers.js": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/preact/dist/preact.module.js?commonjs-proxy": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ],
   "../../node_modules/preact/jsx-runtime/dist/jsxRuntime.js": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ],
   "preact/jsx-runtime": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ],
   "\u0000virtual:island": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ],
   "src/Counter.island.tsx": [
-    "/preact/assets/Counter.island.e46a89fe.js"
+    "/capri/preact/assets/Counter.island.e46a89fe.js"
   ]
 }
