@@ -18,8 +18,15 @@ jobs:
           path: ~/.npm
           key: npm-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
+      - run: npm run lint
       - run: npm run build
       - run: npm test
       - run: npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm run examples
+      - name: deploy examples
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: .github/pages

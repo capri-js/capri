@@ -8,6 +8,7 @@
     "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint --fix . && prettier --write .",
     "test": "vitest --run",
+    "examples": "npm exec -w examples -c 'npm run build'",
     "release": "multi-semantic-release --sequential-init --deps.prefix ^"
   },
   "devDependencies": {
