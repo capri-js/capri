@@ -1,5 +1,3 @@
-import { Link } from "solid-app-router";
-
 import { CounterIsland } from "./Counter.island";
 
 export function Home() {
@@ -20,7 +18,7 @@ export function Home() {
         And here is another one, independent from the one above:{" "}
         <CounterIsland start={100} />
       </section>
-      <Link href="about">Link to another page</Link>
+      <a href="about">Link to another page</a>
     </main>
   );
 }

@@ -1,5 +1,3 @@
-import { Link } from "solid-app-router";
-
 export function About() {
   return (
     <main>
@@ -8,7 +6,7 @@ export function About() {
         An since it does not contain any interactive islands, no JavaScript is
         shipped to the browser.
       </section>
-      <Link href="..">Home</Link>
+      <a href="..">Home</a>
     </main>
   );
 }
