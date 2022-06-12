@@ -4,7 +4,7 @@ import { IslandPluginOptions } from "vite-plugin-island";
 export type { RenderFunction, RenderResult, ServerEntry } from "capri";
 
 export interface CapriPluginOptions extends IslandPluginOptions {
-  spa?: string;
+  spa?: string | false;
   createIndexFiles?: boolean;
   prerender?: PrerenderConfig;
   followLinks?: FollowLinksConfig;
