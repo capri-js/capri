@@ -10,52 +10,52 @@
     "assets/web.f5073502.js"
   ],
   "vite/modulepreload-polyfill": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/integration.js": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/utils.js": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/routing.js": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/solid-app-router/dist/components.jsx": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "assets/main.4270a29b.js",
+    "assets/main.6a79a411.js",
     "assets/main.953bd973.css",
     "assets/capri.ce1c56b3.svg"
   ],

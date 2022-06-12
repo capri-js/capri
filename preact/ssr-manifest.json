@@ -7,42 +7,42 @@
     "assets/preact.module.4b7772f4.js"
   ],
   "vite/modulepreload-polyfill": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/@capri-js/preact-router/dist/preact-router.module.js": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/Preview.tsx": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "assets/main.05655234.js",
+    "assets/main.437928ca.js",
     "assets/main.1d215b2a.css",
     "assets/capri.ce1c56b3.svg"
   ],
