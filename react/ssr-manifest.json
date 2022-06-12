@@ -4,121 +4,121 @@
   "node_modules/@capri-js/react/lib/hydrate.js": [],
   "\u0000virtual:island-hydration": [],
   "\u0000/home/runner/work/capri/capri/node_modules/react/index.js?commonjs-module": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react/cjs/react.production.min.js?commonjs-exports": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/react/cjs/react.production.min.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/react/index.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react-dom/client.js?commonjs-exports": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react-dom/index.js?commonjs-module": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react-dom/cjs/react-dom.production.min.js?commonjs-exports": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/scheduler/index.js?commonjs-module": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/scheduler/cjs/scheduler.production.min.js?commonjs-exports": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/scheduler/cjs/scheduler.production.min.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/scheduler/index.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/react-dom/cjs/react-dom.production.min.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/react-dom/index.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "../../node_modules/react-dom/client.js": [
-    "/assets/client.91fb33d9.js"
+    "assets/client.91fb33d9.js"
   ],
   "vite/modulepreload-polyfill": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/@babel/runtime/helpers/esm/extends.js": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/history/index.js": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/react-router/index.js": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/react-router-dom/index.js": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/swr/dist/index.esm.js": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "/assets/main.b494c9b1.js",
-    "/assets/main.34d97b56.css",
-    "/assets/capri.ce1c56b3.svg"
+    "assets/main.b494c9b1.js",
+    "assets/main.953bd973.css",
+    "assets/capri.ce1c56b3.svg"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react/jsx-runtime.js?commonjs-module": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react/cjs/react-jsx-runtime.production.min.js?commonjs-exports": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ],
   "../../node_modules/react/cjs/react-jsx-runtime.production.min.js": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ],
   "../../node_modules/react/jsx-runtime.js": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ],
   "react/jsx-runtime": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ],
   "\u0000virtual:island": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ],
   "src/Counter.island.tsx": [
-    "/assets/Counter.island.3560c51c.js"
+    "assets/Counter.island.3560c51c.js"
   ]
 }
