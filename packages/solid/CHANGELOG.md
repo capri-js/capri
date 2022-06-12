@@ -1,3 +1,13 @@
+## @capri-js/solid [1.1.1](https://github.com/capri-js/capri/compare/@capri-js/solid@1.1.0...@capri-js/solid@1.1.1) (2022-06-12)
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.2.1
+
 # @capri-js/solid [1.1.0](https://github.com/capri-js/capri/compare/@capri-js/solid@1.0.6...@capri-js/solid@1.1.0) (2022-06-12)
 
 
