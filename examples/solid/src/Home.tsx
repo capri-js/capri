@@ -6,17 +6,21 @@ export function Home() {
   return (
     <main>
       <h1>
-        Welcome to <i>Capri</i>
+        Partial hydration with <i>Capri</i>
       </h1>
-      <section>This page is static, but contains some dynamic parts.</section>
       <section>
-        Here is a simple counter: <CounterIsland />
+        This page is static, but contains some dynamic parts. It was generated
+        upon build time using <a href="https://www.solidjs.com/">SolidJS</a> and{" "}
+        <a href="https://capri.build">Capri</a>.
+      </section>
+      <section>
+        This counter is an interactive island: <CounterIsland />
       </section>
       <section>
         And here is another one, independent from the one above:{" "}
         <CounterIsland start={100} />
       </section>
-      <Link href="/about">Link to another page</Link>
+      <Link href="about">Link to another page</Link>
     </main>
   );
 }

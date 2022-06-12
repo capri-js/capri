@@ -8,7 +8,7 @@ export function About() {
         An since it does not contain any interactive islands, no JavaScript is
         shipped to the browser.
       </section>
-      <Link href="/">Home</Link>
+      <Link href="..">Home</Link>
     </main>
   );
 }
