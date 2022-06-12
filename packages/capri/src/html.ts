@@ -7,12 +7,18 @@ function isLocalUrl(href: string) {
   return url.protocol === "file:" && !url.host;
 }
 
+function resolveUrl(href: string) {
+  const url = new URL(href, "file:///");
+  return url.pathname;
+}
+
 export function getLinks(html: string) {
   const $ = cheerio.load(html);
   return $('a[href]:not([target]),a[href][target="self"]')
     .map((i, el) => $(el).attr("href"))
     .toArray()
-    .filter(isLocalUrl);
+    .filter(isLocalUrl)
+    .map(resolveUrl);
 }
 
 export function getIslands(html: string) {
