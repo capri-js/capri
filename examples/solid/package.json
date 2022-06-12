@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && vite build --ssr",
+    "build": "vite build && vite build --ssr && cp -r dist ../../.github/pages/solid",
     "preview": "vite preview"
   },
   "dependencies": {
