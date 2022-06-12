@@ -1,3 +1,10 @@
+# capri [1.2.0](https://github.com/capri-js/capri/compare/capri@1.1.3...capri@1.2.0) (2022-06-12)
+
+
+### Features
+
+* add prerender and followLinks options ([8b390fe](https://github.com/capri-js/capri/commit/8b390fe24c08d57647c1b17af3bc8cc3934adbf3))
+
 ## capri [1.1.3](https://github.com/capri-js/capri/compare/capri@1.1.2...capri@1.1.3) (2022-06-09)
 
 
