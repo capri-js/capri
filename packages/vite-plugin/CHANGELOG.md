@@ -1,3 +1,13 @@
+## @capri-js/vite-plugin [1.2.1](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.2.0...@capri-js/vite-plugin@1.2.1) (2022-06-12)
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 1.2.1
+
 # @capri-js/vite-plugin [1.2.0](https://github.com/capri-js/capri/compare/@capri-js/vite-plugin@1.1.0...@capri-js/vite-plugin@1.2.0) (2022-06-12)
 
 
