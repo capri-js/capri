@@ -1,3 +1,13 @@
+## @capri-js/preact [1.1.1](https://github.com/capri-js/capri/compare/@capri-js/preact@1.1.0...@capri-js/preact@1.1.1) (2022-06-12)
+
+
+
+
+
+### Dependencies
+
+* **@capri-js/vite-plugin:** upgraded to 1.2.1
+
 # @capri-js/preact [1.1.0](https://github.com/capri-js/capri/compare/@capri-js/preact@1.0.7...@capri-js/preact@1.1.0) (2022-06-12)
 
 
