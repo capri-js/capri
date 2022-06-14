@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/preact",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -14,7 +14,7 @@
   "browser": "lib/browser.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "capri": "*"
+    "capri": "^2.0.0"
   },
   "peerDependencies": {
     "preact": "^10.0.0"

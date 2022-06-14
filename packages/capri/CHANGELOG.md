@@ -1,3 +1,15 @@
+# capri [2.0.0](https://github.com/capri-js/capri/compare/capri@1.2.1...capri@2.0.0) (2022-06-14)
+
+
+### Features
+
+* support layout islands ([f46de05](https://github.com/capri-js/capri/commit/f46de05217421bac212ea00822f6d47941b99c84))
+
+
+### BREAKING CHANGES
+
+* The island function is no longer exposed via a virtual module but must be imported from the framework adapter package.
+
 ## capri [1.2.1](https://github.com/capri-js/capri/compare/capri@1.2.0...capri@1.2.1) (2022-06-12)
 
 
