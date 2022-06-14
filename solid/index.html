@@ -2,12 +2,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/capri/solid/assets/capri.ce1c56b3.svg">
-    <script type="module" crossorigin="" src="/capri/solid/assets/hydrate.dddece28.js"></script>
-    <link rel="modulepreload" href="/capri/solid/assets/web.6cb06f90.js">
-    <link rel="stylesheet" href="/capri/solid/assets/main.2273f45c.css">
-  <link rel="modulepreload" href="/capri/solid/assets/Counter.island.334d1fe5.js"></head>
+    <script type="module" crossorigin="" src="/capri/solid/assets/hydrate.adaf8a18.js"></script>
+    <link rel="modulepreload" href="/capri/solid/assets/web.237bec24.js">
+    <link rel="stylesheet" href="/capri/solid/assets/main.7365fabb.css">
+  <link rel="modulepreload" href="/capri/solid/assets/Counter.island.a9dc67ef.js"><link rel="modulepreload" href="/capri/solid/assets/Expandable.island.27b56a98.js"></head>
   <body>
-    <div id="app"><main data-hk="0-0-0-0-2-0-0-0"><h1>Partial hydration with <i>Capri</i></h1><section>This page is static, but contains some dynamic parts. It was generated upon build time using <a href="https://www.solidjs.com/">SolidJS</a> and <a href="https://capri.build">Capri</a>.</section><section>This counter is an interactive island: <!--#--><div data-hk="0-0-0-0-2-0-0-1-0-0" class="counter" data-testid="counter"><button>-</button><span>0</span><button>+</button></div><script type="application/json" data-island="/src/Counter.island.tsx" data-key="CounterIsland">{}</script><!--/--></section><section>And here is another one, independent from the one above: <!--#--><div data-hk="0-0-0-0-2-0-0-2-0-0" class="counter" data-testid="counter"><button>-</button><span>100</span><button>+</button></div><script type="application/json" data-island="/src/Counter.island.tsx" data-key="CounterIsland">{"start":100}</script><!--/--></section><a href="about">Link to another page</a></main></div>
+    <div id="app"><main><h1>Partial hydration with SolidJS and <i>Capri</i></h1><section>This page is static, but contains some dynamic parts.</section><section>This counter is an interactive island:<!--#--><div data-island-root="" style="display: contents"><!--#--><div data-hk="0-0-0-0-0-0" class="counter" data-testid="counter"><button>-</button><span>0</span><button>+</button></div><!--/--><script type="application/json" data-island="/src/Counter.island.tsx::CounterIsland">{"props":{},"options":{}}</script></div><!--/--></section><section>And here is another one, independent from the one above: <!--#--><div data-island-root="" style="display: contents"><!--#--><div data-hk="0-0-0-0-1-0" class="counter" data-testid="counter"><button>-</button><span>100</span><button>+</button></div><!--/--><script type="application/json" data-island="/src/Counter.island.tsx::CounterIsland">{"props":{"start":100},"options":{}}</script></div><!--/--></section><!--#--><div data-hk="0-0-0-0-2" data-island-root="" style="display: contents"><!--#--><div data-hk="0-0-0-0-3-0-0" class="expandable" data-expanded="false"><button>Click to expand</button><div class="expandable-content">This island receives children as prop. They are only rendered upon build time.<div>The code for <code>ServerContent</code> should not show up in the client bundle.</div></div></div><!--/--><script type="application/json" data-island="/src/Expandable.island.tsx::ExpandableIsland">{"props":{"title":"Click to expand"},"options":{}}</script></div><!--/--><a href="about">Link to another page</a></main></div>
     
   
 
