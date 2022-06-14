@@ -10,6 +10,7 @@
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
+  "browser": "lib/browser.js",
   "types": "lib/index.d.ts",
   "dependencies": {
     "cheerio": "^1.0.0-rc.11"

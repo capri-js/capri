@@ -1,5 +1,5 @@
+import { island } from "@capri-js/preact";
 import { useState } from "preact/hooks";
-import { island } from "virtual:island";
 
 function Counter({ start = 0 }: { start?: number }) {
   const [counter, setCounter] = useState(start);

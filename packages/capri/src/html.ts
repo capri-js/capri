@@ -24,7 +24,7 @@ export function getLinks(html: string) {
 export function getIslands(html: string) {
   const $ = cheerio.load(html);
   const islands = $('script[type="application/json"][data-island]')
-    .map((i, el) => $(el).attr("data-island"))
+    .map((i, el) => $(el).attr("data-island")?.replace(/::.+/, ""))
     .toArray();
   const unique = new Set(islands);
   return [...unique];

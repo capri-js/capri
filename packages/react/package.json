@@ -11,9 +11,10 @@
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
+  "browser": "lib/browser.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri-js/vite-plugin": "^1.2.1"
+    "capri": "*"
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.4"

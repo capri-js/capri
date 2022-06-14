@@ -1,6 +1,4 @@
-import { getEntrySrc, renderStaticPages, urlToFileName } from "capri";
 import * as fs from "fs";
-import { readFile } from "fs/promises";
 import { builtinModules } from "module";
 import * as path from "path";
 import type {
@@ -10,32 +8,26 @@ import type {
   RollupOptions,
 } from "rollup";
 import type { ChunkMetadata, Plugin, PluginOption, UserConfig } from "vite";
-import island from "vite-plugin-island";
 
 import { findRenderChunk } from "./bundle.js";
+import { getEntrySrc } from "./html.js";
+import { renderStaticPages, urlToFileName } from "./prerender.js";
 import { importServerChunk } from "./ssr.js";
 import { CapriPluginOptions } from "./types.js";
 
-export * from "./types.js";
-
-export default function capri({
-  islandGlobPattern = "/src/**/*.island.*",
+export function capri({
   createIndexFiles = true,
   prerender = "/",
   followLinks = true,
+  islandGlobPattern = "/src/**/*.island.*",
   hydrate,
-  renderMarkerFragment,
   spa,
 }: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
   let ssr: string;
   if (spa) spa = urlToFileName(spa, createIndexFiles);
+  process.env.VITE_ISLAND_GLOB_PATTERN = islandGlobPattern;
   return [
-    island({
-      islandGlobPattern,
-      hydrate,
-      renderMarkerFragment,
-    }),
     {
       name: "vite-plugin-capri",
 
@@ -105,18 +97,28 @@ export default function capri({
         if (source === spa) {
           return resolveFile(this, spa);
         }
+        if (source === "virtual:capri-hydration") {
+          return "\0virtual:capri-hydration";
+        }
+        if (source === "virtual:capri-hydration-adapter") {
+          return this.resolve(hydrate);
+        }
       },
       async load(id) {
         if (spa && id.endsWith(spa)) {
           const index = await resolveIndexHtml(this);
           return fs.readFileSync(index, "utf8");
         }
+        if (id === "\0virtual:capri-hydration") {
+          return fs.readFileSync(resolveVirtualModule("hydration"), "utf8");
+        }
       },
       async buildStart() {
         if (mode === "client") {
+          console.log("Emitting hydration code");
           // Add the hydration code to the bundle
           this.emitFile({
-            id: "virtual:island-hydration",
+            id: "virtual:capri-hydration",
             type: "chunk",
             name: "hydrate",
           });
@@ -164,7 +166,7 @@ export default function capri({
           delete bundle[chunk.fileName];
 
           // Read the index.html so we can use it as template for all prerendered pages.
-          const indexHtml = await readFile(
+          const indexHtml = fs.readFileSync(
             path.join(options.dir!, "index.html"),
             "utf8"
           );
@@ -224,6 +226,10 @@ export function isServerEntryScript(config: UserConfig) {
 async function resolveFile(ctx: PluginContext, f: string) {
   const index = await resolveIndexHtml(ctx);
   return path.join(path.dirname(index), f);
+}
+
+function resolveVirtualModule(name: string) {
+  return new URL(`./${name}.js`, import.meta.url).pathname;
 }
 
 async function resolveIndexHtml(ctx: PluginContext) {

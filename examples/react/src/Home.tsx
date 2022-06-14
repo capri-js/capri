@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import useSWR from "swr";
 
 import { CounterIsland } from "./Counter.island";
+import { ExpandableIsland } from "./Expandable.island";
+import { ServerContent } from "./ServerContent";
 
-const fetcher = () =>
+const fetcher = (key: string) =>
   new Promise<string>((resolve) => {
-    setTimeout(() => resolve("Data fetched via SWR!"), 0);
+    setTimeout(() => resolve(key), 0);
   });
 
 export function Home() {
@@ -15,7 +17,7 @@ export function Home() {
   return (
     <main>
       <h1>
-        Partial hydration with <i>Capri</i>
+        Partial hydration with React and <i>Capri</i>
       </h1>
       <section>This page is static, but contains some dynamic parts.</section>
       <section>{data}</section>
@@ -26,6 +28,14 @@ export function Home() {
         And here is another one, independent from the one above:{" "}
         <CounterIsland start={100} />
       </section>
+      <ExpandableIsland title="Click to expand">
+        This island receives children as prop. They are only rendered upon build
+        time.
+        <ServerContent>
+          The code for <code>ServerContent</code> should not show up in the
+          client bundle.
+        </ServerContent>
+      </ExpandableIsland>
       <Link to="about">Link to another page</Link>
     </main>
   );

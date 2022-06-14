@@ -20,7 +20,7 @@
     "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@capri-js/react": "latest",
+    "@capri-js/react": "*",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "vite": "^2.9.9"

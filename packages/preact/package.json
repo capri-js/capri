@@ -11,10 +11,10 @@
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
+  "browser": "lib/browser.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@capri-js/vite-plugin": "^1.2.1",
-    "preact-iso": "^2.3.0"
+    "capri": "*"
   },
   "peerDependencies": {
     "preact": "^10.0.0"

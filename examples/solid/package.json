@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && vite build --ssr",
+    "build": "NODE_ENV=development vite build && vite build --ssr",
     "build:github": "BASE=/capri/solid/ npm run build && cp -r dist ../../.github/pages/solid",
     "preview": "vite preview"
   },
@@ -16,7 +16,7 @@
     "solid-js": "^1.4.2"
   },
   "devDependencies": {
-    "@capri-js/solid": "latest",
+    "@capri-js/solid": "*",
     "babel-preset-solid": "^1.4.2",
     "vite": "^2.9.9",
     "vite-plugin-solid": "^2.2.6"

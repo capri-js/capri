@@ -1,5 +1,5 @@
+import { island } from "@capri-js/solid";
 import { createSignal } from "solid-js";
-import { island } from "virtual:island";
 
 type Props = {
   start?: number;

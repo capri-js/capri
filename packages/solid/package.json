@@ -10,10 +10,21 @@
   },
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/plugin.js",
+  "types": "lib/server.d.ts",
+  "browser": "lib/browser.js",
+  "exports": {
+    ".": {
+      "browser": "./lib/browser.js",
+      "solid": "./lib/server.jsx",
+      "default": "./lib/plugin.js"
+    },
+    "./hydrate": {
+      "default": "./lib/hydrate.jsx"
+    }
+  },
   "dependencies": {
-    "@capri-js/vite-plugin": "^1.2.1"
+    "capri": "*"
   },
   "devDependencies": {
     "solid-js": "^1.4.2"

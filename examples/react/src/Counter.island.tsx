@@ -1,5 +1,5 @@
+import { island } from "@capri-js/react";
 import { useState } from "react";
-import { island } from "virtual:island";
 
 type Props = {
   start?: number;

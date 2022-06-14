@@ -34,14 +34,6 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
-    directory: "/packages/vite-plugin"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "/packages/vite-plugin-island"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
     directory: "/examples/preact"
     schedule:
       interval: "daily"
