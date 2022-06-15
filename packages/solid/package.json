@@ -10,16 +10,23 @@
   },
   "license": "MIT",
   "type": "module",
-  "main": "lib/plugin.js",
-  "types": "lib/server.d.ts",
   "exports": {
     ".": {
       "browser": "./lib/browser.js",
-      "server": "./lib/server.jsx",
-      "default": "./lib/plugin.js"
+      "default": "./lib/index.jsx"
+    },
+    "./vite-plugin": {
+      "default": "./lib/vite-plugin.js"
     },
     "./hydrate": {
       "default": "./lib/hydrate.jsx"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/*"
+      ]
     }
   },
   "dependencies": {

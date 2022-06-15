@@ -1,10 +1,27 @@
-export type { RenderFunction, RenderResult, ServerEntry } from "capri";
+import { createIslandComponent, IslandOptions } from "capri";
+import { ComponentType, createElement } from "react";
 
-import { capri, CapriAdapterPluginOptions } from "capri";
+export function island<T extends ComponentType<any>>(
+  component: T,
+  options: IslandOptions = {}
+) {
+  return createIslandComponent(
+    component,
+    options,
+    ({ props, children, scriptProps, scriptContent }) => {
+      const wrappedChildren =
+        children &&
+        createElement("div", { "data-island-children": true }, children);
 
-export default function (opts: CapriAdapterPluginOptions = {}) {
-  return capri({
-    ...opts,
-    hydrate: "@capri-js/react/hydrate",
-  });
+      return createElement(
+        "div",
+        { "data-island-root": true, style: { display: "contents" } },
+        createElement(component, props, wrappedChildren),
+        createElement("script", {
+          ...scriptProps,
+          dangerouslySetInnerHTML: { __html: scriptContent },
+        })
+      );
+    }
+  );
 }

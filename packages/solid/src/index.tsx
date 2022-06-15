@@ -1,15 +1,8 @@
-import {
-  createIslandComponent,
-  IslandOptions,
-  RenderFunction,
-  RenderResult,
-} from "capri";
+import { createIslandComponent, IslandOptions } from "capri";
 import { sharedConfig } from "solid-js";
 import { NoHydration } from "solid-js/web";
 
-export type { RenderFunction, RenderResult };
-
-import plugin from "./plugin.js";
+import plugin from "./vite-plugin.js";
 
 export default plugin;
 

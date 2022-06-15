@@ -1,6 +1,6 @@
-import { capri, CapriAdapterPluginOptions } from "capri";
+import { capri, CapriAdapterPluginOptions } from "capri/vite-plugin";
 
-export type { RenderFunction, RenderResult, ServerEntry } from "capri";
+//export type { RenderFunction, RenderResult } from "capri";
 
 export default function (opts: CapriAdapterPluginOptions = {}) {
   return capri({

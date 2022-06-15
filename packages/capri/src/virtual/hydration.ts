@@ -1,6 +1,6 @@
 import hydrationAdapter from "virtual:capri-hydration-adapter";
 
-import { HydrationAdapter } from "../types.js";
+import { HydrationAdapter } from "../vite-plugin.js";
 
 function hydrateIslands({ hydrate, renderRawHtml }: HydrationAdapter) {
   const modules = import.meta.glob("%ISLAND_GLOB_PATTERN%");

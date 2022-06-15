@@ -2,7 +2,11 @@ import * as fs from "fs";
 import * as path from "path";
 import type { OutputChunk } from "rollup";
 
-import { RenderFunction, ServerEntry } from "./types.js";
+import { RenderFunction } from "./prerender.js";
+
+interface ServerEntry {
+  render: RenderFunction;
+}
 
 export async function importServerChunk(
   chunk: OutputChunk,

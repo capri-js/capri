@@ -1,4 +1,4 @@
-import capri from "@capri-js/solid";
+import capri from "@capri-js/solid/vite-plugin";
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 

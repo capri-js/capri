@@ -10,16 +10,23 @@
   },
   "license": "MIT",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "server": "./lib/server.js",
       "browser": "./lib/browser.js",
-      "node": "./lib/index.js"
+      "default": "./lib/index.js"
+    },
+    "./vite-plugin": {
+      "default": "./lib/vite-plugin.js"
     },
     "./hydrate": {
       "default": "./lib/hydrate.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/*"
+      ]
     }
   },
   "dependencies": {

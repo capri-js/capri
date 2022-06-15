@@ -1,4 +1,4 @@
-import { HydrationAdapter } from "capri";
+import { HydrationAdapter } from "capri/vite-plugin";
 import { ComponentType, h, hydrate as hydrateComponent } from "preact";
 
 const adapter: HydrationAdapter = {

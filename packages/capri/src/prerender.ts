@@ -6,9 +6,10 @@ import {
   getLinks,
   insertMarkup,
   insertPreloadTags,
+  IslandChunk,
   removeHydrationCode,
+  RenderResult,
 } from "./html.js";
-import { RenderFunction } from "./types.js";
 
 export type PrerenderConfig =
   | false
@@ -33,6 +34,10 @@ async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
   return getStaticPaths(await prerender());
 }
 
+export type RenderFunction = (
+  url: string
+) => RenderResult | Promise<RenderResult>;
+
 export async function renderStaticPages(
   render: RenderFunction,
   {
@@ -52,11 +57,11 @@ export async function renderStaticPages(
     // Insert the rendered markup into the index.html template:
     let html = await insertMarkup(template, markup);
 
-    const preload = getIslandChunks(html, manifest);
+    const { preload, hasIslands } = analyzeHtml(html, manifest);
     if (preload.length) {
       // Insert modulepreload links for the included islands:
       html = insertPreloadTags(html, preload);
-    } else {
+    } else if (!hasIslands) {
       // No islands present, remove the hydration script.
       html = removeHydrationCode(html);
     }
@@ -108,14 +113,20 @@ function readManifest(dir: string) {
   return {};
 }
 
-function getIslandChunks(html: string, manifest: Record<string, string[]>) {
+function analyzeHtml(html: string, manifest: Record<string, string[]>) {
   const islands = getIslands(html);
-  const preload = new Set<string>();
-  islands.forEach((src) => {
+  const preload = new Set<IslandChunk>();
+  islands.forEach((island) => {
+    const { src, options } = island;
     const chunks = manifest[src];
-    chunks?.forEach((chunk) => {
-      if (chunk.endsWith(".js")) preload.add(chunk);
-    });
+    if (!options.media) {
+      chunks?.forEach((asset) => {
+        if (asset.endsWith(".js")) preload.add({ src, asset });
+      });
+    }
   });
-  return [...preload];
+  return {
+    preload: [...preload],
+    hasIslands: !!islands.length,
+  };
 }

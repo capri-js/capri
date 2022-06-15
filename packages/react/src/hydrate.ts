@@ -1,4 +1,4 @@
-import { HydrationAdapter } from "capri";
+import { HydrationAdapter } from "capri/vite-plugin";
 import { ComponentType, createElement } from "react";
 import { hydrateRoot } from "react-dom/client";
 

@@ -1,4 +1,4 @@
-import { HydrationAdapter } from "capri";
+import { HydrationAdapter } from "capri/vite-plugin";
 import { hydrate as solidHydrate } from "solid-js/web";
 
 const adapter: HydrationAdapter = {

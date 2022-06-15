@@ -11,9 +11,29 @@ import type { ChunkMetadata, Plugin, PluginOption, UserConfig } from "vite";
 
 import { findRenderChunk } from "./bundle.js";
 import { getEntrySrc } from "./html.js";
-import { renderStaticPages, urlToFileName } from "./prerender.js";
+import {
+  FollowLinksConfig,
+  PrerenderConfig,
+  renderStaticPages,
+  urlToFileName,
+} from "./prerender.js";
 import { importServerChunk } from "./ssr.js";
-import { CapriPluginOptions } from "./types.js";
+
+export interface CapriPluginOptions {
+  spa?: string | false;
+  createIndexFiles?: boolean;
+  prerender?: PrerenderConfig;
+  followLinks?: FollowLinksConfig;
+  islandGlobPattern?: string;
+  hydrate: string;
+}
+
+export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "hydrate">;
+
+export type HydrationAdapter = {
+  hydrate: (component: any, props: object, element: Element) => void;
+  renderRawHtml: (attributes: object, html: string) => any;
+};
 
 export function capri({
   createIndexFiles = true,
@@ -54,12 +74,6 @@ export function capri({
         if (mode === "server") {
           ssr = getServerEntryScript(config);
           return {
-            resolve: {
-              // The capri packages contain a "server" export condition.
-              // This is different from the regular "default" condition
-              // as it contains virtual module ids which Node can't resolve.
-              conditions: ["server"],
-            },
             ssr: {
               // The capri packages can't be externalized as they need to be
               // processed by Vite (virtual modules and glob imports).
@@ -139,7 +153,6 @@ export function capri({
       },
       async buildStart() {
         if (mode === "client") {
-          console.log("Emitting hydration code");
           // Add the hydration code to the bundle
           this.emitFile({
             id: "virtual:capri-hydration",

@@ -1,6 +1,10 @@
 import { islandGlobPattern, islands } from "virtual:capri-islands";
 
-import { isIsland } from "./types.js";
+export type Island = ((...args: any[]) => any) & { __island: any };
+
+export function isIsland(obj: unknown): obj is Island {
+  return typeof obj === "function" && "__island" in obj;
+}
 
 function findIsland(island: unknown) {
   for (const [id, module] of Object.entries(islands)) {
