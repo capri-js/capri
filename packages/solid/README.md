@@ -5,15 +5,15 @@
 ```ts
 // vite.config.ts
 import { defineConfig } from "vite";
-import capri from "@capri-js/solid";
 import solid from "vite-plugin-solid";
+import capri from "@capri-js/solid/vite-plugin";
 
 export default defineConfig({
   plugins: [
     solid({
       ssr: true,
     }),
-    capri({}),
+    capri(),
   ],
 });
 ```
