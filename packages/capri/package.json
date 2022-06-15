@@ -10,7 +10,6 @@
   "license": "MIT",
   "type": "module",
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "default": "./lib/index.js"
@@ -21,8 +20,11 @@
   },
   "typesVersions": {
     "*": {
-      "*": [
-        "lib/*"
+      "index.d.ts": [
+        "lib/index.d.ts"
+      ],
+      "vite-plugin": [
+        "lib/vite-plugin.d.ts"
       ]
     }
   },
