@@ -1,3 +1,18 @@
+## @capri-js/preact [3.0.2](https://github.com/capri-js/capri/compare/@capri-js/preact@3.0.1...@capri-js/preact@3.0.2) (2022-06-15)
+
+
+### Bug Fixes
+
+* add files field ([164f733](https://github.com/capri-js/capri/commit/164f73374a2a78b8a59895f8fb91e849b7445bbb))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 3.0.2
+
 ## @capri-js/preact [3.0.1](https://github.com/capri-js/capri/compare/@capri-js/preact@3.0.0...@capri-js/preact@3.0.1) (2022-06-15)
 
 
