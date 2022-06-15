@@ -1,3 +1,18 @@
+## @capri-js/react [2.0.1](https://github.com/capri-js/capri/compare/@capri-js/react@2.0.0...@capri-js/react@2.0.1) (2022-06-15)
+
+
+### Bug Fixes
+
+* make island glob pattern configurable ([fcd14b3](https://github.com/capri-js/capri/commit/fcd14b3c8569da823726789cd9f2b7ea9156b9d5))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 2.0.1
+
 # @capri-js/react [2.0.0](https://github.com/capri-js/capri/compare/@capri-js/react@1.1.1...@capri-js/react@2.0.0) (2022-06-14)
 
 
