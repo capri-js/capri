@@ -1,3 +1,23 @@
+# @capri-js/solid [3.0.0](https://github.com/capri-js/capri/compare/@capri-js/solid@2.0.2...@capri-js/solid@3.0.0) (2022-06-15)
+
+
+### Bug Fixes
+
+* remove custom export condition ([068088a](https://github.com/capri-js/capri/commit/068088a38354fce79cfaec588ccd473d72ebc14a))
+
+
+### BREAKING CHANGES
+
+* The vite plugin now needs to be imported from @capri-js/<framework>/vite-plugin
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 3.0.0
+
 ## @capri-js/solid [2.0.2](https://github.com/capri-js/capri/compare/@capri-js/solid@2.0.1...@capri-js/solid@2.0.2) (2022-06-15)
 
 
