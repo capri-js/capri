@@ -1,3 +1,10 @@
+## capri [2.0.2](https://github.com/capri-js/capri/compare/capri@2.0.1...capri@2.0.2) (2022-06-15)
+
+
+### Bug Fixes
+
+* don't externalize capri packages ([1b3bbfc](https://github.com/capri-js/capri/commit/1b3bbfc4fb61bab1cf703d29f20303a2bfa98d2a))
+
 ## capri [2.0.1](https://github.com/capri-js/capri/compare/capri@2.0.0...capri@2.0.1) (2022-06-15)
 
 

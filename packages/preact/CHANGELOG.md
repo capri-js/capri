@@ -1,3 +1,13 @@
+## @capri-js/preact [2.0.2](https://github.com/capri-js/capri/compare/@capri-js/preact@2.0.1...@capri-js/preact@2.0.2) (2022-06-15)
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 2.0.2
+
 ## @capri-js/preact [2.0.1](https://github.com/capri-js/capri/compare/@capri-js/preact@2.0.0...@capri-js/preact@2.0.1) (2022-06-15)
 
 
