@@ -29,7 +29,6 @@ export function capri({
 
   function loadVirtualModule(name: string) {
     const file = new URL(`./virtual/${name}.js`, import.meta.url).pathname;
-    console.log("loading", file);
     return fs
       .readFileSync(file, "utf8")
       .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
@@ -56,15 +55,23 @@ export function capri({
           ssr = getServerEntryScript(config);
           return {
             resolve: {
+              // The capri packages contain a "server" export condition.
+              // This is different from the regular "default" condition
+              // as it contains virtual module ids which Node can't resolve.
               conditions: ["server"],
+            },
+            ssr: {
+              // The capri packages can't be externalized as they need to be
+              // processed by Vite (virtual modules and glob imports).
+              noExternal: ["capri", /@capri-js\//],
             },
             build: {
               ssr,
               emptyOutDir: false, // keep the client build
               rollupOptions: {
                 output: {
-                  // Generate the Node.js code as ES module.
-                  // Using ESM everywhere is a lot easier than mixing module types.
+                  // Generate the Node.js code as ES module. Using ESM
+                  // everywhere is a lot easier than mixing module types.
                   format: "es",
                 },
               },
