@@ -1,3 +1,11 @@
+## capri [3.0.1](https://github.com/capri-js/capri/compare/capri@3.0.0...capri@3.0.1) (2022-06-15)
+
+
+### Bug Fixes
+
+* add main field ([854cb1a](https://github.com/capri-js/capri/commit/854cb1a497fc759b465d6082e21668436ac0be2e))
+* typesVersions ([52fb7d8](https://github.com/capri-js/capri/commit/52fb7d8ad3d81e484a6ff81736b262bd44d7b9a0))
+
 # capri [3.0.0](https://github.com/capri-js/capri/compare/capri@2.0.2...capri@3.0.0) (2022-06-15)
 
 
