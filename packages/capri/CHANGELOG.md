@@ -1,3 +1,10 @@
+## capri [2.0.1](https://github.com/capri-js/capri/compare/capri@2.0.0...capri@2.0.1) (2022-06-15)
+
+
+### Bug Fixes
+
+* make island glob pattern configurable ([fcd14b3](https://github.com/capri-js/capri/commit/fcd14b3c8569da823726789cd9f2b7ea9156b9d5))
+
 # capri [2.0.0](https://github.com/capri-js/capri/compare/capri@1.2.1...capri@2.0.0) (2022-06-14)
 
 
