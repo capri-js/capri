@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/react",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "capri": "^3.0.1"
+    "capri": "^3.0.2"
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.4"
