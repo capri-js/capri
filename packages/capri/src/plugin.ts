@@ -26,7 +26,15 @@ export function capri({
   let mode: "client" | "server" | "spa";
   let ssr: string;
   if (spa) spa = urlToFileName(spa, createIndexFiles);
-  process.env.VITE_ISLAND_GLOB_PATTERN = islandGlobPattern;
+
+  function loadVirtualModule(name: string) {
+    const file = new URL(`./virtual/${name}.js`, import.meta.url).pathname;
+    console.log("loading", file);
+    return fs
+      .readFileSync(file, "utf8")
+      .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
+  }
+
   return [
     {
       name: "vite-plugin-capri",
@@ -47,6 +55,9 @@ export function capri({
         if (mode === "server") {
           ssr = getServerEntryScript(config);
           return {
+            resolve: {
+              conditions: ["server"],
+            },
             build: {
               ssr,
               emptyOutDir: false, // keep the client build
@@ -100,6 +111,9 @@ export function capri({
         if (source === "virtual:capri-hydration") {
           return "\0virtual:capri-hydration";
         }
+        if (source === "virtual:capri-islands") {
+          return "\0virtual:capri-islands";
+        }
         if (source === "virtual:capri-hydration-adapter") {
           return this.resolve(hydrate);
         }
@@ -110,7 +124,10 @@ export function capri({
           return fs.readFileSync(index, "utf8");
         }
         if (id === "\0virtual:capri-hydration") {
-          return fs.readFileSync(resolveVirtualModule("hydration"), "utf8");
+          return loadVirtualModule("hydration");
+        }
+        if (id === "\0virtual:capri-islands") {
+          return loadVirtualModule("islands");
         }
       },
       async buildStart() {
@@ -226,10 +243,6 @@ export function isServerEntryScript(config: UserConfig) {
 async function resolveFile(ctx: PluginContext, f: string) {
   const index = await resolveIndexHtml(ctx);
   return path.join(path.dirname(index), f);
-}
-
-function resolveVirtualModule(name: string) {
-  return new URL(`./${name}.js`, import.meta.url).pathname;
 }
 
 async function resolveIndexHtml(ctx: PluginContext) {

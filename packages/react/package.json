@@ -11,8 +11,17 @@
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
-  "browser": "lib/browser.js",
   "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "server": "./lib/server.js",
+      "browser": "./lib/browser.js",
+      "node": "./lib/index.js"
+    },
+    "./hydrate": {
+      "default": "./lib/hydrate.js"
+    }
+  },
   "dependencies": {
     "capri": "^2.0.0"
   },

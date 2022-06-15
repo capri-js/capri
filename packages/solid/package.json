@@ -12,11 +12,10 @@
   "type": "module",
   "main": "lib/plugin.js",
   "types": "lib/server.d.ts",
-  "browser": "lib/browser.js",
   "exports": {
     ".": {
       "browser": "./lib/browser.js",
-      "solid": "./lib/server.jsx",
+      "server": "./lib/server.jsx",
       "default": "./lib/plugin.js"
     },
     "./hydrate": {

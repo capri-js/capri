@@ -3,3 +3,8 @@ declare module "virtual:capri-hydration-adapter" {
   declare const adapter: HydrationAdapter;
   export default adapter;
 }
+
+declare module "virtual:capri-islands" {
+  export const islandGlobPattern: string;
+  export const islands: Record<string, any>;
+}

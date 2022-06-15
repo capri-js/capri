@@ -1,9 +1,9 @@
 import hydrationAdapter from "virtual:capri-hydration-adapter";
 
-import { HydrationAdapter } from "./types.js";
+import { HydrationAdapter } from "../types.js";
 
 function hydrateIslands({ hydrate, renderRawHtml }: HydrationAdapter) {
-  const modules = import.meta.glob(import.meta.env.VITE_ISLAND_GLOB_PATTERN);
+  const modules = import.meta.glob("%ISLAND_GLOB_PATTERN%");
   const islands = document.querySelectorAll("script[data-island]");
 
   islands.forEach((node) => {

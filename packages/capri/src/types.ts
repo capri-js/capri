@@ -23,3 +23,9 @@ export type HydrationAdapter = {
   hydrate: (component: any, props: object, element: Element) => void;
   renderRawHtml: (attributes: object, html: string) => any;
 };
+
+export type Island = ((...args: any[]) => any) & { __island: any };
+
+export function isIsland(obj: unknown): obj is Island {
+  return typeof obj === "function" && "__island" in obj;
+}
