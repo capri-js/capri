@@ -14,6 +14,8 @@ export function Hydration(props: any) {
   return children;
 }
 
+export type { RenderFunction } from "capri";
+
 export function island<T extends (props: any) => any>(
   Component: T,
   options: IslandOptions = {}

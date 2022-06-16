@@ -1,6 +1,8 @@
 import { createIslandComponent, IslandOptions } from "capri";
 import { ComponentType, h } from "preact";
 
+export type { RenderFunction } from "capri";
+
 export function island<T extends ComponentType<any>>(
   component: T,
   options: IslandOptions = {}
