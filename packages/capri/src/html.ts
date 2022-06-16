@@ -1,5 +1,7 @@
 import * as cheerio from "cheerio";
 
+import { IslandOptions } from "./island.js";
+
 export type IslandChunk = {
   src: string;
   asset: string;
@@ -24,24 +26,30 @@ export function getLinks(html: string) {
     .map(resolveUrl);
 }
 
+type IslandMeta = {
+  src: string;
+  key: string;
+  props?: object;
+  options?: IslandOptions;
+};
+
 export function getIslands(html: string) {
   const $ = cheerio.load(html);
-  const islands = $('script[type="application/json"][data-island]')
-    .map((i, el) => {
-      const $el = $(el);
-      const data = $el.attr("data-island") ?? "";
-      const [src, key] = data.split("::");
-      const { props, options } = JSON.parse($el.text());
-      return {
-        src,
-        key,
-        props,
-        options,
-      };
-    })
-    .toArray();
-  const unique = new Set(islands);
-  return [...unique];
+  const islands = new Map<string, IslandMeta>();
+  $('script[type="application/json"][data-island]').each((i, el) => {
+    const $el = $(el);
+    const data = $el.attr("data-island") ?? "";
+    const [src, key] = data.split("::");
+    const { props, options } = JSON.parse($el.text());
+    islands.set(src, {
+      src,
+      key,
+      props,
+      options,
+    });
+  });
+
+  return [...islands.values()];
 }
 
 export function getEntrySrc(html: string) {
@@ -67,8 +75,8 @@ export async function insertMarkup(template: string, markup: RenderResult) {
 
 export function insertPreloadTags(html: string, preloads: IslandChunk[]) {
   const $ = cheerio.load(html);
-  preloads.forEach((href) =>
-    $("head").append(`<link rel="modulepreload" href="${href}">`)
+  preloads.forEach(({ asset }) =>
+    $("head").append(`<link rel="modulepreload" href="${asset}">`)
   );
   return $.html();
 }

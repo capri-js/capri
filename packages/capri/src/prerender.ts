@@ -119,7 +119,7 @@ function analyzeHtml(html: string, manifest: Record<string, string[]>) {
   islands.forEach((island) => {
     const { src, options } = island;
     const chunks = manifest[src];
-    if (!options.media) {
+    if (!options?.media) {
       chunks?.forEach((asset) => {
         if (asset.endsWith(".js")) preload.add({ src, asset });
       });
