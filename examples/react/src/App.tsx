@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { About } from "./About";
 import { Home } from "./Home";
+import { Preview } from "./Preview.jsx";
 
 export function App() {
   return (
@@ -12,6 +13,7 @@ export function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/preview" element={<Preview />} />
       </Routes>
     </Suspense>
   );
