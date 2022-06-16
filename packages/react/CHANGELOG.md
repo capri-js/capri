@@ -1,3 +1,10 @@
+## @capri-js/react [3.0.3](https://github.com/capri-js/capri/compare/@capri-js/react@3.0.2...@capri-js/react@3.0.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* re-export the RenderFunction type ([2375032](https://github.com/capri-js/capri/commit/2375032251774d8ce6218560b3b6b86b9b7518f8))
+
 ## @capri-js/react [3.0.2](https://github.com/capri-js/capri/compare/@capri-js/react@3.0.1...@capri-js/react@3.0.2) (2022-06-15)
 
 
