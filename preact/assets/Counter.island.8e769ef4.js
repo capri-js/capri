@@ -1,1 +1,0 @@
-import{i as e,p as c,j as i,a as t}from"./browser.15c0ea83.js";import"./preact.module.6a90d538.js";function a({start:r=0}){const[s,o]=c(r);return i("div",{class:"counter","data-testid":"counter",children:[t("button",{onClick:()=>o(n=>n-1),children:"-"}),t("span",{children:s}),t("button",{onClick:()=>o(n=>n+1),children:"+"})]})}const l=e(a);export{l as CounterIsland};
