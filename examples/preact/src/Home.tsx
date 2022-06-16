@@ -1,7 +1,6 @@
-import { Link } from "@capri-js/preact-router";
-
 import { CounterIsland } from "./Counter.island";
 import { ExpandableIsland } from "./Expandable.island.jsx";
+import { Link } from "./Link.jsx";
 import { ServerContent } from "./ServerContent.jsx";
 
 export function Home() {

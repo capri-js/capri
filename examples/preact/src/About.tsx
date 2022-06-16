@@ -1,4 +1,4 @@
-import { Link } from "@capri-js/preact-router";
+import { Link } from "./Link.jsx";
 
 export function About() {
   return (
