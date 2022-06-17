@@ -12,3 +12,5 @@ export default defineConfig({
   plugins: [react(), capri()],
 });
 ```
+
+Visit [capri.build](https://capri.build) for docs and more information.

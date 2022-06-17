@@ -17,3 +17,5 @@ export default defineConfig({
   ],
 });
 ```
+
+Visit [capri.build](https://capri.build) for docs and more information.
