@@ -1,3 +1,10 @@
+## @capri-js/preact [3.1.1](https://github.com/capri-js/capri/compare/@capri-js/preact@3.1.0...@capri-js/preact@3.1.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* update README ([06fb308](https://github.com/capri-js/capri/commit/06fb308e61b65fba75645ac1c9ddd1e085b125ae))
+
 # @capri-js/preact [3.1.0](https://github.com/capri-js/capri/compare/@capri-js/preact@3.0.4...@capri-js/preact@3.1.0) (2022-06-17)
 
 
