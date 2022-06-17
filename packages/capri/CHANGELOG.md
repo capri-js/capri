@@ -1,3 +1,10 @@
+## capri [3.0.3](https://github.com/capri-js/capri/compare/capri@3.0.2...capri@3.0.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* modulepreload links ([456b358](https://github.com/capri-js/capri/commit/456b358b188bbad470ab419929110b39dc0be6c9))
+
 ## capri [3.0.2](https://github.com/capri-js/capri/compare/capri@3.0.1...capri@3.0.2) (2022-06-15)
 
 
