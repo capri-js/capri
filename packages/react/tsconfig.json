@@ -4,5 +4,8 @@
     "outDir": "lib",
     "rootDir": "src"
   },
-  "references": [{ "path": "../capri" }]
+  "references": [
+    { "path": "../capri" },
+    { "path": "../react-render-to-string" }
+  ]
 }
