@@ -1,3 +1,10 @@
+# capri [3.1.0](https://github.com/capri-js/capri/compare/capri@3.0.3...capri@3.1.0) (2022-06-17)
+
+
+### Features
+
+* support lagoons ([cc83d70](https://github.com/capri-js/capri/commit/cc83d701a93c6353055d9a93b2e383211af79a01))
+
 ## capri [3.0.3](https://github.com/capri-js/capri/compare/capri@3.0.2...capri@3.0.3) (2022-06-16)
 
 
