@@ -1,3 +1,18 @@
+# @capri-js/react [3.1.0](https://github.com/capri-js/capri/compare/@capri-js/react@3.0.4...@capri-js/react@3.1.0) (2022-06-17)
+
+
+### Features
+
+* support lagoons ([cc83d70](https://github.com/capri-js/capri/commit/cc83d701a93c6353055d9a93b2e383211af79a01))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 3.1.0
+
 ## @capri-js/react [3.0.4](https://github.com/capri-js/capri/compare/@capri-js/react@3.0.3...@capri-js/react@3.0.4) (2022-06-16)
 
 
