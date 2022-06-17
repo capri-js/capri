@@ -1,3 +1,11 @@
+## @capri-js/react [3.1.1](https://github.com/capri-js/capri/compare/@capri-js/react@3.1.0...@capri-js/react@3.1.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* add missing dependency ([360cc15](https://github.com/capri-js/capri/commit/360cc1528fae36a3ddda949e78aabc2c655f0621))
+* update README ([06fb308](https://github.com/capri-js/capri/commit/06fb308e61b65fba75645ac1c9ddd1e085b125ae))
+
 # @capri-js/react [3.1.0](https://github.com/capri-js/capri/compare/@capri-js/react@3.0.4...@capri-js/react@3.1.0) (2022-06-17)
 
 
