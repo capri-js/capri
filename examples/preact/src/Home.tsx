@@ -18,12 +18,11 @@ export function Home() {
         <CounterIsland start={100} />
       </section>
       <ExpandableIsland title="Click to expand">
-        This is a layout island. Its children are only rendered upon build time.
-        When hydrated, a static component is passed as only child which will
-        render the original HTML subtree.
+        This island receives children as prop. They are only rendered upon build
+        time.
         <ServerContent>
-          The code for <code>ServerContent</code> should not show up in the
-          client bundle.
+          The code for <code>ServerContent</code> won't show up in the client
+          bundle.
         </ServerContent>
       </ExpandableIsland>
       <Link href="about">Link to another page</Link>

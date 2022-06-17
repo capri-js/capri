@@ -1,7 +1,9 @@
 import { createIslandComponent, IslandOptions } from "capri";
 import { ComponentType, h } from "preact";
+import { lazy } from "preact-iso";
 
 export type { RenderFunction } from "capri";
+export { prerender as renderToString } from "preact-iso";
 
 export function island<T extends ComponentType<any>>(
   component: T,
@@ -12,11 +14,12 @@ export function island<T extends ComponentType<any>>(
     options,
     ({ props, children, scriptProps, scriptContent }) => {
       const wrappedChildren =
-        children && h("div", { "data-island-children": true }, children);
+        children &&
+        h("capri-children", { style: { display: "contents" } }, children);
 
       return h(
-        "div",
-        { "data-island-root": true, style: { display: "contents" } },
+        "capri-island",
+        { style: { display: "contents" } },
         h(component, props, wrappedChildren),
         h("script", {
           ...scriptProps,
@@ -25,4 +28,17 @@ export function island<T extends ComponentType<any>>(
       );
     }
   );
+}
+
+export function lagoon<T extends ComponentType<any>>(
+  factory: () => Promise<{ default: T }>
+) {
+  const Comp = lazy(factory);
+  return (props: any) => {
+    return h(
+      "capri-lagoon",
+      { style: { display: "contents" } },
+      h(Comp, props)
+    );
+  };
 }

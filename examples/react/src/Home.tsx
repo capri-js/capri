@@ -32,8 +32,8 @@ export function Home() {
         This island receives children as prop. They are only rendered upon build
         time.
         <ServerContent>
-          The code for <code>ServerContent</code> should not show up in the
-          client bundle.
+          The code for <code>ServerContent</code> won't show up in the client
+          bundle.
         </ServerContent>
       </ExpandableIsland>
       <Link to="about">Link to another page</Link>

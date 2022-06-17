@@ -11,10 +11,8 @@ const adapter: HydrationAdapter = {
     solidHydrate(() => component(props), element.parentElement!, { renderId });
   },
 
-  // Note: For SolidJS this is never called as the rendered children don't need
-  // to be re-injected upon hydration.
-  renderRawHtml(attributes, html) {
-    return <div {...attributes} innerHTML={html} />;
+  renderChildren() {
+    return <capri-children style={{ display: "contents" }} innerHTML="" />;
   },
 };
 

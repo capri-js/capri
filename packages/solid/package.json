@@ -13,7 +13,7 @@
   "main": "./lib/index.js",
   "exports": {
     ".": {
-      "browser": "./lib/browser.js",
+      "browser": "./lib/browser.jsx",
       "default": "./lib/index.jsx"
     },
     "./vite-plugin": {

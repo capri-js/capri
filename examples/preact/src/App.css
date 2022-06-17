@@ -78,6 +78,13 @@ a {
   color: inherit;
 }
 
+.box {
+  padding: 1em;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
 .banner {
   background: #ff0f7f;
   color: #fff;

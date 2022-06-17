@@ -40,7 +40,8 @@
     }
   },
   "dependencies": {
-    "capri": "^3.0.2"
+    "capri": "^3.0.2",
+    "preact-iso": "^2.3.0"
   },
   "peerDependencies": {
     "preact": "^10.0.0"

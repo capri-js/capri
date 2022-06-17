@@ -32,7 +32,7 @@ export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "hydrate">;
 
 export type HydrationAdapter = {
   hydrate: (component: any, props: object, element: Element) => void;
-  renderRawHtml: (attributes: object, html: string) => any;
+  renderChildren: (html: string) => any;
 };
 
 export function capri({

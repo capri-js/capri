@@ -7,10 +7,10 @@ const adapter: HydrationAdapter = {
     return hydrateRoot(element.parentElement!, createElement(component, props));
   },
 
-  renderRawHtml(attributes: object, html: string) {
-    return createElement("div", {
-      ...attributes,
-      dangerouslySetInnerHTML: { __html: html },
+  renderChildren() {
+    return createElement("capri-children", {
+      style: { display: "contents" },
+      dangerouslySetInnerHTML: { __html: "" },
     });
   },
 };

@@ -1,10 +1,9 @@
-import type { RenderFunction } from "@capri-js/preact";
-import { prerender } from "preact-iso";
+import { RenderFunction, renderToString } from "@capri-js/preact";
 
 import { App } from "./App";
 
 export const render: RenderFunction = async (url: string) => {
-  const res = await prerender(<App url={url} />);
+  const res = await renderToString(<App url={url} />);
   return {
     "#app": res.html,
   };

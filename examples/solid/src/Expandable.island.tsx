@@ -1,5 +1,7 @@
-import { island } from "@capri-js/solid";
+import { island, lagoon } from "@capri-js/solid";
 import { createSignal } from "solid-js";
+
+const StaticContent = lagoon(() => import("./StaticContent.jsx"));
 
 type Props = {
   title: string;
@@ -8,11 +10,20 @@ type Props = {
 function Expandable({ title, children }: Props) {
   const [expanded, setExpanded] = createSignal(false);
   return (
-    <div class="expandable" data-expanded={expanded() ? "true" : "false"}>
+    <div class="expandable box" data-expanded={expanded() ? "true" : "false"}>
+      <StaticContent>
+        This is static content inside an island. We call this a lagoon.
+      </StaticContent>
       <button onClick={() => setExpanded((expanded) => !expanded)}>
         {title}
       </button>
-      <div class="expandable-content">{children}</div>
+      <div class="expandable-content">
+        <StaticContent>
+          This a second lagoon. Below you see the children that were passed to
+          the Expandable island:
+        </StaticContent>
+        {children}
+      </div>
     </div>
   );
 }

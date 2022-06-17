@@ -1,5 +1,5 @@
 import { createIslandComponent, IslandOptions } from "capri";
-import { ComponentType, createElement } from "react";
+import React, { ComponentType, createElement } from "react";
 
 export type { RenderFunction } from "capri";
 
@@ -13,11 +13,15 @@ export function island<T extends ComponentType<any>>(
     ({ props, children, scriptProps, scriptContent }) => {
       const wrappedChildren =
         children &&
-        createElement("div", { "data-island-children": true }, children);
+        createElement(
+          "capri-children",
+          { style: { display: "contents" } },
+          children
+        );
 
       return createElement(
-        "div",
-        { "data-island-root": true, style: { display: "contents" } },
+        "capri-island",
+        { style: { display: "contents" } },
         createElement(component, props, wrappedChildren),
         createElement("script", {
           ...scriptProps,
@@ -26,4 +30,17 @@ export function island<T extends ComponentType<any>>(
       );
     }
   );
+}
+
+export function lagoon<T extends ComponentType<any>>(
+  factory: () => Promise<{ default: T }>
+) {
+  const Comp = React.lazy(factory);
+  return (props: any) => {
+    return createElement(
+      "capri-lagoon",
+      { style: { display: "contents" } },
+      createElement(Comp, props)
+    );
+  };
 }

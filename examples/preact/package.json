@@ -9,12 +9,11 @@
     "dev": "vite dev",
     "build": "vite build && vite build --ssr",
     "build:github": "BASE=/capri/preact/ npm run build && cp -r dist ../../.github/pages/preact",
-    "serve": "vite preview"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@capri-js/preact-router": "^4.0.2",
-    "preact": "^10.7.2",
-    "preact-iso": "^2.3.0"
+    "preact": "^10.7.2"
   },
   "devDependencies": {
     "@capri-js/preact": "*",

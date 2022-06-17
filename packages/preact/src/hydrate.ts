@@ -6,10 +6,10 @@ const adapter: HydrationAdapter = {
     return hydrateComponent(h(component, props), element.parentElement!);
   },
 
-  renderRawHtml(attributes: object, html: string) {
-    return h("div", {
-      ...attributes,
-      dangerouslySetInnerHTML: { __html: html },
+  renderChildren() {
+    return h("capri-children", {
+      style: { display: "contents" },
+      dangerouslySetInnerHTML: { __html: "" },
     });
   },
 };

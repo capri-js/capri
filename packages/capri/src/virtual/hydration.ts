@@ -2,7 +2,7 @@ import hydrationAdapter from "virtual:capri-hydration-adapter";
 
 import { HydrationAdapter } from "../vite-plugin.js";
 
-function hydrateIslands({ hydrate, renderRawHtml }: HydrationAdapter) {
+function hydrateIslands({ hydrate, renderChildren }: HydrationAdapter) {
   const modules = import.meta.glob("%ISLAND_GLOB_PATTERN%");
   const islands = document.querySelectorAll("script[data-island]");
 
@@ -21,12 +21,9 @@ function hydrateIslands({ hydrate, renderRawHtml }: HydrationAdapter) {
       ? JSON.parse(node.textContent)
       : {};
 
-    const childContent = element.querySelector("[data-island-children]");
+    const childContent = element.querySelector("capri-children");
     if (childContent) {
-      props.children = renderRawHtml(
-        { "data-island-children": true },
-        childContent.innerHTML
-      );
+      props.children = renderChildren(childContent.innerHTML);
     }
 
     const hydrateComponent = () => {
