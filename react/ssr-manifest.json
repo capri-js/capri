@@ -46,92 +46,92 @@
     "/capri/react/assets/client.6b0f1a33.js"
   ],
   "vite/modulepreload-polyfill": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/@babel/runtime/helpers/esm/extends.js": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/history/index.js": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/react-router/index.js": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/react-router-dom/index.js": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/swr/dist/index.esm.js": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/ServerContent.tsx": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/Preview.tsx": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "/capri/react/assets/main.02180817.js",
-    "/capri/react/assets/main.3c00ab9f.css",
+    "/capri/react/assets/main.01313e76.js",
+    "/capri/react/assets/main.0ce2c6f3.css",
     "/capri/react/assets/capri.ce1c56b3.svg"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react/jsx-runtime.js?commonjs-module": [
-    "/capri/react/assets/browser.fceea427.js"
+    "/capri/react/assets/browser.8cfacff6.js"
   ],
   "\u0000/home/runner/work/capri/capri/node_modules/react/cjs/react-jsx-runtime.production.min.js?commonjs-exports": [
-    "/capri/react/assets/browser.fceea427.js"
+    "/capri/react/assets/browser.8cfacff6.js"
   ],
   "../../node_modules/react/cjs/react-jsx-runtime.production.min.js": [
-    "/capri/react/assets/browser.fceea427.js"
+    "/capri/react/assets/browser.8cfacff6.js"
   ],
   "../../node_modules/react/jsx-runtime.js": [
-    "/capri/react/assets/browser.fceea427.js"
+    "/capri/react/assets/browser.8cfacff6.js"
   ],
   "react/jsx-runtime": [
-    "/capri/react/assets/browser.fceea427.js"
+    "/capri/react/assets/browser.8cfacff6.js"
   ],
   "../../packages/react/lib/browser.js": [
-    "/capri/react/assets/browser.fceea427.js"
+    "/capri/react/assets/browser.8cfacff6.js"
   ],
   "src/Counter.island.tsx": [
-    "/capri/react/assets/Counter.island.93ef8184.js"
+    "/capri/react/assets/Counter.island.cc090c90.js"
   ],
   "src/Expandable.island.tsx": [
-    "/capri/react/assets/Expandable.island.c8e78d1b.js"
+    "/capri/react/assets/Expandable.island.5aafd2bc.js"
   ]
 }

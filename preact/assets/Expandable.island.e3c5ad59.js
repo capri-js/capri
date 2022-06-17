@@ -1,1 +1,0 @@
-import{i as t,p as l,a as p,j as e}from"./browser.5ec74cb2.js";import"./preact.module.6a90d538.js";function i({title:n,children:d}){const[a,s]=l(!1);return p("div",{class:"expandable","data-expanded":a?"true":"false",children:[e("button",{onClick:()=>s(!a),children:n}),e("div",{class:"expandable-content",children:d})]})}const c=t(i);export{c as ExpandableIsland};
