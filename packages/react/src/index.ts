@@ -1,7 +1,9 @@
 import { createIslandComponent, IslandOptions } from "capri";
 import React, { ComponentType, createElement } from "react";
+import renderToString from "react-render-to-string";
 
 export type { RenderFunction } from "capri";
+export { renderToString };
 
 export function island<T extends ComponentType<any>>(
   component: T,
