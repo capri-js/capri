@@ -1,47 +1,53 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+    # Disable version updates for npm dependencies
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/packages/capri"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/packages/create"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/packages/preact"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/packages/react"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/packages/react-render-to-string"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/packages/solid"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/examples/preact"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/examples/react"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/examples/solid"
+    open-pull-requests-limit: 0
     schedule:
       interval: "daily"
