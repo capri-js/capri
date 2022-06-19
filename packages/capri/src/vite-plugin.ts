@@ -75,6 +75,14 @@ export function capri({
         if (mode === "server") {
           ssr = getServerEntryScript(config);
           return {
+            define:
+              ssrFormat === "commonjs"
+                ? {
+                    "process.env.SSR": "true",
+                  }
+                : {
+                    // import.meta.env.SSR is exposed by Vite
+                  },
             ssr: {
               // The capri packages can't be externalized as they need to be
               // processed by Vite (virtual modules and glob imports).
