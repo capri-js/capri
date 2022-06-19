@@ -17,7 +17,6 @@ import {
   renderStaticPages,
   urlToFileName,
 } from "./prerender.js";
-import { importServerChunk } from "./ssr.js";
 
 export interface CapriPluginOptions {
   spa?: string | false;
@@ -196,11 +195,10 @@ export function capri({
             }
           });
         }
+      },
+      async writeBundle(options, bundle) {
         if (mode === "server") {
           const chunk = findRenderChunk(bundle, ssr);
-
-          // Remove the ssr chunk from the bundle as we don't want it to be written to disk.
-          delete bundle[chunk.fileName];
 
           // Read the index.html so we can use it as template for all prerendered pages.
           const indexHtml = fs.readFileSync(
@@ -209,7 +207,12 @@ export function capri({
           );
 
           // Import the render function from the SSR bundle.
-          const { render } = await importServerChunk(chunk, options.dir!);
+          const ssrBundle = path.resolve(options.dir!, chunk.fileName);
+          const { render } = await import(ssrBundle);
+
+          if (!render || typeof render !== "function") {
+            throw new Error(`${ssr} must export a render function.`);
+          }
 
           // Prerender pages...
           await renderStaticPages(render, {
@@ -219,6 +222,8 @@ export function capri({
             prerender,
             followLinks,
           });
+
+          fs.unlinkSync(ssrBundle);
         }
       },
     },
