@@ -1,3 +1,13 @@
+## @capri-js/solid [3.1.3](https://github.com/capri-js/capri/compare/@capri-js/solid@3.1.2...@capri-js/solid@3.1.3) (2022-06-19)
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 3.3.0
+
 ## @capri-js/solid [3.1.2](https://github.com/capri-js/capri/compare/@capri-js/solid@3.1.1...@capri-js/solid@3.1.2) (2022-06-19)
 
 
