@@ -1,3 +1,10 @@
+# capri [3.3.0](https://github.com/capri-js/capri/compare/capri@3.2.0...capri@3.3.0) (2022-06-19)
+
+
+### Features
+
+* expose process.env.SSR ([52e43a1](https://github.com/capri-js/capri/commit/52e43a17370ea15d037bb20865bdb3ee070cd1f4))
+
 # capri [3.2.0](https://github.com/capri-js/capri/compare/capri@3.1.0...capri@3.2.0) (2022-06-19)
 
 
