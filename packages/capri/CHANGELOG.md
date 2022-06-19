@@ -1,3 +1,11 @@
+# capri [3.2.0](https://github.com/capri-js/capri/compare/capri@3.1.0...capri@3.2.0) (2022-06-19)
+
+
+### Features
+
+* add ssrFormat option ([5ed7a34](https://github.com/capri-js/capri/commit/5ed7a34ec5004dadc67b60b965bf2377be2c033e))
+* keep ssr bundle upon errors ([5cf6d4e](https://github.com/capri-js/capri/commit/5cf6d4e39b3e4376b729c436aa81664fbc884df6))
+
 # capri [3.1.0](https://github.com/capri-js/capri/compare/capri@3.0.3...capri@3.1.0) (2022-06-17)
 
 
