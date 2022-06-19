@@ -22,6 +22,7 @@ import { importServerChunk } from "./ssr.js";
 export interface CapriPluginOptions {
   spa?: string | false;
   createIndexFiles?: boolean;
+  ssrFormat?: "commonjs" | "esm";
   prerender?: PrerenderConfig;
   followLinks?: FollowLinksConfig;
   islandGlobPattern?: string;
@@ -40,6 +41,7 @@ export function capri({
   prerender = "/",
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",
+  ssrFormat = "esm",
   hydrate,
   spa,
 }: CapriPluginOptions): Plugin[] {
@@ -84,9 +86,7 @@ export function capri({
               emptyOutDir: false, // keep the client build
               rollupOptions: {
                 output: {
-                  // Generate the Node.js code as ES module. Using ESM
-                  // everywhere is a lot easier than mixing module types.
-                  format: "es",
+                  format: ssrFormat,
                 },
               },
             },
