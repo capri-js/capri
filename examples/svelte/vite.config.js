@@ -10,7 +10,6 @@ export default defineConfig((env) => ({
   },
   plugins: [
     svelte({
-      dev: true,
       preprocess: [
         sveltePreprocess({
           preserve: ["json"],

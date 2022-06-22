@@ -5,9 +5,7 @@
 </script>
 
 <div data-expanded={expanded}>
-  <StaticContent>
-    This is static content inside an island. We call this a lagoon.
-  </StaticContent>
+  <StaticContent />
   <button on:click={() => (expanded = !expanded)}>
     <slot name="title" />
   </button>

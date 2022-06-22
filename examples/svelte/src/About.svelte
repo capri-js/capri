@@ -1,5 +1,5 @@
 <script>
-  import { Link } from "svelte-navigator";
+  import { RouterLink } from "svelte-pilot";
 </script>
 
 <main>
@@ -8,5 +8,5 @@
     An since it does not contain any interactive islands, no JavaScript is
     shipped to the browser.
   </section>
-  <Link to="..">Home</Link>
+  <RouterLink to="..">Home</RouterLink>
 </main>

@@ -1,5 +1,13 @@
-import App from "./App.svelte";
+import "./global.css";
 
-new App({
+import { ClientApp, Router } from "svelte-pilot";
+
+import routes from "./routes.js";
+const router = new Router({ routes });
+
+new ClientApp({
   target: document.body,
+  props: {
+    router,
+  },
 });

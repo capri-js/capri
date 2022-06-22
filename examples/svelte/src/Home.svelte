@@ -1,6 +1,6 @@
 <script>
   import CounterIsland from "./Counter.island.svelte";
-  import { Link } from "svelte-navigator";
+  import { RouterLink } from "svelte-pilot";
   import ExpandableIsland from "./Expandable.island.svelte";
   import ServerContent from "./ServerContent.svelte";
 </script>
@@ -26,5 +26,5 @@
       </ServerContent>
     </div>
   </ExpandableIsland>
-  <Link to="about">Link to another page</Link>
+  <RouterLink to="about">Link to another page</RouterLink>
 </main>
