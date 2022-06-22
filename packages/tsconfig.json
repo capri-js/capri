@@ -4,6 +4,7 @@
     { "path": "preact" },
     { "path": "react" },
     { "path": "solid" },
+    { "path": "svelte" },
     { "path": "react-render-to-string" }
   ],
   "exclude": ["*"]

@@ -1,0 +1,24 @@
+{
+  "name": "my-capri-svelte-site",
+  "private": true,
+  "description": "Capri Svelte example",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && vite build --ssr",
+    "build:github": "BASE=/capri/svelte/ npm run build && cp -r dist ../../.github/pages/svelte",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@capri-js/svelte": "*",
+    "svelte-navigator": "^3.1.6",
+    "svelte-preprocess": "^4.10.7"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
+    "svelte": "^3.48.0",
+    "vite": "^2.9.9"
+  }
+}
