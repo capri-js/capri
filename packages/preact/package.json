@@ -16,14 +16,10 @@
   ],
   "exports": {
     ".": {
-      "browser": "./lib/browser.js",
       "default": "./lib/index.js"
     },
-    "./vite-plugin": {
-      "default": "./lib/vite-plugin.js"
-    },
-    "./hydrate": {
-      "default": "./lib/hydrate.js"
+    "./server": {
+      "default": "./lib/server.js"
     }
   },
   "typesVersions": {
@@ -31,11 +27,8 @@
       "index.d.ts": [
         "lib/index.d.ts"
       ],
-      "vite-plugin": [
-        "lib/vite-plugin.d.ts"
-      ],
-      "hydrate": [
-        "lib/hydrate.d.ts"
+      "server": [
+        "lib/server.d.ts"
       ]
     }
   },

@@ -1,4 +1,4 @@
-import { RenderFunction, renderToString } from "@capri-js/preact";
+import { RenderFunction, renderToString } from "@capri-js/preact/server";
 
 import { App } from "./App";
 

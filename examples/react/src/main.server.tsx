@@ -1,4 +1,4 @@
-import { RenderFunction, renderToString } from "@capri-js/react";
+import { RenderFunction, renderToString } from "@capri-js/react/server";
 import { StrictMode } from "react";
 import { StaticRouter } from "react-router-dom/server.js";
 

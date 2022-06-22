@@ -15,8 +15,8 @@
     ".": {
       "default": "./lib/index.js"
     },
-    "./vite-plugin": {
-      "default": "./lib/vite-plugin.js"
+    "./server": {
+      "default": "./lib/server.js"
     }
   },
   "typesVersions": {
@@ -24,8 +24,8 @@
       "index.d.ts": [
         "lib/index.d.ts"
       ],
-      "vite-plugin": [
-        "lib/vite-plugin.d.ts"
+      "server": [
+        "lib/server.d.ts"
       ]
     }
   },

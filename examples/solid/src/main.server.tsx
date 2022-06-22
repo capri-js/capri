@@ -1,4 +1,4 @@
-import { RenderFunction, renderToString } from "@capri-js/solid";
+import { RenderFunction, renderToString } from "@capri-js/solid/server";
 import { Router } from "solid-app-router";
 import { generateHydrationScript } from "solid-js/web";
 
