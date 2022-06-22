@@ -1,10 +1,17 @@
 import { capri, CapriAdapterPluginOptions } from "capri/vite-plugin";
 
-//export type { RenderFunction, RenderResult } from "capri";
-
 export default function (opts: CapriAdapterPluginOptions = {}) {
+  const resolve = (f: string) => new URL(f, import.meta.url).pathname;
   return capri({
     ...opts,
-    hydrate: "@capri-js/solid/hydrate",
+    adapter: {
+      hydrate: resolve("./hydrate.jsx"),
+      island: {
+        server: resolve("./island.server.jsx"),
+      },
+      lagoon: {
+        client: resolve("./lagoon.client.jsx"),
+      },
+    },
   });
 }

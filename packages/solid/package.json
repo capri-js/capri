@@ -13,14 +13,10 @@
   "main": "./lib/index.js",
   "exports": {
     ".": {
-      "browser": "./lib/browser.jsx",
-      "default": "./lib/index.jsx"
+      "default": "./lib/index.js"
     },
     "./vite-plugin": {
       "default": "./lib/vite-plugin.js"
-    },
-    "./hydrate": {
-      "default": "./lib/hydrate.jsx"
     }
   },
   "typesVersions": {
@@ -30,9 +26,6 @@
       ],
       "vite-plugin": [
         "lib/vite-plugin.d.ts"
-      ],
-      "hydrate": [
-        "lib/hydrate.d.ts"
       ]
     }
   },

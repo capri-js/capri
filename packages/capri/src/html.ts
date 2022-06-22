@@ -1,6 +1,8 @@
 import * as cheerio from "cheerio";
 
-import { IslandOptions } from "./island.js";
+export interface IslandOptions {
+  media?: string;
+}
 
 export type IslandChunk = {
   src: string;

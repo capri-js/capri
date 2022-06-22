@@ -1,5 +1,5 @@
-import { CounterIsland } from "./Counter.island";
-import { ExpandableIsland } from "./Expandable.island.jsx";
+import CounterIsland from "./Counter.island";
+import ExpandableIsland from "./Expandable.island.jsx";
 import { ServerContent } from "./ServerContent.jsx";
 
 export function Home() {

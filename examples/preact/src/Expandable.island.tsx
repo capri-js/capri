@@ -1,14 +1,13 @@
-import { island, lagoon } from "@capri-js/preact";
 import { ComponentChildren } from "preact";
 import { useState } from "preact/hooks";
 
-const StaticContent = lagoon(() => import("./StaticContent.jsx"));
+import StaticContent from "./StaticContent.lagoon.jsx";
 
 type Props = {
   title: string;
   children?: ComponentChildren;
 };
-function Expandable({ title, children }: Props) {
+export default function Expandable({ title, children }: Props) {
   const [expanded, setExpanded] = useState(false);
   return (
     <div class="expandable box" data-expanded={expanded ? "true" : "false"}>
@@ -26,5 +25,3 @@ function Expandable({ title, children }: Props) {
     </div>
   );
 }
-
-export const ExpandableIsland = island(Expandable);

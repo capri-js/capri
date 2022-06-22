@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import micromatch from "micromatch";
 import { builtinModules } from "module";
 import * as path from "path";
 import type {
@@ -7,7 +8,7 @@ import type {
   PluginContext,
   RollupOptions,
 } from "rollup";
-import type { ChunkMetadata, Plugin, PluginOption, UserConfig } from "vite";
+import type { ChunkMetadata, Plugin, UserConfig } from "vite";
 
 import { findRenderChunk } from "./bundle.js";
 import { getEntrySrc } from "./html.js";
@@ -18,6 +19,16 @@ import {
   urlToFileName,
 } from "./prerender.js";
 
+export interface Wrapper {
+  server?: string;
+  client?: string;
+  spa?: string;
+}
+export interface Adapter {
+  hydrate: string;
+  island: Wrapper;
+  lagoon: Wrapper;
+}
 export interface CapriPluginOptions {
   spa?: string | false;
   createIndexFiles?: boolean;
@@ -25,35 +36,26 @@ export interface CapriPluginOptions {
   prerender?: PrerenderConfig;
   followLinks?: FollowLinksConfig;
   islandGlobPattern?: string;
-  hydrate: string;
+  lagoonGlobPattern?: string;
+  adapter: Adapter;
 }
 
-export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "hydrate">;
-
-export type HydrationAdapter = {
-  hydrate: (component: any, props: object, element: Element) => void;
-  renderChildren: (html: string) => any;
-};
+export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "adapter">;
 
 export function capri({
   createIndexFiles = true,
   prerender = "/",
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",
+  lagoonGlobPattern = "/src/**/*.lagoon.*",
   ssrFormat = "esm",
-  hydrate,
+  adapter,
   spa,
 }: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
   let ssr: string;
+  let root: string;
   if (spa) spa = urlToFileName(spa, createIndexFiles);
-
-  function loadVirtualModule(name: string) {
-    const file = new URL(`./virtual/${name}.js`, import.meta.url).pathname;
-    return fs
-      .readFileSync(file, "utf8")
-      .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
-  }
 
   return [
     {
@@ -71,6 +73,8 @@ export function capri({
         } else {
           mode = "client";
         }
+
+        root = path.resolve(config.root ?? "");
 
         if (mode === "server") {
           ssr = getServerEntryScript(config);
@@ -132,18 +136,35 @@ export function capri({
           };
         }
       },
-      async resolveId(source) {
+      async resolveId(source, importer, options) {
         if (source === spa) {
           return resolveFile(this, spa);
         }
         if (source === "virtual:capri-hydration") {
-          return "\0virtual:capri-hydration";
+          return { id: "\0virtual:capri-hydration", moduleSideEffects: true };
         }
-        if (source === "virtual:capri-islands") {
-          return "\0virtual:capri-islands";
+        if (source === "virtual:capri-hydrate") {
+          return this.resolve(adapter.hydrate);
         }
-        if (source === "virtual:capri-hydration-adapter") {
-          return this.resolve(hydrate);
+        if (!source.includes("?")) {
+          const resolvedId = await this.resolve(source, importer, {
+            ...options,
+            skipSelf: true,
+          });
+          if (resolvedId) {
+            if (micromatch.contains(resolvedId.id, islandGlobPattern)) {
+              const wrapper = adapter.island[mode];
+              if (wrapper) {
+                return `${wrapper}?wrap=${resolvedId.id}`;
+              }
+            }
+            if (micromatch.contains(resolvedId.id, lagoonGlobPattern)) {
+              const wrapper = adapter.lagoon[mode];
+              if (wrapper) {
+                return `${wrapper}?wrap=${resolvedId.id}`;
+              }
+            }
+          }
         }
       },
       async load(id) {
@@ -154,8 +175,29 @@ export function capri({
         if (id === "\0virtual:capri-hydration") {
           return loadVirtualModule("hydration");
         }
-        if (id === "\0virtual:capri-islands") {
-          return loadVirtualModule("islands");
+
+        if (id.includes("?wrap=")) {
+          const [wrapper, wrapped] = id.split("?wrap=");
+          return loadWrapper(wrapper, wrapped);
+        }
+
+        function loadWrapper(wrapper: string, wrapped: string) {
+          const unwrappedId = wrapped + "?unwrapped=" + path.basename(wrapped);
+          const componentId = wrapped.startsWith(root)
+            ? wrapped.slice(root.length)
+            : wrapped;
+          const template = fs.readFileSync(wrapper, "utf8");
+          return template
+            .replace(/virtual:capri-component/g, unwrappedId)
+            .replace(/%COMPONENT_ID%/g, componentId);
+        }
+
+        function loadVirtualModule(name: string) {
+          const file = new URL(`./virtual/${name}.js`, import.meta.url)
+            .pathname;
+          return fs
+            .readFileSync(file, "utf8")
+            .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
         }
       },
       async buildStart() {
@@ -236,15 +278,6 @@ export function capri({
       },
     },
   ];
-}
-
-export function hasPlugin(plugins: PluginOption, name: string): boolean {
-  if (Array.isArray(plugins)) {
-    return plugins.some((p) => hasPlugin(p, name));
-  } else if (plugins && plugins.name) {
-    return plugins.name === name;
-  }
-  return false;
 }
 
 function getEntryScript(config: UserConfig) {

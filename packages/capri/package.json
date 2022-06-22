@@ -32,6 +32,10 @@
     }
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.11"
+    "cheerio": "^1.0.0-rc.11",
+    "micromatch": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/micromatch": "^4.0.2"
   }
 }

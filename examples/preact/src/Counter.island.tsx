@@ -1,7 +1,6 @@
-import { island } from "@capri-js/preact";
 import { useState } from "preact/hooks";
 
-function Counter({ start = 0 }: { start?: number }) {
+export default function Counter({ start = 0 }: { start?: number }) {
   const [counter, setCounter] = useState(start);
   return (
     <div class="counter" data-testid="counter">
@@ -11,5 +10,3 @@ function Counter({ start = 0 }: { start?: number }) {
     </div>
   );
 }
-
-export const CounterIsland = island(Counter);

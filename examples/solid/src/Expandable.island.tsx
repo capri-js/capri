@@ -1,13 +1,13 @@
-import { island, lagoon } from "@capri-js/solid";
 import { createSignal } from "solid-js";
 
-const StaticContent = lagoon(() => import("./StaticContent.jsx"));
+import StaticContent from "./StaticContent.lagoon.jsx";
 
 type Props = {
   title: string;
   children?: any;
 };
-function Expandable({ title, children }: Props) {
+
+export default function Expandable({ title, children }: Props) {
   const [expanded, setExpanded] = createSignal(false);
   return (
     <div class="expandable box" data-expanded={expanded() ? "true" : "false"}>
@@ -27,5 +27,3 @@ function Expandable({ title, children }: Props) {
     </div>
   );
 }
-
-export const ExpandableIsland = island(Expandable);

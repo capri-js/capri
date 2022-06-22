@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import useSWR from "swr";
 
-import { CounterIsland } from "./Counter.island";
-import { ExpandableIsland } from "./Expandable.island";
+import CounterIsland from "./Counter.island.jsx";
+import ExpandableIsland from "./Expandable.island.jsx";
 import { ServerContent } from "./ServerContent";
 
 const fetcher = (key: string) =>

@@ -1,11 +1,10 @@
-import { island } from "@capri-js/solid";
 import { createSignal } from "solid-js";
 
 type Props = {
   start?: number;
 };
 
-function Counter({ start = 0 }: Props) {
+export default function Counter({ start = 0 }: Props) {
   const [counter, setCounter] = createSignal(start);
   return (
     <div class="counter" data-testid="counter">
@@ -15,5 +14,3 @@ function Counter({ start = 0 }: Props) {
     </div>
   );
 }
-
-export const CounterIsland = island(Counter);
