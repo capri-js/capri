@@ -4,6 +4,9 @@ import sveltePreprocess from "svelte-preprocess";
 import { defineConfig } from "vite";
 
 export default defineConfig((env) => ({
+  ssr: {
+    noExternal: ["svelte-pilot"],
+  },
   plugins: [
     svelte({
       preprocess: [
@@ -11,7 +14,10 @@ export default defineConfig((env) => ({
           preserve: ["json"],
         }),
       ],
-      compilerOptions: { dev: env.command === "serve", hydratable: true },
+      compilerOptions: {
+        dev: env.command === "serve",
+        hydratable: true,
+      },
     }),
     capri(),
   ],

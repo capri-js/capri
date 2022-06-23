@@ -1,6 +1,8 @@
 import { create_ssr_component } from "svelte/internal";
 import * as componentModule from "virtual:capri-component";
 
+export * from "virtual:capri-component";
+
 const { default: component, options = {} } = componentModule;
 
 export default create_ssr_component((result, props, bindings, slots) => {
