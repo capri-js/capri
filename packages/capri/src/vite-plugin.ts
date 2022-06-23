@@ -150,7 +150,7 @@ export function capri({
             },
           };
         } else {
-          let rollupOptions: RollupOptions | undefined;
+          let rollupOptions: RollupOptions = {};
           if (isServerEntryScript(config)) {
             // index.html points to a .server.* file
             // This implies that the site can't be rendered as SPA.
