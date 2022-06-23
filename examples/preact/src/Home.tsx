@@ -1,6 +1,7 @@
 import CounterIsland from "./Counter.island.jsx";
 import ExpandableIsland from "./Expandable.island.jsx";
 import { Link } from "./Link.jsx";
+import MediaQueryIsland from "./MediaQuery.island.jsx";
 import { ServerContent } from "./ServerContent.jsx";
 
 export function Home() {
@@ -25,6 +26,7 @@ export function Home() {
           bundle.
         </ServerContent>
       </ExpandableIsland>
+      <MediaQueryIsland />
       <Link href="about">Link to another page</Link>
     </main>
   );

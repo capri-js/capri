@@ -2,6 +2,7 @@
   import CounterIsland from "./Counter.island.svelte";
   import { RouterLink } from "svelte-pilot";
   import ExpandableIsland from "./Expandable.island.svelte";
+  import MediaQueryIsland from "./MediaQuery.island.svelte";
   import ServerContent from "./ServerContent.svelte";
 </script>
 
@@ -26,5 +27,6 @@
       </ServerContent>
     </div>
   </ExpandableIsland>
+  <MediaQueryIsland />
   <RouterLink to="about">Link to another page</RouterLink>
 </main>
