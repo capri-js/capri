@@ -1,1 +1,0 @@
-import{g as r,i as e,a,t as s}from"./web.148e7c78.js";const i=s("<capri-lagoon></capri-lagoon>");function p(t,o={}){return t}function c(t){return o=>(()=>{const n=r(i);return e(n,""),n._$owner=a(),n})()}export{p as i,c as l};

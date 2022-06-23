@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/capri/svelte/assets/capri.ce1c56b3.svg">
+    <script type="module" crossorigin="" src="/capri/svelte/assets/hydrate.f5f91f5a.js"></script>
+    <link rel="modulepreload" href="/capri/svelte/assets/index.831087bd.js">
+    <link rel="stylesheet" href="/capri/svelte/assets/index.bdd8c74e.css">
+    <link rel="stylesheet" href="/capri/svelte/assets/Counter.island.67bf5282.css">
+    <link rel="stylesheet" href="/capri/svelte/assets/Expandable.island.90d38775.css">
+  <link rel="modulepreload" href="/capri/svelte/assets/Counter.island.2cc4ae12.js"><link rel="modulepreload" href="/capri/svelte/assets/Expandable.island.169ddefa.js"></head>
+  <body>
+    <div id="app"></div>
+    
+  
+
+<main><h1>Partial hydration with Svelte and <i>Capri</i></h1>
+  <section>This page is static, but contains some dynamic parts.</section>
+  <section>Here is a simple counter: <capri-island>
+      <div data-testid="counter" class="svelte-6f5ilq"><button>-</button>
+  <span>0</span>
+  <button>+</button>
+</div>
+      <script type="application/json" data-island="/src/Counter.island.svelte">
+      {"props":{},"options":{}}
+      </script>
+    </capri-island></section>
+  <section>And here is another one, independent from the one above: <capri-island>
+      <div data-testid="counter" class="svelte-6f5ilq"><button>-</button>
+  <span>100</span>
+  <button>+</button>
+</div>
+      <script type="application/json" data-island="/src/Counter.island.svelte">
+      {"props":{"counter":100},"options":{}}
+      </script>
+    </capri-island></section>
+  <capri-island>
+      <div data-expanded="false" class="svelte-oph8lu"><capri-lagoon style="display:contents"><div class="box">This is static content inside an island. We call this a lagoon.</div></capri-lagoon>
+  <button class="svelte-oph8lu"><capri-slot style="display:contents" name="title"><span slot="title">Click to expand</span></capri-slot></button>
+  <div class="expandable-content svelte-oph8lu"><capri-lagoon style="display:contents"><div class="box">This a second lagoon. Below you see the body slot that was passed to the
+      Expandable island:
+    </div></capri-lagoon>
+    <capri-slot style="display:contents" name="body"><div slot="body"><div class="box">The code for <code>ServerContent</code> won't show up in the client bundle.
+      </div></div></capri-slot></div>
+</div>
+      <script type="application/json" data-island="/src/Expandable.island.svelte">
+      {"props":{},"options":{}}
+      </script>
+    </capri-island>
+  <capri-island>
+      <div class="box">Resize your browser below 500px to hydrate this island.</div>
+      <script type="application/json" data-island="/src/MediaQuery.island.svelte">
+      {"props":{},"options":{"media":"(max-width:500px)"}}
+      </script>
+    </capri-island>
+  <a href="/about" class="router-link" style="">Link to another page</a></main></body></html>
