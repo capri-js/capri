@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && vite build --ssr",
-    "build:github": "BASE=/capri/svelte/ npm run build && cp -r dist ../../.github/pages/svelte",
+    "build:github": "BASE_URL=/capri/svelte/ npm run build && cp -r dist ../../.github/pages/svelte",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -4,10 +4,6 @@ import sveltePreprocess from "svelte-preprocess";
 import { defineConfig } from "vite";
 
 export default defineConfig((env) => ({
-  base: process.env.BASE ?? "/",
-  build: {
-    minify: false,
-  },
   plugins: [
     svelte({
       preprocess: [
