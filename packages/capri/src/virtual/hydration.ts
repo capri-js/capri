@@ -27,7 +27,7 @@ function hydrateIslands() {
     };
 
     const { media } = options;
-    if (media) {
+    if (media && "matchMedia" in window) {
       const mql = matchMedia(media);
       if (mql.matches) {
         hydrateComponent();
