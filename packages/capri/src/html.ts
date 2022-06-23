@@ -1,8 +1,6 @@
 import * as cheerio from "cheerio";
 
-export interface IslandOptions {
-  media?: string;
-}
+import { IslandOptions, RenderResult } from "./types.js";
 
 export type IslandChunk = {
   src: string;
@@ -62,8 +60,6 @@ export function getEntrySrc(html: string) {
     .filter(isLocalUrl);
   return src[0];
 }
-
-export type RenderResult = Record<string, string | Promise<string>>;
 
 export async function insertMarkup(template: string, markup: RenderResult) {
   const $ = cheerio.load(template);

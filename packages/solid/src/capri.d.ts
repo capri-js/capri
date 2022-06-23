@@ -1,8 +1,9 @@
 declare module "virtual:capri-component" {
-  const value: any;
+  import { JSX } from "solid-js";
+  import { IslandOptions } from "capri";
+
+  const value: (props: any) => JSX.Element;
   export default value;
 
-  //FIXME!
-  const options: any;
-  export const options;
+  export const options: IslandOptions;
 }

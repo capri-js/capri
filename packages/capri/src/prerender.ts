@@ -8,8 +8,8 @@ import {
   insertPreloadTags,
   IslandChunk,
   removeHydrationCode,
-  RenderResult,
 } from "./html.js";
+import { RenderFunction } from "./types.js";
 
 export type PrerenderConfig =
   | false
@@ -33,10 +33,6 @@ async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
   if (Array.isArray(prerender)) return prerender;
   return getStaticPaths(await prerender());
 }
-
-export type RenderFunction = (
-  url: string
-) => RenderResult | Promise<RenderResult>;
 
 export async function renderStaticPages(
   render: RenderFunction,
