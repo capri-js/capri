@@ -1,5 +1,4 @@
 import { waitFor, within } from "@testing-library/dom";
-import userEvent from "@testing-library/user-event";
 import * as path from "path";
 import { describe, expect, test } from "vitest";
 
@@ -14,6 +13,10 @@ describe("examples", () => {
 
       global.window = dom.window as any;
       global.document = dom.window.document;
+
+      const { default: userEvent } = await import(
+        "@testing-library/user-event"
+      );
       const user = userEvent.setup({ document });
 
       const screen = within(dom.window.document.body);
