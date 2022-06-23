@@ -28,6 +28,7 @@ export interface Adapter {
   hydrate: string;
   island: Wrapper;
   lagoon: Wrapper;
+  injectWrapper?: "onLoad" | "onTransform";
 }
 export interface CapriPluginOptions {
   spa?: string | false;
@@ -55,7 +56,49 @@ export function capri({
   let mode: "client" | "server" | "spa";
   let ssr: string;
   let root: string;
+
+  const { injectWrapper = "onLoad" } = adapter;
+
   if (spa) spa = urlToFileName(spa, createIndexFiles);
+
+  /**
+   * Test if id matches the given glob pattern. If so, check if a wrapper
+   * is provided by the adapter and set the meta data accordingly.
+   */
+  function resolveWrapper(id: string, pattern: string, candidates: Wrapper) {
+    if (micromatch.contains(id, pattern)) {
+      const wrapper = candidates[mode];
+      if (wrapper) {
+        return {
+          id,
+          meta: { wrapper, wrapped: id },
+        };
+      }
+    }
+  }
+
+  /**
+   * Load the wrapper as requested in the meta data.
+   * In the wrapper code, two replacements are applied:
+   *
+   * - "virtual:capri-component" -> the wrapped module + "?unwrapped"
+   * - "%COMPONENT_ID%" -> the Id of the wrapped component (relative to the root)
+   */
+  function loadWrapper(meta: { wrapper: string; wrapped: string }) {
+    const { wrapper, wrapped } = meta;
+
+    // Note: we add the basename so that the extension stays the same...
+    const unwrappedId = wrapped + "?unwrapped=" + path.basename(wrapped);
+
+    const componentId = wrapped.startsWith(root)
+      ? wrapped.slice(root.length)
+      : wrapped;
+
+    const template = fs.readFileSync(wrapper, "utf8");
+    return template
+      .replace(/virtual:capri-component/g, unwrappedId)
+      .replace(/%COMPONENT_ID%/g, componentId);
+  }
 
   return [
     {
@@ -74,11 +117,15 @@ export function capri({
           mode = "client";
         }
 
+        // Allow base to be set via env:
+        const base = config.base ?? process.env.BASE_URL;
+
         root = path.resolve(config.root ?? "");
 
         if (mode === "server") {
           ssr = getServerEntryScript(config);
           return {
+            base,
             define:
               ssrFormat === "commonjs"
                 ? {
@@ -129,6 +176,7 @@ export function capri({
             };
           }
           return {
+            base,
             build: {
               ssrManifest: true,
               rollupOptions,
@@ -146,24 +194,16 @@ export function capri({
         if (source === "virtual:capri-hydrate") {
           return this.resolve(adapter.hydrate);
         }
-        if (!source.includes("?")) {
-          const resolvedId = await this.resolve(source, importer, {
+        if (!source.includes("?unwrapped")) {
+          const resolved = await this.resolve(source, importer, {
             ...options,
             skipSelf: true,
           });
-          if (resolvedId) {
-            if (micromatch.contains(resolvedId.id, islandGlobPattern)) {
-              const wrapper = adapter.island[mode];
-              if (wrapper) {
-                return `${wrapper}?wrap=${resolvedId.id}`;
-              }
-            }
-            if (micromatch.contains(resolvedId.id, lagoonGlobPattern)) {
-              const wrapper = adapter.lagoon[mode];
-              if (wrapper) {
-                return `${wrapper}?wrap=${resolvedId.id}`;
-              }
-            }
+          if (resolved) {
+            return (
+              resolveWrapper(resolved.id, islandGlobPattern, adapter.island) ??
+              resolveWrapper(resolved.id, lagoonGlobPattern, adapter.lagoon)
+            );
           }
         }
       },
@@ -173,31 +213,21 @@ export function capri({
           return fs.readFileSync(index, "utf8");
         }
         if (id === "\0virtual:capri-hydration") {
-          return loadVirtualModule("hydration");
-        }
-
-        if (id.includes("?wrap=")) {
-          const [wrapper, wrapped] = id.split("?wrap=");
-          return loadWrapper(wrapper, wrapped);
-        }
-
-        function loadWrapper(wrapper: string, wrapped: string) {
-          const unwrappedId = wrapped + "?unwrapped=" + path.basename(wrapped);
-          const componentId = wrapped.startsWith(root)
-            ? wrapped.slice(root.length)
-            : wrapped;
-          const template = fs.readFileSync(wrapper, "utf8");
-          return template
-            .replace(/virtual:capri-component/g, unwrappedId)
-            .replace(/%COMPONENT_ID%/g, componentId);
-        }
-
-        function loadVirtualModule(name: string) {
-          const file = new URL(`./virtual/${name}.js`, import.meta.url)
+          const file = new URL("./virtual/hydration.js", import.meta.url)
             .pathname;
           return fs
             .readFileSync(file, "utf8")
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
+        }
+        if (injectWrapper === "onLoad") {
+          const info = this.getModuleInfo(id);
+          if (isWrapperInfo(info)) return loadWrapper(info.meta);
+        }
+      },
+      transform(code, id) {
+        if (injectWrapper === "onTransform") {
+          const info = this.getModuleInfo(id);
+          if (isWrapperInfo(info)) return loadWrapper(info.meta);
         }
       },
       async buildStart() {
@@ -281,9 +311,9 @@ export function capri({
 }
 
 function getEntryScript(config: UserConfig) {
-  const f = path.resolve(config.root ?? "", "index.html");
-  const src = getEntrySrc(fs.readFileSync(f, "utf8"));
-  if (!src) throw new Error(`Can't find entry script in ${f}`);
+  const indexHtml = path.resolve(config.root ?? "", "index.html");
+  const src = getEntrySrc(fs.readFileSync(indexHtml, "utf8"));
+  if (!src) throw new Error(`Can't find entry script in ${indexHtml}`);
   return path.join(path.resolve(config.root ?? ""), src);
 }
 
@@ -330,4 +360,32 @@ function gatherCss(chunk: OutputChunk, bundle: OutputBundle, css: Set<string>) {
     });
   }
   visit(chunk);
+}
+
+interface MetaInfo {
+  meta: object;
+}
+
+interface WrapperInfo extends MetaInfo {
+  meta: {
+    wrapper: string;
+    wrapped: string;
+  };
+}
+
+function isMetaInfo(obj: unknown): obj is MetaInfo {
+  return !!obj && typeof obj === "object" && "meta" in obj;
+}
+
+function isWrapperInfo(obj: unknown): obj is WrapperInfo {
+  if (isMetaInfo(obj)) {
+    const { meta } = obj;
+    return (
+      !!meta &&
+      typeof meta === "object" &&
+      "wrapper" in meta &&
+      "wrapped" in meta
+    );
+  }
+  return false;
 }

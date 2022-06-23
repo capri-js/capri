@@ -5,6 +5,7 @@ export default function (opts: CapriAdapterPluginOptions = {}) {
   return capri({
     ...opts,
     adapter: {
+      injectWrapper: "onTransform",
       hydrate: resolve("./hydrate.js"),
       island: {
         server: resolve("./island.server.js"),
