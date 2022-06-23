@@ -1,3 +1,23 @@
+# capri [4.0.0-next.1](https://github.com/capri-js/capri/compare/capri@3.3.0...capri@4.0.0-next.1) (2022-06-23)
+
+
+### Bug Fixes
+
+* add typings for virtual:capri-component ([97f76cf](https://github.com/capri-js/capri/commit/97f76cf1a12ffc7b77abe549558a7186924345f6))
+* don't pass undefined rollupOptions ([2a513ca](https://github.com/capri-js/capri/commit/2a513cabd2907c550a0a8de13361cae07ec536f8))
+* make vite:dep-scan happy ([40fe6ba](https://github.com/capri-js/capri/commit/40fe6bae7bc86a3f6f5970202b0fc13c3a59e0bb))
+* test if browser supports matchMedia ([9598bbd](https://github.com/capri-js/capri/commit/9598bbda79f9d0c516e36a3f45529b324dbfabaa))
+
+
+### Features
+
+* no more hocs, naming pattern is enough ([33dbaa5](https://github.com/capri-js/capri/commit/33dbaa5a5ae841835144d418c8d95d3b4346394a))
+
+
+### BREAKING CHANGES
+
+* Islands and lagoons no longer need to create a higher order component. Naming the files accordingly is enough. In order for this to work, islands and lagoons now need to expose themselves as default export.
+
 # capri [3.3.0](https://github.com/capri-js/capri/compare/capri@3.2.0...capri@3.3.0) (2022-06-19)
 
 
