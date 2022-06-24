@@ -8,7 +8,7 @@ export const render: RenderFunction = async (url: string) => {
   return {
     "#app": await renderToString(
       <StrictMode>
-        <StaticRouter location={url}>
+        <StaticRouter location={url} basename={import.meta.env.BASE_URL}>
           <App />
         </StaticRouter>
       </StrictMode>

@@ -6,7 +6,7 @@ import { App } from "./App";
 
 render(
   () => (
-    <Router>
+    <Router base={import.meta.env.BASE_URL}>
       <App />
     </Router>
   ),

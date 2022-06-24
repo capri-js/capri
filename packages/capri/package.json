@@ -33,7 +33,8 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.11",
-    "micromatch": "^4.0.5"
+    "micromatch": "^4.0.5",
+    "url-join": "^5.0.0"
   },
   "devDependencies": {
     "@types/micromatch": "^4.0.2"

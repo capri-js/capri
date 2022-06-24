@@ -5,6 +5,8 @@ type Props = {
 };
 
 export default function StaticContent({ children }: Props) {
-  console.log("Rendering StaticContent. This should only happen during build.");
+  console.log(
+    "Rendering StaticContent. This should only happen during build or in the preview SPA."
+  );
   return <div class="box">{children}</div>;
 }

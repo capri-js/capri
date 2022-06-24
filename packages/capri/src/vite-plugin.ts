@@ -56,10 +56,9 @@ export function capri({
   let mode: "client" | "server" | "spa";
   let ssr: string;
   let root: string;
+  let base: string;
 
   const { injectWrapper = "onLoad" } = adapter;
-
-  if (spa) spa = urlToFileName(spa, createIndexFiles);
 
   /**
    * Test if id matches the given glob pattern. If so, check if a wrapper
@@ -117,10 +116,11 @@ export function capri({
           mode = "client";
         }
 
-        // Allow base to be set via env:
-        const base = config.base ?? process.env.BASE_URL;
-
         root = path.resolve(config.root ?? "");
+        // Allow base to be set via env:
+        base = config.base ?? process.env.BASE_URL ?? "/";
+
+        if (spa) spa = urlToFileName(spa, createIndexFiles, base);
 
         if (mode === "server") {
           ssr = getServerEntryScript(config);
@@ -299,6 +299,7 @@ export function capri({
             template: indexHtml,
             outDir: options.dir!,
             createIndexFiles,
+            base,
             prerender,
             followLinks,
           });

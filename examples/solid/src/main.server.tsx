@@ -6,7 +6,7 @@ import { App } from "./App";
 
 export const render: RenderFunction = async (url: string) => {
   const html = await renderToString(() => (
-    <Router url={url}>
+    <Router base={import.meta.env.BASE_URL} url={url}>
       <App />
     </Router>
   ));

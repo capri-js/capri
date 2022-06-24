@@ -1,25 +1,17 @@
 import "./App.css";
 
-// eslint-disable-next-line import/no-named-as-default
-import Router from "@capri-js/preact-router";
+import { Route } from "wouter-preact";
 
 import { About } from "./About";
 import { Home } from "./Home";
-import { Preview, PreviewBanner } from "./Preview";
+import { Preview } from "./Preview";
 
-type Props = {
-  url?: string;
-};
-
-export function App({ url }: Props) {
+export function App() {
   return (
-    <div>
-      {!url && <PreviewBanner />}
-      <Router url={url}>
-        <Home path="/" />
-        <About path="/about" />
-        <Preview path="/preview" />
-      </Router>
-    </div>
+    <>
+      <Route path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/preview" component={Preview} />
+    </>
   );
 }

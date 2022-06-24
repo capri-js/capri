@@ -12,8 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capri-js/preact-router": "^4.0.2",
-    "preact": "^10.7.2"
+    "preact": "^10.7.2",
+    "wouter-preact": "^2.8.0-alpha.2"
   },
   "devDependencies": {
     "@capri-js/preact": "*",

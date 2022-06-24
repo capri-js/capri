@@ -1,17 +1,13 @@
-import { route } from "@capri-js/preact-router";
-import { useEffect } from "preact/hooks";
+import { Redirect } from "wouter-preact";
 
 /**
  * Handle preview requests like `/preview?slug=/about` by redirecting
  * to the given slug parameter.
  */
 export function Preview() {
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    const slug = url.searchParams.get("slug") ?? "/";
-    route(slug);
-  });
-  return null;
+  const url = new URL(window.location.href);
+  const slug = url.searchParams.get("slug") ?? "/";
+  return <Redirect to={slug} />;
 }
 
 /**

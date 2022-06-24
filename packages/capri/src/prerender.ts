@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import urlJoin from "url-join";
 
 import {
   getIslands,
@@ -23,6 +24,7 @@ type StaticRenderConfig = {
   template: string;
   createIndexFiles: boolean;
   outDir: string;
+  base: string;
   prerender: PrerenderConfig;
   followLinks: FollowLinksConfig;
 };
@@ -40,12 +42,15 @@ export async function renderStaticPages(
     template,
     createIndexFiles,
     outDir,
+    base,
     prerender,
     followLinks,
   }: StaticRenderConfig
 ) {
   const manifest = readManifest(outDir);
-  const seen = new Set(await getStaticPaths(prerender));
+  const seen = new Set(
+    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
+  );
   const urls = [...seen];
   for (const url of urls) {
     const markup = await render(url);
@@ -62,7 +67,7 @@ export async function renderStaticPages(
       html = removeHydrationCode(html);
     }
 
-    const fileName = urlToFileName(url, createIndexFiles);
+    const fileName = urlToFileName(url, createIndexFiles, base);
     const dest = path.join(outDir, fileName);
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.writeFileSync(dest, html);
@@ -80,15 +85,22 @@ export async function renderStaticPages(
   }
 }
 
-export function urlToFileName(url: string, extraDir: boolean) {
-  const file = stripSlashes(url);
+export function urlToFileName(url: string, extraDir: boolean, base: string) {
+  let file = stripTrailingSlash(url);
+  base = stripTrailingSlash(base);
+  if (base && file.startsWith(base)) file = file.slice(base.length);
+  file = stripLeadingSlash(file);
   if (!file) return "index.html";
   if (file.includes(".html")) return file;
   return `${file}${extraDir ? "/index.html" : ".html"}`;
 }
 
-function stripSlashes(s: string) {
-  return s.replace(/^\/|\/$/g, "");
+function stripLeadingSlash(s: string) {
+  return s.replace(/^\//, "");
+}
+
+function stripTrailingSlash(s: string) {
+  return s.replace(/\/$/, "");
 }
 
 function readManifest(dir: string) {
