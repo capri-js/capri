@@ -1,3 +1,10 @@
+# capri [4.0.0-next.3](https://github.com/capri-js/capri/compare/capri@4.0.0-next.2...capri@4.0.0-next.3) (2022-06-25)
+
+
+### Features
+
+* remove solid's hydration code if possible ([5482fad](https://github.com/capri-js/capri/commit/5482fad25373dcaad1445741e34d75d944b6e8d4))
+
 # capri [4.0.0-next.2](https://github.com/capri-js/capri/compare/capri@4.0.0-next.1...capri@4.0.0-next.2) (2022-06-24)
 
 
