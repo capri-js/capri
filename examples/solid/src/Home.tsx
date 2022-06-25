@@ -13,8 +13,7 @@ export function Home() {
       </h1>
       <section>This page is static, but contains some dynamic parts.</section>
       <section>
-        This counter is an interactive island:
-        <CounterIsland />
+        This counter is an interactive island: <CounterIsland />
       </section>
       <section>
         And here is another one, independent from the one above:{" "}

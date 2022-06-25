@@ -1,4 +1,3 @@
-/* @refresh reload */
 import { Router } from "solid-app-router";
 import { render } from "solid-js/web";
 
