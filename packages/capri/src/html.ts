@@ -90,7 +90,8 @@ export function removeHydrationCode(html: string) {
       src?.includes("hydrate") ||
       id?.startsWith("vite-legacy-") ||
       text.includes("__vite_is_dynamic_import_support") ||
-      text.includes("nomodule")
+      text.includes("nomodule") ||
+      text.includes("_$HY") // SolidJS hydration script
     ) {
       removeNodeAndWhitespaceSiblings($el, $);
     }
