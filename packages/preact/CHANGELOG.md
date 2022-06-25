@@ -1,3 +1,32 @@
+# @capri-js/preact [4.0.0](https://github.com/capri-js/capri/compare/@capri-js/preact@3.1.3...@capri-js/preact@4.0.0) (2022-06-25)
+
+
+### Bug Fixes
+
+* add typings for virtual:capri-component ([97f76cf](https://github.com/capri-js/capri/commit/97f76cf1a12ffc7b77abe549558a7186924345f6))
+* return string to match other signatures ([addd64e](https://github.com/capri-js/capri/commit/addd64ebec6559bb00ef5818dc1d27ee789ef409))
+
+
+### Features
+
+* make plugin the main export ([7b0a55d](https://github.com/capri-js/capri/commit/7b0a55dd45630d13683a4ab9b93593a9203bd260))
+* no more hocs, naming pattern is enough ([33dbaa5](https://github.com/capri-js/capri/commit/33dbaa5a5ae841835144d418c8d95d3b4346394a))
+
+
+### BREAKING CHANGES
+
+* preact/renderToString now returns a string rather than an object.
+* The Vite plugin is now the main export of all adapter packages. All render functions are now exported under /server
+* Islands and lagoons no longer need to create a higher order component. Naming the files accordingly is enough. In order for this to work, islands and lagoons now need to expose themselves as default export.
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 4.0.0
+
 # @capri-js/preact [4.0.0-next.2](https://github.com/capri-js/capri/compare/@capri-js/preact@4.0.0-next.1...@capri-js/preact@4.0.0-next.2) (2022-06-25)
 
 
