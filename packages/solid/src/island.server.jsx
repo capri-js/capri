@@ -1,13 +1,26 @@
 import { sharedConfig } from "solid-js";
-import { NoHydration } from "solid-js/web";
 import * as componentModule from "virtual:capri-component";
 const { default: Component, options } = componentModule;
 
-export function Hydration(props) {
+/**
+ * Like Solid's NoHydration, but instead of setting noHydrate
+ * to true after rendering the children, we restore its previous value.
+ */
+export function NoHydration(props) {
   const c = sharedConfig.context;
+  const prev = c.noHydrate;
   c.noHydrate = false;
   const children = props.children;
-  c.noHydrate = true;
+  c.noHydrate = prev;
+  return children;
+}
+
+export function Hydration(props) {
+  const c = sharedConfig.context;
+  const prev = c.noHydrate;
+  c.noHydrate = false;
+  const children = props.children;
+  c.noHydrate = prev;
   return children;
 }
 
