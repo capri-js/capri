@@ -5,7 +5,7 @@ on:
     branches: [main, next]
 
 jobs:
-  run:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,6 +24,11 @@ jobs:
       - run: npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  gh-pages:
+    needs: [publish]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
       - run: npm run examples
       - name: deploy examples
         uses: JamesIves/github-pages-deploy-action@v4.3.3
