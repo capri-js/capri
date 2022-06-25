@@ -1,3 +1,10 @@
+# capri [4.0.0-next.2](https://github.com/capri-js/capri/compare/capri@4.0.0-next.1...capri@4.0.0-next.2) (2022-06-24)
+
+
+### Features
+
+* better base url handling ([17a2b6c](https://github.com/capri-js/capri/commit/17a2b6c1d4316f1bad4bb9326ac9ac74e947475c))
+
 # capri [4.0.0-next.1](https://github.com/capri-js/capri/compare/capri@3.3.0...capri@4.0.0-next.1) (2022-06-23)
 
 
