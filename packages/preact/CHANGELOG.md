@@ -1,3 +1,15 @@
+# @capri-js/preact [4.0.0-next.2](https://github.com/capri-js/capri/compare/@capri-js/preact@4.0.0-next.1...@capri-js/preact@4.0.0-next.2) (2022-06-25)
+
+
+### Bug Fixes
+
+* return string to match other signatures ([addd64e](https://github.com/capri-js/capri/commit/addd64ebec6559bb00ef5818dc1d27ee789ef409))
+
+
+### BREAKING CHANGES
+
+* preact/renderToString now returns a string rather than an object.
+
 # @capri-js/preact [4.0.0-next.1](https://github.com/capri-js/capri/compare/@capri-js/preact@3.1.3...@capri-js/preact@4.0.0-next.1) (2022-06-23)
 
 

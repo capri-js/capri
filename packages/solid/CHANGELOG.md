@@ -1,3 +1,10 @@
+# @capri-js/solid [4.0.0-next.2](https://github.com/capri-js/capri/compare/@capri-js/solid@4.0.0-next.1...@capri-js/solid@4.0.0-next.2) (2022-06-25)
+
+
+### Bug Fixes
+
+* don't render unneeded hydration data ([f3cffd8](https://github.com/capri-js/capri/commit/f3cffd848dee7733de4698aeaa9be5c62ba8a873))
+
 # @capri-js/solid [4.0.0-next.1](https://github.com/capri-js/capri/compare/@capri-js/solid@3.1.3...@capri-js/solid@4.0.0-next.1) (2022-06-23)
 
 
