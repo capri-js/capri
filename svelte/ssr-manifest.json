@@ -305,7 +305,7 @@
   "src/Home.svelte": [
     "/capri/svelte/assets/capri.ce1c56b3.svg"
   ],
-  "src/routes.ts": [
+  "src/router.ts": [
     "/capri/svelte/assets/capri.ce1c56b3.svg"
   ],
   "src/main.ts": [
