@@ -10,12 +10,12 @@ const base = import.meta.env.BASE_URL.slice(0, -1);
 
 export const render: RenderFunction = async (url: string) => {
   const hook = staticLocationHook(url.slice(base.length));
-  const res = await renderToString(
+  const html = await renderToString(
     <Router hook={hook} base={base}>
       <App />
     </Router>
   );
   return {
-    "#app": res.html,
+    "#app": html,
   };
 };

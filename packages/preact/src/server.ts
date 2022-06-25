@@ -1,2 +1,8 @@
 export type { RenderFunction } from "capri";
-export { prerender as renderToString } from "preact-iso";
+import { VNode } from "preact";
+import { prerender } from "preact-iso";
+
+export async function renderToString(vnode: VNode) {
+  const res = await prerender(vnode);
+  return res.html;
+}

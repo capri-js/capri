@@ -7,13 +7,11 @@ const mockData: Record<string, string> = {
 
 function mockFetch(url: string) {
   return new Promise<string>((resolve) =>
-    setTimeout(() => resolve(mockData[url]), 500)
+    setTimeout(() => resolve(mockData[url]), 100)
   );
 }
 
 export function useFetch(url: string) {
-  // Ideally we would use useRef here instead of a map. Unfortunately Preact
-  // clears the hook state when a promise is thrown.
   const data = response.get(url);
   if (data) return data;
   let promise = promises.get(url);
