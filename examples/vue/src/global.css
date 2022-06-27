@@ -50,24 +50,6 @@ button:hover {
   background: #56c13f;
 }
 
-.expandable button::after {
-  display: inline-block;
-  margin-left: 0.5em;
-  content: ">";
-  transition: all 0.2s ease-in-out;
-}
-.expandable[data-expanded="true"] > button::after {
-  transform: rotateZ(90deg);
-}
-
-.expandable-content {
-  overflow: hidden;
-  margin: 0.5em 0;
-}
-[data-expanded="false"] > .expandable-content {
-  height: 0;
-}
-
 a {
   color: inherit;
 }

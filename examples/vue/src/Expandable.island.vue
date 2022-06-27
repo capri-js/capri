@@ -1,17 +1,7 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import StaticContent from "./StaticContent.lagoon.vue";
-
-export default defineComponent({
-  components: {
-    StaticContent,
-  },
-  data() {
-    return {
-      expanded: false,
-    };
-  },
-});
+const expanded = ref(false);
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-console.log("Rendering ServerContent. This should only happen during build.");
+console.log(
+  "Rendering ServerContent. This should only happen during build or in SPA mode."
+);
 </script>
 
 <template>
