@@ -1,12 +1,12 @@
 {
-  "name": "@capri-js/svelte",
-  "version": "1.0.0",
+  "name": "@capri-js/vue",
+  "version": "4.0.0",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/capri-js/capri",
-    "directory": "packages/svelte"
+    "directory": "packages/vue"
   },
   "license": "MIT",
   "type": "module",
@@ -35,7 +35,6 @@
   "dependencies": {
     "capri": "^4.0.0"
   },
-  "peerDependencies": {
-    "svelte": "^3.48.0"
-  }
+  "devDependencies": {},
+  "peerDependencies": {}
 }

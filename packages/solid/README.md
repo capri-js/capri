@@ -6,7 +6,7 @@
 // vite.config.ts
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
-import capri from "@capri-js/solid/vite-plugin";
+import capri from "@capri-js/solid";
 
 export default defineConfig({
   plugins: [

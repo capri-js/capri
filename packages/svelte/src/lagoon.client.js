@@ -18,9 +18,7 @@ function create_fragment(ctx) {
       el = claim_element(nodes, "CAPRI-LAGOON", {});
     },
     p: noop,
-    d(detaching) {
-      console.log("detach", detaching);
-    },
+    d: noop,
   };
 }
 

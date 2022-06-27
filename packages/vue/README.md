@@ -1,15 +1,15 @@
-# Preact bindings for Capri 🍋
+# Vue bindings for Capri 🍋
 
 ## Usage
 
 ```ts
 // vite.config.ts
 import { defineConfig } from "vite";
-import preact from "@preact/preset-vite";
-import capri from "@capri-js/preact";
+import react from "@vitejs/plugin-vue";
+import capri from "@capri-js/vue";
 
 export default defineConfig({
-  plugins: [preact(), capri()],
+  plugins: [react(), capri()],
 });
 ```
 

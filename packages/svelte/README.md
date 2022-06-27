@@ -6,7 +6,7 @@
 // vite.config.ts
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
-import capri from "@capri-js/svelte/vite-plugin";
+import capri from "@capri-js/svelte";
 
 export default defineConfig({
   plugins: [svelte(), capri()],

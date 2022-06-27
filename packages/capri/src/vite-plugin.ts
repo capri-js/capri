@@ -219,16 +219,6 @@ export function capri({
             .readFileSync(file, "utf8")
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
         }
-        if (injectWrapper === "onLoad") {
-          const info = this.getModuleInfo(id);
-          if (isWrapperInfo(info)) return loadWrapper(info.meta);
-        }
-      },
-      transform(code, id) {
-        if (injectWrapper === "onTransform") {
-          const info = this.getModuleInfo(id);
-          if (isWrapperInfo(info)) return loadWrapper(info.meta);
-        }
       },
       async buildStart() {
         if (mode === "client") {
@@ -308,6 +298,22 @@ export function capri({
         }
       },
     },
+    injectWrapper === "onLoad"
+      ? {
+          name: "capri-load",
+          load(id) {
+            const info = this.getModuleInfo(id);
+            if (isWrapperInfo(info)) return loadWrapper(info.meta);
+          },
+        }
+      : {
+          name: "capri-transform",
+          enforce: "post",
+          transform(code, id) {
+            const info = this.getModuleInfo(id);
+            if (isWrapperInfo(info)) return loadWrapper(info.meta);
+          },
+        },
   ];
 }
 
