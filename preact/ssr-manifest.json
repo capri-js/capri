@@ -7,72 +7,72 @@
     "/capri/preact/assets/preact.module.7dc0d9b0.js"
   ],
   "vite/modulepreload-polyfill": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/wouter-preact/use-location.js": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/wouter-preact/matcher.js": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/wouter-preact/index.js": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/App.css": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "../../node_modules/preact/compat/dist/compat.module.js": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/useFetch.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/AsyncData.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/About.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/ServerContent.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/Home.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/Preview.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/App.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
   "src/main.tsx": [
-    "/capri/preact/assets/main.0bd3cfeb.js",
+    "/capri/preact/assets/main.8c5f60c7.js",
     "/capri/preact/assets/main.4b262d25.css",
     "/capri/preact/assets/capri.ce1c56b3.svg"
   ],
