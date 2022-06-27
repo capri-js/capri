@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && vite build --ssr",
-    "build:github": "BASE_URL=/capri/react/ npm run build && cp -r dist ../../.github/pages/react",
+    "build:github": "BASE_URL=/capri/vue/ npm run build && cp -r dist ../../.github/pages/vue",
     "preview": "vite preview"
   },
   "dependencies": {
