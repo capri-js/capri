@@ -1,3 +1,18 @@
+## @capri-js/solid [4.0.1](https://github.com/capri-js/capri/compare/@capri-js/solid@4.0.0...@capri-js/solid@4.0.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* update README ([7c33d17](https://github.com/capri-js/capri/commit/7c33d17a9549bba23c646c5f5886ecc7bd08ff0e))
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 4.1.0
+
 ## @capri-js/solid [4.0.1-next.1](https://github.com/capri-js/capri/compare/@capri-js/solid@4.0.0...@capri-js/solid@4.0.1-next.1) (2022-06-27)
 
 
