@@ -5,8 +5,8 @@ type Props = {
 };
 
 export function ServerContent({ children }: Props) {
-  if (!children) {
-    throw new Error("TEST: THIS CODE MUST NOT SHOW UP IN THE CLIENT BUNDLE");
-  }
+  console.log(
+    "Rendering ServerContent. This should only happen during build or in SPA mode."
+  );
   return <div>{children}</div>;
 }
