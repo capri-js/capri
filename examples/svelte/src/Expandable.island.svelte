@@ -4,7 +4,7 @@
   export let expanded = false;
 </script>
 
-<div data-expanded={expanded}>
+<div class="box" data-expanded={expanded}>
   <StaticContent />
   <button on:click={() => (expanded = !expanded)}>
     <slot name="title" />
