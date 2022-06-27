@@ -1,0 +1,25 @@
+{
+  "name": "my-capri-vuew-site",
+  "private": true,
+  "description": "Capri Vue example",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && vite build --ssr",
+    "build:github": "BASE_URL=/capri/react/ npm run build && cp -r dist ../../.github/pages/react",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16"
+  },
+  "devDependencies": {
+    "@capri-js/vue": "*",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.12",
+    "vue-tsc": "^0.38.1"
+  }
+}

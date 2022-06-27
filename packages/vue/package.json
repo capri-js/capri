@@ -1,0 +1,40 @@
+{
+  "name": "@capri-js/vue",
+  "version": "4.0.0",
+  "description": "",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capri-js/capri",
+    "directory": "packages/vue"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./server": {
+      "default": "./lib/server.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "index.d.ts": [
+        "lib/index.d.ts"
+      ],
+      "server": [
+        "lib/server.d.ts"
+      ]
+    }
+  },
+  "dependencies": {
+    "capri": "^4.0.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
