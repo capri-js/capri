@@ -9,7 +9,7 @@ const count = ref(start);
 </script>
 
 <template>
-  <div>
+  <div data-testid="counter">
     <button @click="count--">-</button>
     <span>{{ count }}</span>
     <button @click="count++">+</button>

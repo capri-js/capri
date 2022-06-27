@@ -5,7 +5,7 @@ import { describe, expect, test } from "vitest";
 import { getExampleDOM } from "./dom.js";
 
 describe("examples", () => {
-  test.each([["react"], ["preact"], ["solid"], ["svelte"]])(
+  test.each([["vue"], ["react"], ["preact"], ["solid"], ["svelte"]])(
     "%s",
     async (example) => {
       const root = path.resolve(__dirname, "../examples", example);
