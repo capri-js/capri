@@ -1,3 +1,10 @@
+## @capri-js/solid [4.0.2](https://github.com/capri-js/capri/compare/@capri-js/solid@4.0.1...@capri-js/solid@4.0.2) (2022-06-28)
+
+
+### Bug Fixes
+
+* add "lib" to files ([d06b8d9](https://github.com/capri-js/capri/commit/d06b8d96424227be5177ca4ee92dfb5cd8b6cf99)), closes [#2](https://github.com/capri-js/capri/issues/2)
+
 ## @capri-js/solid [4.0.1](https://github.com/capri-js/capri/compare/@capri-js/solid@4.0.0...@capri-js/solid@4.0.1) (2022-06-27)
 
 
