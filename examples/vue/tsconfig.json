@@ -2,6 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "noEmit": true,
+    "allowJs": true,
     "module": "ES2020",
     "moduleResolution": "Node",
     "target": "ES2017",
