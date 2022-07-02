@@ -11,5 +11,6 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "jsx": "preserve"
-  }
+  },
+  "include": ["vite.config.ts", "src"]
 }
