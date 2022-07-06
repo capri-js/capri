@@ -5,7 +5,6 @@ import urlJoin from "url-join";
 import { getLinks } from "./html.js";
 import { polyfillWebAPIs } from "./polyfills.js";
 import { renderHtml } from "./render.js";
-import { RenderFunction } from "./types.js";
 
 export type PrerenderConfig =
   | false
