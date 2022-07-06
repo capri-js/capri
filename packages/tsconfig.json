@@ -6,6 +6,7 @@
     { "path": "solid" },
     { "path": "svelte" },
     { "path": "vue" },
+    { "path": "vercel" },
     { "path": "react-render-to-string" }
   ],
   "exclude": ["*"]
