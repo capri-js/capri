@@ -1,25 +1,26 @@
 import { ReactNode } from "react";
-import { renderToPipeableStream } from "react-dom/server";
+import { renderToReadableStream } from "react-dom/server";
 
-import { StreamReader } from "./StreamReader.js";
-
-export default function render(element: ReactNode) {
-  return new Promise<string>((resolve, reject) => {
-    const stream = renderToPipeableStream(element, {
-      onError(err) {
-        reject(err);
-      },
-      onAllReady() {
-        stream.pipe(
-          new StreamReader((html) => {
-            resolve(stripComments(html));
-          })
-        );
-      },
-    });
-  });
+export default async function renderToString(children: ReactNode) {
+  const stream = await renderToReadableStream(children);
+  await stream.allReady;
+  return readableStreamToString(stream);
 }
 
-function stripComments(html: string) {
-  return html.replace(/<!--[\s\S]*?(?:-->)/g, "");
+async function readableStreamToString(readableStream: ReadableStream) {
+  const reader = readableStream.getReader();
+  const decoder = new TextDecoder();
+  try {
+    let result = "";
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        return result;
+      }
+      result += decoder.decode(value, { stream: true });
+    }
+  } finally {
+    reader.releaseLock();
+  }
 }
