@@ -1,3 +1,13 @@
+## @capri-js/vue [1.0.1-next.1](https://github.com/capri-js/capri/compare/@capri-js/vue@1.0.0...@capri-js/vue@1.0.1-next.1) (2022-07-06)
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 4.2.0-next.1
+
 # @capri-js/vue 1.0.0 (2022-06-27)
 
 
