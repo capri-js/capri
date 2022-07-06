@@ -47,16 +47,19 @@ export default function vercel(config: VercelConfig): BuildTarget {
       );
 
       fsutils.write(
-        path.resolve(rootDir, "config", "routes.json"),
-        JSON.stringify([
-          {
-            handle: "filesystem",
-          },
-          {
-            src: "/.*",
-            dest: ".vercel/output/functions/render",
-          },
-        ])
+        path.resolve(rootDir, "config.json"),
+        JSON.stringify({
+          version: 3,
+          routes: [
+            {
+              handle: "filesystem",
+            },
+            {
+              src: "/.*",
+              dest: ".vercel/output/functions/render",
+            },
+          ],
+        })
       );
     },
   };
