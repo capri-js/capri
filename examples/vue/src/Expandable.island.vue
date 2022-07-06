@@ -5,7 +5,7 @@ const expanded = ref(false);
 </script>
 
 <template>
-  <div :data-expanded="expanded">
+  <div class="box" :data-expanded="expanded">
     <StaticContent></StaticContent>
     <button @click="expanded = !expanded">
       <slot name="title">Title</slot>

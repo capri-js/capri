@@ -1,9 +1,9 @@
-# capri [4.1.0-next.2](https://github.com/capri-js/capri/compare/capri@4.1.0-next.1...capri@4.1.0-next.2) (2022-07-06)
+# capri [4.1.0](https://github.com/capri-js/capri/compare/capri@4.0.0...capri@4.1.0) (2022-06-27)
 
 
 ### Features
 
-* add hook for build targets ([be3d434](https://github.com/capri-js/capri/commit/be3d434bd8d1ac86a160304d259ee2bf288c40b1))
+* add Vue support ([5c78c5b](https://github.com/capri-js/capri/commit/5c78c5b6f0a9210d419b56cb6956d8dbc7e267d8))
 
 # capri [4.1.0-next.1](https://github.com/capri-js/capri/compare/capri@4.0.0...capri@4.1.0-next.1) (2022-06-27)
 
