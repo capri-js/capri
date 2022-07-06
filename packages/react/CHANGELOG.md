@@ -1,3 +1,14 @@
+## @capri-js/react [4.0.1-next.2](https://github.com/capri-js/capri/compare/@capri-js/react@4.0.1-next.1...@capri-js/react@4.0.1-next.2) (2022-07-06)
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 4.1.0-next.2
+* **react-render-to-string:** upgraded to 1.1.0-next.1
+
 ## @capri-js/react [4.0.1-next.1](https://github.com/capri-js/capri/compare/@capri-js/react@4.0.0...@capri-js/react@4.0.1-next.1) (2022-06-27)
 
 
