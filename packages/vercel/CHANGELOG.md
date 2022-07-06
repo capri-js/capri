@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.3](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.2...@capri-js/vercel@1.0.0-next.3) (2022-07-06)
+
+
+### Bug Fixes
+
+* use build output api v3 ([27b0583](https://github.com/capri-js/capri/commit/27b0583536cd9dba3ec56b3733749e48dfb1b806))
+
 # @capri-js/vercel [1.0.0-next.2](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.1...@capri-js/vercel@1.0.0-next.2) (2022-07-06)
 
 
