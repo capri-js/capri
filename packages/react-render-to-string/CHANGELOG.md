@@ -1,3 +1,10 @@
+# react-render-to-string [1.1.0-next.1](https://github.com/capri-js/capri/compare/react-render-to-string@1.0.3...react-render-to-string@1.1.0-next.1) (2022-07-06)
+
+
+### Features
+
+* add support for non-Node.js environments ([f9e99ed](https://github.com/capri-js/capri/commit/f9e99edf2da781ce596485af01c4fb7ba69c0cd3))
+
 ## react-render-to-string [1.0.3](https://github.com/capri-js/capri/compare/react-render-to-string@1.0.2...react-render-to-string@1.0.3) (2022-06-10)
 
 
