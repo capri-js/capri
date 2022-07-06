@@ -1,3 +1,13 @@
+## @capri-js/react [4.0.2-next.1](https://github.com/capri-js/capri/compare/@capri-js/react@4.0.1...@capri-js/react@4.0.2-next.1) (2022-07-06)
+
+
+
+
+
+### Dependencies
+
+* **capri:** upgraded to 4.2.0-next.1
+
 ## @capri-js/react [4.0.1](https://github.com/capri-js/capri/compare/@capri-js/react@4.0.0...@capri-js/react@4.0.1) (2022-06-27)
 
 
