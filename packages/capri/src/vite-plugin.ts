@@ -30,6 +30,18 @@ export interface Adapter {
   lagoon: Wrapper;
   injectWrapper?: "onLoad" | "onTransform";
 }
+
+export interface BuildArgs {
+  outDir: string;
+  template: string;
+  ssrBundle: string;
+  manifest: Record<string, string[]>;
+  prerendered: string[];
+}
+export interface BuildTarget {
+  config?: Plugin["config"];
+  build: (args: BuildArgs) => Promise<void>;
+}
 export interface CapriPluginOptions {
   spa?: string | false;
   createIndexFiles?: boolean;
@@ -38,6 +50,7 @@ export interface CapriPluginOptions {
   followLinks?: FollowLinksConfig;
   islandGlobPattern?: string;
   lagoonGlobPattern?: string;
+  target?: BuildTarget;
   adapter: Adapter;
 }
 
@@ -51,6 +64,7 @@ export function capri({
   lagoonGlobPattern = "/src/**/*.lagoon.*",
   ssrFormat = "esm",
   adapter,
+  target,
   spa,
 }: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
@@ -269,31 +283,37 @@ export function capri({
       async writeBundle(options, bundle) {
         if (mode === "server") {
           const chunk = findRenderChunk(bundle, ssr);
+          const outDir = options.dir!;
 
           // Read the index.html so we can use it as template for all prerendered pages.
-          const indexHtml = fs.readFileSync(
+          const template = fs.readFileSync(
             path.join(options.dir!, "index.html"),
             "utf8"
           );
 
-          // Import the render function from the SSR bundle.
           const ssrBundle = path.resolve(options.dir!, chunk.fileName);
-          const { render } = await import(ssrBundle);
-
-          if (!render || typeof render !== "function") {
-            throw new Error(`${ssr} must export a render function.`);
-          }
+          const manifest = readManifest(outDir);
 
           // Prerender pages...
-          await renderStaticPages(render, {
-            template: indexHtml,
-            outDir: options.dir!,
+          const prerendered = await renderStaticPages({
+            outDir,
+            template,
+            ssrBundle,
+            manifest,
+            prerender,
             createIndexFiles,
             base,
-            prerender,
             followLinks,
           });
-
+          if (target) {
+            await target.build({
+              outDir,
+              template,
+              ssrBundle,
+              manifest,
+              prerendered,
+            });
+          }
           fs.unlinkSync(ssrBundle);
         }
       },
@@ -314,6 +334,11 @@ export function capri({
             if (isWrapperInfo(info)) return loadWrapper(info.meta);
           },
         },
+    {
+      name: "capri-target",
+      // Allow build targets to modify the config...
+      config: target?.config,
+    },
   ];
 }
 
@@ -395,4 +420,22 @@ function isWrapperInfo(obj: unknown): obj is WrapperInfo {
     );
   }
   return false;
+}
+
+function readManifest(dir: string) {
+  try {
+    const f = path.join(dir, "ssr-manifest.json");
+    if (fs.existsSync(f)) {
+      const json = fs.readFileSync(f, "utf8");
+      const entries = Object.entries(JSON.parse(json))
+        .filter(([id]) => !id.startsWith("\0"))
+        .map(([id, chunks]) => [path.resolve("/", id), chunks]);
+
+      return Object.fromEntries(entries) as Record<string, string[]>;
+    }
+  } catch (err) {
+    console.error("Failed to load ssr-manifest.json");
+    console.error(err);
+  }
+  return {};
 }
