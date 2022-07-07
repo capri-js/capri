@@ -10,7 +10,6 @@ import type {
 } from "rollup";
 import type { ChunkMetadata, Plugin, UserConfig } from "vite";
 
-import { findRenderChunk } from "./bundle.js";
 import { getEntrySrc } from "./html.js";
 import {
   FollowLinksConfig,
@@ -33,9 +32,7 @@ export interface Adapter {
 
 export interface BuildArgs {
   outDir: string;
-  template: string;
   ssrBundle: string;
-  manifest: Record<string, string[]>;
   prerendered: string[];
 }
 export interface BuildTarget {
@@ -68,9 +65,24 @@ export function capri({
   spa,
 }: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
-  let ssr: string;
+
+  const ssr = resolveRelative("./virtual/ssr.js");
+
+  let serverEntry: string;
+
+  /** The project's root directory as defined in Vite config or the cwd */
   let root: string;
+
+  /** Absolute path of the build output dir */
+  let outDir: string;
+
+  /** The BASE_URL */
   let base: string;
+
+  /** The content of index.html as genereated by the client build */
+  let template: string;
+
+  let manifest: Record<string, string[]>;
 
   const { injectWrapper = "onLoad" } = adapter;
 
@@ -115,7 +127,16 @@ export function capri({
 
   return [
     {
-      name: "vite-plugin-capri",
+      // Allow build targets to modify the config
+      name: "vite-plugin-capri-target",
+
+      // Needs to run before the main plugin
+      enforce: "pre",
+
+      config: target?.config,
+    },
+    {
+      name: "vite-plugin-capri-main",
 
       // we need to modify the bundle before vite:build-html runs
       enforce: "pre",
@@ -131,13 +152,24 @@ export function capri({
         }
 
         root = path.resolve(config.root ?? "");
+
+        outDir = path.resolve(root, config.build?.outDir ?? "dist");
+
+        serverEntry = getServerEntryScript(config);
+
         // Allow base to be set via env:
         base = config.base ?? process.env.BASE_URL ?? "/";
 
         if (spa) spa = urlToFileName(spa, createIndexFiles, base);
 
         if (mode === "server") {
-          ssr = getServerEntryScript(config);
+          // Read the index.html so we can use it as template for all prerendered pages.
+          template = fs.readFileSync(path.join(outDir, "index.html"), "utf8");
+
+          //ssrBundle = path.resolve(outDir, chunk.fileName);
+
+          manifest = readManifest(outDir);
+
           return {
             base,
             define:
@@ -208,6 +240,9 @@ export function capri({
         if (source === "virtual:capri-hydrate") {
           return this.resolve(adapter.hydrate);
         }
+        if (source === "virtual:capri-render") {
+          return serverEntry;
+        }
         if (!source.includes("?unwrapped")) {
           const resolved = await this.resolve(source, importer, {
             ...options,
@@ -227,11 +262,16 @@ export function capri({
           return fs.readFileSync(index, "utf8");
         }
         if (id === "\0virtual:capri-hydration") {
-          const file = new URL("./virtual/hydration.js", import.meta.url)
-            .pathname;
+          const file = resolveRelative("./virtual/hydration.js");
           return fs
             .readFileSync(file, "utf8")
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
+        }
+        if (id === ssr) {
+          return fs
+            .readFileSync(ssr, "utf8")
+            .replace(/"%TEMPLATE%"/, JSON.stringify(template))
+            .replace("{/*MANIFEST*/}", JSON.stringify(manifest));
         }
       },
       async buildStart() {
@@ -282,35 +322,21 @@ export function capri({
       },
       async writeBundle(options, bundle) {
         if (mode === "server") {
-          const chunk = findRenderChunk(bundle, ssr);
-          const outDir = options.dir!;
-
-          // Read the index.html so we can use it as template for all prerendered pages.
-          const template = fs.readFileSync(
-            path.join(options.dir!, "index.html"),
-            "utf8"
-          );
-
-          const ssrBundle = path.resolve(options.dir!, chunk.fileName);
-          const manifest = readManifest(outDir);
+          const ssrBundle = path.resolve(outDir, "ssr.js");
 
           // Prerender pages...
           const prerendered = await renderStaticPages({
-            outDir,
-            template,
             ssrBundle,
-            manifest,
-            prerender,
             createIndexFiles,
+            outDir,
             base,
+            prerender,
             followLinks,
           });
           if (target) {
             await target.build({
               outDir,
-              template,
               ssrBundle,
-              manifest,
               prerendered,
             });
           }
@@ -334,12 +360,11 @@ export function capri({
             if (isWrapperInfo(info)) return loadWrapper(info.meta);
           },
         },
-    {
-      name: "capri-target",
-      // Allow build targets to modify the config...
-      config: target?.config,
-    },
   ];
+}
+
+function resolveRelative(src: string) {
+  return new URL(src, import.meta.url).pathname;
 }
 
 function getEntryScript(config: UserConfig) {

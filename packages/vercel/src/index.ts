@@ -27,18 +27,16 @@ export default function vercel(config: VercelConfig): BuildTarget {
         },
       };
     },
-    async build({ manifest, ssrBundle, template, outDir }) {
+    async build({ ssrBundle, outDir }) {
       const rootDir = path.resolve(outDir, "..");
       const dirName = path.dirname(new URL(import.meta.url).pathname);
       fsutils.copy(
         ssrBundle,
-        path.resolve(rootDir, "functions", "render.func", "render.js")
+        path.resolve(rootDir, "functions", "render.func", "ssr.js")
       );
       fsutils.copy(path.resolve(dirName, "..", "files"), rootDir, {
         replace: {
-          "capri:render": "./render.js",
-          '"%TEMPLATE%"': JSON.stringify(template),
-          "{/*MANIFEST*/}": JSON.stringify(manifest),
+          "capri:ssr": "./ssr.js",
         },
       });
       fsutils.write(

@@ -1,16 +1,10 @@
-import { renderHtml } from "capri";
-import render from "capri:render";
-
-// prettier-ignore
-const manifest = {/*MANIFEST*/};
-
-const template = "%TEMPLATE%";
+import render from "capri:ssr";
 
 /**
  * @param {Request} request
  */
 export default async (request, event) => {
   const url = new URL(request.url).pathname;
-  const html = await renderHtml(render, url, template, manifest);
+  const html = await render(url);
   return new Response(html);
 };

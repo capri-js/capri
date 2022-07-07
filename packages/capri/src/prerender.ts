@@ -4,7 +4,6 @@ import urlJoin from "url-join";
 
 import { getLinks } from "./html.js";
 import { polyfillWebAPIs } from "./polyfills.js";
-import { renderHtml } from "./render.js";
 
 export type PrerenderConfig =
   | false
@@ -15,8 +14,6 @@ export type PrerenderConfig =
 export type FollowLinksConfig = boolean | ((pathname: string) => boolean);
 
 type StaticRenderConfig = {
-  template: string;
-  manifest: Record<string, string[]>;
   ssrBundle: string;
   createIndexFiles: boolean;
   outDir: string;
@@ -33,8 +30,6 @@ async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
 }
 
 export async function renderStaticPages({
-  template,
-  manifest,
   ssrBundle,
   createIndexFiles,
   outDir,
@@ -45,18 +40,14 @@ export async function renderStaticPages({
   await polyfillWebAPIs();
 
   // Import the render function from the SSR bundle.
-  const { render } = await import(ssrBundle);
-
-  if (!render || typeof render !== "function") {
-    throw new Error("Your server entry file must export a render function.");
-  }
+  const { ssr } = await import(ssrBundle);
 
   const seen = new Set(
     (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
   );
   const urls = [...seen];
   for (const url of urls) {
-    const html = await renderHtml(render, url, template, manifest);
+    const html = await ssr(url);
 
     const fileName = urlToFileName(url, createIndexFiles, base);
     const dest = path.join(outDir, fileName);
