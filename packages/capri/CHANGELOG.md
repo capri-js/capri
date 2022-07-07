@@ -1,3 +1,10 @@
+# capri [4.2.0-next.2](https://github.com/capri-js/capri/compare/capri@4.2.0-next.1...capri@4.2.0-next.2) (2022-07-07)
+
+
+### Bug Fixes
+
+* include template in ssr bundle ([e4bfc21](https://github.com/capri-js/capri/commit/e4bfc2180c60d96dffcc282102d86ae7a5859e20))
+
 # capri [4.2.0-next.1](https://github.com/capri-js/capri/compare/capri@4.1.0...capri@4.2.0-next.1) (2022-07-06)
 
 
