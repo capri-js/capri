@@ -54,7 +54,7 @@ export default function vercel(config: VercelConfig): BuildTarget {
             },
             {
               src: "/.*",
-              dest: ".vercel/output/functions/render",
+              dest: "/render",
             },
           ],
         })
