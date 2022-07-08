@@ -2,19 +2,7 @@ import { fsutils } from "capri";
 import { BuildTarget } from "capri/vite-plugin";
 import * as path from "path";
 
-type PrerenderFunctionConfig = {
-  expiration: number | false;
-  group?: number;
-  bypassToken?: string;
-  fallback?: string;
-  allowQuery?: string[];
-};
-
-interface VercelConfig {
-  isg: PrerenderFunctionConfig;
-}
-
-export default function vercel(config: VercelConfig): BuildTarget {
+export default function vercel(config = {}): BuildTarget {
   return {
     config() {
       return {
@@ -28,22 +16,26 @@ export default function vercel(config: VercelConfig): BuildTarget {
       };
     },
     async build({ ssrBundle, outDir }) {
-      const rootDir = path.resolve(outDir, "..");
       const dirName = path.dirname(new URL(import.meta.url).pathname);
-      fsutils.copy(
-        ssrBundle,
-        path.resolve(rootDir, "functions", "render.func", "ssr.js")
-      );
-      fsutils.copy(path.resolve(dirName, "..", "files"), rootDir, {
-        replace: {
-          "capri:ssr": "./ssr.js",
-        },
-      });
+      const rootDir = path.resolve(outDir, "..");
+      const funcDir = path.resolve(rootDir, "functions", "render.func");
+      fsutils.copy(ssrBundle, path.resolve(funcDir, "ssr.js"));
       fsutils.write(
-        path.resolve(rootDir, "functions", "render.prerender-config.json"),
-        JSON.stringify(config.isg)
+        path.resolve(funcDir, ".vc-config.json"),
+        JSON.stringify({
+          runtime: "edge",
+          entrypoint: "index.js",
+        })
       );
-
+      fsutils.copy(
+        path.resolve(dirName, "render.js"),
+        path.resolve(funcDir, "index.js"),
+        {
+          replace: {
+            "virtual:capri-ssr": "./ssr.js",
+          },
+        }
+      );
       fsutils.write(
         path.resolve(rootDir, "config.json"),
         JSON.stringify({
@@ -54,7 +46,7 @@ export default function vercel(config: VercelConfig): BuildTarget {
             },
             {
               src: "/.*",
-              dest: "/render",
+              middlewarePath: "render",
             },
           ],
         })

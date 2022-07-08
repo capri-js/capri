@@ -11,7 +11,8 @@
   "type": "module",
   "main": "./lib/index.js",
   "files": [
-    "lib"
+    "lib",
+    "ssr.d.ts"
   ],
   "exports": {
     ".": {
@@ -28,6 +29,9 @@
       ],
       "vite-plugin": [
         "lib/vite-plugin.d.ts"
+      ],
+      "ssr": [
+        "ssr.d.ts"
       ]
     }
   },

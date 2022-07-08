@@ -2,8 +2,8 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "lib",
-    "rootDir": "src"
+    "rootDir": "src",
+    "types": ["capri/ssr"]
   },
-  "include": ["src"],
   "references": [{ "path": "../capri" }]
 }
