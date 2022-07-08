@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.9](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.8...@capri-js/vercel@1.0.0-next.9) (2022-07-08)
+
+
+### Bug Fixes
+
+* use .mjs in node environments ([5793397](https://github.com/capri-js/capri/commit/57933974b7695a498f4746b35a05d240f0ae2270))
+
 # @capri-js/vercel [1.0.0-next.8](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.7...@capri-js/vercel@1.0.0-next.8) (2022-07-08)
 
 
