@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.10](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.9...@capri-js/vercel@1.0.0-next.10) (2022-07-08)
+
+
+### Bug Fixes
+
+* use node runtime ([04b6c66](https://github.com/capri-js/capri/commit/04b6c6687928d9dfa79df9473eb60bf4403c0f5c))
+
 # @capri-js/vercel [1.0.0-next.9](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.8...@capri-js/vercel@1.0.0-next.9) (2022-07-08)
 
 
