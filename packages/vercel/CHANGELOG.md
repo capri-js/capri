@@ -1,3 +1,11 @@
+# @capri-js/vercel [1.0.0-next.7](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.6...@capri-js/vercel@1.0.0-next.7) (2022-07-08)
+
+
+### Features
+
+* add isg config ([90f9d8b](https://github.com/capri-js/capri/commit/90f9d8b0c19a051bdd651e45e68d43b81c5c8f04))
+* support both serverless and edge ([3bb9133](https://github.com/capri-js/capri/commit/3bb9133b98138aa2bc8a6c952004c1974e3e7bf9))
+
 # @capri-js/vercel [1.0.0-next.6](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.5...@capri-js/vercel@1.0.0-next.6) (2022-07-08)
 
 
