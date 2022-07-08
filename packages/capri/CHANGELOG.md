@@ -1,3 +1,10 @@
+# capri [4.2.0-next.3](https://github.com/capri-js/capri/compare/capri@4.2.0-next.2...capri@4.2.0-next.3) (2022-07-08)
+
+
+### Features
+
+* server entry can either export render or default ([e9f3c74](https://github.com/capri-js/capri/commit/e9f3c746eab99c417540b47bd0ca9b9f43a14c0a))
+
 # capri [4.2.0-next.2](https://github.com/capri-js/capri/compare/capri@4.2.0-next.1...capri@4.2.0-next.2) (2022-07-07)
 
 
