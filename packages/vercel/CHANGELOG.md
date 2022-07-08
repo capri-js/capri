@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.8](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.7...@capri-js/vercel@1.0.0-next.8) (2022-07-08)
+
+
+### Bug Fixes
+
+* use handler instead of entrypoint for isg ([61f46d4](https://github.com/capri-js/capri/commit/61f46d402fdc4df41329e00caf27371e9cb36f10))
+
 # @capri-js/vercel [1.0.0-next.7](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.6...@capri-js/vercel@1.0.0-next.7) (2022-07-08)
 
 
