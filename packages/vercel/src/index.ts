@@ -2,7 +2,10 @@ import { fsutils } from "capri";
 import { BuildTarget } from "capri/vite-plugin";
 import * as path from "path";
 
-export default function vercel(config = {}): BuildTarget {
+interface VercelConfig {
+  edge?: boolean;
+}
+export default function vercel({ edge = false }: VercelConfig): BuildTarget {
   return {
     config() {
       return {
@@ -10,8 +13,8 @@ export default function vercel(config = {}): BuildTarget {
           outDir: path.join(".vercel", "output", "static"),
         },
         ssr: {
-          target: "webworker",
-          noExternal: true,
+          target: edge ? "webworker" : "node",
+          noExternal: edge || [],
         },
       };
     },
@@ -20,10 +23,15 @@ export default function vercel(config = {}): BuildTarget {
       const rootDir = path.resolve(outDir, "..");
       const funcDir = path.resolve(rootDir, "functions", "render.func");
       fsutils.copy(ssrBundle, path.resolve(funcDir, "ssr.js"));
+
+      const runtime = edge
+        ? { runtime: "edge" }
+        : { runtime: "nodejs16.x", launcherType: "Nodejs" };
+
       fsutils.write(
         path.resolve(funcDir, ".vc-config.json"),
         JSON.stringify({
-          runtime: "edge",
+          ...runtime,
           entrypoint: "index.js",
         })
       );
@@ -46,7 +54,7 @@ export default function vercel(config = {}): BuildTarget {
             },
             {
               src: "/.*",
-              middlewarePath: "render",
+              [edge ? "middlewarePath" : "dest"]: "render",
             },
           ],
         })

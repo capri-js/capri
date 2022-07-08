@@ -47,7 +47,6 @@ export async function renderStaticPages({
   const urls = [...seen];
   for (const url of urls) {
     const html = await ssr(url);
-
     const fileName = urlToFileName(url, createIndexFiles, base);
     const dest = path.join(outDir, fileName);
     fs.mkdirSync(path.dirname(dest), { recursive: true });
