@@ -1,3 +1,10 @@
+# capri [4.2.0-next.5](https://github.com/capri-js/capri/compare/capri@4.2.0-next.4...capri@4.2.0-next.5) (2022-07-08)
+
+
+### Features
+
+* support both serverless and edge ([3bb9133](https://github.com/capri-js/capri/commit/3bb9133b98138aa2bc8a6c952004c1974e3e7bf9))
+
 # capri [4.2.0-next.4](https://github.com/capri-js/capri/compare/capri@4.2.0-next.3...capri@4.2.0-next.4) (2022-07-08)
 
 
