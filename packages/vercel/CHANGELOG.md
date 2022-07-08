@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.6](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.5...@capri-js/vercel@1.0.0-next.6) (2022-07-08)
+
+
+### Bug Fixes
+
+* use edge functions in vercel ssr ([f1dd794](https://github.com/capri-js/capri/commit/f1dd794cbe4a0750c2d34534cf3b62c66eee6a1a))
+
 # @capri-js/vercel [1.0.0-next.5](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.4...@capri-js/vercel@1.0.0-next.5) (2022-07-08)
 
 
