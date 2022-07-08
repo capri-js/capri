@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.5](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.4...@capri-js/vercel@1.0.0-next.5) (2022-07-08)
+
+
+### Bug Fixes
+
+* route to /render ([abc6481](https://github.com/capri-js/capri/commit/abc6481e4940a8163ef5a50e6989e8a9fb439b4d))
+
 # @capri-js/vercel [1.0.0-next.4](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.3...@capri-js/vercel@1.0.0-next.4) (2022-07-07)
 
 
