@@ -52,7 +52,7 @@ export default function vercel({
         path.resolve(funcDir, ".vc-config.json"),
         JSON.stringify({
           ...runtime,
-          entrypoint: "index.js",
+          [isg ? "handler" : "entrypoint"]: "index.js",
         })
       );
       fsutils.copy(
