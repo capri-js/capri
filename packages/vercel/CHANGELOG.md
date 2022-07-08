@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.4](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.3...@capri-js/vercel@1.0.0-next.4) (2022-07-07)
+
+
+### Bug Fixes
+
+* include template in ssr bundle ([e4bfc21](https://github.com/capri-js/capri/commit/e4bfc2180c60d96dffcc282102d86ae7a5859e20))
+
 # @capri-js/vercel [1.0.0-next.3](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.2...@capri-js/vercel@1.0.0-next.3) (2022-07-06)
 
 
