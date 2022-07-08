@@ -30,43 +30,42 @@ export default function vercel({
       const rootDir = path.resolve(outDir, "..");
       const funcDir = path.resolve(rootDir, "functions", "render.func");
 
-      if (isg) {
-        if (edge) {
-          throw new Error(
-            "Incremental Static Generation is not supported on the edge."
-          );
-        }
+      // Enable ESM support
+      if (!edge) {
         fsutils.write(
-          path.resolve(funcDir, "..", "render.prerender-config.json"),
-          JSON.stringify(isg)
+          path.resolve(funcDir, "package.json"),
+          JSON.stringify({ type: "module" })
         );
       }
 
-      fsutils.copy(ssrBundle, path.resolve(funcDir, "ssr.js"));
-
-      const runtime = edge
-        ? { runtime: "edge" }
-        : { runtime: "nodejs16.x", launcherType: "Nodejs" };
-
-      // Use .mjs in Node environments
-      const handler = edge ? "index.js" : "index.mjs";
-
-      fsutils.write(
-        path.resolve(funcDir, ".vc-config.json"),
-        JSON.stringify({
-          ...runtime,
-          [isg ? "handler" : "entrypoint"]: handler,
-        })
-      );
+      // Copy the handler
       fsutils.copy(
-        path.resolve(dirName, "render.js"),
-        path.resolve(funcDir, handler),
+        path.resolve(dirName, edge ? "edge.js" : "serverless.js"),
+        path.resolve(funcDir, "index.js"),
         {
           replace: {
             "virtual:capri-ssr": "./ssr.js",
           },
         }
       );
+
+      // Copy the ssrBundle
+      fsutils.copy(ssrBundle, path.resolve(funcDir, "ssr.js"));
+
+      // Create .vc-config.json
+      const runtime = edge
+        ? { runtime: "edge" }
+        : { runtime: "nodejs16.x", launcherType: "Nodejs" };
+
+      fsutils.write(
+        path.resolve(funcDir, ".vc-config.json"),
+        JSON.stringify({
+          ...runtime,
+          [edge ? "entrypoint" : "handler"]: "index.js",
+        })
+      );
+
+      // Create config.json
       fsutils.write(
         path.resolve(rootDir, "config.json"),
         JSON.stringify({
@@ -82,6 +81,19 @@ export default function vercel({
           ],
         })
       );
+
+      // Create render.prerender-config.json
+      if (isg) {
+        if (edge) {
+          throw new Error(
+            "Incremental Static Generation is not supported on the edge."
+          );
+        }
+        fsutils.write(
+          path.resolve(funcDir, "..", "render.prerender-config.json"),
+          JSON.stringify(isg)
+        );
+      }
     },
   };
 }
