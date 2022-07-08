@@ -39,8 +39,7 @@ export async function renderStaticPages({
 }: StaticRenderConfig) {
   await polyfillWebAPIs();
 
-  // Import the render function from the SSR bundle.
-  const { ssr } = await import(ssrBundle);
+  const { default: ssr } = await import(ssrBundle);
 
   const seen = new Set(
     (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))

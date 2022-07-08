@@ -1,10 +1,10 @@
-import render from "capri:ssr";
+import { ssr } from "capri:ssr";
 
 /**
  * @param {Request} request
  */
 export default async (request, event) => {
   const url = new URL(request.url).pathname;
-  const html = await render(url);
+  const html = await ssr(url);
   return new Response(html);
 };
