@@ -38,7 +38,10 @@ export default function vercel({
       // Create the handler
       await bundle(
         path.resolve(dirName, edge ? "edge.js" : "serverless.js"),
-        path.resolve(funcDir, "index.js")
+        path.resolve(funcDir, "index.js"),
+        {
+          platform: edge ? "browser" : "node",
+        }
       );
 
       // Create .vc-config.json

@@ -1,31 +1,32 @@
-import { builtinModules } from "module";
-import { OutputOptions, Plugin, rollup } from "rollup";
+import esbuild, { BuildOptions, Plugin } from "esbuild";
 
 export function createBundler(ssrBundle: string) {
+  const resolve: Plugin = {
+    name: "capri-resolve",
+    setup(build) {
+      build.onResolve({ filter: /^virtual:capri-ssr$/ }, () => {
+        return { path: ssrBundle };
+      });
+    },
+  };
+
   return async function bundle(
     input: string,
     output: string,
-    options: OutputOptions = {}
+    options?: BuildOptions
   ) {
-    const plugins: Plugin[] = [
-      {
-        name: "capri-resolve",
-        resolveId(source) {
-          if (source === "virtual:capri-ssr") {
-            return ssrBundle;
-          }
-        },
-      },
-    ];
-    const b = await rollup({
-      external: builtinModules,
+    await esbuild.build({
+      target: "es2020",
+      platform: "browser",
+      plugins: [resolve],
+      entryPoints: [input],
+      outfile: output,
+      allowOverwrite: true,
+      legalComments: "none",
+      format: "esm",
+      bundle: true,
+      minify: true,
       ...options,
-      input,
-      plugins,
-    });
-    await b.write({
-      ...options,
-      file: output,
     });
   };
 }

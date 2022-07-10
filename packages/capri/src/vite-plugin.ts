@@ -1,3 +1,4 @@
+import type { BuildOptions } from "esbuild";
 import micromatch from "micromatch";
 import { builtinModules } from "module";
 import * as path from "path";
@@ -43,7 +44,11 @@ export interface BuildArgs {
   ssrBundle: string;
   prerendered: string[];
   fsutils: typeof fsutils;
-  bundle: (input: string, output: string) => Promise<void>;
+  bundle: (
+    input: string,
+    output: string,
+    options?: BuildOptions
+  ) => Promise<void>;
 }
 
 interface ViteConfig extends UserConfig {
