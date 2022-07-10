@@ -1,6 +1,10 @@
 import fs from "fs";
 import path from "path";
 
+export function exists(file: string) {
+  return fs.existsSync(file);
+}
+
 export function mkdir(dir: string) {
   try {
     fs.mkdirSync(dir, { recursive: true });
@@ -22,7 +26,7 @@ export function copy(
     replace?: Record<string, string>;
   } = {}
 ) {
-  if (!fs.existsSync(source)) return [];
+  if (!exists(source)) return [];
 
   const files: string[] = [];
 
@@ -48,7 +52,7 @@ export function copy(
       mkdir(path.dirname(to));
 
       if (regex && opts.replace) {
-        const data = fs.readFileSync(from, "utf-8");
+        const data = read(from);
         fs.writeFileSync(
           to,
           data.replace(regex, (match, key) => opts.replace?.[key] ?? "")
@@ -68,6 +72,10 @@ export function copy(
   go(source, target);
 
   return files;
+}
+
+export function read(file: string) {
+  return fs.readFileSync(file, "utf8");
 }
 
 export function write(file: string, data: string) {

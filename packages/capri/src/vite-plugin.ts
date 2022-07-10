@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import micromatch from "micromatch";
 import { builtinModules } from "module";
 import * as path from "path";
@@ -8,9 +7,16 @@ import type {
   PluginContext,
   RollupOptions,
 } from "rollup";
-import type { ChunkMetadata, Plugin, UserConfig } from "vite";
+import type {
+  ChunkMetadata,
+  ConfigEnv,
+  Plugin,
+  SSROptions,
+  UserConfig,
+} from "vite";
 
 import { getEntrySrc } from "./html.js";
+import { fsutils } from "./index.js";
 import {
   FollowLinksConfig,
   PrerenderConfig,
@@ -35,8 +41,15 @@ export interface BuildArgs {
   ssrBundle: string;
   prerendered: string[];
 }
+
+interface ViteConfig extends UserConfig {
+  ssr?: SSROptions;
+}
 export interface BuildTarget {
-  config?: Plugin["config"];
+  config?: (
+    config: ViteConfig,
+    env: ConfigEnv
+  ) => ViteConfig | null | void | Promise<ViteConfig | null | void>;
   build: (args: BuildArgs) => Promise<void>;
 }
 export interface CapriPluginOptions {
@@ -119,7 +132,7 @@ export function capri({
       ? wrapped.slice(root.length)
       : wrapped;
 
-    const template = fs.readFileSync(wrapper, "utf8");
+    const template = fsutils.read(wrapper);
     return template
       .replace(/virtual:capri-component/g, unwrappedId)
       .replace(/%COMPONENT_ID%/g, componentId);
@@ -164,9 +177,9 @@ export function capri({
 
         if (mode === "server") {
           // Read the index.html so we can use it as template for all prerendered pages.
-          template = fs.readFileSync(path.join(outDir, "index.html"), "utf8");
-
-          //ssrBundle = path.resolve(outDir, chunk.fileName);
+          const indexHtml = path.join(outDir, "index.html");
+          template = fsutils.read(indexHtml);
+          fsutils.rm(indexHtml);
 
           manifest = readManifest(outDir);
 
@@ -259,17 +272,17 @@ export function capri({
       async load(id) {
         if (spa && id.endsWith(spa)) {
           const index = await resolveIndexHtml(this);
-          return fs.readFileSync(index, "utf8");
+          return fsutils.read(index);
         }
         if (id === "\0virtual:capri-hydration") {
           const file = resolveRelative("./virtual/hydration.js");
-          return fs
-            .readFileSync(file, "utf8")
+          return fsutils
+            .read(file)
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
         }
         if (id === ssr) {
-          return fs
-            .readFileSync(ssr, "utf8")
+          return fsutils
+            .read(ssr)
             .replace(/"%TEMPLATE%"/, JSON.stringify(template))
             .replace("{/*MANIFEST*/}", JSON.stringify(manifest));
         }
@@ -340,7 +353,7 @@ export function capri({
               prerendered,
             });
           }
-          fs.unlinkSync(ssrBundle);
+          fsutils.rm(ssrBundle);
         }
       },
     },
@@ -369,7 +382,7 @@ function resolveRelative(src: string) {
 
 function getEntryScript(config: UserConfig) {
   const indexHtml = path.resolve(config.root ?? "", "index.html");
-  const src = getEntrySrc(fs.readFileSync(indexHtml, "utf8"));
+  const src = getEntrySrc(fsutils.read(indexHtml));
   if (!src) throw new Error(`Can't find entry script in ${indexHtml}`);
   return path.join(path.resolve(config.root ?? ""), src);
 }
@@ -380,7 +393,7 @@ function getServerEntryScript(config: UserConfig) {
     /(\.client|\.server)?(\.[^.]+)$/,
     ".server$2"
   );
-  if (!fs.existsSync(f)) {
+  if (!fsutils.exists(f)) {
     throw new Error(
       `File not found: ${f}. Make sure to name your server entry file accordingly.`
     );
@@ -450,8 +463,9 @@ function isWrapperInfo(obj: unknown): obj is WrapperInfo {
 function readManifest(dir: string) {
   try {
     const f = path.join(dir, "ssr-manifest.json");
-    if (fs.existsSync(f)) {
-      const json = fs.readFileSync(f, "utf8");
+    if (fsutils.exists(f)) {
+      const json = fsutils.read(f);
+      fsutils.rm(f);
       const entries = Object.entries(JSON.parse(json))
         .filter(([id]) => !id.startsWith("\0"))
         .map(([id, chunks]) => [path.resolve("/", id), chunks]);
