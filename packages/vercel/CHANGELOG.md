@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.12](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.11...@capri-js/vercel@1.0.0-next.12) (2022-07-10)
+
+
+### Features
+
+* bundle worker with rollup ([dca6f14](https://github.com/capri-js/capri/commit/dca6f142cc509d7dcf0ba7242f81c9081bfe7954))
+
 # @capri-js/vercel [1.0.0-next.11](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.10...@capri-js/vercel@1.0.0-next.11) (2022-07-10)
 
 

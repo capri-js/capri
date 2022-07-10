@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.4](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.3...@capri-js/cloudflare@1.0.0-next.4) (2022-07-10)
+
+
+### Features
+
+* bundle worker with rollup ([dca6f14](https://github.com/capri-js/capri/commit/dca6f142cc509d7dcf0ba7242f81c9081bfe7954))
+
 # @capri-js/cloudflare [1.0.0-next.3](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.2...@capri-js/cloudflare@1.0.0-next.3) (2022-07-10)
 
 
