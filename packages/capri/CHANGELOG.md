@@ -1,3 +1,11 @@
+# capri [4.2.0-next.6](https://github.com/capri-js/capri/compare/capri@4.2.0-next.5...capri@4.2.0-next.6) (2022-07-10)
+
+
+### Features
+
+* expose render context to server entry ([8d40b9c](https://github.com/capri-js/capri/commit/8d40b9cabda11f08fdc0caa685bc3179d884df37))
+* render can now be a named or default export ([7b3adbf](https://github.com/capri-js/capri/commit/7b3adbf84a2a6fb012250bf70738260e5abbd3b1))
+
 # capri [4.2.0-next.5](https://github.com/capri-js/capri/compare/capri@4.2.0-next.4...capri@4.2.0-next.5) (2022-07-08)
 
 
