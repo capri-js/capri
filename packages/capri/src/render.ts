@@ -5,15 +5,23 @@ import {
   IslandChunk,
   removeHydrationCode,
 } from "./html.js";
-import { RenderFunction } from "./types.js";
+import { RenderContext, RenderFunction } from "./types.js";
+
+const staticContext: RenderContext = {
+  headers: [],
+  setHeader: () => {
+    // ignore
+  },
+};
 
 export async function renderHtml(
   render: RenderFunction,
   url: string,
   template: string,
-  manifest: Record<string, string[]>
+  manifest: Record<string, string[]>,
+  context = staticContext
 ) {
-  const markup = await render(url);
+  const markup = await render(url, context);
 
   // Insert the rendered markup into the index.html template:
   let html = await insertMarkup(template, markup);

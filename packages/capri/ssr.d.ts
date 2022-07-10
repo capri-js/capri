@@ -1,3 +1,7 @@
 declare module "virtual:capri-ssr" {
-  export default function (url: string): Promise<string>;
+  import { RenderContext } from "./src/types.js";
+  export default function (
+    url: string,
+    context: RenderContext
+  ): Promise<string>;
 }
