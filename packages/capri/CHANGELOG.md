@@ -1,3 +1,10 @@
+# capri [4.2.0-next.9](https://github.com/capri-js/capri/compare/capri@4.2.0-next.8...capri@4.2.0-next.9) (2022-07-10)
+
+
+### Bug Fixes
+
+* trigger release ([0cd26e6](https://github.com/capri-js/capri/commit/0cd26e66e581d1a8e1bc1b4d7d1fab20cd9deb44))
+
 # capri [4.2.0-next.8](https://github.com/capri-js/capri/compare/capri@4.2.0-next.7...capri@4.2.0-next.8) (2022-07-10)
 
 
