@@ -12,9 +12,9 @@ export default function cloudflare(): BuildTarget {
         },
       };
     },
-    async build({ ssrBundle, outDir }) {
+    async build({ ssrBundle, rootDir, outDir }) {
       const dirName = path.dirname(new URL(import.meta.url).pathname);
-      const funcDir = path.resolve(outDir, "functions");
+      const funcDir = path.resolve(rootDir, "functions");
 
       // Cloudflare treats projects without a 404 page as SPA.
       // To enable MPA mode we add a basic error page if no custom one exists.
