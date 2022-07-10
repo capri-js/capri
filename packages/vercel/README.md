@@ -13,9 +13,7 @@ export default defineConfig({
   plugins: [
     react(),
     capri({
-      target: vercel({
-        isg: { expiration: 60 },
-      }),
+      target: vercel(),
     }),
   ],
 });

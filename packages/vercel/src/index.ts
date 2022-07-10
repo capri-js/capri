@@ -1,18 +1,14 @@
 import { fsutils } from "capri";
 import { BuildTarget } from "capri/vite-plugin";
+import { builtinModules } from "module";
 import * as path from "path";
 
 interface VercelConfig {
   edge?: boolean;
-  isg?: {
-    expiration: number | false;
-    bypassToken?: string;
-  };
 }
 export default function vercel({
   edge = false,
-  isg,
-}: VercelConfig): BuildTarget {
+}: VercelConfig = {}): BuildTarget {
   return {
     config() {
       return {
@@ -21,7 +17,8 @@ export default function vercel({
         },
         ssr: {
           target: edge ? "webworker" : "node",
-          noExternal: edge || [],
+          noExternal: /.*/,
+          external: builtinModules,
         },
       };
     },
@@ -30,8 +27,8 @@ export default function vercel({
       const rootDir = path.resolve(outDir, "..");
       const funcDir = path.resolve(rootDir, "functions", "render.func");
 
-      // Enable ESM support
       if (!edge) {
+        // Create package.json to enable ESM
         fsutils.write(
           path.resolve(funcDir, "package.json"),
           JSON.stringify({ type: "module" })
@@ -81,19 +78,6 @@ export default function vercel({
           ],
         })
       );
-
-      // Create render.prerender-config.json
-      if (isg) {
-        if (edge) {
-          throw new Error(
-            "Incremental Static Generation is not supported on the edge."
-          );
-        }
-        fsutils.write(
-          path.resolve(funcDir, "..", "render.prerender-config.json"),
-          JSON.stringify(isg)
-        );
-      }
     },
   };
 }
