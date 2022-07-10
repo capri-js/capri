@@ -6,9 +6,4 @@ declare module "virtual:capri-hydrate" {
   ) => any;
 }
 
-declare module "virtual:capri-render" {
-  import { RenderFunction } from "../types.js";
-  const render: RenderFunction;
-  export default render;
-  export { render };
-}
+declare module "virtual:capri-render" {}
