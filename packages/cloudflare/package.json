@@ -12,7 +12,8 @@
   "type": "module",
   "main": "./lib/index.js",
   "files": [
-    "lib"
+    "lib",
+    "files"
   ],
   "dependencies": {
     "capri": "^4.2.0-next.5"
