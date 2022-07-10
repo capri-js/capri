@@ -3,7 +3,8 @@ const path = require("path");
 const { spawn } = require("child_process");
 
 async function build() {
-  const dirs = await fs.readdir(path.resolve(__dirname, "../examples"));
+  //const dirs = await fs.readdir(path.resolve(__dirname, "../examples"));
+  const dirs = ["react", "preact", "solid", "svelte", "vue"];
 
   await Promise.all(
     dirs.map(
@@ -32,7 +33,6 @@ async function build() {
         })
     )
   );
-  //"build:github": "BASE_URL=/capri/react/ npm run build && cp -r dist ../../.github/pages/react",
 }
 
 build()
