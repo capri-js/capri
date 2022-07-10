@@ -1,0 +1,23 @@
+{
+  "name": "@capri-js/cloudflare",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capri-js/capri",
+    "directory": "packages/cloudflare"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "capri": "^4.2.0-next.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.14.0"
+  }
+}
