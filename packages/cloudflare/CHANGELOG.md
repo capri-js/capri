@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.3](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.2...@capri-js/cloudflare@1.0.0-next.3) (2022-07-10)
+
+
+### Bug Fixes
+
+* generate functions in project root ([3a8044a](https://github.com/capri-js/capri/commit/3a8044ad6bc3df2d8dc18d0934ae1cc40d13ee3f))
+
 # @capri-js/cloudflare [1.0.0-next.2](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.1...@capri-js/cloudflare@1.0.0-next.2) (2022-07-10)
 
 
