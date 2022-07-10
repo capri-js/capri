@@ -1,3 +1,10 @@
+# capri [4.2.0-next.7](https://github.com/capri-js/capri/compare/capri@4.2.0-next.6...capri@4.2.0-next.7) (2022-07-10)
+
+
+### Features
+
+* pass rootDir to build targets ([e90f6be](https://github.com/capri-js/capri/commit/e90f6be96114c3d57b414f364b925989a4a743f9))
+
 # capri [4.2.0-next.6](https://github.com/capri-js/capri/compare/capri@4.2.0-next.5...capri@4.2.0-next.6) (2022-07-10)
 
 
