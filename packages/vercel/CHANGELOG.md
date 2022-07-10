@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.11](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.10...@capri-js/vercel@1.0.0-next.11) (2022-07-10)
+
+
+### Features
+
+* allow setting custom headers ([239ebcb](https://github.com/capri-js/capri/commit/239ebcb3996be6ad47ba49a5252fe05e234aefd5))
+
 # @capri-js/vercel [1.0.0-next.10](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.9...@capri-js/vercel@1.0.0-next.10) (2022-07-08)
 
 
