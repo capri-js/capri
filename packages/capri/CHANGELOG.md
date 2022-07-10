@@ -1,3 +1,10 @@
+# capri [4.2.0-next.8](https://github.com/capri-js/capri/compare/capri@4.2.0-next.7...capri@4.2.0-next.8) (2022-07-10)
+
+
+### Features
+
+* bundle worker with rollup ([dca6f14](https://github.com/capri-js/capri/commit/dca6f142cc509d7dcf0ba7242f81c9081bfe7954))
+
 # capri [4.2.0-next.7](https://github.com/capri-js/capri/compare/capri@4.2.0-next.6...capri@4.2.0-next.7) (2022-07-10)
 
 
