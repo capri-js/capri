@@ -7,9 +7,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "npm ls && vite build && vite build --ssr",
-    "preview": "vite preview",
-    "start": "npm run build && npm run preview"
+    "build": "vite build && vite build --ssr",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.3.2",

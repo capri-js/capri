@@ -15,6 +15,7 @@ import type {
   UserConfig,
 } from "vite";
 
+import { createBundler } from "./bundle.js";
 import { getEntrySrc } from "./html.js";
 import { fsutils } from "./index.js";
 import {
@@ -41,6 +42,8 @@ export interface BuildArgs {
   outDir: string;
   ssrBundle: string;
   prerendered: string[];
+  fsutils: typeof fsutils;
+  bundle: (input: string, output: string) => Promise<void>;
 }
 
 interface ViteConfig extends UserConfig {
@@ -210,6 +213,7 @@ export function capri({
             },
           };
         } else {
+          // Client build ...
           let rollupOptions: RollupOptions = {};
           if (isServerEntryScript(config)) {
             // index.html points to a .server.* file
@@ -353,6 +357,8 @@ export function capri({
               outDir,
               ssrBundle,
               prerendered,
+              fsutils,
+              bundle: createBundler(ssrBundle),
             });
           }
           fsutils.rm(ssrBundle);

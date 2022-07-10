@@ -39,6 +39,7 @@
     "cheerio": "^1.0.0-rc.11",
     "micromatch": "^4.0.5",
     "node-fetch": "^3.2.6",
+    "rollup": "^2.75.7",
     "url-join": "^5.0.0",
     "web-streams-polyfill": "^3.2.1"
   },

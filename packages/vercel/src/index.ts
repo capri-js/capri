@@ -1,4 +1,3 @@
-import { fsutils } from "capri";
 import { BuildTarget } from "capri/vite-plugin";
 import { builtinModules } from "module";
 import * as path from "path";
@@ -17,12 +16,13 @@ export default function vercel({
         },
         ssr: {
           target: edge ? "webworker" : "node",
+          // Inline everything except for node builtins...
           noExternal: /.*/,
           external: builtinModules,
         },
       };
     },
-    async build({ ssrBundle, outDir }) {
+    async build({ outDir, bundle, fsutils }) {
       const dirName = path.dirname(new URL(import.meta.url).pathname);
       const rootDir = path.resolve(outDir, "..");
       const funcDir = path.resolve(rootDir, "functions", "render.func");
@@ -35,19 +35,11 @@ export default function vercel({
         );
       }
 
-      // Copy the handler
-      fsutils.copy(
+      // Create the handler
+      await bundle(
         path.resolve(dirName, edge ? "edge.js" : "serverless.js"),
-        path.resolve(funcDir, "index.js"),
-        {
-          replace: {
-            "virtual:capri-ssr": "./ssr.js",
-          },
-        }
+        path.resolve(funcDir, "index.js")
       );
-
-      // Copy the ssrBundle
-      fsutils.copy(ssrBundle, path.resolve(funcDir, "ssr.js"));
 
       // Create .vc-config.json
       const runtime = edge
