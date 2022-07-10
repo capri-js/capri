@@ -1,3 +1,7 @@
+// Cloudflare workers currently don't support streams_enable_constructors.
+// As a workaround we have to include this polyfill:
+import "web-streams-polyfill/es2018";
+
 import ssr from "virtual:capri-ssr";
 
 const handler: PagesFunction = async ({ request, next }) => {
