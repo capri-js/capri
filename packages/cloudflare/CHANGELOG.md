@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.5](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.4...@capri-js/cloudflare@1.0.0-next.5) (2022-07-10)
+
+
+### Bug Fixes
+
+* include web-streams-polyfill ([4911cef](https://github.com/capri-js/capri/commit/4911cef864aeaec9b32ebc45d8cc4b7b29db8ffc))
+
 # @capri-js/cloudflare [1.0.0-next.4](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.3...@capri-js/cloudflare@1.0.0-next.4) (2022-07-10)
 
 
