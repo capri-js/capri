@@ -37,6 +37,7 @@ export interface Adapter {
 }
 
 export interface BuildArgs {
+  rootDir: string;
   outDir: string;
   ssrBundle: string;
   prerendered: string[];
@@ -84,7 +85,7 @@ export function capri({
   let serverEntry: string;
 
   /** The project's root directory as defined in Vite config or the cwd */
-  let root: string;
+  let rootDir: string;
 
   /** Absolute path of the build output dir */
   let outDir: string;
@@ -128,8 +129,8 @@ export function capri({
     // Note: we add the basename so that the extension stays the same...
     const unwrappedId = wrapped + "?unwrapped=" + path.basename(wrapped);
 
-    const componentId = wrapped.startsWith(root)
-      ? wrapped.slice(root.length)
+    const componentId = wrapped.startsWith(rootDir)
+      ? wrapped.slice(rootDir.length)
       : wrapped;
 
     const template = fsutils.read(wrapper);
@@ -164,9 +165,9 @@ export function capri({
           mode = "client";
         }
 
-        root = path.resolve(config.root ?? "");
+        rootDir = path.resolve(config.root ?? "");
 
-        outDir = path.resolve(root, config.build?.outDir ?? "dist");
+        outDir = path.resolve(rootDir, config.build?.outDir ?? "dist");
 
         serverEntry = getServerEntryScript(config);
 
@@ -348,6 +349,7 @@ export function capri({
           });
           if (target) {
             await target.build({
+              rootDir,
               outDir,
               ssrBundle,
               prerendered,
