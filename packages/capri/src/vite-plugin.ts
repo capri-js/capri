@@ -356,6 +356,8 @@ export function capri({
             prerender,
             followLinks,
           });
+
+          // Hook for build targets
           if (target) {
             await target.build({
               rootDir,
