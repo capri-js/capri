@@ -58,7 +58,8 @@ export default function cloudflare({
         // Create the middleware
         await bundle(
           path.resolve(dirName, "middleware.js"),
-          path.resolve(funcDir, "_middleware.js")
+          path.resolve(funcDir, "_middleware.js"),
+          { target: "es2017" }
         );
       }
     },

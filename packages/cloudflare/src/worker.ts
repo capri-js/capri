@@ -7,10 +7,7 @@ type Env = EventContext<any, any, any>["env"];
 
 const handler: ExportedHandler<Env> = {
   async fetch(request, env) {
-    console.log("Request", request.url);
-    console.log("Headers", request.headers);
     const response = await env.ASSETS.fetch(request);
-
     if (
       response.status === 404 &&
       request.headers.get("accept")?.includes("text/html")
