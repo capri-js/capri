@@ -1,3 +1,10 @@
+# capri [4.2.0-next.10](https://github.com/capri-js/capri/compare/capri@4.2.0-next.9...capri@4.2.0-next.10) (2022-07-14)
+
+
+### Features
+
+* add option to use regexps for template processing ([c82bdb8](https://github.com/capri-js/capri/commit/c82bdb841e312befa9bfeeedf017f972c71e50d5))
+
 # capri [4.2.0-next.9](https://github.com/capri-js/capri/compare/capri@4.2.0-next.8...capri@4.2.0-next.9) (2022-07-10)
 
 
