@@ -62,15 +62,16 @@ export interface BuildTarget {
   build: (args: BuildArgs) => Promise<void>;
 }
 export interface CapriPluginOptions {
-  spa?: string | false;
   createIndexFiles?: boolean;
-  ssrFormat?: "commonjs" | "esm";
   prerender?: PrerenderConfig;
   followLinks?: FollowLinksConfig;
   islandGlobPattern?: string;
   lagoonGlobPattern?: string;
-  target?: BuildTarget;
+  templateProcessing?: "parser" | "regexp";
+  ssrFormat?: "commonjs" | "esm";
   adapter: Adapter;
+  target?: BuildTarget;
+  spa?: string | false;
 }
 
 export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "adapter">;
@@ -81,6 +82,7 @@ export function capri({
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",
   lagoonGlobPattern = "/src/**/*.lagoon.*",
+  templateProcessing,
   ssrFormat = "esm",
   adapter,
   target,
@@ -192,16 +194,17 @@ export function capri({
 
           manifest = readManifest(outDir);
 
+          if (!templateProcessing && target) {
+            // default to regexp when a build target is set
+            templateProcessing = "regexp";
+          }
+
           return {
             base,
-            define:
-              ssrFormat === "commonjs"
-                ? {
-                    "process.env.SSR": "true",
-                  }
-                : {
-                    // import.meta.env.SSR is exposed by Vite
-                  },
+            define: {
+              USE_CHEERIO: templateProcessing === "regexp" ? "false" : "true",
+              "process.env.SSR": "true",
+            },
             ssr: {
               // The capri packages can't be externalized as they need to be
               // processed by Vite (virtual modules and glob imports).

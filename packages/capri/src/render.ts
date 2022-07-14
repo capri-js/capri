@@ -1,11 +1,6 @@
-import {
-  getIslands,
-  insertMarkup,
-  insertPreloadTags,
-  IslandChunk,
-  removeHydrationCode,
-} from "./html.js";
-import { RenderContext, RenderFunction } from "./types.js";
+import { createTemplate } from "./template/createTemplate.js";
+import { IslandMarker } from "./template/Template.js";
+import { RenderContext, RenderFunction, RenderResult } from "./types.js";
 
 const staticContext: RenderContext = {
   headers: [],
@@ -17,40 +12,55 @@ const staticContext: RenderContext = {
 export async function renderHtml(
   render: RenderFunction,
   url: string,
-  template: string,
+  indexHtml: string,
   manifest: Record<string, string[]>,
   context = staticContext
 ) {
-  const markup = await render(url, context);
+  const result = await render(url, context);
+  const template = await createTemplate(indexHtml);
 
   // Insert the rendered markup into the index.html template:
-  let html = await insertMarkup(template, markup);
+  template.insertMarkup(await resolveMarkup(result));
 
-  const { preload, hasIslands } = analyzeHtml(html, manifest);
-  if (preload.length) {
+  const islands = template.getIslands();
+  const preloadTags = getPreloadTags(islands, manifest);
+
+  if (preloadTags.length) {
     // Insert modulepreload links for the included islands:
-    html = insertPreloadTags(html, preload);
-  } else if (!hasIslands) {
+    template.insertMarkup({ head: preloadTags.join("") });
+  } else if (!islands.length) {
     // No islands present, remove the hydration script.
-    html = removeHydrationCode(html);
+    console.log("No islands found, removing hydration code");
+    template.removeScripts({
+      src: /hydrate|-legacy/,
+      text: /__vite_is_dynamic_import_support|"noModule"|_\$HY/,
+    });
   }
-  return html;
+  return template.toString();
 }
 
-function analyzeHtml(html: string, manifest: Record<string, string[]>) {
-  const islands = getIslands(html);
-  const preload = new Set<IslandChunk>();
-  islands.forEach((island) => {
-    const { src, options } = island;
-    const chunks = manifest[src];
+async function resolveMarkup(result: RenderResult) {
+  const markup: Record<string, string> = {};
+  for (const [key, value] of Object.entries(result)) {
+    markup[key] = await value;
+  }
+  return markup;
+}
+
+function getPreloadTags(
+  markers: IslandMarker[],
+  manifest: Record<string, string[]>
+) {
+  const preload = new Set<string>();
+  markers.forEach((marker) => {
+    const { island, json } = marker;
+    const chunks = manifest[island];
+    const { options } = JSON.parse(json);
     if (!options?.media) {
       chunks?.forEach((asset) => {
-        if (asset.endsWith(".js")) preload.add({ src, asset });
+        if (asset.endsWith(".js")) preload.add(asset);
       });
     }
   });
-  return {
-    preload: [...preload],
-    hasIslands: !!islands.length,
-  };
+  return [...preload].map((src) => `<link rel="modulepreload" href="${src}">`);
 }

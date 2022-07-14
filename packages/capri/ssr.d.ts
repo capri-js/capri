@@ -5,3 +5,5 @@ declare module "virtual:capri-ssr" {
     context: RenderContext
   ): Promise<string>;
 }
+
+declare const USE_CHEERIO: boolean;
