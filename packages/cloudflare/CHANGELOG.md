@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.6](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.5...@capri-js/cloudflare@1.0.0-next.6) (2022-07-11)
+
+
+### Bug Fixes
+
+* target es2017 in middleware mode ([e142ad6](https://github.com/capri-js/capri/commit/e142ad606f845383358dca18bd25b9a156916688))
+
 # @capri-js/cloudflare [1.0.0-next.5](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.4...@capri-js/cloudflare@1.0.0-next.5) (2022-07-10)
 
 
