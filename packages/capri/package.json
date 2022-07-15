@@ -44,6 +44,10 @@
     "web-streams-polyfill": "^3.2.1"
   },
   "devDependencies": {
-    "@types/micromatch": "^4.0.2"
+    "@types/micromatch": "^4.0.2",
+    "vite": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0 || ^2.0.0"
   }
 }

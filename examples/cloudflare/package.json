@@ -18,10 +18,10 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@capri-js/react": "*",
     "@capri-js/cloudflare": "*",
+    "@capri-js/react": "*",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "vite": "^2.9.9"
+    "vite": "^3.0.0"
   }
 }

@@ -12,7 +12,7 @@ function hydrateIslands() {
     if (!island) throw new Error("Missing attribute: data-island");
 
     const load = modules[island];
-    if (!load) throw new Error(`Module not found: ${island}`);
+    if (!load) throw new Error(`Island module not found: ${island}`);
 
     const { props = {}, options = {} } = node.textContent
       ? JSON.parse(node.textContent)
@@ -20,7 +20,7 @@ function hydrateIslands() {
 
     const hydrateComponent = () => {
       load()
-        .then((m) => {
+        .then((m: any) => {
           hydrate(m.default, props, element);
         })
         .catch(console.error);

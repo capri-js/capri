@@ -16,8 +16,8 @@ import type {
 } from "vite";
 
 import { BundleOptions, createBundler } from "./bundle.js";
+import * as fsutils from "./fsutils.js";
 import { getEntrySrc } from "./html.js";
-import { fsutils } from "./index.js";
 import {
   FollowLinksConfig,
   PrerenderConfig,
@@ -114,7 +114,8 @@ export function capri({
    * is provided by the adapter and set the meta data accordingly.
    */
   function resolveWrapper(id: string, pattern: string, candidates: Wrapper) {
-    if (micromatch.contains(id, pattern)) {
+    // Exclude sources that contain "?", e.g. vue styles and setup scripts
+    if (!id.includes("?") && micromatch.contains(id, pattern)) {
       const wrapper = candidates[mode];
       if (wrapper) {
         return {
