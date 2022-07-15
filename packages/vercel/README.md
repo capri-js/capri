@@ -1,5 +1,16 @@
 # Capri 🍋 SSR on Vercel
 
+Use `@capri-js/vercel` to render your static pages using either
+
+- a [serverless function](https://vercel.com/docs/concepts/functions/serverless-functions)
+- a [prerender function](https://vercel.com/docs/concepts/next.js/incremental-static-regeneration)
+- or an [edge function](https://vercel.com/docs/build-output-api/v3#vercel-primitives/edge-functions)
+
+_NOTE:_ This is only needed for SSR. For static sites that are prerendered upon build,
+leave the target set to `undefined`.
+
+https://vercel.com/docs/build-output-api/v3
+
 ## Usage
 
 ```ts
@@ -13,10 +24,27 @@ export default defineConfig({
   plugins: [
     react(),
     capri({
-      target: vercel(),
+      target: vercel({
+        // options (see below)
+      }),
     }),
   ],
 });
 ```
 
-Visit [capri.build](https://capri.build) for docs and more information.
+## Options
+
+### `edge`
+
+Whether to create an edge function (default `false`).
+
+### `isg`
+
+Settings for [Incremental Static Rendering](https://vercel.com/docs/build-output-api/v3#vercel-primitives/prerender-functions/configuration).
+
+```ts
+{
+  expiration: number | false;
+  bypassToken?: string;
+}
+```

@@ -9,7 +9,11 @@ export default defineConfig({
     capri({
       spa: "/preview",
       prerender: false,
-      target: vercel(),
+      target: vercel({
+        isg: {
+          expiration: 60,
+        },
+      }),
     }),
   ],
 });

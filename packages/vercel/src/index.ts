@@ -4,9 +4,14 @@ import * as path from "path";
 
 interface VercelConfig {
   edge?: boolean;
+  isg?: {
+    expiration: number | false;
+    bypassToken?: string;
+  };
 }
 export default function vercel({
   edge = false,
+  isg,
 }: VercelConfig = {}): BuildTarget {
   return {
     config() {
@@ -37,7 +42,10 @@ export default function vercel({
 
       // Create the handler
       await bundle(
-        path.resolve(dirName, edge ? "edge.js" : "serverless.js"),
+        path.resolve(
+          dirName,
+          edge ? "edge.js" : isg ? "isg.js" : "serverless.js"
+        ),
         path.resolve(funcDir, "index.js"),
         {
           platform: edge ? "browser" : "node",
@@ -57,6 +65,18 @@ export default function vercel({
         })
       );
 
+      if (isg) {
+        if (edge) {
+          throw new Error(
+            "Incremental Static Generation is not supported on the edge."
+          );
+        }
+        fsutils.write(
+          path.resolve(funcDir, "..", "render.prerender-config.json"),
+          JSON.stringify({ allowQuery: [], ...isg })
+        );
+      }
+
       // Create config.json
       fsutils.write(
         path.resolve(rootDir, "config.json"),
@@ -67,7 +87,7 @@ export default function vercel({
               handle: "filesystem",
             },
             {
-              src: "/.*",
+              src: isg ? "(?<path>.*)" : "/.*",
               [edge ? "middlewarePath" : "dest"]: "render",
             },
           ],
