@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.15](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.14...@capri-js/vercel@1.0.0-next.15) (2022-07-15)
+
+
+### Bug Fixes
+
+* update to capri 5 ([257351a](https://github.com/capri-js/capri/commit/257351a50cc117f979f7f05f229ed0a335a61042))
+
 # @capri-js/vercel [1.0.0-next.14](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.13...@capri-js/vercel@1.0.0-next.14) (2022-07-15)
 
 
