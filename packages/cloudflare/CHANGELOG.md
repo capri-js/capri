@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.7](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.6...@capri-js/cloudflare@1.0.0-next.7) (2022-07-15)
+
+
+### Features
+
+* make web-streams-polyfill optional ([5a0d65b](https://github.com/capri-js/capri/commit/5a0d65bf7fcd067618fcdea7b1ef738d2fe9865e))
+
 # @capri-js/cloudflare [1.0.0-next.6](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.5...@capri-js/cloudflare@1.0.0-next.6) (2022-07-11)
 
 
