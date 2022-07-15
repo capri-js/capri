@@ -1,11 +1,6 @@
 import { createTemplate } from "./template/createTemplate.js";
 import { IslandMarker } from "./template/Template.js";
-import {
-  Markup,
-  RenderContext,
-  RenderFunction,
-  RenderResult,
-} from "./types.js";
+import { Markup, RenderContext, RenderFunction } from "./types.js";
 
 const staticContext: RenderContext = {
   getHeader: () => null,
