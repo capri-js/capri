@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.13](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.12...@capri-js/vercel@1.0.0-next.13) (2022-07-15)
+
+
+### Features
+
+* add Vercel ISG support ([182e841](https://github.com/capri-js/capri/commit/182e8410564316cd491f764861da3bd231d5c1d6))
+
 # @capri-js/vercel [1.0.0-next.12](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.11...@capri-js/vercel@1.0.0-next.12) (2022-07-10)
 
 
