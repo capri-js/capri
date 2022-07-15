@@ -3,7 +3,7 @@ import { IslandMarker } from "./template/Template.js";
 import { RenderContext, RenderFunction, RenderResult } from "./types.js";
 
 const staticContext: RenderContext = {
-  headers: [],
+  getHeader: () => null,
   setHeader: () => {
     // ignore
   },

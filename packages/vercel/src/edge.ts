@@ -7,7 +7,7 @@ export default async (request: Request) => {
     "Content-Type": "text/html; charset=utf-8",
   });
   const html = await ssr(url, {
-    headers: request.headers,
+    getHeader: request.headers.get.bind(request.headers),
     setHeader: headers.set.bind(headers),
   });
   return new Response(html, {

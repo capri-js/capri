@@ -1,8 +1,8 @@
 export type RenderResult = Record<string, string | Promise<string>>;
 
 export type RenderContext = {
-  headers: string[];
-  setHeader: (name: string, value: string) => void;
+  getHeader(name: string): string | null;
+  setHeader(name: string, value: string): void;
 };
 
 export type RenderFunction = (

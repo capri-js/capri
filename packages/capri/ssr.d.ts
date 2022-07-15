@@ -1,5 +1,8 @@
 declare module "virtual:capri-ssr" {
-  import { RenderContext } from "./src/types.js";
+  type RenderContext = {
+    getHeader(name: string): string | null;
+    setHeader(name: string, value: string): void;
+  };
   export default function (
     url: string,
     context: RenderContext

@@ -13,7 +13,7 @@ const handler: ExportedHandler<Env> = {
         "Content-Type": "text/html; charset=utf-8",
       });
       const html = await ssr(path, {
-        headers: request.headers,
+        getHeader: request.headers.get.bind(request.headers),
         setHeader: headers.set.bind(headers),
       });
       if (html) {

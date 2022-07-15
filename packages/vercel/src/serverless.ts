@@ -7,7 +7,10 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
   } else {
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     const html = await ssr(req.url!, {
-      headers: req.headers,
+      getHeader(name: string) {
+        const header = req.headers[name] ?? null;
+        return Array.isArray(header) ? header[0] : header;
+      },
       setHeader: res.setHeader.bind(res),
     });
     res.end(html);

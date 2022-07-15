@@ -12,7 +12,10 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
   const match = decodeURIComponent(new URLSearchParams(route).get("1")!);
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   const html = await ssr(match, {
-    headers: req.headers,
+    getHeader(name: string) {
+      const header = req.headers[name] ?? null;
+      return Array.isArray(header) ? header[0] : header;
+    },
     setHeader: res.setHeader.bind(res),
   });
   res.end(html);
