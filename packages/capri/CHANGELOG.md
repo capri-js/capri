@@ -1,3 +1,10 @@
+# capri [5.0.0-next.2](https://github.com/capri-js/capri/compare/capri@5.0.0-next.1...capri@5.0.0-next.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* provide setHeader and getHeader ([467a257](https://github.com/capri-js/capri/commit/467a2578de898f8e6692e760c1647312193d7c87))
+
 # capri [5.0.0-next.1](https://github.com/capri-js/capri/compare/capri@4.2.0-next.11...capri@5.0.0-next.1) (2022-07-15)
 
 
