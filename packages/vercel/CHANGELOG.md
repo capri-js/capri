@@ -1,3 +1,10 @@
+# @capri-js/vercel [1.0.0-next.14](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.13...@capri-js/vercel@1.0.0-next.14) (2022-07-15)
+
+
+### Bug Fixes
+
+* provide setHeader and getHeader ([467a257](https://github.com/capri-js/capri/commit/467a2578de898f8e6692e760c1647312193d7c87))
+
 # @capri-js/vercel [1.0.0-next.13](https://github.com/capri-js/capri/compare/@capri-js/vercel@1.0.0-next.12...@capri-js/vercel@1.0.0-next.13) (2022-07-15)
 
 
