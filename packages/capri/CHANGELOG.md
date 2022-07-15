@@ -1,3 +1,15 @@
+# capri [5.0.0-next.1](https://github.com/capri-js/capri/compare/capri@4.2.0-next.11...capri@5.0.0-next.1) (2022-07-15)
+
+
+### Features
+
+* drop Vite 2 support ([cc15ca6](https://github.com/capri-js/capri/commit/cc15ca628e4369dbb4e1ea4d513653958217619e))
+
+
+### BREAKING CHANGES
+
+* The ssrFormat option is no longer supported. To create a CJS bundle use Vite's ssr.format option instead.
+
 # capri [4.2.0-next.11](https://github.com/capri-js/capri/compare/capri@4.2.0-next.10...capri@4.2.0-next.11) (2022-07-15)
 
 
