@@ -1,3 +1,11 @@
+# capri [5.0.0-next.3](https://github.com/capri-js/capri/compare/capri@5.0.0-next.2...capri@5.0.0-next.3) (2022-07-15)
+
+
+### Bug Fixes
+
+* let render functions return null or undefined ([237fb2c](https://github.com/capri-js/capri/commit/237fb2c68046c7344a3215dc238d9b7a11d243f9))
+* remove unused import ([ba36817](https://github.com/capri-js/capri/commit/ba368178edf9477ef858ad12d4e767c8afb7f2b3))
+
 # capri [5.0.0-next.2](https://github.com/capri-js/capri/compare/capri@5.0.0-next.1...capri@5.0.0-next.2) (2022-07-15)
 
 
