@@ -1,6 +1,11 @@
 import { createTemplate } from "./template/createTemplate.js";
 import { IslandMarker } from "./template/Template.js";
-import { RenderContext, RenderFunction, RenderResult } from "./types.js";
+import {
+  Markup,
+  RenderContext,
+  RenderFunction,
+  RenderResult,
+} from "./types.js";
 
 const staticContext: RenderContext = {
   getHeader: () => null,
@@ -17,6 +22,8 @@ export async function renderHtml(
   context = staticContext
 ) {
   const result = await render(url, context);
+  if (!result) return;
+
   const template = await createTemplate(indexHtml);
 
   // Insert the rendered markup into the index.html template:
@@ -39,12 +46,12 @@ export async function renderHtml(
   return template.toString();
 }
 
-async function resolveMarkup(result: RenderResult) {
-  const markup: Record<string, string> = {};
-  for (const [key, value] of Object.entries(result)) {
-    markup[key] = await value;
+async function resolveMarkup(markup: Markup) {
+  const resolved: Record<string, string> = {};
+  for (const [key, value] of Object.entries(markup)) {
+    resolved[key] = await value;
   }
-  return markup;
+  return resolved;
 }
 
 function getPreloadTags(

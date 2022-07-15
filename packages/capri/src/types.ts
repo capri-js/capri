@@ -1,4 +1,5 @@
-export type RenderResult = Record<string, string | Promise<string>>;
+export type Markup = Record<string, string | Promise<string>>;
+export type RenderResult = Markup | null | undefined;
 
 export type RenderContext = {
   getHeader(name: string): string | null;
