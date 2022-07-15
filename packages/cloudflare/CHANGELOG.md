@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.8](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.7...@capri-js/cloudflare@1.0.0-next.8) (2022-07-15)
+
+
+### Bug Fixes
+
+* provide setHeader and getHeader ([467a257](https://github.com/capri-js/capri/commit/467a2578de898f8e6692e760c1647312193d7c87))
+
 # @capri-js/cloudflare [1.0.0-next.7](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.6...@capri-js/cloudflare@1.0.0-next.7) (2022-07-15)
 
 
