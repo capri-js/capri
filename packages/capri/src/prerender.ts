@@ -39,7 +39,10 @@ export async function renderStaticPages({
 }: StaticRenderConfig) {
   await polyfillWebAPIs();
 
-  const { default: ssr } = await import(ssrBundle);
+  const { default: ssrModule } = await import(ssrBundle);
+
+  // REVISIT When ssr.format is set to "cjs" we end up with default.default:
+  const ssr = ssrModule.default ?? ssrModule;
 
   const seen = new Set(
     (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))

@@ -67,7 +67,6 @@ export interface CapriPluginOptions {
   islandGlobPattern?: string;
   lagoonGlobPattern?: string;
   templateProcessing?: "parser" | "regexp";
-  ssrFormat?: "commonjs" | "esm";
   adapter: Adapter;
   target?: BuildTarget;
   spa?: string | false;
@@ -82,7 +81,6 @@ export function capri({
   islandGlobPattern = "/src/**/*.island.*",
   lagoonGlobPattern = "/src/**/*.lagoon.*",
   templateProcessing,
-  ssrFormat = "esm",
   adapter,
   target,
   spa,
@@ -213,11 +211,6 @@ export function capri({
             build: {
               ssr,
               emptyOutDir: false, // keep the client build
-              rollupOptions: {
-                output: {
-                  format: ssrFormat,
-                },
-              },
             },
           };
         } else {
