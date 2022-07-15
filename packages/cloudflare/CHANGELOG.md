@@ -1,3 +1,10 @@
+# @capri-js/cloudflare [1.0.0-next.9](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.8...@capri-js/cloudflare@1.0.0-next.9) (2022-07-15)
+
+
+### Bug Fixes
+
+* update to capri 5 ([257351a](https://github.com/capri-js/capri/commit/257351a50cc117f979f7f05f229ed0a335a61042))
+
 # @capri-js/cloudflare [1.0.0-next.8](https://github.com/capri-js/capri/compare/@capri-js/cloudflare@1.0.0-next.7...@capri-js/cloudflare@1.0.0-next.8) (2022-07-15)
 
 
