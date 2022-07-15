@@ -1,3 +1,10 @@
+## @capri-js/react [4.0.2-next.2](https://github.com/capri-js/capri/compare/@capri-js/react@4.0.2-next.1...@capri-js/react@4.0.2-next.2) (2022-07-15)
+
+
+### Bug Fixes
+
+* update to capri 5 ([257351a](https://github.com/capri-js/capri/commit/257351a50cc117f979f7f05f229ed0a335a61042))
+
 ## @capri-js/react [4.0.2-next.1](https://github.com/capri-js/capri/compare/@capri-js/react@4.0.1...@capri-js/react@4.0.2-next.1) (2022-07-06)
 
 
