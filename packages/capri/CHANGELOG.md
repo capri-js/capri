@@ -1,3 +1,11 @@
+# capri [4.2.0-next.11](https://github.com/capri-js/capri/compare/capri@4.2.0-next.10...capri@4.2.0-next.11) (2022-07-15)
+
+
+### Features
+
+* make web-streams-polyfill optional ([5a0d65b](https://github.com/capri-js/capri/commit/5a0d65bf7fcd067618fcdea7b1ef738d2fe9865e))
+* update to Vite 3 ([499dc3b](https://github.com/capri-js/capri/commit/499dc3bea93ba7bf73a66a38a6a19a4a071c6126))
+
 # capri [4.2.0-next.10](https://github.com/capri-js/capri/compare/capri@4.2.0-next.9...capri@4.2.0-next.10) (2022-07-14)
 
 
