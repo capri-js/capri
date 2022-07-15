@@ -10,7 +10,7 @@ export default defineConfig({
       spa: "/preview",
       prerender: false,
       followLinks: false,
-      target: cloudflare(),
+      target: cloudflare({ webStreamsPolyfill: true }),
     }),
   ],
 });

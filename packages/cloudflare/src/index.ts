@@ -3,10 +3,12 @@ import * as path from "path";
 
 type CloudflareOptions = {
   type?: "middleware" | "worker" | "auto";
+  webStreamsPolyfill?: boolean;
 };
 
 export default function cloudflare({
   type = "auto",
+  webStreamsPolyfill = false,
 }: CloudflareOptions = {}): BuildTarget {
   return {
     config() {
@@ -48,18 +50,31 @@ export default function cloudflare({
         );
       }
 
+      let inject: string[] | undefined;
+      if (webStreamsPolyfill) {
+        inject = [path.resolve(dirName, "polyfill.js")];
+      }
+
       if (useWorker) {
         // Create the worker
         await bundle(
           path.resolve(dirName, "worker.js"),
-          path.resolve(outDir, "_worker.js")
+          path.resolve(outDir, "_worker.js"),
+          {
+            inject,
+            platform: "browser",
+          }
         );
       } else {
         // Create the middleware
         await bundle(
           path.resolve(dirName, "middleware.js"),
           path.resolve(funcDir, "_middleware.js"),
-          { target: "es2017" }
+          {
+            inject,
+            target: "es2017",
+            platform: "browser",
+          }
         );
       }
     },

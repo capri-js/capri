@@ -1,4 +1,3 @@
-import type { BuildOptions } from "esbuild";
 import micromatch from "micromatch";
 import { builtinModules } from "module";
 import * as path from "path";
@@ -16,7 +15,7 @@ import type {
   UserConfig,
 } from "vite";
 
-import { createBundler } from "./bundle.js";
+import { BundleOptions, createBundler } from "./bundle.js";
 import { getEntrySrc } from "./html.js";
 import { fsutils } from "./index.js";
 import {
@@ -47,7 +46,7 @@ export interface BuildArgs {
   bundle: (
     input: string,
     output: string,
-    options?: BuildOptions
+    options?: BundleOptions
   ) => Promise<void>;
 }
 

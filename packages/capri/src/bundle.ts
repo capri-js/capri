@@ -1,4 +1,12 @@
-import esbuild, { BuildOptions, Plugin } from "esbuild";
+import esbuild, { Plugin } from "esbuild";
+
+export interface BundleOptions {
+  target?: string;
+  platform?: "browser" | "node" | "neutral";
+  format?: "iife" | "cjs" | "esm";
+  minify?: boolean;
+  inject?: string[];
+}
 
 /**
  * Creates a bundle() function that can be used by build targets
@@ -18,20 +26,27 @@ export function createBundler(ssrBundle: string) {
   return async function bundle(
     input: string,
     output: string,
-    options?: BuildOptions
+    options: BundleOptions = {}
   ) {
+    const {
+      target = "es2020",
+      format = "esm",
+      platform = "neutral",
+      minify = true,
+      inject,
+    } = options;
     await esbuild.build({
-      target: "es2020",
-      platform: "browser",
+      target,
+      format,
+      platform,
       plugins: [resolve],
       entryPoints: [input],
+      inject,
       outfile: output,
       allowOverwrite: true,
       legalComments: "none",
-      format: "esm",
       bundle: true,
-      minify: true,
-      ...options,
+      minify,
     });
   };
 }
