@@ -1,1 +1,0 @@
-import{y as c,j as s,a as n}from"./jsx-runtime.a6b9a7f0.js";import"./preact.module.7dc0d9b0.js";function a({start:r=0}){const[e,o]=c(r);return s("div",{class:"counter","data-testid":"counter",children:[n("button",{onClick:()=>o(t=>t-1),children:"-"}),n("span",{children:e}),n("button",{onClick:()=>o(t=>t+1),children:"+"})]})}export{a as default};

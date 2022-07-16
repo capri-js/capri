@@ -1,0 +1,1 @@
+import{r as e}from"./client.49c7b69f.js";import{a as o}from"./jsx-runtime.6ba96de6.js";const n={media:"(max-width:500px)"};function i(){const[t,s]=e.exports.useState("Resize your browser below 500px to hydrate this island.");return e.exports.useEffect(()=>{s("The island has been hydrated.")},[]),o("div",{className:"box",children:t})}export{i as default,n as options};
