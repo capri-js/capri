@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/preact",
-  "version": "4.0.2-next.2",
+  "version": "5.0.0",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "capri": "^5.0.0-next.3",
+    "capri": "^5.0.0",
     "preact-iso": "^2.3.0"
   },
   "peerDependencies": {
