@@ -1,5 +1,7 @@
 <script>
-  console.log("Rendering StaticContent. This should only happen during build.");
+  console.log(
+    "Rendering StaticContent. This should only happen during build or in SPA mode."
+  );
 </script>
 
 <div class="box">

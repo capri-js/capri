@@ -1,0 +1,20 @@
+{
+  "name": "@capri-js/vercel",
+  "version": "1.0.0-next.15",
+  "description": "",
+  "author": "Felix Gnass <fgnass@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capri-js/capri",
+    "directory": "packages/vercel"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "capri": "^5.0.0-next.3"
+  }
+}

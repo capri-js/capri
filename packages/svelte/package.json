@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/svelte",
-  "version": "1.0.1",
+  "version": "1.0.2-next.2",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -33,9 +33,9 @@
     }
   },
   "dependencies": {
-    "capri": "^4.1.0"
+    "capri": "^5.0.0-next.3"
   },
   "peerDependencies": {
-    "svelte": "^3.48.0"
+    "svelte": "^3.49.0"
   }
 }

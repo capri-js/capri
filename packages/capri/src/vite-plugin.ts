@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import micromatch from "micromatch";
 import { builtinModules } from "module";
 import * as path from "path";
@@ -8,9 +7,16 @@ import type {
   PluginContext,
   RollupOptions,
 } from "rollup";
-import type { ChunkMetadata, Plugin, UserConfig } from "vite";
+import type {
+  ChunkMetadata,
+  ConfigEnv,
+  Plugin,
+  SSROptions,
+  UserConfig,
+} from "vite";
 
-import { findRenderChunk } from "./bundle.js";
+import { BundleOptions, createBundler } from "./bundle.js";
+import * as fsutils from "./fsutils.js";
 import { getEntrySrc } from "./html.js";
 import {
   FollowLinksConfig,
@@ -30,15 +36,40 @@ export interface Adapter {
   lagoon: Wrapper;
   injectWrapper?: "onLoad" | "onTransform";
 }
+
+export interface BuildArgs {
+  rootDir: string;
+  outDir: string;
+  ssrBundle: string;
+  prerendered: string[];
+  fsutils: typeof fsutils;
+  bundle: (
+    input: string,
+    output: string,
+    options?: BundleOptions
+  ) => Promise<void>;
+}
+
+interface ViteConfig extends UserConfig {
+  ssr?: SSROptions;
+}
+export interface BuildTarget {
+  config?: (
+    config: ViteConfig,
+    env: ConfigEnv
+  ) => ViteConfig | null | void | Promise<ViteConfig | null | void>;
+  build: (args: BuildArgs) => Promise<void>;
+}
 export interface CapriPluginOptions {
-  spa?: string | false;
   createIndexFiles?: boolean;
-  ssrFormat?: "commonjs" | "esm";
   prerender?: PrerenderConfig;
   followLinks?: FollowLinksConfig;
   islandGlobPattern?: string;
   lagoonGlobPattern?: string;
+  templateProcessing?: "parser" | "regexp";
   adapter: Adapter;
+  target?: BuildTarget;
+  spa?: string | false;
 }
 
 export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "adapter">;
@@ -49,14 +80,30 @@ export function capri({
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",
   lagoonGlobPattern = "/src/**/*.lagoon.*",
-  ssrFormat = "esm",
+  templateProcessing,
   adapter,
+  target,
   spa,
 }: CapriPluginOptions): Plugin[] {
   let mode: "client" | "server" | "spa";
-  let ssr: string;
-  let root: string;
+
+  const ssr = resolveRelative("./virtual/ssr.js");
+
+  let serverEntry: string;
+
+  /** The project's root directory as defined in Vite config or the cwd */
+  let rootDir: string;
+
+  /** Absolute path of the build output dir */
+  let outDir: string;
+
+  /** The BASE_URL */
   let base: string;
+
+  /** The content of index.html as genereated by the client build */
+  let template: string;
+
+  let manifest: Record<string, string[]>;
 
   const { injectWrapper = "onLoad" } = adapter;
 
@@ -65,7 +112,8 @@ export function capri({
    * is provided by the adapter and set the meta data accordingly.
    */
   function resolveWrapper(id: string, pattern: string, candidates: Wrapper) {
-    if (micromatch.contains(id, pattern)) {
+    // Exclude sources that contain "?", e.g. vue styles and setup scripts
+    if (!id.includes("?") && micromatch.contains(id, pattern)) {
       const wrapper = candidates[mode];
       if (wrapper) {
         return {
@@ -89,11 +137,11 @@ export function capri({
     // Note: we add the basename so that the extension stays the same...
     const unwrappedId = wrapped + "?unwrapped=" + path.basename(wrapped);
 
-    const componentId = wrapped.startsWith(root)
-      ? wrapped.slice(root.length)
+    const componentId = wrapped.startsWith(rootDir)
+      ? wrapped.slice(rootDir.length)
       : wrapped;
 
-    const template = fs.readFileSync(wrapper, "utf8");
+    const template = fsutils.read(wrapper);
     return template
       .replace(/virtual:capri-component/g, unwrappedId)
       .replace(/%COMPONENT_ID%/g, componentId);
@@ -101,7 +149,16 @@ export function capri({
 
   return [
     {
-      name: "vite-plugin-capri",
+      // Allow build targets to modify the config
+      name: "vite-plugin-capri-target",
+
+      // Needs to run before the main plugin
+      enforce: "pre",
+
+      config: target?.config,
+    },
+    {
+      name: "vite-plugin-capri-main",
 
       // we need to modify the bundle before vite:build-html runs
       enforce: "pre",
@@ -116,24 +173,36 @@ export function capri({
           mode = "client";
         }
 
-        root = path.resolve(config.root ?? "");
+        rootDir = path.resolve(config.root ?? "");
+
+        outDir = path.resolve(rootDir, config.build?.outDir ?? "dist");
+
+        serverEntry = getServerEntryScript(config);
+
         // Allow base to be set via env:
         base = config.base ?? process.env.BASE_URL ?? "/";
 
         if (spa) spa = urlToFileName(spa, createIndexFiles, base);
 
         if (mode === "server") {
-          ssr = getServerEntryScript(config);
+          // Read the index.html so we can use it as template for all prerendered pages.
+          const indexHtml = path.join(outDir, "index.html");
+          template = fsutils.read(indexHtml);
+          fsutils.rm(indexHtml);
+
+          manifest = readManifest(outDir);
+
+          if (!templateProcessing && target) {
+            // default to regexp when a build target is set
+            templateProcessing = "regexp";
+          }
+
           return {
             base,
-            define:
-              ssrFormat === "commonjs"
-                ? {
-                    "process.env.SSR": "true",
-                  }
-                : {
-                    // import.meta.env.SSR is exposed by Vite
-                  },
+            define: {
+              USE_CHEERIO: templateProcessing === "regexp" ? "false" : "true",
+              "process.env.SSR": "true",
+            },
             ssr: {
               // The capri packages can't be externalized as they need to be
               // processed by Vite (virtual modules and glob imports).
@@ -142,14 +211,10 @@ export function capri({
             build: {
               ssr,
               emptyOutDir: false, // keep the client build
-              rollupOptions: {
-                output: {
-                  format: ssrFormat,
-                },
-              },
             },
           };
         } else {
+          // Client build ...
           let rollupOptions: RollupOptions = {};
           if (isServerEntryScript(config)) {
             // index.html points to a .server.* file
@@ -194,6 +259,9 @@ export function capri({
         if (source === "virtual:capri-hydrate") {
           return this.resolve(adapter.hydrate);
         }
+        if (source === "virtual:capri-render") {
+          return serverEntry;
+        }
         if (!source.includes("?unwrapped")) {
           const resolved = await this.resolve(source, importer, {
             ...options,
@@ -210,14 +278,19 @@ export function capri({
       async load(id) {
         if (spa && id.endsWith(spa)) {
           const index = await resolveIndexHtml(this);
-          return fs.readFileSync(index, "utf8");
+          return fsutils.read(index);
         }
         if (id === "\0virtual:capri-hydration") {
-          const file = new URL("./virtual/hydration.js", import.meta.url)
-            .pathname;
-          return fs
-            .readFileSync(file, "utf8")
+          const file = resolveRelative("./virtual/hydration.js");
+          return fsutils
+            .read(file)
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
+        }
+        if (id === ssr) {
+          return fsutils
+            .read(ssr)
+            .replace(/"%TEMPLATE%"/, JSON.stringify(template))
+            .replace("{/*MANIFEST*/}", JSON.stringify(manifest));
         }
       },
       async buildStart() {
@@ -268,33 +341,30 @@ export function capri({
       },
       async writeBundle(options, bundle) {
         if (mode === "server") {
-          const chunk = findRenderChunk(bundle, ssr);
-
-          // Read the index.html so we can use it as template for all prerendered pages.
-          const indexHtml = fs.readFileSync(
-            path.join(options.dir!, "index.html"),
-            "utf8"
-          );
-
-          // Import the render function from the SSR bundle.
-          const ssrBundle = path.resolve(options.dir!, chunk.fileName);
-          const { render } = await import(ssrBundle);
-
-          if (!render || typeof render !== "function") {
-            throw new Error(`${ssr} must export a render function.`);
-          }
+          const ssrBundle = path.resolve(outDir, "ssr.js");
 
           // Prerender pages...
-          await renderStaticPages(render, {
-            template: indexHtml,
-            outDir: options.dir!,
+          const prerendered = await renderStaticPages({
+            ssrBundle,
             createIndexFiles,
+            outDir,
             base,
             prerender,
             followLinks,
           });
 
-          fs.unlinkSync(ssrBundle);
+          // Hook for build targets
+          if (target) {
+            await target.build({
+              rootDir,
+              outDir,
+              ssrBundle,
+              prerendered,
+              fsutils,
+              bundle: createBundler(ssrBundle),
+            });
+          }
+          fsutils.rm(ssrBundle);
         }
       },
     },
@@ -317,9 +387,13 @@ export function capri({
   ];
 }
 
+function resolveRelative(src: string) {
+  return new URL(src, import.meta.url).pathname;
+}
+
 function getEntryScript(config: UserConfig) {
   const indexHtml = path.resolve(config.root ?? "", "index.html");
-  const src = getEntrySrc(fs.readFileSync(indexHtml, "utf8"));
+  const src = getEntrySrc(fsutils.read(indexHtml));
   if (!src) throw new Error(`Can't find entry script in ${indexHtml}`);
   return path.join(path.resolve(config.root ?? ""), src);
 }
@@ -330,7 +404,7 @@ function getServerEntryScript(config: UserConfig) {
     /(\.client|\.server)?(\.[^.]+)$/,
     ".server$2"
   );
-  if (!fs.existsSync(f)) {
+  if (!fsutils.exists(f)) {
     throw new Error(
       `File not found: ${f}. Make sure to name your server entry file accordingly.`
     );
@@ -395,4 +469,23 @@ function isWrapperInfo(obj: unknown): obj is WrapperInfo {
     );
   }
   return false;
+}
+
+function readManifest(dir: string) {
+  try {
+    const f = path.join(dir, "ssr-manifest.json");
+    if (fsutils.exists(f)) {
+      const json = fsutils.read(f);
+      fsutils.rm(f);
+      const entries = Object.entries(JSON.parse(json))
+        .filter(([id]) => !id.startsWith("\0"))
+        .map(([id, chunks]) => [path.resolve("/", id), chunks]);
+
+      return Object.fromEntries(entries) as Record<string, string[]>;
+    }
+  } catch (err) {
+    console.error("Failed to load ssr-manifest.json");
+    console.error(err);
+  }
+  return {};
 }

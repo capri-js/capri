@@ -1,6 +1,6 @@
 {
   "name": "capri",
-  "version": "4.1.0",
+  "version": "5.0.0-next.3",
   "description": "Static site generator for Vite",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -11,7 +11,8 @@
   "type": "module",
   "main": "./lib/index.js",
   "files": [
-    "lib"
+    "lib",
+    "ssr.d.ts"
   ],
   "exports": {
     ".": {
@@ -28,15 +29,25 @@
       ],
       "vite-plugin": [
         "lib/vite-plugin.d.ts"
+      ],
+      "ssr": [
+        "ssr.d.ts"
       ]
     }
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.11",
+    "esbuild": "^0.14.49",
     "micromatch": "^4.0.5",
-    "url-join": "^5.0.0"
+    "node-fetch": "^3.2.6",
+    "url-join": "^5.0.0",
+    "web-streams-polyfill": "^3.2.1"
   },
   "devDependencies": {
-    "@types/micromatch": "^4.0.2"
+    "@types/micromatch": "^4.0.2",
+    "vite": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0"
   }
 }

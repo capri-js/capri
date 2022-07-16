@@ -1,4 +1,27 @@
 import { EventEmitter } from "events";
+import { ReactNode } from "react";
+import { renderToPipeableStream } from "react-dom/server";
+
+export default function renderToString(element: ReactNode) {
+  return new Promise<string>((resolve, reject) => {
+    const stream = renderToPipeableStream(element, {
+      onError(err) {
+        reject(err);
+      },
+      onAllReady() {
+        stream.pipe(
+          new StreamReader((html) => {
+            resolve(stripComments(html));
+          })
+        );
+      },
+    });
+  });
+}
+
+function stripComments(html: string) {
+  return html.replace(/<!--[\s\S]*?(?:-->)/g, "");
+}
 
 /**
  * Naive WriteableStream implementation that captures chunks in memory

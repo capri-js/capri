@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && vite build --ssr",
-    "build:github": "BASE_URL=/capri/solid/ npm run build && cp -r dist ../../.github/pages/solid",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,7 +17,7 @@
   "devDependencies": {
     "@capri-js/solid": "*",
     "babel-preset-solid": "^1.4.2",
-    "vite": "^2.9.9",
+    "vite": "^3.0.0",
     "vite-plugin-solid": "^2.2.6"
   }
 }

@@ -5,3 +5,5 @@ declare module "virtual:capri-hydrate" {
     element: Element
   ) => any;
 }
+
+declare module "virtual:capri-render" {}
