@@ -165,8 +165,10 @@ export async function createCapri({
   console.log(chalk.cyan(`  ${packageManager} ${useYarn ? "" : "run "}build`));
   console.log("    Builds the site for production.");
   console.log();
-  console.log(chalk.cyan(`  ${packageManager} start`));
-  console.log("    Runs the built app in production mode.");
+  console.log(
+    chalk.cyan(`  ${packageManager} ${useYarn ? "" : "run "}preview`)
+  );
+  console.log("    Starts the preview server.");
   console.log();
   console.log("We suggest that you begin by typing:");
   console.log();
