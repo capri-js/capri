@@ -20,6 +20,7 @@ export async function renderHtml(
   if (!result) return;
 
   const template = await createTemplate(indexHtml);
+  template.removeModulePreloadLinks();
 
   // Insert the rendered markup into the index.html template:
   template.insertMarkup(await resolveMarkup(result));
@@ -35,7 +36,7 @@ export async function renderHtml(
     console.log("No islands found, removing hydration code");
     template.removeScripts({
       src: /hydrate|-legacy/,
-      text: /__vite_is_dynamic_import_support|"noModule"|_\$HY/,
+      text: /__vite_is_modern_browser|"noModule"|_\$HY/,
     });
   }
   return template.toString();
