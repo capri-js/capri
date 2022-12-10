@@ -8,12 +8,12 @@ import { RegExpTemplate } from "./RegExpTemplate.js";
 
 const hydration = `<script type="module" crossorigin="" src="/dist/assets/hydrate.665a5d68.js"></script>`;
 
-const dynamicImportPolyfill = `<script type="module">try{import("_").catch(()=>1);}catch(e){}window.__vite_is_dynamic_import_support=true;</script>
-<script type="module">!function(){if(window.__vite_is_dynamic_import_support)return;console.warn("vite: loading legacy build because dynamic import is unsupported, syntax error above should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>`;
+const dynamicImportPolyfill = `<script type="module">try{import.meta.url;import("_").catch(()=>1);}catch(e){}window.__vite_is_modern_browser=true;</script>
+<script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy build because dynamic import or import.meta.url is unsupported, syntax error above should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>`;
 
 const viteLegacy = `<script nomodule="">!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
-<script nomodule="" id="vite-legacy-polyfill" src="/dist/assets/polyfills-legacy.3dc4c6c1.js"></script>
-<script nomodule="" id="vite-legacy-entry" data-src="/dist/assets/hydrate-legacy.439310c5.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>`;
+<script nomodule="" crossorigin="" id="vite-legacy-polyfill" src="/dist/assets/polyfills-legacy.7780630f.js"></script>
+<script nomodule="" crossorigin="" id="vite-legacy-entry" data-src="/dist/assets/hydrate-legacy.902f4184.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>`;
 
 const modulePreload = `<link rel="modulepreload" href="/chunk.1.js">
 < link href="/chunk.2.js" rel = "modulepreload" >
@@ -75,7 +75,7 @@ describe.each([
     );
     t.removeScripts({
       src: /hydrate|-legacy/,
-      text: /__vite_is_dynamic_import_support|"noModule"|_\$HY/,
+      text: /__vite_is_modern_browser|"noModule"|_\$HY/,
     });
     expect(format(t.toString())).toEqual(format(template({})));
   });
