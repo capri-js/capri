@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, Routes } from "solid-app-router";
+import { Route, Routes } from "@solidjs/router";
 import { NoHydration } from "solid-js/web";
 
 import { About } from "./About";

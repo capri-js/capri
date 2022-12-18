@@ -1,4 +1,4 @@
-import { Link } from "solid-app-router";
+import { A } from "@solidjs/router";
 
 import CounterIsland from "./Counter.island";
 import ExpandableIsland from "./Expandable.island.jsx";
@@ -28,7 +28,7 @@ export function Home() {
         </ServerContent>
       </ExpandableIsland>
       <MediaQueryIsland />
-      <Link href="/about">Link to another page</Link>
+      <A href="/about">Link to another page</A>
     </main>
   );
 }

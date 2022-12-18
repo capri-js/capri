@@ -11,13 +11,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "solid-app-router": "^0.3.3",
-    "solid-js": "^1.4.2"
+    "@solidjs/router": "^0.5.1",
+    "solid-js": "^1.6.5"
   },
   "devDependencies": {
     "@capri-js/solid": "*",
-    "babel-preset-solid": "^1.4.2",
     "vite": "^3.0.0",
-    "vite-plugin-solid": "^2.2.6"
+    "vite-plugin-solid": "^2.5.0"
   }
 }

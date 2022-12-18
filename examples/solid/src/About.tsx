@@ -1,4 +1,4 @@
-import { Link } from "solid-app-router";
+import { A } from "@solidjs/router";
 import { Suspense } from "solid-js";
 
 import { AsyncData } from "./AsyncData.jsx";
@@ -16,7 +16,7 @@ export function About() {
         An since it does not contain any interactive islands, no JavaScript is
         shipped to the browser.
       </section>
-      <Link href="/">Home</Link>
+      <A href="/">Home</A>
     </main>
   );
 }
