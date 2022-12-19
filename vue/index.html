@@ -1,12 +1,12 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="/capri/vue/assets/capri.ce1c56b3.svg">
-    <script type="module" crossorigin="" src="/capri/vue/assets/hydrate.246680be.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/capri/vue/assets/capri-ce1c56b3.svg">
+    <script type="module" crossorigin="" src="/capri/vue/assets/hydrate-ea2cdc89.js"></script>
     
-    <link rel="stylesheet" href="/capri/vue/assets/main.55cf1a2a.css">
-    <link rel="stylesheet" href="/capri/vue/assets/Counter.island.6f86b7c2.css">
-    <link rel="stylesheet" href="/capri/vue/assets/Expandable.island.1d91b91c.css">
+    <link rel="stylesheet" href="/capri/vue/assets/main-57616d8c.css">
+    <link rel="stylesheet" href="/capri/vue/assets/Counter.island-6f86b7c2.css">
+    <link rel="stylesheet" href="/capri/vue/assets/Expandable.island-1d91b91c.css">
   </head>
   <body>
     <div id="app"><main><h1>Partial hydration with Vue and <i>Capri</i></h1><section>This page is static, but contains some dynamic parts.</section><section>Here is a simple counter: <capri-island><div data-testid="counter" data-v-acb7c5e3=""><button data-v-acb7c5e3="">-</button><span data-v-acb7c5e3="">0</span><button data-v-acb7c5e3="">+</button></div><script type="application/json" data-island="/src/Counter.island.vue">{"props":{}}</script></capri-island></section><section> And here is another one, independent from the one above: <capri-island><div data-testid="counter" data-v-acb7c5e3=""><button data-v-acb7c5e3="">-</button><span data-v-acb7c5e3="">100</span><button data-v-acb7c5e3="">+</button></div><script type="application/json" data-island="/src/Counter.island.vue">{"props":{"start":100}}</script></capri-island></section><capri-island><div class="box" data-expanded="false" data-v-74c689c6=""><capri-lagoon style="display:contents"><div class="box" data-v-74c689c6=""><!--[-->This is static content inside an island. We call this a lagoon.<!--]--></div></capri-lagoon><button data-v-74c689c6=""><!--[--><capri-slot style="display:contents" name="title"><!--[-->Click to expand<!--]--></capri-slot><!--]--></button><div class="expandable-content" data-v-74c689c6=""><capri-lagoon style="display:contents"><div class="box" data-v-74c689c6=""><!--[--> This a second lagoon. Below you see the body slot that was passed to the Expandable island: <!--]--></div></capri-lagoon><!--[--><capri-slot style="display:contents" name="body"><!--[--><div class="box"><!--[--> The code for <code>ServerContent</code> won't show up in the client bundle. <!--]--></div><!--]--></capri-slot><!--]--></div></div><script type="application/json" data-island="/src/Expandable.island.vue">{"props":{}}</script></capri-island><capri-island><div class="box">Resize your browser below 500px to hydrate this island.</div><script type="application/json" data-island="/src/MediaQuery.island.vue">{"props":{},"options":{"media":"(max-width:500px)"}}</script></capri-island><a href="/capri/vue/about" class="">Another page</a></main></div>

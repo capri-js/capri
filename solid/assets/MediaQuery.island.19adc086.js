@@ -1,1 +1,0 @@
-import{c as s,F as a,g as o,B as r,t as i}from"./web.80f85a63.js";const d=i('<div class="box"></div>'),c={media:"(max-width:500px)"};function m(){const[e,n]=s("Resize your browser below 500px to hydrate this island.");return a(()=>{n("The island has been hydrated.")}),(()=>{const t=o(d);return r(t,e),t})()}export{m as default,c as options};
