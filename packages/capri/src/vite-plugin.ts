@@ -7,13 +7,7 @@ import type {
   PluginContext,
   RollupOptions,
 } from "rollup";
-import type {
-  ChunkMetadata,
-  ConfigEnv,
-  Plugin,
-  SSROptions,
-  UserConfig,
-} from "vite";
+import type { ConfigEnv, Plugin, SSROptions, UserConfig } from "vite";
 
 import { BundleOptions, createBundler } from "./bundle.js";
 import * as fsutils from "./fsutils.js";

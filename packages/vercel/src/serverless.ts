@@ -1,4 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
+
 import ssr from "virtual:capri-ssr";
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
