@@ -35,6 +35,11 @@
   "dependencies": {
     "capri": "^5.0.1"
   },
-  "devDependencies": {},
-  "peerDependencies": {}
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vite": "3.x || 4.x",
+    "vue": "^3.2.37"
+  }
 }

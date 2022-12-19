@@ -39,6 +39,7 @@
     "solid-js": "^1.4.2"
   },
   "peerDependencies": {
-    "solid-js": "^1.4.2"
+    "solid-js": "^1.4.2",
+    "vite": "3.x || 4.x"
   }
 }

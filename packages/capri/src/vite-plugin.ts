@@ -309,34 +309,36 @@ export function capri({
           // "hydrate" rather than the "index" chunk but will still include
           // all the original assets:
 
-          let indexModuleId: string;
-          let indexMetadata: ChunkMetadata;
-
-          Object.values(bundle).forEach((chunk) => {
-            if (
+          const indexChunk = Object.values(bundle).find(
+            (chunk) =>
               chunk.type === "chunk" &&
               chunk.facadeModuleId &&
               chunk.name === "index"
-            ) {
-              // Remember the id and the assets of the index.html file...
-              indexModuleId = chunk.facadeModuleId;
-              indexMetadata = chunk.viteMetadata;
+          );
+          if (!indexChunk || indexChunk.type !== "chunk") {
+            throw new Error("Can't find index chunk.");
+          }
 
-              // Merge viteMetadata of imports. When code is split, assets
-              // can move further down in the tree.
-              gatherCss(chunk, bundle, indexMetadata.importedCss);
+          // Merge viteMetadata of imports. When code is split, assets
+          // can move further down in the tree.
+          gatherCss(indexChunk, bundle, indexChunk.viteMetadata.importedCss);
 
-              // Set the facadeModuleId to null so that vite:build-html does
-              // not add script tags for it:
-              chunk.facadeModuleId = null;
-            } else if (chunk.type === "chunk" && chunk.name === "hydrate") {
-              // Set the facadeModuleId of the hydration code to the id of
-              // the index.html module so that vite:build-html creates a
-              // script tag for it:
-              chunk.facadeModuleId = indexModuleId;
-              chunk.viteMetadata = indexMetadata;
-            }
-          });
+          const hydrateChunk = Object.values(bundle).find(
+            (chunk) => chunk.type === "chunk" && chunk.name === "hydrate"
+          );
+          if (!hydrateChunk || hydrateChunk.type !== "chunk") {
+            throw new Error("Can't find hydrate chunk.");
+          }
+
+          // Set the facadeModuleId of the hydration code to the id of
+          // the index.html module so that vite:build-html creates a
+          // script tag for it:
+          hydrateChunk.facadeModuleId = indexChunk.facadeModuleId;
+          hydrateChunk.viteMetadata = indexChunk.viteMetadata;
+
+          // Set the facadeModuleId to null so that vite:build-html does
+          // not add script tags for it:
+          indexChunk.facadeModuleId = null;
         }
       },
       async writeBundle(options, bundle) {

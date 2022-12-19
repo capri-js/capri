@@ -20,6 +20,6 @@
     "web-streams-polyfill": "^3.2.1"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.14.0"
+    "@cloudflare/workers-types": "^3.18.0"
   }
 }

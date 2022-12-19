@@ -38,6 +38,7 @@
     "preact-render-to-string": "^5.2.6"
   },
   "peerDependencies": {
-    "preact": "^10.0.0"
+    "preact": "^10.0.0",
+    "vite": "3.x || 4.x"
   }
 }

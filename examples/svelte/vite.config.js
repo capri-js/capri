@@ -15,7 +15,6 @@ export default defineConfig((env) => ({
         }),
       ],
       compilerOptions: {
-        dev: env.command === "serve",
         hydratable: true,
       },
     }),

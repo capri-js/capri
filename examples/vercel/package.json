@@ -11,17 +11,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^1.3.2",
+    "@vitejs/plugin-react": "^3.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-render-to-string": "1.1.0-next.1",
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@capri-js/react": "^4.0.2-next.1",
-    "@capri-js/vercel": "^1.0.0-next.6",
+    "@capri-js/react": "*",
+    "@capri-js/vercel": "*",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "vite": "^3.0.0"
+    "vite": "^4.0.0"
   }
 }
