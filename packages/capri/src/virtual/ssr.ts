@@ -11,9 +11,8 @@ const renderFn = render.render ?? render.default;
 
 const template = "%TEMPLATE%";
 
-//prettier-ignore
-const manifest = {/*MANIFEST*/};
+const css: string[] = __CSS_ASSETS__;
 
 export default async function ssr(url: string, context: RenderContext) {
-  return renderHtml(renderFn, url, template, manifest, context);
+  return renderHtml(renderFn, url, template, css, context);
 }

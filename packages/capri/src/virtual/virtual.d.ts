@@ -6,4 +6,4 @@ declare module "virtual:capri-hydration-adapter" {
   ) => any;
 }
 
-declare module "virtual:capri-render" {}
+declare module "virtual:capri-server-entry" {}

@@ -9,4 +9,4 @@ declare module "virtual:capri-ssr" {
   ): Promise<string>;
 }
 
-declare const USE_CHEERIO: boolean;
+declare const __CSS_ASSETS__: string[];

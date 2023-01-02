@@ -8,14 +8,25 @@ const staticContext: RenderContext = {
   },
 };
 
+/**
+ * Renders a page and returns a template which can be used to insert additional
+ * markup.
+ *
+ * @param renderFn The render function
+ * @param url The URL of the page to render
+ * @param indexHtml The index.html where to insert the markup
+ * @param css List of stylesheets to include
+ * @param context The context passed to the render function
+ * @returns A HTML string or undefined, if nothing was rendered.
+ */
 export async function renderHtml(
-  render: RenderFunction,
+  renderFn: RenderFunction,
   url: string,
   indexHtml: string,
-  manifest: Record<string, string[]>,
+  css: string[],
   context = staticContext
 ) {
-  const result = await render(url, context);
+  const result = await renderFn(url, context);
   if (!result) return;
 
   const template = new Template(indexHtml);
@@ -23,17 +34,17 @@ export async function renderHtml(
   // Insert the rendered markup into the index.html template:
   template.insertMarkup(await resolveMarkup(result));
 
-  const islands = template.getIslands();
-  const preloadTags = getPreloadTags(islands, manifest);
+  const head = css
+    .map((href) => `<link rel="stylesheet" href="${href}">`)
+    .join("");
+  template.insertMarkup({ head });
 
-  if (preloadTags.length) {
-    // Insert modulepreload links for the included islands:
-    template.insertMarkup({ head: preloadTags.join("") });
-  } else if (!islands.length) {
+  const islands = template.getIslands();
+  if (!islands.length) {
     // No islands present, remove the hydration script.
     console.log("No islands found, removing hydration code");
     template.removeScripts({
-      src: /hydrate|-legacy/,
+      src: /index-|-legacy|modulepreload-polyfill/,
       text: /__vite_is_modern_browser|"noModule"|_\$HY/,
     });
   }
@@ -51,22 +62,4 @@ async function resolveMarkup(markup: Markup) {
     resolved[key] = await value;
   }
   return resolved;
-}
-
-function getPreloadTags(
-  markers: IslandMarker[],
-  manifest: Record<string, string[]>
-) {
-  const preload = new Set<string>();
-  markers.forEach((marker) => {
-    const { island, json } = marker;
-    const chunks = manifest[island];
-    const { options } = JSON.parse(json);
-    if (!options?.media) {
-      chunks?.forEach((asset) => {
-        if (asset.endsWith(".js")) preload.add(asset);
-      });
-    }
-  });
-  return [...preload].map((src) => `<link rel="modulepreload" href="${src}">`);
 }
