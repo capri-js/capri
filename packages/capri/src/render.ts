@@ -1,5 +1,4 @@
-import { createTemplate } from "./template/createTemplate.js";
-import { IslandMarker } from "./template/Template.js";
+import { Template } from "./Template.js";
 import { Markup, RenderContext, RenderFunction } from "./types.js";
 
 const staticContext: RenderContext = {
@@ -19,8 +18,7 @@ export async function renderHtml(
   const result = await render(url, context);
   if (!result) return;
 
-  const template = await createTemplate(indexHtml);
-  template.removeModulePreloadLinks();
+  const template = new Template(indexHtml);
 
   // Insert the rendered markup into the index.html template:
   template.insertMarkup(await resolveMarkup(result));
