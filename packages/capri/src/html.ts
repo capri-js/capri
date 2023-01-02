@@ -1,14 +1,6 @@
 import * as cheerio from "cheerio";
 
-function isLocalUrl(href: string) {
-  const url = new URL(href, "file:///");
-  return url.protocol === "file:" && !url.host;
-}
-
-function resolveUrl(href: string) {
-  const url = new URL(href, "file:///");
-  return url.pathname;
-}
+import { isLocalUrl, resolveUrl } from "./utils.js";
 
 export function getLinks(html: string) {
   const $ = cheerio.load(html);

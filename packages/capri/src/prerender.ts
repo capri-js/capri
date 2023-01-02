@@ -4,6 +4,7 @@ import urlJoin from "url-join";
 
 import { getLinks } from "./html.js";
 import { polyfillWebAPIs } from "./polyfills.js";
+import { stripLeadingSlash, stripTrailingSlash } from "./utils.js";
 
 export type PrerenderConfig =
   | false
@@ -77,12 +78,4 @@ export function urlToFileName(url: string, extraDir: boolean, base: string) {
   if (!file) return "index.html";
   if (file.includes(".html")) return file;
   return `${file}${extraDir ? "/index.html" : ".html"}`;
-}
-
-function stripLeadingSlash(s: string) {
-  return s.replace(/^\//, "");
-}
-
-function stripTrailingSlash(s: string) {
-  return s.replace(/\/$/, "");
 }

@@ -110,11 +110,3 @@ export function write(file: string, data: string) {
   }
   fs.writeFileSync(file, data);
 }
-
-function escapeRegex(str: string) {
-  return str.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
-}
-
-function posixify(str: string) {
-  return str.split(path.sep).join(path.posix.sep);
-}
