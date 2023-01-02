@@ -1,3 +1,7 @@
+/**
+ * Makes sure that the global fetch and ReadableStream APIs are available
+ * and loads the polyfills if necessary.
+ */
 export async function polyfillWebAPIs() {
   if (!globalThis.ReadableStream) {
     await import("web-streams-polyfill");

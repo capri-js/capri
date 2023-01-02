@@ -1,4 +1,7 @@
-import * as renderModule from "virtual:capri-render";
+/**
+ * Virtual module that inlines the index.html upon build.
+ */
+import * as renderModule from "virtual:capri-server-entry";
 
 import { renderHtml } from "../render.js";
 import { RenderContext } from "../types.js";

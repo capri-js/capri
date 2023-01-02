@@ -42,6 +42,11 @@ export async function renderHtml(
   return template.toString();
 }
 
+/**
+ * The Markup object returned by a RenderFunction may have Promises as values.
+ * This utility function awaits them and returns an object with the resolved
+ * values.
+ */
 async function resolveMarkup(markup: Markup) {
   const resolved: Record<string, string> = {};
   for (const [key, value] of Object.entries(markup)) {
