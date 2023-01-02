@@ -1,4 +1,4 @@
-declare module "virtual:capri-hydrate" {
+declare module "virtual:capri-hydration-adapter" {
   export default (
     component: any,
     props: Record<string, unknown>,

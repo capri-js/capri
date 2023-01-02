@@ -250,7 +250,9 @@ export function capri({
         if (source === "virtual:capri-hydration") {
           return { id: "\0virtual:capri-hydration", moduleSideEffects: true };
         }
-        if (source === "virtual:capri-hydrate") {
+
+        if (source === "virtual:capri-hydration-adapter") {
+          // Framework adapters provide a module for the actual hydration ...
           return this.resolve(adapter.hydrate);
         }
         if (source === "virtual:capri-render") {
