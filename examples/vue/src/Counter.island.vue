@@ -21,4 +21,16 @@ div {
   display: inline-flex;
   gap: 0.5em;
 }
+button {
+  font-family: inherit;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+  background: #15992b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+button:hover {
+  background: #56c13f;
+}
 </style>
