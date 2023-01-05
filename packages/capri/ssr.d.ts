@@ -1,12 +1,6 @@
 declare module "virtual:capri-ssr" {
-  type RenderContext = {
-    getHeader(name: string): string | null;
-    setHeader(name: string, value: string): void;
-  };
-  export default function (
-    url: string,
-    context: RenderContext
-  ): Promise<string>;
+  const { default: ssr } = await import("./src/virtual/ssr.js");
+  export default ssr;
 }
 
 declare const __CSS_ASSETS__: string[];

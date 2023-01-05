@@ -1,12 +1,21 @@
+import { RenderContext, StaticRenderContext } from "./context.js";
 import { Template } from "./Template.js";
-import { Markup, RenderContext, RenderFunction } from "./types.js";
+import { Markup, RenderFunction } from "./types.js";
+import { SSRFunction } from "./virtual/ssr.js";
 
-const staticContext: RenderContext = {
-  getHeader: () => null,
-  setHeader: () => {
-    // ignore
-  },
-};
+export async function loadSSRModule(path: string) {
+  if (path.startsWith(".")) {
+    throw new Error("Path must be absolute");
+  }
+  const mod = await import(path);
+  if (mod && typeof mod === "object" && "default" in mod) {
+    const ssr = mod.default;
+    // When ssr.format is set to "cjs" we end up with default.default:
+    const fn = ssr.default ?? ssr;
+    if (typeof fn === "function") return fn as SSRFunction;
+  }
+  throw new Error(`${path} is not a SSR module`);
+}
 
 /**
  * Renders a page and returns a template which can be used to insert additional
@@ -24,7 +33,7 @@ export async function renderHtml(
   url: string,
   indexHtml: string,
   css: string[],
-  context = staticContext
+  context: RenderContext = new StaticRenderContext()
 ) {
   const result = await renderFn(url, context);
   if (!result) return;

@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import { ModuleGraph, ModuleNode, ViteDevServer } from "vite";
 
+import { RenderContext } from "./context.js";
 import { getEntryScripts } from "./entry.js";
 import { renderHtml } from "./render.js";
-import { RenderContext } from "./types.js";
 import { direct } from "./utils.js";
 
 export async function renderPreview(

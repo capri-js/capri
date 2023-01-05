@@ -8,6 +8,9 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
   } else {
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     const html = await ssr(req.url!, {
+      status(code) {
+        res.statusCode = code;
+      },
       getHeader(name: string) {
         const header = req.headers[name] ?? null;
         return Array.isArray(header) ? header[0] : header;

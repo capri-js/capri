@@ -9,15 +9,21 @@ const handler: ExportedHandler<Env> = {
       request.headers.get("accept")?.includes("text/html")
     ) {
       const path = new URL(request.url).pathname;
+
+      let status = 200;
       const headers = new Headers({
         "Content-Type": "text/html; charset=utf-8",
       });
+
       const html = await ssr(path, {
+        status: (code) => {
+          status = code;
+        },
         getHeader: request.headers.get.bind(request.headers),
         setHeader: headers.set.bind(headers),
       });
       if (html) {
-        return new Response(html, { headers });
+        return new Response(html, { status, headers });
       }
     }
     return response;
