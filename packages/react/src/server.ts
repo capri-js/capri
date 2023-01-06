@@ -1,8 +1,8 @@
-import { RenderContext, StaticRenderContext } from "capri";
+import { RenderContext, StaticRenderContext } from "capri/context";
 import { createContext, createElement, ReactNode, useContext } from "react";
 import render from "react-render-to-string";
 
-export type { RenderFunction } from "capri";
+export type { RenderContext, RenderFunction } from "capri";
 
 const renderContext = createContext<RenderContext>(new StaticRenderContext());
 
