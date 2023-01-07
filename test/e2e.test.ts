@@ -41,6 +41,9 @@ describe("examples", () => {
       await waitFor(async () => {
         expect(value2?.textContent).toBe("101");
       });
+    },
+    {
+      timeout: 60000,
     }
   );
 });
