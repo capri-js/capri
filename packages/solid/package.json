@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/solid",
-  "version": "5.1.0",
+  "version": "5.1.1-next.1",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "capri": "^5.1.0"
+    "capri": "^5.2.0-next.1"
   },
   "devDependencies": {
     "solid-js": "^1.4.2"
