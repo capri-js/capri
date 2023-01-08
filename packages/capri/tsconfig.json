@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "isolatedModules": false
   }
 }

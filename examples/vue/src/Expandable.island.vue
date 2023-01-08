@@ -21,6 +21,18 @@ const expanded = ref(false);
 </template>
 
 <style scoped>
+button {
+  font-family: inherit;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+  background: #15992b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+button:hover {
+  background: #56c13f;
+}
 button::after {
   display: inline-block;
   margin-left: 0.5em;

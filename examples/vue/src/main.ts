@@ -2,10 +2,10 @@ import "./global.css";
 
 import { createApp } from "vue";
 
-import App from "./App.vue";
+import PreviewApp from "./PreviewApp.vue";
 import createRouter from "./router.js";
 
-const app = createApp(App);
+const app = createApp(PreviewApp);
 app.use(createRouter());
 
 app.mount("#app");

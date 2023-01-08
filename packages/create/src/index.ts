@@ -36,8 +36,9 @@ const program = new Commander.Command("create-capri")
     `
 
   An example to bootstrap the app with. You can use an example name
-  from the official Next.js repo or a GitHub URL. The URL can use
-  any branch and/or subdirectory
+  from the official Capri repo or a GitHub URL. The URL can use
+  any branch and/or subdirectory and the https://github.com prefix
+  can be omitted.
 `
   )
   .option(

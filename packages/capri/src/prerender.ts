@@ -2,8 +2,11 @@ import * as fs from "fs";
 import * as path from "path";
 import urlJoin from "url-join";
 
+import { StaticRenderContext } from "./context.js";
 import { getLinks } from "./html.js";
 import { polyfillWebAPIs } from "./polyfills.js";
+import { loadSSRModule } from "./render.js";
+import { stripLeadingSlash, stripTrailingSlash } from "./utils.js";
 
 export type PrerenderConfig =
   | false
@@ -38,30 +41,29 @@ export async function renderStaticPages({
   followLinks,
 }: StaticRenderConfig) {
   await polyfillWebAPIs();
-
-  const { default: ssrModule } = await import(ssrBundle);
-
-  // REVISIT When ssr.format is set to "cjs" we end up with default.default:
-  const ssr = ssrModule.default ?? ssrModule;
-
+  const ssr = await loadSSRModule(ssrBundle);
   const seen = new Set(
     (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
   );
   const urls = [...seen];
   for (const url of urls) {
-    const html = await ssr(url);
-    const fileName = urlToFileName(url, createIndexFiles, base);
-    const dest = path.join(outDir, fileName);
-    fs.mkdirSync(path.dirname(dest), { recursive: true });
-    fs.writeFileSync(dest, html);
+    const context = new StaticRenderContext();
+    const html = await ssr(url, context);
+    if (html && context.statusCode === 200) {
+      const fileName = urlToFileName(url, createIndexFiles, base);
+      const dest = path.join(outDir, fileName);
+      fs.mkdirSync(path.dirname(dest), { recursive: true });
+      fs.writeFileSync(dest, html);
 
-    if (followLinks) {
-      const follow = typeof followLinks === "function" ? followLinks : Boolean;
-      const links = getLinks(html).filter(follow);
-      for (const link of links) {
-        if (!seen.has(link)) {
-          seen.add(link);
-          urls.push(link);
+      if (followLinks) {
+        const follow =
+          typeof followLinks === "function" ? followLinks : Boolean;
+        const links = getLinks(html).filter(follow);
+        for (const link of links) {
+          if (!seen.has(link)) {
+            seen.add(link);
+            urls.push(link);
+          }
         }
       }
     }
@@ -77,12 +79,4 @@ export function urlToFileName(url: string, extraDir: boolean, base: string) {
   if (!file) return "index.html";
   if (file.includes(".html")) return file;
   return `${file}${extraDir ? "/index.html" : ".html"}`;
-}
-
-function stripLeadingSlash(s: string) {
-  return s.replace(/^\//, "");
-}
-
-function stripTrailingSlash(s: string) {
-  return s.replace(/\/$/, "");
 }

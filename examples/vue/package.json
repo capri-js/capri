@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "vue": "^3.2.37",
-    "vue-router": "4.0.x"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@capri-js/vue": "*",

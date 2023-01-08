@@ -1,69 +1,74 @@
-import { createTemplate } from "./template/createTemplate.js";
-import { IslandMarker } from "./template/Template.js";
-import { Markup, RenderContext, RenderFunction } from "./types.js";
+import { RenderContext, StaticRenderContext } from "./context.js";
+import { Template } from "./Template.js";
+import { Markup, RenderFunction } from "./types.js";
+import { SSRFunction } from "./virtual/ssr.js";
 
-const staticContext: RenderContext = {
-  getHeader: () => null,
-  setHeader: () => {
-    // ignore
-  },
-};
+export async function loadSSRModule(path: string) {
+  if (path.startsWith(".")) {
+    throw new Error("Path must be absolute");
+  }
+  const mod = await import(path);
+  if (mod && typeof mod === "object" && "default" in mod) {
+    const ssr = mod.default;
+    // When ssr.format is set to "cjs" we end up with default.default:
+    const fn = ssr.default ?? ssr;
+    if (typeof fn === "function") return fn as SSRFunction;
+  }
+  throw new Error(`${path} is not a SSR module`);
+}
 
+/**
+ * Renders a page and returns a template which can be used to insert additional
+ * markup.
+ *
+ * @param renderFn The render function
+ * @param url The URL of the page to render
+ * @param indexHtml The index.html where to insert the markup
+ * @param css List of stylesheets to include
+ * @param context The context passed to the render function
+ * @returns A HTML string or undefined, if nothing was rendered.
+ */
 export async function renderHtml(
-  render: RenderFunction,
+  renderFn: RenderFunction,
   url: string,
   indexHtml: string,
-  manifest: Record<string, string[]>,
-  context = staticContext
+  css: string[],
+  context: RenderContext = new StaticRenderContext()
 ) {
-  const result = await render(url, context);
+  const result = await renderFn(url, context);
   if (!result) return;
 
-  const template = await createTemplate(indexHtml);
-  template.removeModulePreloadLinks();
+  const template = new Template(indexHtml);
 
   // Insert the rendered markup into the index.html template:
   template.insertMarkup(await resolveMarkup(result));
 
-  const islands = template.getIslands();
-  const preloadTags = getPreloadTags(islands, manifest);
+  const head = css
+    .map((href) => `<link rel="stylesheet" href="${href}">`)
+    .join("");
+  template.insertMarkup({ head });
 
-  if (preloadTags.length) {
-    // Insert modulepreload links for the included islands:
-    template.insertMarkup({ head: preloadTags.join("") });
-  } else if (!islands.length) {
+  const islands = template.getIslands();
+  if (!islands.length) {
     // No islands present, remove the hydration script.
     console.log("No islands found, removing hydration code");
     template.removeScripts({
-      src: /hydrate|-legacy/,
+      src: /index-|-legacy|modulepreload-polyfill/,
       text: /__vite_is_modern_browser|"noModule"|_\$HY/,
     });
   }
   return template.toString();
 }
 
+/**
+ * The Markup object returned by a RenderFunction may have Promises as values.
+ * This utility function awaits them and returns an object with the resolved
+ * values.
+ */
 async function resolveMarkup(markup: Markup) {
   const resolved: Record<string, string> = {};
   for (const [key, value] of Object.entries(markup)) {
     resolved[key] = await value;
   }
   return resolved;
-}
-
-function getPreloadTags(
-  markers: IslandMarker[],
-  manifest: Record<string, string[]>
-) {
-  const preload = new Set<string>();
-  markers.forEach((marker) => {
-    const { island, json } = marker;
-    const chunks = manifest[island];
-    const { options } = JSON.parse(json);
-    if (!options?.media) {
-      chunks?.forEach((asset) => {
-        if (asset.endsWith(".js")) preload.add(asset);
-      });
-    }
-  });
-  return [...preload].map((src) => `<link rel="modulepreload" href="${src}">`);
 }
