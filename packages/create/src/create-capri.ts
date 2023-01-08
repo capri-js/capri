@@ -36,12 +36,14 @@ export async function createCapri({
   if (example) {
     let repoUrl: URL | undefined;
 
-    try {
-      repoUrl = new URL(example);
-    } catch (error: any) {
-      if (error.code !== "ERR_INVALID_URL") {
-        console.error(error);
-        process.exit(1);
+    if (example.includes("/")) {
+      try {
+        repoUrl = new URL(example, "https://github.com");
+      } catch (error: any) {
+        if (error.code !== "ERR_INVALID_URL") {
+          console.error(error);
+          process.exit(1);
+        }
       }
     }
 
