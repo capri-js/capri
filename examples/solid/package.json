@@ -15,7 +15,7 @@
     "solid-js": "^1.6.5"
   },
   "devDependencies": {
-    "@capri-js/solid": "*",
+    "@capri-js/solid": "^5.1.1",
     "vite": "^4.0.0",
     "vite-plugin-solid": "^2.5.0"
   }
