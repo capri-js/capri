@@ -1,0 +1,1 @@
+import"./MediaQuery.island.vue_vue_type_script_setup_true_lang-69d67c9b.js";import{_ as t,o as f}from"./MediaQuery.island.vue_vue_type_script_setup_true_lang-69d67c9b.js";import"./runtime-core.esm-bundler-5bfe6798.js";export{t as default,f as options};

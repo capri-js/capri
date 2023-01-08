@@ -1,14 +1,13 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="/capri/react/assets/capri-ce1c56b3.svg">
-    <script type="module" crossorigin="" src="/capri/react/assets/hydrate-6d8679b3.js"></script>
-    
-    <link rel="stylesheet" href="/capri/react/assets/main-823d225b.css">
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/capri/react/assets/capri-ce1c56b3.svg" />
+    <script type="module" crossorigin src="/capri/react/assets/index-fc4d8dbd.js"></script>
+  <link rel="stylesheet" href="/capri/react/assets/ssr-4d3b3eff.css"></head>
   <body>
-    <div id="app"><main><h1>Partial hydration with React and <i>Capri</i></h1><section>This page is static, but contains some dynamic parts.</section><section>Here is a simple counter: <capri-island style="display:contents"><div class="counter" data-testid="counter"><button>-</button><span>0</span><button>+</button></div><script type="application/json" data-island="/src/Counter.island.tsx">{"props":{}}</script></capri-island></section><section>And here is another one, independent from the one above: <capri-island style="display:contents"><div class="counter" data-testid="counter"><button>-</button><span>100</span><button>+</button></div><script type="application/json" data-island="/src/Counter.island.tsx">{"props":{"start":100}}</script></capri-island></section><capri-island style="display:contents"><div class="expandable box" data-expanded="false"><capri-lagoon style="display:contents"><div class="box">This is static content inside an island. We call this a lagoon.</div></capri-lagoon><button>Click to expand</button><div class="expandable-content"><capri-lagoon style="display:contents"><div class="box">This a second lagoon. Below you see the children that were passed to the Expandable island:</div></capri-lagoon><capri-children style="display:contents">This island receives children as prop. They are only rendered upon build time.<div>The code for <code>ServerContent</code> won't show up in the client bundle.</div></capri-children></div></div><script type="application/json" data-island="/src/Expandable.island.tsx">{"props":{"title":"Click to expand"}}</script></capri-island><capri-island style="display:contents"><div class="box">Resize your browser below 500px to hydrate this island.</div><script type="application/json" data-island="/src/MediaQuery.island.tsx">{"props":{},"options":{"media":"(max-width:500px)"}}</script></capri-island><a href="/capri/react/about">Link to another page</a></main></div>
+    <div id="app"><main><h1>Partial hydration with React and <i>Capri</i></h1><section>This page is static, but contains some dynamic parts.</section><section>Here is a simple counter: <capri-island style="display:contents"><div class="counter" data-testid="counter"><button>-</button><span>0</span><button>+</button></div><script type="application/json" data-island="/src/Counter.island.tsx">{"props":{}}</script></capri-island></section><section>And here is another one, independent from the one above: <capri-island style="display:contents"><div class="counter" data-testid="counter"><button>-</button><span>100</span><button>+</button></div><script type="application/json" data-island="/src/Counter.island.tsx">{"props":{"start":100}}</script></capri-island></section><capri-island style="display:contents"><div class="expandable box" data-expanded="false"><capri-lagoon style="display:contents"><div class="box">This is static content inside an island. We call this a lagoon.</div></capri-lagoon><button>Click to expand</button><div class="expandable-content"><capri-lagoon style="display:contents"><div class="box">This a second lagoon. Below you see the children that were passed to the Expandable island:</div></capri-lagoon><capri-children style="display:contents">This island receives children as prop. They are only rendered upon build time.<div>The code for <code>ServerContent</code> won&#x27;t show up in the client bundle.</div></capri-children></div></div><script type="application/json" data-island="/src/Expandable.island.tsx">{"props":{"title":"Click to expand"}}</script></capri-island><capri-island style="display:contents"><div class="box">Resize your browser below 500px to hydrate this island.</div><script type="application/json" data-island="/src/MediaQuery.island.tsx">{"props":{},"options":{"media":"(max-width:500px)"}}</script></capri-island><a href="/capri/react/about">Link to another page</a></main></div>
     
-  
-
-</body></html>
+  </body>
+</html>

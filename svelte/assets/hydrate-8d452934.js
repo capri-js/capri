@@ -1,0 +1,1 @@
+import{n as r,C as d,f}from"./index-8f9e8434.js";function u(s,c,a){const e={};a.querySelectorAll("capri-slot").forEach(t=>{const n=t.getAttribute("name");e[n]=[()=>({c:r,m(o,p){d(o,t,p)},l:r,p:r,d(o){o&&f(t)}})]}),new s({target:a.parentNode,props:{...c,$$scope:{ctx:{}},$$slots:e},hydrate:!0})}export{u as default};

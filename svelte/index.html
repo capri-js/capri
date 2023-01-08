@@ -1,19 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="/capri/svelte/assets/capri-ce1c56b3.svg">
-    <script type="module" crossorigin="" src="/capri/svelte/assets/hydrate-ad975e8b.js"></script>
-    
-    <link rel="stylesheet" href="/capri/svelte/assets/index-ae58be95.css">
-    <link rel="stylesheet" href="/capri/svelte/assets/Counter.island-1b97fb9d.css">
-    <link rel="stylesheet" href="/capri/svelte/assets/Expandable.island-cec9878e.css">
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/capri/svelte/assets/capri-ce1c56b3.svg" />
+    <script type="module" crossorigin src="/capri/svelte/assets/index-bf2fb820.js"></script>
+  <link rel="stylesheet" href="/capri/svelte/assets/ssr-f0dc8d5a.css"></head>
   <body>
     <div id="app"></div>
     
-  
-
-<main><h1>Partial hydration with Svelte and <i>Capri</i></h1>
+  <main><h1>Partial hydration with Svelte and <i>Capri</i></h1>
   <section>This page is static, but contains some dynamic parts.</section>
   <section>Here is a simple counter: <capri-island>
       <div data-testid="counter" class="svelte-6f5ilq"><button>-</button>
@@ -39,7 +35,7 @@
   <div class="expandable-content svelte-oph8lu"><capri-lagoon style="display:contents"><div class="box">This a second lagoon. Below you see the body slot that was passed to the
       Expandable island:
     </div></capri-lagoon>
-    <capri-slot style="display:contents" name="body"><div slot="body"><div class="box">The code for <code>ServerContent</code> won't show up in the client bundle.
+    <capri-slot style="display:contents" name="body"><div slot="body"><div class="box">The code for <code>ServerContent</code> won&#39;t show up in the client bundle.
       </div></div></capri-slot></div>
 </div>
       <script type="application/json" data-island="/src/Expandable.island.svelte">
@@ -52,4 +48,5 @@
       {"props":{},"options":{"media":"(max-width:500px)"}}
       </script>
     </capri-island>
-  <a href="/capri/svelte/about" class="router-link" style="">Link to another page</a></main></body></html>
+  <a href="/capri/svelte/about" class="router-link" style="">Link to another page</a></main></body>
+</html>
