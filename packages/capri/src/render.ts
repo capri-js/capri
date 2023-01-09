@@ -7,7 +7,9 @@ export async function loadSSRModule(path: string) {
   if (path.startsWith(".")) {
     throw new Error("Path must be absolute");
   }
-  const mod = await import(path);
+
+  const mod = await import(/* @vite-ignore */ path);
+
   if (mod && typeof mod === "object" && "default" in mod) {
     const ssr = mod.default;
     // When ssr.format is set to "cjs" we end up with default.default:
