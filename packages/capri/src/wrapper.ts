@@ -38,7 +38,15 @@ export function injectWrapperPlugin(
     transform(code, id, options) {
       const info = this.getModuleInfo(id);
       if (isWrapperInfo(info)) {
-        return loadWrapper(info.meta, options?.ssr ?? ssrBuild);
+        const code = loadWrapper(info.meta, options?.ssr ?? ssrBuild);
+        if (code) {
+          return {
+            code,
+            map: {
+              mappings: "",
+            },
+          };
+        }
       }
     },
   };
