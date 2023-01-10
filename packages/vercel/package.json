@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/vercel",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -15,6 +15,6 @@
     "lib"
   ],
   "dependencies": {
-    "capri": "^5.2.1"
+    "capri": "^5.2.2"
   }
 }
