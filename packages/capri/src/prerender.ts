@@ -66,6 +66,8 @@ export async function renderStaticPages({
           }
         }
       }
+    } else {
+      console.warn("Skipping", url, "- status", context.statusCode);
     }
   }
   return urls;

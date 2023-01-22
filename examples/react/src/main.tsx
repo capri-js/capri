@@ -1,15 +1,19 @@
+import "./main.css";
+
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { App } from "./App";
 import { PreviewBanner } from "./Preview.jsx";
+import { routes } from "./routes.jsx";
+
+const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL,
+});
 
 ReactDOM.createRoot(document.getElementById("app")!).render(
   <StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <PreviewBanner />
-      <App />
-    </BrowserRouter>
+    <PreviewBanner />
+    <RouterProvider router={router} />
   </StrictMode>
 );

@@ -1,18 +1,36 @@
+import "./main.css";
+
 import { RenderFunction, renderToString } from "@capri-js/react/server";
+import type { Router } from "@remix-run/router";
 import { StrictMode } from "react";
-import { StaticRouter } from "react-router-dom/server.js";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
-import { App } from "./App";
+import { routes } from "./routes.jsx";
 
-export const render: RenderFunction = async (url: string, context) => {
+export const render: RenderFunction = async (url, context) => {
+  const router = createMemoryRouter(routes, {
+    basename: import.meta.env.BASE_URL,
+    initialEntries: [url],
+  });
+
+  // Wait until the data is loaded ...
+  await isInitialized(router);
+
   const root = (
     <StrictMode>
-      <StaticRouter location={url} basename={import.meta.env.BASE_URL}>
-        <App />
-      </StaticRouter>
+      <RouterProvider router={router} />
     </StrictMode>
   );
   return {
-    "#app": await renderToString(root, context),
+    "#app": renderToString(root, context),
   };
 };
+
+function isInitialized(router: Router) {
+  return new Promise<void>((resolve) => {
+    if (router.state.initialized) return resolve();
+    router.subscribe((state) => {
+      if (state.initialized) resolve();
+    });
+  });
+}
