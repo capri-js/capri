@@ -11,9 +11,13 @@ const router = createBrowserRouter(routes, {
   basename: import.meta.env.BASE_URL,
 });
 
-ReactDOM.createRoot(document.getElementById("app")!).render(
-  <StrictMode>
-    <PreviewBanner />
-    <RouterProvider router={router} />
-  </StrictMode>
-);
+function App() {
+  return (
+    <StrictMode>
+      <PreviewBanner />
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("app")!).render(<App />);
