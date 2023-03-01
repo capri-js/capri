@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/react",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "capri": "^5.2.2",
+    "capri": "^5.2.3",
     "react-render-to-string": "^2.1.0"
   },
   "devDependencies": {
