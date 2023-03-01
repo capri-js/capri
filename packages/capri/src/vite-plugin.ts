@@ -26,6 +26,7 @@ export function capri({
   const ssr = resolveRelative("./virtual/ssr.js");
 
   let ssrBuild: boolean;
+  let devServer: boolean;
 
   let entry: EntryScripts;
 
@@ -63,6 +64,7 @@ export function capri({
 
       config(config, env) {
         ssrBuild = !!config.build?.ssr;
+        devServer = env.mode === "development";
 
         rootDir = path.resolve(config.root ?? "");
         outDir = path.resolve(rootDir, config.build?.outDir ?? "dist");
@@ -174,28 +176,20 @@ export function capri({
         });
 
         if (resolved) {
-          if (resolved.id === entry.client || resolved.id === entry.server) {
+          const { id } = resolved;
+          const isEntry = id === entry.client || id === entry.server;
+          if (isEntry && !devServer) {
             // Use the wrapper mechanism to make sure that clients always get
             // the hydration script as entry:
-            return resolveWrapper(resolved.id, rootDir, "*", {
+            return resolveWrapper(id, rootDir, "*", {
               client: resolveRelative("./virtual/client.js"),
             });
           }
 
           // Wrap islands and lagoons ...
           return (
-            resolveWrapper(
-              resolved.id,
-              rootDir,
-              islandGlobPattern,
-              adapter.island
-            ) ??
-            resolveWrapper(
-              resolved.id,
-              rootDir,
-              lagoonGlobPattern,
-              adapter.lagoon
-            )
+            resolveWrapper(id, rootDir, islandGlobPattern, adapter.island) ??
+            resolveWrapper(id, rootDir, lagoonGlobPattern, adapter.lagoon)
           );
         }
       },
