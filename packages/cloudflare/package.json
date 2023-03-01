@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/cloudflare",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -16,7 +16,7 @@
     "files"
   ],
   "dependencies": {
-    "capri": "^5.2.2",
+    "capri": "^5.2.3",
     "web-streams-polyfill": "^3.2.1"
   },
   "devDependencies": {
