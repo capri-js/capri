@@ -43,14 +43,14 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.11",
-    "esbuild": "^0.16.9",
+    "esbuild": "^0.19.11",
     "micromatch": "^4.0.5",
-    "node-fetch": "^3.2.6",
+    "node-fetch": "^3.3.2",
     "url-join": "^5.0.0",
-    "web-streams-polyfill": "^3.2.1"
+    "web-streams-polyfill": "^3.3.2"
   },
   "devDependencies": {
-    "@types/micromatch": "^4.0.2",
+    "@types/micromatch": "^4.0.6",
     "vite": "^4.0.0"
   },
   "peerDependencies": {

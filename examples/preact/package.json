@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "preact": "^10.8.2",
-    "wouter-preact": "2.8.0-alpha.2"
+    "wouter-preact": "^2.8.1"
   },
   "devDependencies": {
     "@capri-js/preact": "^5.1.1",
-    "@preact/preset-vite": "^2.5.0",
+    "@preact/preset-vite": "^2.8.1",
     "vite": "^4.0.0"
   }
 }
