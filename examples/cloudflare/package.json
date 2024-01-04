@@ -11,11 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^3.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-render-to-string": "*",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
     "@capri-js/cloudflare": "^1.2.0",
