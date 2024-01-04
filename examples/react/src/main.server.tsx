@@ -1,7 +1,6 @@
 import "./main.css";
 
 import { RenderFunction, renderToString } from "@capri-js/react/server";
-import type { Router } from "@remix-run/router";
 import { StrictMode } from "react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
@@ -26,7 +25,7 @@ export const render: RenderFunction = async (url, context) => {
   };
 };
 
-function isInitialized(router: Router) {
+function isInitialized(router: ReturnType<typeof createMemoryRouter>) {
   return new Promise<void>((resolve) => {
     if (router.state.initialized) return resolve();
     router.subscribe((state) => {
