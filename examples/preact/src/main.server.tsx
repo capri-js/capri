@@ -13,7 +13,7 @@ export const render: RenderFunction = async (url: string) => {
   const html = await renderToString(
     <Router hook={hook} base={base}>
       <App />
-    </Router>
+    </Router>,
   );
   return {
     "#app": html,

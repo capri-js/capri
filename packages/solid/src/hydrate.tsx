@@ -4,7 +4,7 @@ import { hydrate as solidHydrate } from "solid-js/web";
 export default function hydrate(
   component: (props: any) => JSX.Element,
   props: Record<string, unknown>,
-  element: Element
+  element: Element,
 ) {
   const key = element.getAttribute("data-hk");
   if (!key) {

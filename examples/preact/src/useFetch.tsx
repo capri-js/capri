@@ -7,7 +7,7 @@ const mockData: Record<string, string> = {
 
 function mockFetch(url: string) {
   return new Promise<string>((resolve) =>
-    setTimeout(() => resolve(mockData[url]), 100)
+    setTimeout(() => resolve(mockData[url]), 100),
   );
 }
 

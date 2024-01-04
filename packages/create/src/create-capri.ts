@@ -51,8 +51,8 @@ export async function createCapri({
       if (repoUrl.origin !== "https://github.com") {
         console.error(
           `Invalid URL: ${chalk.red(
-            `"${example}"`
-          )}. Only GitHub repositories are supported. Please use a GitHub URL and try again.`
+            `"${example}"`,
+          )}. Only GitHub repositories are supported. Please use a GitHub URL and try again.`,
         );
         process.exit(1);
       }
@@ -62,8 +62,8 @@ export async function createCapri({
       if (!repoInfo) {
         console.error(
           `Found invalid GitHub URL: ${chalk.red(
-            `"${example}"`
-          )}. Please fix the URL and try again.`
+            `"${example}"`,
+          )}. Please fix the URL and try again.`,
         );
         process.exit(1);
       }
@@ -73,8 +73,8 @@ export async function createCapri({
       if (!found) {
         console.error(
           `Could not locate the repository for ${chalk.red(
-            `"${example}"`
-          )}. Please check that the repository exists and try again.`
+            `"${example}"`,
+          )}. Please check that the repository exists and try again.`,
         );
         process.exit(1);
       }
@@ -82,7 +82,7 @@ export async function createCapri({
       const found = await hasExample(example);
       if (!found) {
         console.error(
-          `Could not locate an example named ${chalk.red(`"${example}"`)}.`
+          `Could not locate an example named ${chalk.red(`"${example}"`)}.`,
         );
         process.exit(1);
       }
@@ -93,7 +93,7 @@ export async function createCapri({
 
   if (!(await isWriteable(path.dirname(root)))) {
     console.error(
-      "The project path is not writable, please check folder permissions and try again."
+      "The project path is not writable, please check folder permissions and try again.",
     );
     process.exit(1);
   }
@@ -122,16 +122,16 @@ export async function createCapri({
       const repoInfo2 = repoInfo;
       console.log(
         `Downloading files from repo ${chalk.cyan(
-          example
-        )}. This might take a moment.`
+          example,
+        )}. This might take a moment.`,
       );
       console.log();
       await retry(() => downloadAndExtractRepo(root, repoInfo2));
     } else {
       console.log(
         `Downloading files for example ${chalk.cyan(
-          example
-        )}. This might take a moment.`
+          example,
+        )}. This might take a moment.`,
       );
       console.log();
       await retry(() => downloadAndExtractExample(root, example));
@@ -168,7 +168,7 @@ export async function createCapri({
   console.log("    Builds the site for production.");
   console.log();
   console.log(
-    chalk.cyan(`  ${packageManager} ${useYarn ? "" : "run "}preview`)
+    chalk.cyan(`  ${packageManager} ${useYarn ? "" : "run "}preview`),
   );
   console.log("    Starts the preview server.");
   console.log();
@@ -176,7 +176,7 @@ export async function createCapri({
   console.log();
   console.log(chalk.cyan("  cd"), cdpath);
   console.log(
-    `  ${chalk.cyan(`${packageManager} ${useYarn ? "" : "run "}dev`)}`
+    `  ${chalk.cyan(`${packageManager} ${useYarn ? "" : "run "}dev`)}`,
   );
   console.log();
 }

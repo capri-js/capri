@@ -59,7 +59,7 @@ describe("insertMarkup", () => {
 
 test("removeScripts", () => {
   const t = new Template(
-    template({ viteLegacy, hydration, dynamicImportPolyfill })
+    template({ viteLegacy, hydration, dynamicImportPolyfill }),
   );
   t.removeScripts({
     src: /hydrate|-legacy/,

@@ -30,8 +30,8 @@ async function build() {
               resolve();
             }
           });
-        })
-    )
+        }),
+    ),
   );
 }
 

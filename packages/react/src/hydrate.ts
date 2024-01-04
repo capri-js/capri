@@ -4,7 +4,7 @@ import { hydrateRoot } from "react-dom/client";
 export default function hydrate(
   component: ComponentType,
   props: Record<string, any>,
-  element: Element
+  element: Element,
 ) {
   const children = element.querySelector("capri-children");
   if (children) {

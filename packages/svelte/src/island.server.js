@@ -11,7 +11,7 @@ export default create_ssr_component((result, props, bindings, slots) => {
       name,
       () =>
         `<capri-slot style="display:contents" name="${name}">${fn()}</capri-slot>`,
-    ])
+    ]),
   );
   const html = component.$$render(result, props, bindings, wrappedSlots);
   return `<capri-island>

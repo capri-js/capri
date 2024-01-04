@@ -36,7 +36,7 @@ export default function vercel({
         // Create package.json to enable ESM
         fsutils.write(
           path.resolve(funcDir, "package.json"),
-          JSON.stringify({ type: "module" })
+          JSON.stringify({ type: "module" }),
         );
       }
 
@@ -44,12 +44,12 @@ export default function vercel({
       await bundle(
         path.resolve(
           dirName,
-          edge ? "edge.js" : isg ? "isg.js" : "serverless.js"
+          edge ? "edge.js" : isg ? "isg.js" : "serverless.js",
         ),
         path.resolve(funcDir, "index.js"),
         {
           platform: edge ? "browser" : "node",
-        }
+        },
       );
 
       // Create .vc-config.json
@@ -62,18 +62,18 @@ export default function vercel({
         JSON.stringify({
           ...runtime,
           [edge ? "entrypoint" : "handler"]: "index.js",
-        })
+        }),
       );
 
       if (isg) {
         if (edge) {
           throw new Error(
-            "Incremental Static Generation is not supported on the edge."
+            "Incremental Static Generation is not supported on the edge.",
           );
         }
         fsutils.write(
           path.resolve(funcDir, "..", "render.prerender-config.json"),
-          JSON.stringify({ allowQuery: [], ...isg })
+          JSON.stringify({ allowQuery: [], ...isg }),
         );
       }
 
@@ -91,7 +91,7 @@ export default function vercel({
               [edge ? "middlewarePath" : "dest"]: "render",
             },
           ],
-        })
+        }),
       );
     },
   };

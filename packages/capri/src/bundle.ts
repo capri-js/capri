@@ -26,7 +26,7 @@ export function createBundler(ssrBundle: string) {
   return async function bundle(
     input: string,
     output: string,
-    options: BundleOptions = {}
+    options: BundleOptions = {},
   ) {
     const {
       target = "es2020",

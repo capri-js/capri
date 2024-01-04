@@ -57,7 +57,7 @@ export function serverAssetsPlugins(): Plugin[] {
           // For now this naive approach seems fine.
           ssrChunk.code = ssrChunk.code.replace(
             "__CSS_ASSETS__",
-            JSON.stringify(css)
+            JSON.stringify(css),
           );
         }
       },

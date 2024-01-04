@@ -2,7 +2,7 @@ import { createResource } from "solid-js";
 
 function fetchData() {
   return new Promise<string>((resolve) =>
-    setTimeout(() => resolve("loaded!"), 500)
+    setTimeout(() => resolve("loaded!"), 500),
   );
 }
 

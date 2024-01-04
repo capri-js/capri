@@ -12,7 +12,7 @@ export type WrapperInjectionHook = "onLoad" | "onTransform";
  * needs to happen inside the `load` or the `transform` hook.
  */
 export function injectWrapperPlugin(
-  hook: WrapperInjectionHook = "onLoad"
+  hook: WrapperInjectionHook = "onLoad",
 ): Plugin {
   let ssrBuild = false;
   if (hook === "onLoad") {
@@ -80,7 +80,7 @@ export function resolveWrapper(
   id: string,
   rootDir: string,
   pattern: string,
-  wrapper: Wrapper
+  wrapper: Wrapper,
 ): ResolvedWrapperId | undefined {
   // Exclude sources that contain "?", e.g. vue styles and setup scripts
   if (!id.includes("?") && micromatch.contains(id, pattern)) {

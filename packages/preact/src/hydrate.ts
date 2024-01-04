@@ -3,7 +3,7 @@ import { ComponentType, h, hydrate as hydrateComponent } from "preact";
 export default function hydrate(
   component: ComponentType,
   props: Record<string, unknown>,
-  element: Element
+  element: Element,
 ) {
   const children = element.querySelector("capri-children");
   if (children) {

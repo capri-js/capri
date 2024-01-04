@@ -12,7 +12,7 @@ export const render: RenderFunction = async (url, context) => {
         <StaticRouter location={url} basename={import.meta.env.BASE_URL}>
           <App />
         </StaticRouter>
-      </StrictMode>
+      </StrictMode>,
     ),
   };
 };

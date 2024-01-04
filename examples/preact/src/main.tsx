@@ -11,5 +11,5 @@ render(
     <PreviewBanner />
     <App />
   </Router>,
-  document.body
+  document.body,
 );

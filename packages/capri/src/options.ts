@@ -21,7 +21,7 @@ export interface BuildArgs {
   bundle: (
     input: string,
     output: string,
-    options?: BundleOptions
+    options?: BundleOptions,
   ) => Promise<void>;
 }
 
@@ -32,7 +32,7 @@ interface ViteConfig extends UserConfig {
 export interface BuildTarget {
   config?: (
     config: ViteConfig,
-    env: ConfigEnv
+    env: ConfigEnv,
   ) => ViteConfig | null | void | Promise<ViteConfig | null | void>;
   build: (args: BuildArgs) => Promise<void>;
 }

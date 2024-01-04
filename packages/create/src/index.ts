@@ -22,14 +22,14 @@ const program = new Commander.Command("create-capri")
     `
 
   Explicitly tell the CLI to bootstrap the app using npm
-`
+`,
   )
   .option(
     "--use-pnpm",
     `
 
   Explicitly tell the CLI to bootstrap the app using pnpm
-`
+`,
   )
   .option(
     "-e, --example [name]|[github-url]",
@@ -39,7 +39,7 @@ const program = new Commander.Command("create-capri")
   from the official Capri repo or a GitHub URL. The URL can use
   any branch and/or subdirectory and the https://github.com prefix
   can be omitted.
-`
+`,
   )
   .option(
     "--example-path <path-to-example>",
@@ -49,7 +49,7 @@ const program = new Commander.Command("create-capri")
   a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar).
   In this case, you must specify the path to the example separately:
   --example-path foo/bar
-`
+`,
   )
   .allowUnknownOption()
   .parse(process.argv);
@@ -85,11 +85,11 @@ async function run(): Promise<void> {
     console.log(
       "\nPlease specify the project directory:\n" +
         `  ${chalk.cyan(program.name())} ${chalk.green(
-          "<project-directory>"
+          "<project-directory>",
         )}\n` +
         "For example:\n" +
         `  ${chalk.cyan(program.name())} ${chalk.green("my-site")}\n\n` +
-        `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
+        `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`,
     );
     process.exit(1);
   }
@@ -101,8 +101,8 @@ async function run(): Promise<void> {
   if (!valid) {
     console.error(
       `Could not create a project called ${chalk.red(
-        `"${projectName}"`
-      )} because of npm naming restrictions:`
+        `"${projectName}"`,
+      )} because of npm naming restrictions:`,
     );
 
     problems!.forEach((p) => console.error(`    ${chalk.red.bold("*")} ${p}`));
@@ -111,7 +111,7 @@ async function run(): Promise<void> {
 
   if (options.example === true) {
     console.error(
-      "Please provide an example name or url, otherwise remove the example option."
+      "Please provide an example name or url, otherwise remove the example option.",
     );
     process.exit(1);
   }
@@ -119,8 +119,8 @@ async function run(): Promise<void> {
   const packageManager = options.useNpm
     ? "npm"
     : options.usePnpm
-    ? "pnpm"
-    : getPkgManager();
+      ? "pnpm"
+      : getPkgManager();
 
   const example = typeof options.example === "string" && options.example.trim();
   try {
@@ -133,7 +133,7 @@ async function run(): Promise<void> {
   } catch (reason) {
     if (reason instanceof DownloadError) {
       console.error(
-        `Could not download "${example}" because of a connectivity issue between your machine and GitHub.`
+        `Could not download "${example}" because of a connectivity issue between your machine and GitHub.`,
       );
     }
     throw reason;
@@ -148,7 +148,7 @@ run().catch(async (reason) => {
   } else {
     console.log(
       chalk.red("Unexpected error. Please report it as a bug:") + "\n",
-      reason
+      reason,
     );
   }
   console.log();

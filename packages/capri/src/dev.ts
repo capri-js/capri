@@ -10,12 +10,12 @@ import { direct } from "./utils.js";
 export async function renderPreview(
   server: ViteDevServer,
   url: string,
-  context?: RenderContext
+  context?: RenderContext,
 ) {
   // always read fresh template in dev
   const indexHtml = fs.readFileSync(
     path.resolve(server.config.root, "index.html"),
-    "utf-8"
+    "utf-8",
   );
 
   const entry = getEntryScripts(server.config.root);

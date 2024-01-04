@@ -28,7 +28,7 @@ export default function cloudflare({
       // Cloudflare ignores all functions if a _worker.js file is present
       if (hasFunctions && type === "worker") {
         console.warn(
-          "Warning: The project contains a functions directory but type is set to 'worker'."
+          "Warning: The project contains a functions directory but type is set to 'worker'.",
         );
       }
 
@@ -46,7 +46,7 @@ export default function cloudflare({
       if (!fsutils.exists(notFound)) {
         fsutils.copy(
           path.resolve(dirName, "..", "files", "404.html"),
-          notFound
+          notFound,
         );
       }
 
@@ -63,7 +63,7 @@ export default function cloudflare({
           {
             inject,
             platform: "browser",
-          }
+          },
         );
       } else {
         // Create the middleware
@@ -74,7 +74,7 @@ export default function cloudflare({
             inject,
             target: "es2017",
             platform: "browser",
-          }
+          },
         );
       }
     },

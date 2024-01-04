@@ -11,5 +11,5 @@ ReactDOM.createRoot(document.getElementById("app")!).render(
       <PreviewBanner />
       <App />
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

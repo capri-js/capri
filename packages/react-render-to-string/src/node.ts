@@ -12,7 +12,7 @@ export default function renderToString(element: ReactNode) {
         stream.pipe(
           new StreamReader((html) => {
             resolve(stripComments(html));
-          })
+          }),
         );
       },
     });

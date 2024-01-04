@@ -3,7 +3,7 @@ import { createSSRApp, h } from "vue";
 export default function hydrate(
   component: any,
   props: Record<string, any>,
-  element: Element
+  element: Element,
 ) {
   const slots: any = {};
   element.querySelectorAll("capri-slot").forEach((el) => {

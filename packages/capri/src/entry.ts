@@ -56,7 +56,7 @@ export function getEntryScripts(root = ""): EntryScripts {
   const server = resolved.replace(/(\.client)?(\.[^.]+)$/, ".server$2");
   if (!fsutils.exists(server)) {
     throw new Error(
-      `File not found: ${server}. Make sure to name your server entry file accordingly.`
+      `File not found: ${server}. Make sure to name your server entry file accordingly.`,
     );
   }
   return {

@@ -19,7 +19,7 @@ export async function isUrlOk(url: string): Promise<boolean> {
 
 export async function getRepoInfo(
   url: URL,
-  examplePath?: string
+  examplePath?: string,
 ): Promise<RepoInfo | undefined> {
   const [, username, name, t, _branch, ...file] = url.pathname.split("/");
   const filePath = examplePath
@@ -30,7 +30,7 @@ export async function getRepoInfo(
   // https://github.com/:username/:my-example.
   if (t === undefined) {
     const infoResponse = await got(
-      `https://api.github.com/repos/${username}/${name}`
+      `https://api.github.com/repos/${username}/${name}`,
     ).catch((e) => e);
     if (infoResponse.statusCode !== 200) {
       return;
@@ -64,32 +64,32 @@ export function hasRepo({
 export function hasExample(name: string): Promise<boolean> {
   return isUrlOk(
     `https://api.github.com/repos/capri-js/capri/contents/examples/${encodeURIComponent(
-      name
-    )}/package.json`
+      name,
+    )}/package.json`,
   );
 }
 
 export function downloadAndExtractRepo(
   root: string,
-  { username, name, branch, filePath }: RepoInfo
+  { username, name, branch, filePath }: RepoInfo,
 ): Promise<void> {
   return pipeline(
     got.stream(
-      `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`
+      `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`,
     ),
     tar.extract(
       { cwd: root, strip: filePath ? filePath.split("/").length + 1 : 1 },
-      [`${name}-${branch}${filePath ? `/${filePath}` : ""}`]
-    )
+      [`${name}-${branch}${filePath ? `/${filePath}` : ""}`],
+    ),
   );
 }
 
 export function downloadAndExtractExample(
   root: string,
-  name: string
+  name: string,
 ): Promise<void> {
   return pipeline(
     got.stream("https://codeload.github.com/capri-js/capri/tar.gz/main"),
-    tar.extract({ cwd: root, strip: 3 }, [`capri-main/examples/${name}`])
+    tar.extract({ cwd: root, strip: 3 }, [`capri-main/examples/${name}`]),
   );
 }

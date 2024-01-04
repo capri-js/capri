@@ -6,7 +6,7 @@ export const options = {
 
 export default function MediaQuery() {
   const [content, setContent] = useState(
-    "Resize your browser below 500px to hydrate this island."
+    "Resize your browser below 500px to hydrate this island.",
   );
   useEffect(() => {
     setContent("The island has been hydrated.");

@@ -26,7 +26,7 @@ interface InstallArgs {
 export function install(
   root: string,
   dependencies: string[] | null,
-  { packageManager, isOnline, devDependencies }: InstallArgs
+  { packageManager, isOnline, devDependencies }: InstallArgs,
 ) {
   /**
    * (p)npm-specific command-line flags.

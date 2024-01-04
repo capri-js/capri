@@ -3,7 +3,7 @@ import { detach, insert, noop } from "svelte/internal";
 export default function hydrate(
   Component: any,
   props: object,
-  element: Element
+  element: Element,
 ) {
   const $$slots: any = {};
   element.querySelectorAll("capri-slot").forEach((el) => {

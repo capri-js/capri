@@ -5,7 +5,7 @@ export type RenderResult = Markup | null | undefined;
 
 export type RenderFunction = (
   url: string,
-  context: RenderContext
+  context: RenderContext,
 ) => RenderResult | Promise<RenderResult>;
 
 export interface IslandOptions {

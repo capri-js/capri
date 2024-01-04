@@ -35,7 +35,7 @@ export async function renderHtml(
   url: string,
   indexHtml: string,
   css: string[],
-  context: RenderContext = new StaticRenderContext()
+  context: RenderContext = new StaticRenderContext(),
 ) {
   const result = await renderFn(url, context);
   if (!result) return;

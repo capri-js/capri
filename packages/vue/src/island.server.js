@@ -21,19 +21,19 @@ const __sfc__ = {
               null,
               _push,
               _parent,
-              _scopeId
+              _scopeId,
             );
             _push(`</capri-slot>`);
           }),
-        ])
+        ]),
       );
 
       _push(`<capri-island>`);
       _push(ssrRenderComponent(component, _attrs, slots, _parent));
       _push(
         `<script type="application/json" data-island="%COMPONENT_ID%">${JSON.stringify(
-          { props: _attrs, options }
-        )}</script>`
+          { props: _attrs, options },
+        )}</script>`,
       );
       _push(`</capri-island>`);
     };

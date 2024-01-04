@@ -15,7 +15,7 @@ export class Template {
   getIslands() {
     return [
       ...this.html.matchAll(
-        /<script[^>]+data-island="(.+?)"[^>]*>([\s\S]+?)<\/script>/gi
+        /<script[^>]+data-island="(.+?)"[^>]*>([\s\S]+?)<\/script>/gi,
       ),
     ].map(([, island, json]) => ({ island, json }));
   }
@@ -35,7 +35,7 @@ export class Template {
           return "";
         }
         return match;
-      }
+      },
     );
   }
 
@@ -52,13 +52,13 @@ export class Template {
           // id selector - insert after the opening tag
           this.html = this.html.replace(
             new RegExp(`\\bid\\s*=\\s*"${selector.slice(1)}"[^>]*>`),
-            `$&${insert}`
+            `$&${insert}`,
           );
         } else {
           // type selector - insert before the closing tag
           this.html = this.html.replace(
             new RegExp(`<\\s*/\\s*${selector}[^>]*>`),
-            `${insert}$&`
+            `${insert}$&`,
           );
         }
       }

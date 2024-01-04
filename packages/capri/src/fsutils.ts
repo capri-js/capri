@@ -42,7 +42,7 @@ export function copy(
   opts: {
     filter?: (basename: string) => boolean;
     replace?: Record<string, string>;
-  } = {}
+  } = {},
 ) {
   if (!exists(source)) return [];
 
@@ -53,7 +53,7 @@ export function copy(
   const regex = opts.replace
     ? new RegExp(
         `(${Object.keys(opts.replace).map(escapeRegex).join("|")})`,
-        "g"
+        "g",
       )
     : null;
 
@@ -73,7 +73,7 @@ export function copy(
         const data = read(from);
         fs.writeFileSync(
           to,
-          data.replace(regex, (match, key) => opts.replace?.[key] ?? "")
+          data.replace(regex, (match, key) => opts.replace?.[key] ?? ""),
         );
       } else {
         fs.copyFileSync(from, to);
@@ -82,7 +82,7 @@ export function copy(
       files.push(
         to === target
           ? posixify(path.basename(to))
-          : posixify(to).replace(prefix, "")
+          : posixify(to).replace(prefix, ""),
       );
     }
   }

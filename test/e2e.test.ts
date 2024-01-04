@@ -44,6 +44,6 @@ describe("examples", () => {
     },
     {
       timeout: 60000,
-    }
+    },
   );
 });

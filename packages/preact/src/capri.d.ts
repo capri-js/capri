@@ -1,6 +1,6 @@
 declare module "virtual:capri-component" {
-  import { ComponentType } from "preact";
   import { IslandOptions } from "capri";
+  import { ComponentType } from "preact";
 
   const value: ComponentType;
   export default value;

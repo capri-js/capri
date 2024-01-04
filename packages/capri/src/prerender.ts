@@ -43,7 +43,7 @@ export async function renderStaticPages({
   await polyfillWebAPIs();
   const ssr = await loadSSRModule(ssrBundle);
   const seen = new Set(
-    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
+    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s)),
   );
   const urls = [...seen];
   for (const url of urls) {
