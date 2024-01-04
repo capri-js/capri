@@ -1,1 +1,0 @@
-import{r as t}from"./index-7cf1db5c.js";import{h as a}from"./client-df8db99d.js";function i(n,e,r){return r.querySelector("capri-children")&&(e.children=t.exports.createElement("capri-children",{style:{display:"contents"},dangerouslySetInnerHTML:{__html:""}})),a(r.parentElement,t.exports.createElement(n,e))}export{i as default};

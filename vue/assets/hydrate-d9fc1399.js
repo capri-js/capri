@@ -1,0 +1,1 @@
+import{a as s}from"./runtime-dom.esm-bundler-dc948cda.js";import{h as o}from"./runtime-core.esm-bundler-0e9ac3cf.js";function m(a,p,t){const r={};t.querySelectorAll("capri-slot").forEach(e=>{const n=e.getAttribute("name");r[n]=o("capri-slot",{name:n,style:"display:contents",innerHTML:e.innerHTML})}),s({render:()=>o(a,p,r)}).mount(t.parentElement)}export{m as default};

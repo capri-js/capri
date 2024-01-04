@@ -1,1 +1,0 @@
-import{g as o,k as s,O as t,c as a,t as n,o as r}from"./runtime-core.esm-bundler-5bfe6798.js";const i={class:"box"},_={media:"(max-width:500px)"},h=o({__name:"MediaQuery.island",setup(c){const e=s("Resize your browser below 500px to hydrate this island.");return t(()=>{e.value="The island has been hydrated."}),(d,l)=>(r(),a("div",i,n(e.value),1))}});export{h as _,_ as o};
