@@ -19,8 +19,8 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^18.11.17",
-    "@types/react-dom": "^18.0.4"
+    "@types/node": "^20.10.6",
+    "@types/react-dom": "^18.2.18"
   },
   "peerDependencies": {
     "react-dom": "^18.0.0"

@@ -37,7 +37,7 @@
     "react-render-to-string": "^2.1.0"
   },
   "devDependencies": {
-    "@types/react-dom": "^18.0.4"
+    "@types/react-dom": "^18.2.18"
   },
   "peerDependencies": {
     "react": "^18.1.0",
