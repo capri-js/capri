@@ -2,13 +2,7 @@
   "references": [
     { "path": "create" },
     { "path": "preact" },
-    { "path": "react" },
-    { "path": "solid" },
-    { "path": "svelte" },
-    { "path": "vue" },
-    { "path": "vercel" },
-    { "path": "cloudflare" },
-    { "path": "react-render-to-string" }
+    { "path": "react" }
   ],
   "exclude": ["*"]
 }

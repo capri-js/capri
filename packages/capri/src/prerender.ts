@@ -4,7 +4,6 @@ import urlJoin from "url-join";
 
 import { StaticRenderContext } from "./context.js";
 import { getLinks } from "./html.js";
-import { polyfillWebAPIs } from "./polyfills.js";
 import { loadSSRModule } from "./render.js";
 import { stripLeadingSlash, stripTrailingSlash } from "./utils.js";
 
@@ -40,10 +39,9 @@ export async function renderStaticPages({
   prerender,
   followLinks,
 }: StaticRenderConfig) {
-  await polyfillWebAPIs();
   const ssr = await loadSSRModule(ssrBundle);
   const seen = new Set(
-    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s)),
+    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
   );
   const urls = [...seen];
   for (const url of urls) {

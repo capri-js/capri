@@ -1,5 +1,0 @@
-.DS_Store
-node_modules/
-dist/
-functions/_middleware.js
-functions/_ssr.js

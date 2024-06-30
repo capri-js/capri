@@ -5,7 +5,7 @@ import { describe, expect, test } from "vitest";
 import { getExampleDOM } from "./dom.js";
 
 describe("examples", () => {
-  test.each([["vue"], ["react"], ["preact"], ["solid"], ["svelte"]])(
+  test.each([["react"], ["preact"]])(
     "%s",
     async (example) => {
       const root = path.resolve(__dirname, "../examples", example);
@@ -44,6 +44,6 @@ describe("examples", () => {
     },
     {
       timeout: 60000,
-    },
+    }
   );
 });

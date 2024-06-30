@@ -1,17 +1,20 @@
 import { RenderContext, StaticRenderContext } from "capri/context";
-import { createContext, createElement, ReactNode, useContext } from "react";
-import render from "react-render-to-string";
+import { createContext, createElement, ReactElement, useContext } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 export type { RenderContext, RenderFunction } from "capri";
 
 const renderContext = createContext<RenderContext>(new StaticRenderContext());
 
-export function renderToString(children: ReactNode, context?: RenderContext) {
+export function renderToString(
+  children: ReactElement,
+  context?: RenderContext
+) {
   const node = context
     ? createElement(renderContext.Provider, { value: context, children })
     : children;
 
-  return render(node);
+  return renderToStaticMarkup(node);
 }
 
 export const useRenderContext = () => useContext(renderContext);

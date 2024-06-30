@@ -15,14 +15,3 @@ npm init capri -- my-capri-site
 # or
 yarn create capri my-capri-site
 ```
-
-## Options
-
-`create-capri` comes with the following options:
-
-- **-e, --example [name]|[github-url]** - An example to bootstrap the project with. You can use an example name from the [Capri repo](https://github.com/capri-js/capri/tree/main/examples) or a GitHub URL. The URL can use any branch and/or subdirectory.
-- **--example-path &lt;path-to-example&gt;** - In a rare case, your GitHub URL might contain a branch name with a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar). In this case, you must specify the path to the example separately: `--example-path foo/bar`
-
-## Credits
-
-Thanks to [Vercel](https://vercel.com/) for [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) which was used as basis for `create-capri`.

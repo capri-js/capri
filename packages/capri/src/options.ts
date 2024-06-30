@@ -1,7 +1,3 @@
-import type { ConfigEnv, SSROptions, UserConfig } from "vite";
-
-import type { BundleOptions } from "./bundle.js";
-import type * as fsutils from "./fsutils.js";
 import type { FollowLinksConfig, PrerenderConfig } from "./prerender.js";
 import type { Wrapper, WrapperInjectionHook } from "./wrapper.js";
 
@@ -12,30 +8,6 @@ export interface Adapter {
   injectWrapper?: WrapperInjectionHook;
 }
 
-export interface BuildArgs {
-  rootDir: string;
-  outDir: string;
-  ssrBundle: string;
-  prerendered: string[];
-  fsutils: typeof fsutils;
-  bundle: (
-    input: string,
-    output: string,
-    options?: BundleOptions,
-  ) => Promise<void>;
-}
-
-interface ViteConfig extends UserConfig {
-  ssr?: SSROptions;
-}
-
-export interface BuildTarget {
-  config?: (
-    config: ViteConfig,
-    env: ConfigEnv,
-  ) => ViteConfig | null | void | Promise<ViteConfig | null | void>;
-  build: (args: BuildArgs) => Promise<void>;
-}
 export interface CapriPluginOptions {
   createIndexFiles?: boolean;
   prerender?: PrerenderConfig;
@@ -43,7 +15,7 @@ export interface CapriPluginOptions {
   islandGlobPattern?: string;
   lagoonGlobPattern?: string;
   adapter: Adapter;
-  target?: BuildTarget | string;
+  target?: string;
   spa?: string | false;
 }
 

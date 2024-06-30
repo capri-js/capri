@@ -3,8 +3,7 @@ const path = require("path");
 const { spawn } = require("child_process");
 
 async function build() {
-  //const dirs = await fs.readdir(path.resolve(__dirname, "../examples"));
-  const dirs = ["react", "preact", "solid", "svelte", "vue"];
+  const dirs = await fs.readdir(path.resolve(__dirname, "../examples"));
 
   await Promise.all(
     dirs.map(
@@ -30,8 +29,8 @@ async function build() {
               resolve();
             }
           });
-        }),
-    ),
+        })
+    )
   );
 }
 

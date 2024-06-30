@@ -32,24 +32,6 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
-    directory: "/packages/react-render-to-string"
-    target-branch: "next"
-    open-pull-requests-limit: 0
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "/packages/solid"
-    target-branch: "next"
-    open-pull-requests-limit: 0
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "/packages/svelte"
-    target-branch: "next"
-    open-pull-requests-limit: 0
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
     directory: "/examples/preact"
     target-branch: "next"
     open-pull-requests-limit: 0
@@ -57,18 +39,6 @@ updates:
       interval: "daily"
   - package-ecosystem: "npm"
     directory: "/examples/react"
-    target-branch: "next"
-    open-pull-requests-limit: 0
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "/examples/solid"
-    target-branch: "next"
-    open-pull-requests-limit: 0
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "/examples/svelte"
     target-branch: "next"
     open-pull-requests-limit: 0
     schedule:
