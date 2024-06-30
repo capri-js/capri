@@ -1,2 +1,2 @@
-pages/*
-!pages/.*
+capri/*
+!capri/.*

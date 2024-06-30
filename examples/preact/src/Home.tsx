@@ -28,9 +28,7 @@ export function Home() {
         </ServerContent>
       </ExpandableIsland>
       <MediaQueryIsland />
-      <Link href="/about">
-        <a>Link to another page</a>
-      </Link>
+      <Link to="/about">Link to another page</Link>
     </main>
   );
 }

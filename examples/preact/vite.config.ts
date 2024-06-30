@@ -7,6 +7,7 @@ export default defineConfig({
     preact(),
     capri({
       spa: "/preview",
+      createIndexFiles: false,
     }),
   ],
 });

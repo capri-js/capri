@@ -1,6 +1,5 @@
 import { RenderFunction, renderToString } from "@capri-js/preact/server";
 import { Router } from "wouter-preact";
-import staticLocationHook from "wouter-preact/static-location";
 
 import { App } from "./App";
 
@@ -9,11 +8,10 @@ import { App } from "./App";
 const base = import.meta.env.BASE_URL.slice(0, -1);
 
 export const render: RenderFunction = async (url: string) => {
-  const hook = staticLocationHook(url.slice(base.length));
   const html = await renderToString(
-    <Router hook={hook} base={base}>
+    <Router base={base} ssrPath={url}>
       <App />
-    </Router>,
+    </Router>
   );
   return {
     "#app": html,
