@@ -6,6 +6,3 @@ Instead of using this package directly, please pick one of the framework adapter
 
 - @capri-js/react
 - @capri-js/preact
-- @capri-js/solid
-- @capri-js/vue
-- @capri-js/svelte

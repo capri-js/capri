@@ -13,7 +13,7 @@ import { injectWrapperPlugin, resolveWrapper } from "./wrapper.js";
 export * from "./options.js";
 
 export function capri({
-  createIndexFiles = true,
+  createIndexFiles = false,
   prerender = "/",
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",

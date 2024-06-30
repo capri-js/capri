@@ -2,7 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 import urlJoin from "url-join";
 
-import { StaticRenderContext } from "./context.js";
 import { getLinks } from "./html.js";
 import { loadSSRModule } from "./render.js";
 import { stripLeadingSlash, stripTrailingSlash } from "./utils.js";
@@ -45,9 +44,8 @@ export async function renderStaticPages({
   );
   const urls = [...seen];
   for (const url of urls) {
-    const context = new StaticRenderContext();
-    const html = await ssr(url, context);
-    if (html && context.statusCode === 200) {
+    const html = await ssr(url);
+    if (html) {
       const fileName = urlToFileName(url, createIndexFiles, base);
       const dest = path.join(outDir, fileName);
       fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -65,7 +63,7 @@ export async function renderStaticPages({
         }
       }
     } else {
-      console.warn("Skipping", url, "- status", context.statusCode);
+      console.warn("Skipping", url);
     }
   }
   return urls;

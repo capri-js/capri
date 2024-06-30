@@ -2,20 +2,15 @@ import fs from "fs";
 import path from "path";
 import { ModuleGraph, ModuleNode, ViteDevServer } from "vite";
 
-import { RenderContext } from "./context.js";
 import { getEntryScripts } from "./entry.js";
 import { renderHtml } from "./render.js";
 import { direct } from "./utils.js";
 
-export async function renderPreview(
-  server: ViteDevServer,
-  url: string,
-  context?: RenderContext,
-) {
+export async function renderPreview(server: ViteDevServer, url: string) {
   // always read fresh template in dev
   const indexHtml = fs.readFileSync(
     path.resolve(server.config.root, "index.html"),
-    "utf-8",
+    "utf-8"
   );
 
   const entry = getEntryScripts(server.config.root);
@@ -25,7 +20,7 @@ export async function renderPreview(
   const renderFn = (await server.ssrLoadModule(entry.server)).render;
   const css = collectCss(server.moduleGraph);
   try {
-    const html = await renderHtml(renderFn, url, indexHtml, css, context);
+    const html = await renderHtml(renderFn, url, indexHtml, css);
     if (html) {
       // Apply Vite HTML transforms. This injects the Vite HMR client, and
       // also applies HTML transforms from Vite plugins, e.g. global preambles

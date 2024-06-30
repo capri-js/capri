@@ -20,4 +20,5 @@ function App() {
   );
 }
 
+console.log("🚨 Rendering client");
 ReactDOM.createRoot(document.getElementById("app")!).render(<App />);

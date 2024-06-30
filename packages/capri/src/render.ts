@@ -1,4 +1,3 @@
-import { RenderContext, StaticRenderContext } from "./context.js";
 import { Template } from "./Template.js";
 import { Markup, RenderFunction } from "./types.js";
 import { SSRFunction } from "./virtual/ssr.js";
@@ -34,10 +33,9 @@ export async function renderHtml(
   renderFn: RenderFunction,
   url: string,
   indexHtml: string,
-  css: string[],
-  context: RenderContext = new StaticRenderContext(),
+  css: string[]
 ) {
-  const result = await renderFn(url, context);
+  const result = await renderFn(url);
   if (!result) return;
 
   const template = new Template(indexHtml);

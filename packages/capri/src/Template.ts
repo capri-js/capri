@@ -1,11 +1,10 @@
-/**
- * Template to analyze and modify the HTML.
- */
+import * as cheerio from "cheerio";
+
 export class Template {
-  private html: string;
+  private $: cheerio.CheerioAPI;
 
   constructor(html: string) {
-    this.html = html;
+    this.$ = cheerio.load(html);
   }
 
   /**
@@ -13,55 +12,43 @@ export class Template {
    * their text content.
    */
   getIslands() {
-    return [
-      ...this.html.matchAll(
-        /<script[^>]+data-island="(.+?)"[^>]*>([\s\S]+?)<\/script>/gi,
-      ),
-    ].map(([, island, json]) => ({ island, json }));
+    return this.$('script[type="application/json"][data-island]')
+      .toArray()
+      .map((el) => {
+        const $el = this.$(el);
+        return {
+          island: $el.attr("data-island") ?? "",
+          json: $el.text(),
+        };
+      });
   }
 
   /**
    * Remove all script tags with matching src or text.
    */
   removeScripts(test: { src?: RegExp; text?: RegExp }) {
-    this.html = this.html.replace(
-      /<\s*script(.*?)>([\s\S]*?)<\s*\/\s*script\s*>\s*/gi,
-      (match, attrs, text) => {
-        if (test.src) {
-          const [, src] = /\bsrc\s*=\s*"(.+?)"/.exec(attrs) ?? [];
-          if (src && src.match(test.src)) return "";
+    this.$("script").each((i, el) => {
+      const $el = this.$(el);
+      const src = $el.attr("src");
+      const text = $el.text();
+
+      if (test.src) {
+        if (src && src.match(test.src)) {
+          removeNodeAndWhitespaceSiblings($el, this.$);
         }
-        if (test.text && text.match(test.text)) {
-          return "";
-        }
-        return match;
-      },
-    );
+      }
+      if (test.text && text.match(test.text)) {
+        removeNodeAndWhitespaceSiblings($el, this.$);
+      }
+    });
   }
 
   /**
    * Insert markup into the html with the keys being CSS selectors.
    */
   insertMarkup(markup: Record<string, string>) {
-    for (const [selector, insert] of Object.entries(markup)) {
-      if (insert) {
-        if (!selector.match(/^#?[\w]+$/)) {
-          throw new Error(`Unsupported selector: ${selector}`);
-        }
-        if (selector.startsWith("#")) {
-          // id selector - insert after the opening tag
-          this.html = this.html.replace(
-            new RegExp(`\\bid\\s*=\\s*"${selector.slice(1)}"[^>]*>`),
-            `$&${insert}`,
-          );
-        } else {
-          // type selector - insert before the closing tag
-          this.html = this.html.replace(
-            new RegExp(`<\\s*/\\s*${selector}[^>]*>`),
-            `${insert}$&`,
-          );
-        }
-      }
+    for (const [selector, html] of Object.entries(markup)) {
+      this.$(selector).first().append(this.$(html));
     }
   }
 
@@ -69,6 +56,28 @@ export class Template {
    * Return the HTML.
    */
   toString() {
-    return this.html;
+    return this.$.html();
+  }
+}
+
+function removeNodeAndWhitespaceSiblings(
+  $el: cheerio.Cheerio<cheerio.Element>,
+  $: cheerio.CheerioAPI
+) {
+  removeWhitespaceSiblings($el, $);
+  removeWhitespaceSiblings($el.prev(), $);
+  $el.remove();
+}
+
+function removeWhitespaceSiblings(
+  $el: cheerio.Cheerio<cheerio.Element>,
+  $: cheerio.CheerioAPI
+) {
+  const el = $el.get(0);
+  let next = el?.nextSibling;
+  while (next && next.nodeType === 3 && next.data.trim().length === 0) {
+    const $t = $(next);
+    next = next.nextSibling;
+    $t.remove();
   }
 }
