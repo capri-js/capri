@@ -15,7 +15,7 @@
     "lib"
   ],
   "dependencies": {
-    "capri": "^5.2.3"
+    "capri": "*"
   },
   "devDependencies": {
     "@types/react-dom": "^18.2.18"
@@ -23,6 +23,6 @@
   "peerDependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "vite": "3.x || 4.x || 5.x"
+    "vite": "^5.0.0"
   }
 }
