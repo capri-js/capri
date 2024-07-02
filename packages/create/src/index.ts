@@ -2,7 +2,9 @@
 
 import arg from "arg";
 import degit from "degit";
+import fs from "fs-extra";
 import ora from "ora";
+import path from "path";
 import prompts from "prompts";
 
 const templates = [
@@ -51,7 +53,22 @@ const opts = await prompts([
 const spinner = ora(`Downloading ${opts.template}`).start();
 try {
   await degit(opts.template, { force: args["--force"] }).clone(opts.dir);
+  await updatePackageJSON(opts.dir, path.basename(opts.dir));
   spinner.succeed(`Created ${opts.dir}`);
 } catch (err: any) {
   spinner.fail(err.message);
+}
+
+export async function updatePackageJSON(
+  projectDir: string,
+  projectName: string
+) {
+  const file = path.resolve(projectDir, "package.json");
+  try {
+    const json = await fs.readJson(file);
+    json.name = projectName;
+    await fs.writeJson(file, json, { spaces: 2 });
+  } catch (err: unknown) {
+    throw new Error("Unable to update name in package.json");
+  }
 }
