@@ -2,7 +2,7 @@ export type Markup = Record<string, string | Promise<string>>;
 export type RenderResult = Markup | null | undefined;
 
 export type RenderFunction = (
-  url: string
+  url: string,
 ) => RenderResult | Promise<RenderResult>;
 
 export interface IslandOptions {

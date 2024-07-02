@@ -33,7 +33,7 @@ export async function renderHtml(
   renderFn: RenderFunction,
   url: string,
   indexHtml: string,
-  css: string[]
+  css: string[],
 ) {
   const result = await renderFn(url);
   if (!result) return;

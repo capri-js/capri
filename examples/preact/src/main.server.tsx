@@ -11,7 +11,7 @@ export const render: RenderFunction = async (url: string) => {
   const html = await renderToString(
     <Router base={base} ssrPath={url}>
       <App />
-    </Router>
+    </Router>,
   );
   return {
     "#app": html,

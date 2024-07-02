@@ -26,7 +26,7 @@ if (template) {
     overrides.template = template;
   } else {
     const option = templates.find(
-      (t) => t.title.toLowerCase() === template.toLowerCase()
+      (t) => t.title.toLowerCase() === template.toLowerCase(),
     );
     if (option) {
       overrides.template = option.value;
@@ -61,7 +61,7 @@ try {
 
 export async function updatePackageJSON(
   projectDir: string,
-  projectName: string
+  projectName: string,
 ) {
   const file = path.resolve(projectDir, "package.json");
   try {
