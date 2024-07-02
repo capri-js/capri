@@ -20,7 +20,7 @@ export function capri({
   lagoonGlobPattern = "/src/**/*.lagoon.*",
   adapter,
   target,
-  spa,
+  spa = "/preview",
 }: CapriPluginOptions): Plugin[] {
   const ssr = resolveRelative("./virtual/ssr.js");
 
@@ -50,6 +50,7 @@ export function capri({
       name: "vite-plugin-capri-main",
 
       config(config, env) {
+        config.appType = "mpa";
         ssrBuild = !!config.build?.ssr;
         devServer = env.mode === "development";
 
@@ -64,7 +65,7 @@ export function capri({
         if (spa)
           spa = path.resolve(
             rootDir,
-            urlToFileName(spa, createIndexFiles, base),
+            urlToFileName(spa, createIndexFiles, base)
           );
 
         if (ssrBuild) {
@@ -96,7 +97,7 @@ export function capri({
             // index.html points to a .server.* file
             if (spa) {
               throw new Error(
-                "In order to generate an SPA, index.html must point to a client entry file.",
+                "In order to generate an SPA, index.html must point to a client entry file."
               );
             }
           } else if (spa) {
