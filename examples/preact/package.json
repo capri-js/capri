@@ -16,7 +16,7 @@
     "wouter-preact": "^3.3.0"
   },
   "devDependencies": {
-    "@capri-js/preact": "^5.1.1",
+    "@capri-js/preact": "*",
     "@preact/preset-vite": "^2.8.1",
     "vite": "^5.0.0"
   }
