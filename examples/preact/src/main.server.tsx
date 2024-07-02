@@ -11,7 +11,7 @@ export async function render(url: string) {
   const result = await prerender(
     <Router base={base} ssrPath={url}>
       <App />
-    </Router>
+    </Router>,
   );
   return {
     "#app": result.html,
