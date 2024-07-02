@@ -1,7 +1,7 @@
 {
   "name": "@capri-js/react",
   "version": "5.2.3",
-  "description": "",
+  "description": "React bindings for Capri",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
     "type": "git",
