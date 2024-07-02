@@ -1,4 +1,4 @@
-import { RenderFunction, renderToString } from "@capri-js/preact/server";
+import { prerender } from "preact-iso";
 import { Router } from "wouter-preact";
 
 import { App } from "./App";
@@ -7,13 +7,13 @@ import { App } from "./App";
 // site to a non-root directory.
 const base = import.meta.env.BASE_URL.slice(0, -1);
 
-export const render: RenderFunction = async (url: string) => {
-  const html = await renderToString(
+export async function render(url: string) {
+  const result = await prerender(
     <Router base={base} ssrPath={url}>
       <App />
-    </Router>,
+    </Router>
   );
   return {
-    "#app": html,
+    "#app": result.html,
   };
-};
+}

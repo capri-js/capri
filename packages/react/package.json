@@ -14,24 +14,6 @@
   "files": [
     "lib"
   ],
-  "exports": {
-    ".": {
-      "default": "./lib/index.js"
-    },
-    "./server": {
-      "default": "./lib/server.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "index.d.ts": [
-        "lib/index.d.ts"
-      ],
-      "server": [
-        "lib/server.d.ts"
-      ]
-    }
-  },
   "dependencies": {
     "capri": "^5.2.3"
   },

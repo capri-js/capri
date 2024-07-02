@@ -1,6 +1,8 @@
 import { capri, CapriAdapterPluginOptions } from "capri/vite-plugin";
 import type { Plugin } from "vite";
 
+export type { RenderFunction } from "capri";
+
 export default function (opts: CapriAdapterPluginOptions = {}): Plugin[] {
   const resolve = (f: string) => new URL(f, import.meta.url).pathname;
 

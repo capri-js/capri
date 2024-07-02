@@ -1,12 +1,12 @@
 import "./main.css";
 
-import { RenderFunction, renderToString } from "@capri-js/react/server";
 import { StrictMode } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
 import { routes } from "./routes.jsx";
 
-export const render: RenderFunction = async (url, context) => {
+export async function render(url: string) {
   const router = createMemoryRouter(routes, {
     basename: import.meta.env.BASE_URL,
     initialEntries: [url],
@@ -21,9 +21,9 @@ export const render: RenderFunction = async (url, context) => {
     </StrictMode>
   );
   return {
-    "#app": renderToString(root, context),
+    "#app": renderToStaticMarkup(root),
   };
-};
+}
 
 function isInitialized(router: ReturnType<typeof createMemoryRouter>) {
   return new Promise<void>((resolve) => {
