@@ -10,11 +10,9 @@ For the static parts, no JavaScript needs to be shipped to the client, resulting
 
 For editors on the other hand, Capri pages can also be rendered as single page apps, providing a snappy user experience when combined with a CMS that supports visual editing like TinaCMS, Sanity or Storyblok.
 
-## TODO
+# Support for other frameworks and SSR
 
-- Simple create-capri implementation based on degit, ora and prompts
-- Migrate from multi-semantic-release to zx-bulk-release
-- https://github.com/slorber/trailing-slash-guide
+Up until version 5 Capri also supported Vue, Solid and Svelte and provided adapters to support server side rendering on various cloud platforms. While this was an interesting proof of concept, maintaining all of this and keeping up with the rapid changes was nearly impossible. Capri v6 now focuses on static site generation with React/Preact which I think fills an interesting gap in the current web ecosystem.
 
 # License
 
