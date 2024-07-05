@@ -18,9 +18,6 @@
     ".": {
       "default": "./lib/index.js"
     },
-    "./context": {
-      "default": "./lib/context.js"
-    },
     "./vite-plugin": {
       "default": "./lib/vite-plugin.js"
     }
@@ -29,9 +26,6 @@
     "*": {
       "index.d.ts": [
         "lib/index.d.ts"
-      ],
-      "context": [
-        "lib/context.d.ts"
       ],
       "vite-plugin": [
         "lib/vite-plugin.d.ts"

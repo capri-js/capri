@@ -15,7 +15,6 @@ export interface CapriPluginOptions {
   islandGlobPattern?: string;
   lagoonGlobPattern?: string;
   adapter: Adapter;
-  target?: string;
   spa?: string | false;
 }
 

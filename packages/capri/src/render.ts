@@ -11,7 +11,7 @@ export async function loadSSRModule(path: string) {
 
   if (mod && typeof mod === "object" && "default" in mod) {
     const ssr = mod.default;
-    // When ssr.format is set to "cjs" we end up with default.default:
+    // When the ssr bundle is commonJs, we end up with default.default:
     const fn = ssr.default ?? ssr;
     if (typeof fn === "function") return fn as SSRFunction;
   }

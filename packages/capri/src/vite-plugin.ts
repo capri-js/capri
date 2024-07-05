@@ -19,7 +19,6 @@ export function capri({
   islandGlobPattern = "/src/**/*.island.*",
   lagoonGlobPattern = "/src/**/*.lagoon.*",
   adapter,
-  target,
   spa = "/preview",
 }: CapriPluginOptions): Plugin[] {
   const ssr = resolveRelative("./virtual/ssr.js");
@@ -65,7 +64,7 @@ export function capri({
         if (spa)
           spa = path.resolve(
             rootDir,
-            urlToFileName(spa, createIndexFiles, base)
+            urlToFileName(spa, createIndexFiles, base),
           );
 
         if (ssrBuild) {
@@ -97,7 +96,7 @@ export function capri({
             // index.html points to a .server.* file
             if (spa) {
               throw new Error(
-                "In order to generate an SPA, index.html must point to a client entry file."
+                "In order to generate an SPA, index.html must point to a client entry file.",
               );
             }
           } else if (spa) {
@@ -217,7 +216,13 @@ export function capri({
 
       async writeBundle(options, bundle) {
         if (ssrBuild) {
-          const ssrBundle = path.resolve(outDir, "ssr.js");
+          let ssrBundle = path.resolve(outDir, "ssr.js");
+          if (!fsutils.exists(ssrBundle)) {
+            ssrBundle = path.resolve(outDir, "ssr.cjs");
+            if (!fsutils.exists(ssrBundle)) {
+              throw new Error("SSR bundle not found.");
+            }
+          }
 
           // Prerender pages...
           await renderStaticPages({
@@ -229,10 +234,6 @@ export function capri({
             followLinks,
           });
 
-          // Hook for build targets
-          if (typeof target === "string") {
-            fsutils.copy(ssrBundle, await resolveFile(this, target));
-          }
           fsutils.rm(ssrBundle);
         }
       },
@@ -244,11 +245,6 @@ export function capri({
 
 function resolveRelative(src: string) {
   return new URL(src, import.meta.url).pathname;
-}
-
-async function resolveFile(ctx: PluginContext, f: string) {
-  const index = await resolveIndexHtml(ctx);
-  return path.join(path.dirname(index), f);
 }
 
 async function resolveIndexHtml(ctx: PluginContext) {
