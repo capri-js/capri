@@ -65,7 +65,7 @@ export function capri({
         if (spa)
           spa = path.resolve(
             rootDir,
-            urlToFileName(spa, createIndexFiles, base)
+            urlToFileName(spa, createIndexFiles, base),
           );
 
         if (ssrBuild) {
@@ -107,7 +107,7 @@ export function capri({
             // index.html points to a .server.* file
             if (spa) {
               throw new Error(
-                "In order to generate an SPA, index.html must point to a client entry file."
+                "In order to generate an SPA, index.html must point to a client entry file.",
               );
             }
           } else if (spa) {
