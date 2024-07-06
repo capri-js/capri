@@ -16,6 +16,7 @@ export interface CapriPluginOptions {
   lagoonGlobPattern?: string;
   adapter: Adapter;
   spa?: string | false;
+  commonJs?: boolean;
 }
 
 export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "adapter">;

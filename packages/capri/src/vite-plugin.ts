@@ -20,6 +20,7 @@ export function capri({
   lagoonGlobPattern = "/src/**/*.lagoon.*",
   adapter,
   spa = "/preview",
+  commonJs = false,
 }: CapriPluginOptions): Plugin[] {
   const ssr = resolveRelative("./virtual/ssr.js");
 
@@ -64,7 +65,7 @@ export function capri({
         if (spa)
           spa = path.resolve(
             rootDir,
-            urlToFileName(spa, createIndexFiles, base),
+            urlToFileName(spa, createIndexFiles, base)
           );
 
         if (ssrBuild) {
@@ -73,6 +74,15 @@ export function capri({
           const indexHtml = path.join(outDir, "index.html");
           template = fsutils.read(indexHtml);
           fsutils.rm(indexHtml);
+
+          let rollupOptions: RollupOptions | undefined;
+          if (commonJs) {
+            rollupOptions = {
+              output: {
+                format: "cjs",
+              },
+            };
+          }
 
           return {
             base,
@@ -87,6 +97,7 @@ export function capri({
             build: {
               ssr,
               emptyOutDir: false, // keep the client build
+              rollupOptions,
             },
           };
         } else {
@@ -96,7 +107,7 @@ export function capri({
             // index.html points to a .server.* file
             if (spa) {
               throw new Error(
-                "In order to generate an SPA, index.html must point to a client entry file.",
+                "In order to generate an SPA, index.html must point to a client entry file."
               );
             }
           } else if (spa) {
@@ -217,11 +228,11 @@ export function capri({
       async writeBundle(options, bundle) {
         if (ssrBuild) {
           let ssrBundle = path.resolve(outDir, "ssr.js");
-          if (!fsutils.exists(ssrBundle)) {
+          if (!fsutils.exists(ssrBundle) && commonJs) {
             ssrBundle = path.resolve(outDir, "ssr.cjs");
-            if (!fsutils.exists(ssrBundle)) {
-              throw new Error("SSR bundle not found.");
-            }
+          }
+          if (!fsutils.exists(ssrBundle)) {
+            throw new Error("SSR bundle not found.");
           }
 
           // Prerender pages...
