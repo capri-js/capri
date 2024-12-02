@@ -1,4 +1,5 @@
 import * as cheerio from "cheerio";
+import type { AnyNode } from "domhandler";
 
 export class Template {
   private $: cheerio.CheerioAPI;
@@ -61,8 +62,8 @@ export class Template {
 }
 
 function removeNodeAndWhitespaceSiblings(
-  $el: cheerio.Cheerio<cheerio.Element>,
-  $: cheerio.CheerioAPI,
+  $el: cheerio.Cheerio<AnyNode>,
+  $: cheerio.CheerioAPI
 ) {
   removeWhitespaceSiblings($el, $);
   removeWhitespaceSiblings($el.prev(), $);
@@ -70,8 +71,8 @@ function removeNodeAndWhitespaceSiblings(
 }
 
 function removeWhitespaceSiblings(
-  $el: cheerio.Cheerio<cheerio.Element>,
-  $: cheerio.CheerioAPI,
+  $el: cheerio.Cheerio<AnyNode>,
+  $: cheerio.CheerioAPI
 ) {
   const el = $el.get(0);
   let next = el?.nextSibling;
