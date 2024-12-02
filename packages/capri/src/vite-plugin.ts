@@ -1,10 +1,10 @@
-import * as path from "path";
+import fs from "fs";
+import path from "path";
 import type { PluginContext, RollupOptions } from "rollup";
 import type { Plugin } from "vite";
 
 import { serverAssetsPlugins } from "./assets.js";
 import { EntryScripts, getEntryScripts } from "./entry.js";
-import * as fsutils from "./fsutils.js";
 import { CapriPluginOptions } from "./options.js";
 import { renderStaticPages, urlToFileName } from "./prerender.js";
 import { addUnwrapped } from "./utils.js";
@@ -72,9 +72,8 @@ export function capri({
           // Read the index.html produced by the client build, so we can use it
           // as template for all pre-rendered pages.
           const indexHtml = path.join(outDir, "index.html");
-          template = fsutils.read(indexHtml);
-          fsutils.rm(indexHtml);
-
+          template = fs.readFileSync(indexHtml, "utf8");
+          fs.rmSync(indexHtml);
           let rollupOptions: RollupOptions | undefined;
           if (commonJs) {
             rollupOptions = {
@@ -206,21 +205,21 @@ export function capri({
           // original version is used and not the hydration script:
           const rewritten = addUnwrapped(entry.raw);
 
-          return fsutils.read(index).replace(entry.raw, rewritten);
+          return fs.readFileSync(index, "utf8").replace(entry.raw, rewritten);
         }
 
         if (id === "\0virtual:capri-hydration") {
           // Load the hydration script and inject the `islandGlobPattern`.
           const file = resolveRelative("./virtual/hydration.js");
-          return fsutils
-            .read(file)
+          return fs
+            .readFileSync(file, "utf8")
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
         }
 
         if (id === ssr) {
           // Load the virtual ssr module and inject the index.html
-          return fsutils
-            .read(ssr)
+          return fs
+            .readFileSync(ssr, "utf8")
             .replace('"%TEMPLATE%"', JSON.stringify(template));
         }
       },
@@ -228,10 +227,10 @@ export function capri({
       async writeBundle(options, bundle) {
         if (ssrBuild) {
           let ssrBundle = path.resolve(outDir, "ssr.js");
-          if (!fsutils.exists(ssrBundle) && commonJs) {
+          if (!fs.existsSync(ssrBundle) && commonJs) {
             ssrBundle = path.resolve(outDir, "ssr.cjs");
           }
-          if (!fsutils.exists(ssrBundle)) {
+          if (!fs.existsSync(ssrBundle)) {
             throw new Error("SSR bundle not found.");
           }
 
@@ -245,7 +244,7 @@ export function capri({
             followLinks,
           });
 
-          fsutils.rm(ssrBundle);
+          fs.rmSync(ssrBundle);
         }
       },
     },

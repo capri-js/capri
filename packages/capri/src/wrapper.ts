@@ -1,8 +1,8 @@
+import fs from "fs";
 import micromatch from "micromatch";
 import type { PartialResolvedId } from "rollup";
 import { Plugin } from "vite";
 
-import * as fsutils from "./fsutils.js";
 import { addUnwrapped } from "./utils.js";
 
 export type WrapperInjectionHook = "onLoad" | "onTransform";
@@ -66,7 +66,7 @@ function loadWrapper(meta: WrapperMeta, server: boolean) {
 
   const wrapperFile = wrapper[server ? "server" : "client"];
   if (wrapperFile) {
-    const code = fsutils.read(wrapperFile);
+    const code = fs.readFileSync(wrapperFile, "utf8");
     return code
       .replace(/virtual:capri-component/g, unwrappedId)
       .replace(/%COMPONENT_ID%/g, componentId);

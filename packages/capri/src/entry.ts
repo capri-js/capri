@@ -1,6 +1,6 @@
-import * as path from "path";
+import fs from "fs";
+import path from "path";
 
-import * as fsutils from "./fsutils.js";
 import { getEntrySrc } from "./html.js";
 
 /**
@@ -11,7 +11,7 @@ import { getEntrySrc } from "./html.js";
  */
 export function getIndexHtml(root = "") {
   const indexHtml = path.resolve(root, "index.html");
-  if (!fsutils.exists(indexHtml)) {
+  if (!fs.existsSync(indexHtml)) {
     throw new Error(`Can't find index.html in ${root}`);
   }
   return indexHtml;
@@ -25,7 +25,7 @@ export function getIndexHtml(root = "") {
  */
 export function getEntryScript(root = "") {
   const indexHtml = getIndexHtml(root);
-  const src = getEntrySrc(fsutils.read(indexHtml));
+  const src = getEntrySrc(fs.readFileSync(indexHtml, "utf8"));
   if (!src) throw new Error(`Can't find entry script in ${indexHtml}`);
   return src;
 }
@@ -54,7 +54,7 @@ export function getEntryScripts(root = ""): EntryScripts {
     return { raw, server: resolved };
   }
   const server = resolved.replace(/(\.client)?(\.[^.]+)$/, ".server$2");
-  if (!fsutils.exists(server)) {
+  if (!fs.existsSync(server)) {
     throw new Error(
       `File not found: ${server}. Make sure to name your server entry file accordingly.`,
     );
