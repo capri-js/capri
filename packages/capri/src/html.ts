@@ -8,7 +8,8 @@ export function getLinks(html: string) {
     .map((i, el) => $(el).attr("href"))
     .toArray()
     .filter(isLocalUrl)
-    .map(resolveUrl);
+    .map(resolveUrl)
+    .map(decodeURI);
 }
 
 export function getEntrySrc(html: string) {
