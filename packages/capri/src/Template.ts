@@ -63,7 +63,7 @@ export class Template {
 
 function removeNodeAndWhitespaceSiblings(
   $el: cheerio.Cheerio<AnyNode>,
-  $: cheerio.CheerioAPI
+  $: cheerio.CheerioAPI,
 ) {
   removeWhitespaceSiblings($el, $);
   removeWhitespaceSiblings($el.prev(), $);
@@ -72,7 +72,7 @@ function removeNodeAndWhitespaceSiblings(
 
 function removeWhitespaceSiblings(
   $el: cheerio.Cheerio<AnyNode>,
-  $: cheerio.CheerioAPI
+  $: cheerio.CheerioAPI,
 ) {
   const el = $el.get(0);
   let next = el?.nextSibling;

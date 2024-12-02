@@ -68,7 +68,7 @@ export async function updatePackageJSON(
     const json = await fs.readJson(file);
     json.name = projectName;
     await fs.writeJson(file, json, { spaces: 2 });
-  } catch (err: unknown) {
+  } catch {
     throw new Error("Unable to update name in package.json");
   }
 }
