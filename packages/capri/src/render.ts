@@ -1,3 +1,6 @@
+import type { Readable } from "node:stream";
+import { text } from "node:stream/consumers";
+
 import { Template } from "./Template.js";
 import { Markup, RenderFunction } from "./types.js";
 import { SSRFunction } from "./virtual/ssr.js";
@@ -68,7 +71,18 @@ export async function renderHtml(
 async function resolveMarkup(markup: Markup) {
   const resolved: Record<string, string> = {};
   for (const [key, value] of Object.entries(markup)) {
-    resolved[key] = await value;
+    resolved[key] = await stringOrReactStream(await value);
   }
   return resolved;
+}
+
+/**
+ * Support for React's PrerenderToNodeStreamResult.
+ */
+async function stringOrReactStream(value: string | { prelude: Readable }) {
+  if (typeof value === "string") return value;
+  if (typeof value === "object" && "prelude" in value) {
+    return text(value.prelude);
+  }
+  throw new Error("Invalid render result");
 }

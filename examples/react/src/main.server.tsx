@@ -1,7 +1,7 @@
 import "./main.css";
 
 import { StrictMode } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
+import { prerenderToNodeStream } from "react-dom/static";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
 import { routes } from "./routes.jsx";
@@ -21,7 +21,7 @@ export async function render(url: string) {
     </StrictMode>
   );
   return {
-    "#app": renderToStaticMarkup(root),
+    "#app": prerenderToNodeStream(root),
   };
 }
 
