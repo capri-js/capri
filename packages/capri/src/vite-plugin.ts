@@ -3,7 +3,7 @@ import path from "path";
 import type { PluginContext, RollupOptions } from "rollup";
 import type { Plugin } from "vite";
 
-import { serverAssetsPlugins } from "./assets.js";
+import { injectCssLinks } from "./assets.js";
 import { EntryScripts, getEntryScripts } from "./entry.js";
 import { CapriPluginOptions } from "./options.js";
 import { renderStaticPages, urlToFileName } from "./prerender.js";
@@ -249,7 +249,7 @@ export function capri({
       },
     },
     injectWrapperPlugin(adapter.injectWrapper),
-    ...serverAssetsPlugins(),
+    injectCssLinks(),
   ];
 }
 

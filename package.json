@@ -27,7 +27,7 @@
     "prettier": "^3.4.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.16.0",
-    "vitest": "^2.1.7"
+    "vitest": "^3.0.0-beta.3"
   },
   "workspaces": [
     "packages/*",
