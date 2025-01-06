@@ -1,8 +1,13 @@
-import type { Readable } from "node:stream";
 import { text } from "node:stream/consumers";
 
+import { getHeadAndBodyInnerHtml } from "./html.js";
 import { Template } from "./Template.js";
-import { Markup, RenderFunction } from "./types.js";
+import {
+  isStreamResult,
+  RenderedHtml,
+  RenderFunction,
+  StreamResult,
+} from "./types.js";
 import { SSRFunction } from "./virtual/ssr.js";
 
 export async function loadSSRModule(path: string) {
@@ -68,10 +73,16 @@ export async function renderHtml(
  * This utility function awaits them and returns an object with the resolved
  * values.
  */
-async function resolveMarkup(markup: Markup) {
+async function resolveMarkup(
+  markup: RenderedHtml | Record<string, RenderedHtml>,
+) {
+  if (typeof markup === "string" || isStreamResult(markup)) {
+    const html = await stringOrStreamResult(await markup);
+    return getHeadAndBodyInnerHtml(html);
+  }
   const resolved: Record<string, string> = {};
   for (const [key, value] of Object.entries(markup)) {
-    resolved[key] = await stringOrReactStream(await value);
+    resolved[key] = await stringOrStreamResult(await value);
   }
   return resolved;
 }
@@ -79,9 +90,9 @@ async function resolveMarkup(markup: Markup) {
 /**
  * Support for React's PrerenderToNodeStreamResult.
  */
-async function stringOrReactStream(value: string | { prelude: Readable }) {
+async function stringOrStreamResult(value: string | StreamResult) {
   if (typeof value === "string") return value;
-  if (typeof value === "object" && "prelude" in value) {
+  if (isStreamResult(value)) {
     return text(value.prelude);
   }
   throw new Error("Invalid render result");

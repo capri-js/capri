@@ -20,3 +20,11 @@ export function getEntrySrc(html: string) {
     .filter(isLocalUrl);
   return src[0];
 }
+
+export function getHeadAndBodyInnerHtml(html: string) {
+  const $ = cheerio.load(html);
+  return {
+    head: $.html("head"),
+    body: $.html("body"),
+  };
+}
