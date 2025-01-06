@@ -1,6 +1,6 @@
 {
   "name": "capri",
-  "version": "6.0.0-next.6",
+  "version": "6.0.0-next.7",
   "description": "Static site generator for Vite",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
