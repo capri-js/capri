@@ -96,6 +96,7 @@ export function capri({
             build: {
               ssr,
               emptyOutDir: false, // keep the client build
+              emitAssets: true,
               rollupOptions,
             },
           };
