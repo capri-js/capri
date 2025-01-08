@@ -1,6 +1,6 @@
 {
   "name": "@capri-js/preact",
-  "version": "6.0.0-next.7",
+  "version": "6.0.0-next.8",
   "description": "Preact bindings for Capri",
   "author": "Felix Gnass <fgnass@gmail.com>",
   "repository": {
@@ -15,7 +15,7 @@
     "lib"
   ],
   "dependencies": {
-    "capri": "^6.0.0-next.7"
+    "capri": "^6.0.0-next.8"
   },
   "peerDependencies": {
     "preact": "^10.19.3",
