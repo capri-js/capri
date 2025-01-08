@@ -137,7 +137,7 @@ export function capri({
 
       /**
        * Hook to resolve some virtual modules and, most importantly, wrap
-       * islands and lagoons with the code provided by the framework adapter.
+       * islands with the code provided by the framework adapter.
        */
       async resolveId(source, importer, options) {
         if (source === spa) {
@@ -184,11 +184,8 @@ export function capri({
             });
           }
 
-          // Wrap islands and lagoons ...
-          return (
-            resolveWrapper(id, rootDir, islandGlobPattern, adapter.island) ??
-            resolveWrapper(id, rootDir, lagoonGlobPattern, adapter.lagoon)
-          );
+          // Wrap islands ...
+          return resolveWrapper(id, rootDir, islandGlobPattern, adapter.island);
         }
       },
 

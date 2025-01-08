@@ -26,10 +26,6 @@ export default function (opts: CapriAdapterPluginOptions = {}): Plugin[] {
         island: {
           server: resolve("./island.server.jsx"),
         },
-        lagoon: {
-          server: resolve("./lagoon.server.jsx"),
-          client: resolve("./lagoon.client.jsx"),
-        },
       },
     }),
   ];
