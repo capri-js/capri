@@ -46,7 +46,7 @@ export async function renderHtml(
   indexHtml: string,
   css: string[],
   inlineCss = false,
-  outDir?: string
+  outDir?: string,
 ) {
   const result = await renderFn(url);
   if (!result) return;
@@ -59,7 +59,7 @@ export async function renderHtml(
   if (inlineCss && outDir) {
     // Fetch and inline CSS content
     const cssContents = await Promise.all(
-      css.map((href) => loadCssContent(href, outDir))
+      css.map((href) => loadCssContent(href, outDir)),
     );
     const inlinedStyles = cssContents
       .filter((content) => content.length > 0)
@@ -90,7 +90,7 @@ export async function renderHtml(
  * values.
  */
 async function resolveMarkup(
-  markup: RenderedHtml | Record<string, RenderedHtml>
+  markup: RenderedHtml | Record<string, RenderedHtml>,
 ) {
   if (typeof markup === "string" || isStreamResult(markup)) {
     const html = await stringOrStreamResult(await markup);

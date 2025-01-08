@@ -47,7 +47,7 @@ export async function renderStaticPages({
   const renderFn = await loadRenderFunction(ssrBundle);
 
   const seen = new Set(
-    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
+    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s)),
   );
   const urls = [...seen];
 
@@ -58,7 +58,7 @@ export async function renderStaticPages({
       template,
       cssLinks,
       inlineCss,
-      outDir
+      outDir,
     );
     if (html) {
       const fileName = urlToFileName(url, createIndexFiles, base);
