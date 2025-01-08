@@ -14,8 +14,11 @@ function isOutputChunk(chunk: OutputAsset | OutputChunk): chunk is OutputChunk {
   return chunk.type === "chunk";
 }
 
-export function getCssLinks(bundle: OutputBundle) {
+export function getCssLinks(bundle: OutputBundle, base = "/") {
+  if (!base.endsWith("/")) {
+    base += "/";
+  }
   return Object.values(bundle)
     .filter((c) => c.fileName.endsWith(".css"))
-    .map((c) => c.fileName);
+    .map((c) => `${base}${c.fileName}`);
 }
