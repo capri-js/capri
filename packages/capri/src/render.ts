@@ -1,5 +1,8 @@
 import { text } from "node:stream/consumers";
 
+import fs from "fs";
+import path from "path";
+
 import { getHeadAndBodyInnerHtml } from "./html.js";
 import { Template } from "./Template.js";
 import {
@@ -8,22 +11,22 @@ import {
   RenderFunction,
   StreamResult,
 } from "./types.js";
-import { SSRFunction } from "./virtual/ssr.js";
 
-export async function loadSSRModule(path: string) {
+async function loadCssContent(href: string, outDir: string): Promise<string> {
+  const filePath = path.join(outDir, href);
+  return fs.readFileSync(filePath, "utf-8");
+}
+
+export async function loadRenderFunction(path: string) {
   if (path.startsWith(".")) {
     throw new Error("Path must be absolute");
   }
-
   const mod = await import(/* @vite-ignore */ path);
-
-  if (mod && typeof mod === "object" && "default" in mod) {
-    const ssr = mod.default;
-    // When the ssr bundle is commonJs, we end up with default.default:
-    const fn = ssr.default ?? ssr;
-    if (typeof fn === "function") return fn as SSRFunction;
+  if (mod && typeof mod === "object" && "render" in mod) {
+    const fn = mod.render;
+    if (typeof fn === "function") return fn as RenderFunction;
   }
-  throw new Error(`${path} is not a SSR module`);
+  throw new Error(`${path} does not export a render function`);
 }
 
 /**
@@ -42,6 +45,8 @@ export async function renderHtml(
   url: string,
   indexHtml: string,
   css: string[],
+  inlineCss = false,
+  outDir?: string
 ) {
   const result = await renderFn(url);
   if (!result) return;
@@ -51,15 +56,26 @@ export async function renderHtml(
   // Insert the rendered markup into the index.html template:
   template.insertMarkup(await resolveMarkup(result));
 
-  const head = css
-    .map((href) => `<link rel="stylesheet" href="${href}">`)
-    .join("");
-  template.insertMarkup({ head });
+  if (inlineCss && outDir) {
+    // Fetch and inline CSS content
+    const cssContents = await Promise.all(
+      css.map((href) => loadCssContent(href, outDir))
+    );
+    const inlinedStyles = cssContents
+      .filter((content) => content.length > 0)
+      .map((content) => `<style>${content}</style>`)
+      .join("");
+    template.insertMarkup({ head: inlinedStyles });
+  } else {
+    const head = css
+      .map((href) => `<link rel="stylesheet" href="${href}">`)
+      .join("");
+    template.insertMarkup({ head });
+  }
 
   const islands = template.getIslands();
   if (!islands.length) {
     // No islands present, remove the hydration script.
-    console.log("No islands found, removing hydration code");
     template.removeScripts({
       src: /index-|-legacy|modulepreload-polyfill/,
       text: /__vite_is_modern_browser|"noModule"|_\$HY/,
@@ -74,7 +90,7 @@ export async function renderHtml(
  * values.
  */
 async function resolveMarkup(
-  markup: RenderedHtml | Record<string, RenderedHtml>,
+  markup: RenderedHtml | Record<string, RenderedHtml>
 ) {
   if (typeof markup === "string" || isStreamResult(markup)) {
     const html = await stringOrStreamResult(await markup);

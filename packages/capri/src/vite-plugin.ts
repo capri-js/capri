@@ -3,7 +3,7 @@ import path from "path";
 import type { PluginContext, RollupOptions } from "rollup";
 import type { Plugin } from "vite";
 
-import { injectCssLinks } from "./assets.js";
+import { getCssLinks, getEntryFile } from "./chunks.js";
 import { EntryScripts, getEntryScripts } from "./entry.js";
 import { CapriPluginOptions } from "./options.js";
 import { renderStaticPages, urlToFileName } from "./prerender.js";
@@ -17,13 +17,11 @@ export function capri({
   prerender = "/",
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",
-  lagoonGlobPattern = "/src/**/*.lagoon.*",
   adapter,
   spa = "/preview",
   commonJs = false,
+  inlineCss = false,
 }: CapriPluginOptions): Plugin[] {
-  const ssr = resolveRelative("./virtual/ssr.js");
-
   let ssrBuild: boolean;
   let devServer: boolean;
 
@@ -65,7 +63,7 @@ export function capri({
         if (spa)
           spa = path.resolve(
             rootDir,
-            urlToFileName(spa, createIndexFiles, base),
+            urlToFileName(spa, createIndexFiles, base)
           );
 
         if (ssrBuild) {
@@ -94,7 +92,7 @@ export function capri({
               noExternal: ["capri", /@capri-js\//],
             },
             build: {
-              ssr,
+              ssr: entry.server,
               emptyOutDir: false, // keep the client build
               emitAssets: true,
               rollupOptions,
@@ -107,7 +105,7 @@ export function capri({
             // index.html points to a .server.* file
             if (spa) {
               throw new Error(
-                "In order to generate an SPA, index.html must point to a client entry file.",
+                "In order to generate an SPA, index.html must point to a client entry file."
               );
             }
           } else if (spa) {
@@ -155,11 +153,6 @@ export function capri({
         if (source === "virtual:capri-hydration-adapter") {
           // Framework adapters provide a module for the actual hydration ...
           return this.resolve(adapter.hydrate);
-        }
-
-        if (source === "virtual:capri-server-entry") {
-          // This is used by ./virtual/ssr.ts to import the server entry ...
-          return entry.server;
         }
 
         if (source.includes("?unwrapped")) {
@@ -213,33 +206,25 @@ export function capri({
             .readFileSync(file, "utf8")
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
         }
-
-        if (id === ssr) {
-          // Load the virtual ssr module and inject the index.html
-          return fs
-            .readFileSync(ssr, "utf8")
-            .replace('"%TEMPLATE%"', JSON.stringify(template));
-        }
       },
 
       async writeBundle(options, bundle) {
         if (ssrBuild) {
-          let ssrBundle = path.resolve(outDir, "ssr.js");
-          if (!fs.existsSync(ssrBundle) && commonJs) {
-            ssrBundle = path.resolve(outDir, "ssr.cjs");
-          }
-          if (!fs.existsSync(ssrBundle)) {
-            throw new Error("SSR bundle not found.");
-          }
+          const entryFile = getEntryFile(bundle);
+          const ssrBundle = path.resolve(outDir, entryFile);
+          const cssLinks = getCssLinks(bundle);
 
           // Prerender pages...
           await renderStaticPages({
             ssrBundle,
+            template,
+            cssLinks,
             createIndexFiles,
             outDir,
             base,
             prerender,
             followLinks,
+            inlineCss,
           });
 
           fs.rmSync(ssrBundle);
@@ -247,7 +232,6 @@ export function capri({
       },
     },
     injectWrapperPlugin(adapter.injectWrapper),
-    injectCssLinks(),
   ];
 }
 

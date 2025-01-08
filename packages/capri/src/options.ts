@@ -15,6 +15,7 @@ export interface CapriPluginOptions {
   adapter: Adapter;
   spa?: string | false;
   commonJs?: boolean;
+  inlineCss?: boolean;
 }
 
 export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "adapter">;

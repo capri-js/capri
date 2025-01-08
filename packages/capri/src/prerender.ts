@@ -3,7 +3,7 @@ import * as path from "path";
 import urlJoin from "url-join";
 
 import { getLinks } from "./html.js";
-import { loadSSRModule } from "./render.js";
+import { loadRenderFunction, renderHtml } from "./render.js";
 import { stripLeadingSlash, stripTrailingSlash } from "./utils.js";
 
 export type PrerenderConfig =
@@ -16,11 +16,14 @@ export type FollowLinksConfig = boolean | ((pathname: string) => boolean);
 
 type StaticRenderConfig = {
   ssrBundle: string;
+  template: string;
+  cssLinks: string[];
   createIndexFiles: boolean;
   outDir: string;
   base: string;
   prerender: PrerenderConfig;
   followLinks: FollowLinksConfig;
+  inlineCss?: boolean;
 };
 
 async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
@@ -32,19 +35,31 @@ async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
 
 export async function renderStaticPages({
   ssrBundle,
+  template,
+  cssLinks,
   createIndexFiles,
   outDir,
   base,
   prerender,
   followLinks,
+  inlineCss = false,
 }: StaticRenderConfig) {
-  const ssr = await loadSSRModule(ssrBundle);
+  const renderFn = await loadRenderFunction(ssrBundle);
+
   const seen = new Set(
-    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s)),
+    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s))
   );
   const urls = [...seen];
+
   for (const url of urls) {
-    const html = await ssr(url);
+    const html = await renderHtml(
+      renderFn,
+      url,
+      template,
+      cssLinks,
+      inlineCss,
+      outDir
+    );
     if (html) {
       const fileName = urlToFileName(url, createIndexFiles, base);
       const dest = path.join(outDir, fileName);
