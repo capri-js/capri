@@ -23,5 +23,15 @@ export type RenderFunction = (
 ) => RenderResult | Promise<RenderResult>;
 
 export interface IslandOptions {
+  /**
+   * Media query that must match for the island to be hydrated
+   */
   media?: string;
+  /**
+   * Loading strategy for the island
+   * - 'eager': Hydrate immediately (default)
+   * - 'idle': Hydrate when the browser is idle
+   * - 'visible': Hydrate when the island enters the viewport
+   */
+  loading?: "eager" | "idle" | "visible";
 }

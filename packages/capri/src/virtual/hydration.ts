@@ -7,6 +7,9 @@
 // actual pattern during the build.
 const modules = import.meta.glob("%ISLAND_GLOB_PATTERN%");
 
+// Polyfill for requestIdleCallback
+const requestIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+
 // Find all island marker scripts
 const islands = document.querySelectorAll("script[data-island]");
 
@@ -33,15 +36,49 @@ islands.forEach((node) => {
     hydrate(m.default, props, element);
   };
 
-  const { media } = options;
-  if (media && "matchMedia" in window) {
-    const mql = matchMedia(media);
-    if (mql.matches) {
-      hydrateComponent();
-    } else {
-      mql.addEventListener("change", hydrateComponent, { once: true });
+  // Function to schedule hydration based on loading strategy
+  const scheduleHydration = () => {
+    const { loading = "eager", media } = options;
+
+    // Helper to handle media query
+    const hydrateWithMedia = (callback: () => void) => {
+      if (media && "matchMedia" in window) {
+        const mql = matchMedia(media);
+        if (mql.matches) {
+          callback();
+        } else {
+          mql.addEventListener("change", callback, { once: true });
+        }
+      } else {
+        callback();
+      }
+    };
+
+    switch (loading) {
+      case "idle":
+        hydrateWithMedia(() => {
+          requestIdle(() => hydrateComponent(), { timeout: 2000 });
+        });
+        break;
+
+      case "visible":
+        hydrateWithMedia(() => {
+          const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              observer.disconnect();
+              hydrateComponent();
+            }
+          });
+          observer.observe(element);
+        });
+        break;
+
+      case "eager":
+      default:
+        hydrateWithMedia(hydrateComponent);
+        break;
     }
-  } else {
-    hydrateComponent();
-  }
+  };
+
+  scheduleHydration();
 });

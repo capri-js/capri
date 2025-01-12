@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
+import CombinedStrategiesIsland from "./CombinedStrategies.island.jsx";
 import CounterIsland from "./Counter.island.jsx";
 import ExpandableIsland from "./Expandable.island.jsx";
+import LazyLoadIsland from "./LazyLoad.island.jsx";
 import MediaQueryIsland from "./MediaQuery.island.jsx";
 import { ServerContent } from "./ServerContent";
 
@@ -28,6 +30,26 @@ export function Home() {
         </ServerContent>
       </ExpandableIsland>
       <MediaQueryIsland />
+
+      <div style={{ marginTop: "2rem" }}>
+        <h2>Lazy Loading Examples</h2>
+        <div style={{ height: "100vh" }}>
+          <p>⬇️ Scroll down to see lazy-loaded islands ⬇️</p>
+        </div>
+        <LazyLoadIsland strategy="visible" />
+        <LazyLoadIsland strategy="idle" />
+      </div>
+
+      <div style={{ marginTop: "2rem" }}>
+        <h2>Combined Strategies Examples</h2>
+        <p>These islands only hydrate on screens narrower than 1000px:</p>
+        <div style={{ height: "100vh" }}>
+          <p>⬇️ Scroll down and resize your browser ⬇️</p>
+        </div>
+        <CombinedStrategiesIsland strategy="visible" />
+        <CombinedStrategiesIsland strategy="idle" />
+      </div>
+
       <Link to="/about">Link to another page</Link>
     </main>
   );
