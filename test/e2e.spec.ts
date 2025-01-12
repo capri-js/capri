@@ -37,10 +37,10 @@ import { expect, test } from "@playwright/test";
       .locator("xpath=ancestor::div[contains(@class, 'box')]");
 
     await expect(visibleIsland.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
     await expect(idleIsland.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
 
     // Now enable JavaScript and remove the route
@@ -49,18 +49,18 @@ import { expect, test } from "@playwright/test";
 
     // Test visible loading strategy
     await expect(visibleIsland.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
     await visibleIsland.scrollIntoViewIfNeeded();
     await expect(visibleIsland.locator("p").last()).toHaveText(
       "Status: Hydrated ✅",
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     // Test idle loading strategy
     await expect(idleIsland.locator("p").last()).toHaveText(
       "Status: Hydrated ✅",
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
   });
 
@@ -91,10 +91,10 @@ import { expect, test } from "@playwright/test";
 
     // Verify initial unhydrated state
     await expect(visibleWithMedia.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
     await expect(idleWithMedia.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
 
     // Enable JavaScript and reload
@@ -108,10 +108,10 @@ import { expect, test } from "@playwright/test";
     // Wait a bit to ensure no hydration occurs
     await page.waitForTimeout(2000);
     await expect(visibleWithMedia.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
     await expect(idleWithMedia.locator("p").last()).toHaveText(
-      "Status: Not hydrated ⏳"
+      "Status: Not hydrated ⏳",
     );
 
     // Resize to trigger media query
@@ -121,13 +121,13 @@ import { expect, test } from "@playwright/test";
     await visibleWithMedia.scrollIntoViewIfNeeded();
     await expect(visibleWithMedia.locator("p").last()).toHaveText(
       "Status: Hydrated ✅",
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     // And the idle island should also hydrate
     await expect(idleWithMedia.locator("p").last()).toHaveText(
       "Status: Hydrated ✅",
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
   });
 });
