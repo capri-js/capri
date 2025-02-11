@@ -1,7 +1,7 @@
 {
-  "name": "capri-example-react",
+  "name": "my-capri-preact-site",
   "private": true,
-  "description": "Capri react example",
+  "description": "Capri Preact example",
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
@@ -11,14 +11,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "preact": "^10.8.2",
+    "preact-iso": "^2.6.3"
   },
   "devDependencies": {
-    "@capri-js/react": "*",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@capri-js/preact": "*",
+    "@preact/preset-vite": "^2.9.4",
+    "@tailwindcss/vite": "^4.0.6",
+    "tailwindcss": "^4.0.6",
     "vite": "^6.0.0"
   }
 }

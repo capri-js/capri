@@ -1,18 +1,17 @@
-import { Link } from "react-router-dom";
-
-import CombinedStrategiesIsland from "./CombinedStrategies.island.jsx";
 import CounterIsland from "./Counter.island.jsx";
 import ExpandableIsland from "./Expandable.island.jsx";
-import LazyLoadIsland from "./LazyLoad.island.jsx";
+import IdleIsland from "./Idle.island.jsx";
+import IdleMediaIsland from "./IdleMedia.island.jsx";
+import { Link } from "./Link.jsx";
 import MediaQueryIsland from "./MediaQuery.island.jsx";
-import { ServerContent } from "./ServerContent";
+import { Paragraph } from "./Paragraph.jsx";
+import VisibleIsland from "./Visible.island.jsx";
+import VisibleMediaIsland from "./VisibleMedia.island.jsx";
 
 export function Home() {
   return (
     <main>
-      <h1>
-        Partial hydration with React and <i>Capri</i>
-      </h1>
+      <h1>Partial hydration with React and Capri 🍋</h1>
       <section>This page is static, but contains some dynamic parts.</section>
       <section>
         Here is a simple counter: <CounterIsland />
@@ -24,10 +23,10 @@ export function Home() {
       <ExpandableIsland title="Click to expand">
         This island receives children as prop. They are only rendered upon build
         time.
-        <ServerContent>
-          The code for <code>ServerContent</code> won't show up in the client
-          bundle.
-        </ServerContent>
+        <Paragraph>
+          Hence the code for the <code>Paragraph</code> component won't show up
+          in the client bundle.
+        </Paragraph>
       </ExpandableIsland>
       <MediaQueryIsland />
 
@@ -36,8 +35,8 @@ export function Home() {
         <div style={{ height: "100vh" }}>
           <p>⬇️ Scroll down to see lazy-loaded islands ⬇️</p>
         </div>
-        <LazyLoadIsland strategy="visible" />
-        <LazyLoadIsland strategy="idle" />
+        <VisibleIsland />
+        <IdleIsland />
       </div>
 
       <div style={{ marginTop: "2rem" }}>
@@ -46,11 +45,10 @@ export function Home() {
         <div style={{ height: "100vh" }}>
           <p>⬇️ Scroll down and resize your browser ⬇️</p>
         </div>
-        <CombinedStrategiesIsland strategy="visible" />
-        <CombinedStrategiesIsland strategy="idle" />
+        <VisibleMediaIsland />
+        <IdleMediaIsland />
       </div>
-
-      <Link to="/about">Link to another page</Link>
+      <Link href="/about">Link to another page</Link>
     </main>
   );
 }

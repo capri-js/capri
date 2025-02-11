@@ -48,7 +48,6 @@ export function capri({
       name: "vite-plugin-capri-main",
 
       config(config, env) {
-        config.appType = "mpa";
         ssrBuild = !!config.build?.ssr;
         devServer = env.mode === "development";
 

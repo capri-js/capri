@@ -1,22 +1,20 @@
-import { Suspense } from "react";
-import { Link } from "react-router-dom";
-
-import { AsyncData } from "./AsyncData.jsx";
+import { Digimon } from "./Digimon.jsx";
+import { Link } from "./Link.jsx";
 
 export function About() {
   return (
     <main>
-      <h1>
-        This page is completely static. Async data:{" "}
-        <Suspense fallback={<span> loading...</span>}>
-          <AsyncData />
-        </Suspense>
-      </h1>
-      <section>
-        An since it does not contain any interactive islands, no JavaScript is
-        shipped to the browser.
-      </section>
-      <Link to="/">Home</Link>
+      <h1>This page is static</h1>
+      <p>
+        Since it does not contain any interactive islands, no JavaScript is
+        shipped to the browser!
+      </p>
+      <p>
+        It does data though which is fetched from a remote API. Here is some
+        text about a certain digimon:
+      </p>
+      <Digimon name="caprimon" />
+      <Link href="/">Home</Link>
     </main>
   );
 }

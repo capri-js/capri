@@ -1,5 +1,5 @@
 {
-  "name": "capri-example-react",
+  "name": "my-capri-react-site",
   "private": true,
   "description": "Capri react example",
   "version": "1.0.0",
@@ -16,9 +16,11 @@
   },
   "devDependencies": {
     "@capri-js/react": "*",
+    "@tailwindcss/vite": "^4.0.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.6",
     "vite": "^6.0.0"
   }
 }

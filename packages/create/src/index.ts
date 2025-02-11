@@ -8,8 +8,8 @@ import path from "path";
 import prompts from "prompts";
 
 const templates = [
-  { title: "React", value: "capri-js/capri/examples/react" },
-  { title: "Preact", value: "capri-js/capri/examples/preact" },
+  { title: "React", value: "capri-js/capri/templates/react" },
+  { title: "Preact", value: "capri-js/capri/templates/preact" },
 ];
 
 const args = arg({

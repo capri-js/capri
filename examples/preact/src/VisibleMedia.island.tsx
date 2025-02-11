@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 
-type Props = {
-  strategy: "idle" | "visible";
-};
-
 export const options = {
-  loading: "visible" as const,
+  media: "(max-width: 1000px)",
+  loading: "visible",
 };
 
-export default function LazyLoad({ strategy }: Props) {
+export default function VisibleMedia() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -17,9 +14,8 @@ export default function LazyLoad({ strategy }: Props) {
 
   return (
     <div className="box">
-      <p>
-        This island uses the <code>{strategy}</code> loading strategy.
-      </p>
+      <p>This island combines visible loading with a media query.</p>
+      <p>It only hydrates on screens smaller than 1000px.</p>
       <p>Status: {hydrated ? "Hydrated ✅" : "Not hydrated ⏳"}</p>
     </div>
   );

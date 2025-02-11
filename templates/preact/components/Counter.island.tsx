@@ -1,5 +1,7 @@
 import { useState } from "preact/hooks";
 
+import { Button } from "./Button.tsx";
+
 type Props = {
   start?: number;
 };
@@ -7,10 +9,10 @@ type Props = {
 export default function Counter({ start = 0 }: Props) {
   const [counter, setCounter] = useState(start);
   return (
-    <div className="counter">
-      <button onClick={() => setCounter((c) => c - 1)}>-</button>
+    <div class="flex items-center gap-2">
+      <Button onClick={() => setCounter((c) => c - 1)}>-</Button>
       <span>{counter}</span>
-      <button onClick={() => setCounter((c) => c + 1)}>+</button>
+      <Button onClick={() => setCounter((c) => c + 1)}>+</Button>
     </div>
   );
 }

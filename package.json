@@ -31,7 +31,8 @@
   },
   "workspaces": [
     "packages/*",
-    "examples/*"
+    "examples/*",
+    "templates/*"
   ],
   "release": {
     "branches": [

@@ -4,6 +4,6 @@ type Props = {
   children: ComponentChildren;
 };
 
-export function ServerContent({ children }: Props) {
-  return <div>{children}</div>;
+export function Paragraph({ children }: Props) {
+  return <p>{children}</p>;
 }

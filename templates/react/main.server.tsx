@@ -3,7 +3,7 @@ import "./main.css";
 import { StrictMode } from "react";
 import { prerenderToNodeStream } from "react-dom/static";
 
-import { App } from "./App.jsx";
+import { App } from "./App.tsx";
 
 export async function render(url: string) {
   const root = (

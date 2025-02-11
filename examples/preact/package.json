@@ -1,5 +1,5 @@
 {
-  "name": "my-capri-preact-site",
+  "name": "capri-example-preact",
   "private": true,
   "description": "Capri Preact example",
   "version": "1.0.0",
@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "preact": "^10.8.2",
-    "preact-iso": "^2.6.3",
-    "wouter-preact": "^3.3.0"
+    "preact-iso": "^2.6.3"
   },
   "devDependencies": {
     "@capri-js/preact": "*",

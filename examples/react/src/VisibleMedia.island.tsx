@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 
-type Props = {
-  strategy: "idle" | "visible";
-};
-
-// Example options combining media query with loading strategies
 export const options = {
   media: "(max-width: 1000px)",
-  loading: "visible" as const,
+  loading: "visible",
 };
 
-export default function CombinedStrategies({ strategy }: Props) {
+export default function VisibleMedia() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -19,9 +14,7 @@ export default function CombinedStrategies({ strategy }: Props) {
 
   return (
     <div className="box">
-      <p>
-        This island combines <code>{strategy}</code> loading with a media query.
-      </p>
+      <p>This island combines visible loading with a media query.</p>
       <p>It only hydrates on screens smaller than 1000px.</p>
       <p>Status: {hydrated ? "Hydrated ✅" : "Not hydrated ⏳"}</p>
     </div>
