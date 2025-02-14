@@ -3,8 +3,8 @@ import path from "path";
 import { ModuleGraph, ModuleNode, ViteDevServer } from "vite";
 
 import { getEntryScripts } from "./entry.js";
+import { direct } from "./path-utils.js";
 import { renderHtml } from "./render.js";
-import { direct } from "./utils.js";
 
 export async function renderPreview(server: ViteDevServer, url: string) {
   // always read fresh template in dev

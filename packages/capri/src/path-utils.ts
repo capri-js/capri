@@ -1,13 +1,5 @@
 import path from "path";
 
-export function escapeRegex(str: string) {
-  return str.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
-}
-
-export function posixify(str: string) {
-  return str.split(path.sep).join(path.posix.sep);
-}
-
 export function isLocalUrl(href: string) {
   const url = new URL(href, "file:///");
   return url.protocol === "file:" && !url.host;
@@ -24,6 +16,24 @@ export function stripLeadingSlash(s: string) {
 
 export function stripTrailingSlash(s: string) {
   return s.replace(/\/$/, "");
+}
+
+export function stripSlashes(s: string) {
+  return s.replace(/^\/*(.+?)\/*$/, "$1");
+}
+
+export function urlToFileName(
+  url: string,
+  createIndexFiles = false,
+  base = "",
+) {
+  if (base && url.startsWith(base)) {
+    url = url.slice(base.length);
+  }
+  const file = stripSlashes(url);
+  if (!file) return "index.html";
+  if (file.match(/.+\.\w+$/)) return file;
+  return `${file}${createIndexFiles ? "/index.html" : ".html"}`;
 }
 
 export function direct(s: string) {

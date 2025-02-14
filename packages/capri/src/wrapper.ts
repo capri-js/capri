@@ -3,7 +3,7 @@ import micromatch from "micromatch";
 import type { PartialResolvedId } from "rollup";
 import { Plugin } from "vite";
 
-import { addUnwrapped } from "./utils.js";
+import { addUnwrapped } from "./path-utils.js";
 
 export type WrapperInjectionHook = "onLoad" | "onTransform";
 

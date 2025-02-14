@@ -1,4 +1,5 @@
 import type { FollowLinksConfig, PrerenderConfig } from "./prerender.js";
+import { SitemapOptions } from "./sitemap.js";
 import type { Wrapper, WrapperInjectionHook } from "./wrapper.js";
 
 export interface Adapter {
@@ -16,6 +17,7 @@ export interface CapriPluginOptions {
   spa?: string | false;
   commonJs?: boolean;
   inlineCss?: boolean;
+  sitemap?: SitemapOptions;
 }
 
 export type CapriAdapterPluginOptions = Omit<CapriPluginOptions, "adapter">;

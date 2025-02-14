@@ -38,6 +38,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.11",
     "micromatch": "^4.0.5",
+    "sitemap": "^8.0.0",
     "url-join": "^5.0.0"
   },
   "devDependencies": {

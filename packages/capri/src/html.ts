@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 
-import { isLocalUrl, resolveUrl } from "./utils.js";
+import { isLocalUrl, resolveUrl } from "./path-utils.js";
 
 export function getLinks(html: string) {
   const $ = cheerio.load(html);

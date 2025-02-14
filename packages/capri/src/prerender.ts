@@ -1,10 +1,9 @@
-import * as fs from "fs";
-import * as path from "path";
 import urlJoin from "url-join";
 
+import { md5Hash } from "./hash.js";
 import { getLinks } from "./html.js";
+import { Output } from "./output.js";
 import { loadRenderFunction, renderHtml } from "./render.js";
-import { stripLeadingSlash, stripTrailingSlash } from "./utils.js";
 
 export type PrerenderConfig =
   | false
@@ -14,18 +13,6 @@ export type PrerenderConfig =
 
 export type FollowLinksConfig = boolean | ((pathname: string) => boolean);
 
-type StaticRenderConfig = {
-  ssrBundle: string;
-  template: string;
-  cssLinks: string[];
-  createIndexFiles: boolean;
-  outDir: string;
-  base: string;
-  prerender: PrerenderConfig;
-  followLinks: FollowLinksConfig;
-  inlineCss?: boolean;
-};
-
 async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
   if (prerender === false) return [];
   if (typeof prerender === "string") return [prerender];
@@ -33,23 +20,39 @@ async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
   return getStaticPaths(await prerender());
 }
 
+export type RenderedPage = {
+  url: string;
+  hash: string;
+  date: string;
+};
+
+type StaticRenderConfig = {
+  ssrBundle: string;
+  template: string;
+  cssLinks: string[];
+  output: Output;
+  prerender: PrerenderConfig;
+  followLinks: FollowLinksConfig;
+  inlineCss?: boolean;
+};
+
 export async function renderStaticPages({
   ssrBundle,
   template,
   cssLinks,
-  createIndexFiles,
-  outDir,
-  base,
+  output,
   prerender,
   followLinks,
   inlineCss = false,
 }: StaticRenderConfig) {
+  const date = new Date().toISOString();
   const renderFn = await loadRenderFunction(ssrBundle);
 
   const seen = new Set(
-    (await getStaticPaths(prerender)).map((s) => urlJoin(base, s)),
+    (await getStaticPaths(prerender)).map((s) => urlJoin(output.base, s)),
   );
   const urls = [...seen];
+  const rendered: RenderedPage[] = [];
 
   for (const url of urls) {
     const html = await renderHtml(
@@ -58,14 +61,12 @@ export async function renderStaticPages({
       template,
       cssLinks,
       inlineCss,
-      outDir,
+      output.dir,
     );
     if (html) {
-      const fileName = urlToFileName(url, createIndexFiles, base);
-      const dest = path.join(outDir, fileName);
-      fs.mkdirSync(path.dirname(dest), { recursive: true });
-      fs.writeFileSync(dest, html);
-
+      output.write(url, html);
+      const hash = md5Hash(html);
+      rendered.push({ url, hash, date });
       if (followLinks) {
         const follow =
           typeof followLinks === "function" ? followLinks : Boolean;
@@ -81,15 +82,5 @@ export async function renderStaticPages({
       console.warn("Skipping", url);
     }
   }
-  return urls;
-}
-
-export function urlToFileName(url: string, extraDir: boolean, base: string) {
-  let file = stripTrailingSlash(url);
-  base = stripTrailingSlash(base);
-  if (base && file.startsWith(base)) file = file.slice(base.length);
-  file = stripLeadingSlash(file);
-  if (!file) return "index.html";
-  if (file.includes(".html")) return file;
-  return `${file}${extraDir ? "/index.html" : ".html"}`;
+  return rendered;
 }
