@@ -1,6 +1,5 @@
 import urlJoin from "url-join";
 
-import { md5Hash } from "./hash.js";
 import { getLinks } from "./html.js";
 import { Output } from "./output.js";
 import { loadRenderFunction, renderHtml } from "./render.js";
@@ -19,12 +18,6 @@ async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
   if (Array.isArray(prerender)) return prerender;
   return getStaticPaths(await prerender());
 }
-
-export type RenderedPage = {
-  url: string;
-  hash: string;
-  date: string;
-};
 
 type StaticRenderConfig = {
   ssrBundle: string;
@@ -45,14 +38,12 @@ export async function renderStaticPages({
   followLinks,
   inlineCss = false,
 }: StaticRenderConfig) {
-  const date = new Date().toISOString();
   const renderFn = await loadRenderFunction(ssrBundle);
 
   const seen = new Set(
     (await getStaticPaths(prerender)).map((s) => urlJoin(output.base, s)),
   );
   const urls = [...seen];
-  const rendered: RenderedPage[] = [];
 
   for (const url of urls) {
     const html = await renderHtml(
@@ -65,8 +56,6 @@ export async function renderStaticPages({
     );
     if (html) {
       output.write(url, html);
-      const hash = md5Hash(html);
-      rendered.push({ url, hash, date });
       if (followLinks) {
         const follow =
           typeof followLinks === "function" ? followLinks : Boolean;
@@ -82,5 +71,5 @@ export async function renderStaticPages({
       console.warn("Skipping", url);
     }
   }
-  return rendered;
+  return urls;
 }

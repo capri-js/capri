@@ -210,7 +210,7 @@ export function capri({
           const cssLinks = getCssLinks(bundle, output.base);
 
           // Prerender pages...
-          const pages = await renderStaticPages({
+          const urls = await renderStaticPages({
             ssrBundle,
             template,
             cssLinks,
@@ -221,7 +221,7 @@ export function capri({
           });
           fs.rmSync(ssrBundle);
           if (sitemap) {
-            await generateSitemap(pages, output, sitemap);
+            await generateSitemap(urls, output, sitemap);
           }
         }
       },
