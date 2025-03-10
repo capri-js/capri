@@ -100,7 +100,7 @@ export function capri({
             // index.html points to a .server.* file
             if (spa) {
               throw new Error(
-                "In order to generate an SPA, index.html must point to a client entry file.",
+                "In order to generate an SPA, index.html must point to a client entry file."
               );
             }
           } else if (spa) {
@@ -200,6 +200,18 @@ export function capri({
           return fs
             .readFileSync(file, "utf8")
             .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
+        }
+      },
+
+      /**
+       * Hook to transform @capri-js packages with the @capri-transform marker.
+       */
+      transform(code: string, id: string) {
+        if (
+          id.includes("node_modules/@capri-js/") &&
+          code.match(/\/\/\s*@capri-transform\b/)
+        ) {
+          return code;
         }
       },
 
