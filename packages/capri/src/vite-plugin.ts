@@ -203,18 +203,6 @@ export function capri({
         }
       },
 
-      /**
-       * Hook to transform @capri-js packages with the @capri-transform marker.
-       */
-      transform(code: string, id: string) {
-        if (
-          id.includes("node_modules/@capri-js/") &&
-          code.match(/\/\/\s*@capri-transform\b/)
-        ) {
-          return code;
-        }
-      },
-
       async writeBundle(_options, bundle) {
         if (ssrBuild) {
           const entryFile = getEntryFile(bundle);
