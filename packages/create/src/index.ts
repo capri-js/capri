@@ -8,9 +8,9 @@ import path from "path";
 import prompts from "prompts";
 
 const templates = [
-  { title: "React", value: "capri-js/capri/templates/react" },
-  { title: "Preact", value: "capri-js/capri/templates/preact" },
-  { title: "Decap CMS", value: "capri-js/capri-decap" },
+  { name: "react", title: "React", value: "capri-js/capri/templates/react" },
+  { name: "preact", title: "Preact", value: "capri-js/capri/templates/preact" },
+  { name: "decap", title: "Decap CMS", value: "capri-js/capri-decap" },
 ];
 
 const args = arg({
@@ -26,9 +26,7 @@ if (template) {
   if (template.includes("/")) {
     overrides.template = template;
   } else {
-    const option = templates.find(
-      (t) => t.title.toLowerCase() === template.toLowerCase(),
-    );
+    const option = templates.find((t) => t.name === template.toLowerCase());
     if (option) {
       overrides.template = option.value;
     }
