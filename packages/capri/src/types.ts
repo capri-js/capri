@@ -22,6 +22,14 @@ export type RenderFunction = (
   url: string,
 ) => RenderResult | Promise<RenderResult>;
 
+export type PrerenderConfig =
+  | false
+  | string
+  | string[]
+  | GetStaticPathsFunction;
+
+export type GetStaticPathsFunction = () => string[] | Promise<string[]>;
+
 export interface IslandOptions {
   /**
    * Media query that must match for the island to be hydrated

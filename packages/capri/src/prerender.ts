@@ -3,20 +3,31 @@ import urlJoin from "url-join";
 import { getLinks } from "./html.js";
 import { Output } from "./output.js";
 import { loadRenderFunction, renderHtml } from "./render.js";
-
-export type PrerenderConfig =
-  | false
-  | string
-  | string[]
-  | (() => string[] | Promise<string[]>);
+import { GetStaticPathsFunction, PrerenderConfig } from "./types.js";
 
 export type FollowLinksConfig = boolean | ((pathname: string) => boolean);
 
-async function getStaticPaths(prerender: PrerenderConfig): Promise<string[]> {
+export async function loadGetStaticPaths(
+  path: string,
+): Promise<GetStaticPathsFunction | null> {
+  if (path.startsWith(".")) {
+    throw new Error("Path must be absolute");
+  }
+  const mod = await import(/* @vite-ignore */ path);
+  if (mod && typeof mod === "object" && "getStaticPaths" in mod) {
+    const fn = mod.getStaticPaths;
+    if (typeof fn === "function") return fn as GetStaticPathsFunction;
+  }
+  return null;
+}
+
+async function resolveStaticPaths(
+  prerender: PrerenderConfig,
+): Promise<string[]> {
   if (prerender === false) return [];
   if (typeof prerender === "string") return [prerender];
   if (Array.isArray(prerender)) return prerender;
-  return getStaticPaths(await prerender());
+  return resolveStaticPaths(await prerender());
 }
 
 type StaticRenderConfig = {
@@ -24,7 +35,7 @@ type StaticRenderConfig = {
   template: string;
   cssLinks: string[];
   output: Output;
-  prerender: PrerenderConfig;
+  prerender?: PrerenderConfig;
   followLinks: FollowLinksConfig;
   inlineCss?: boolean;
 };
@@ -40,9 +51,22 @@ export async function renderStaticPages({
 }: StaticRenderConfig) {
   const renderFn = await loadRenderFunction(ssrBundle);
 
-  const seen = new Set(
-    (await getStaticPaths(prerender)).map((s) => urlJoin(output.base, s)),
-  );
+  // If no prerender config is provided or it's undefined, try to load getStaticPaths
+  // Set default to "/" if neither is available
+  let resolvedPaths: string[];
+  if (prerender === undefined) {
+    const getStaticPathsFn = await loadGetStaticPaths(ssrBundle);
+    if (getStaticPathsFn) {
+      const paths = await getStaticPathsFn();
+      resolvedPaths = await resolveStaticPaths(paths);
+    } else {
+      resolvedPaths = ["/"];
+    }
+  } else {
+    resolvedPaths = await resolveStaticPaths(prerender);
+  }
+
+  const seen = new Set(resolvedPaths.map((s) => urlJoin(output.base, s)));
   const urls = [...seen];
 
   for (const url of urls) {

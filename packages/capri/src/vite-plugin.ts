@@ -16,7 +16,7 @@ export * from "./options.js";
 
 export function capri({
   createIndexFiles = false,
-  prerender = "/",
+  prerender,
   followLinks = true,
   islandGlobPattern = "/src/**/*.island.*",
   adapter,

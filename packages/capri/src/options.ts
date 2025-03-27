@@ -1,5 +1,6 @@
-import type { FollowLinksConfig, PrerenderConfig } from "./prerender.js";
+import type { FollowLinksConfig } from "./prerender.js";
 import { SitemapOptions } from "./sitemap.js";
+import { PrerenderConfig } from "./types.js";
 import type { Wrapper, WrapperInjectionHook } from "./wrapper.js";
 
 export interface Adapter {
