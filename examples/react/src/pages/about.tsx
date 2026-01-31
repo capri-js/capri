@@ -1,9 +1,7 @@
-import { Suspense } from "preact/compat";
+import { Digimon } from "../components/async/digimon.jsx";
+import { Link } from "../components/ui/link.jsx";
 
-import { Digimon } from "./Digimon.jsx";
-import { Link } from "./Link.jsx";
-
-export function About() {
+export default function Page() {
   return (
     <main>
       <h1>This page is static</h1>
@@ -15,9 +13,7 @@ export function About() {
         It does data though which is fetched from a remote API. Here is some
         text about a certain digimon:
       </p>
-      <Suspense fallback="Loading...">
-        <Digimon name="caprimon" />
-      </Suspense>
+      <Digimon name="caprimon" />
       <Link href="/">Home</Link>
     </main>
   );

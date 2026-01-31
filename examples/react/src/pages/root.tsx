@@ -1,17 +1,17 @@
-import CounterIsland from "./Counter.island.jsx";
-import ExpandableIsland from "./Expandable.island.jsx";
-import IdleIsland from "./Idle.island.jsx";
-import IdleMediaIsland from "./IdleMedia.island.jsx";
-import { Link } from "./Link.jsx";
-import MediaQueryIsland from "./MediaQuery.island.jsx";
-import { Paragraph } from "./Paragraph.jsx";
-import VisibleIsland from "./Visible.island.jsx";
-import VisibleMediaIsland from "./VisibleMedia.island.jsx";
+import CounterIsland from "../components/islands/counter.island.jsx";
+import ExpandableIsland from "../components/islands/expandable.island.jsx";
+import IdleIsland from "../components/islands/idle.island.jsx";
+import IdleMediaIsland from "../components/islands/idle-media.island.jsx";
+import { Link } from "../components/ui/link.jsx";
+import MediaQueryIsland from "../components/islands/media-query.island.jsx";
+import { Paragraph } from "../components/ui/paragraph.jsx";
+import VisibleIsland from "../components/islands/visible.island.jsx";
+import VisibleMediaIsland from "../components/islands/visible-media.island.jsx";
 
-export function Home() {
+export default function Page() {
   return (
     <main>
-      <h1>Partial hydration with Preact and Capri 🍋</h1>
+      <h1>Partial hydration with React and Capri 🍋</h1>
       <section>This page is static, but contains some dynamic parts.</section>
       <section>
         Here is a simple counter: <CounterIsland />

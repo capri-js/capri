@@ -1,14 +1,12 @@
-import "./main.css";
-
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
-import { App } from "./App.jsx";
-import { PreviewBanner } from "./Preview.jsx";
+import { Router } from "./router.jsx";
+import { PreviewBanner } from "./components/ui/preview-banner.jsx";
 
 ReactDOM.createRoot(document.getElementById("app")!).render(
   <StrictMode>
     <PreviewBanner />
-    <App path={window.location.pathname} />
+    <Router path={window.location.pathname} />
   </StrictMode>,
 );

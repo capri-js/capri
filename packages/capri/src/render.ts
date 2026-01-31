@@ -76,6 +76,7 @@ export async function renderHtml(
   const islands = template.getIslands();
   if (!islands.length) {
     // No islands present, remove the hydration script.
+    console.info(url, "No islands present, removing the hydration script.");
     template.removeScripts({
       src: /index-|-legacy|modulepreload-polyfill/,
       text: /__vite_is_modern_browser|"noModule"|_\$HY/,

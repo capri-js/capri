@@ -1,6 +1,6 @@
-import CounterIsland from "../components/Counter.island.tsx";
+import CounterIsland from "../components/islands/counter.island.tsx";
 
-export function Home() {
+export default function Page() {
   return (
     <main className="max-w-prose mx-auto my-8 space-y-2">
       <h1 className="text-2xl font-bold">
@@ -9,7 +9,7 @@ export function Home() {
       <p>This page is static, but contains some dynamic parts.</p>
       <p>Here is a simple counter:</p>
       <CounterIsland />
-      <a href="/about" className="underline">
+      <a href="/zero-js" className="underline">
         Link to another page
       </a>
     </main>

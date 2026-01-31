@@ -1,4 +1,4 @@
-import { useFetch } from "./useFetch.jsx";
+import { useFetch } from "./use-fetch.js";
 
 type Data = {
   descriptions: Array<{

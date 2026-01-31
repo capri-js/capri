@@ -18,7 +18,7 @@ export function capri({
   createIndexFiles = false,
   prerender,
   followLinks = true,
-  islandGlobPattern = "/src/**/*.island.*",
+  islandGlobPattern = "/**/*.island.*",
   adapter,
   spa = "/preview",
   commonJs = false,

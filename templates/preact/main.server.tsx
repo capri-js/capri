@@ -1,12 +1,10 @@
-import "./main.css";
-
 import { prerender } from "preact-iso";
 
-import { App } from "./App.tsx";
+import { Router } from "./router.tsx";
 
 export async function render(url: string) {
-  const result = await prerender(<App path={url} />);
+  const result = await prerender(<Router path={url} />);
   return {
-    "#app": result.html,
+    body: result.html,
   };
 }

@@ -1,4 +1,4 @@
-import { useFetch } from "../hooks/useFetch.ts";
+import { useFetch } from "./use-fetch.ts";
 
 type Data = {
   descriptions: Array<{

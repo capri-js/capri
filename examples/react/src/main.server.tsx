@@ -1,14 +1,12 @@
-import "./main.css";
-
 import { StrictMode } from "react";
 import { prerenderToNodeStream } from "react-dom/static";
 
-import { App } from "./App.jsx";
+import { Router } from "./router.jsx";
 
 export async function render(url: string) {
   const root = (
     <StrictMode>
-      <App path={url} />
+      <Router path={url} />
     </StrictMode>
   );
   return {

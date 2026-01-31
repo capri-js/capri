@@ -10,7 +10,7 @@ import prompts from "prompts";
 const templates = [
   { name: "react", title: "React", value: "capri-js/capri/templates/react" },
   { name: "preact", title: "Preact", value: "capri-js/capri/templates/preact" },
-  { name: "decap", title: "Decap CMS", value: "capri-js/capri-decap" },
+  /* { name: "decap", title: "Decap CMS", value: "capri-js/capri-decap" }, */
 ];
 
 const args = arg({

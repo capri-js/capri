@@ -1,6 +1,6 @@
-import { Digimon } from "../components/Digimon.tsx";
+import { Digimon } from "../components/async/digimon.tsx";
 
-export function About() {
+export default function Page() {
   return (
     <main className="max-w-prose mx-auto my-8 space-y-2">
       <h1 className="text-2xl font-bold">No JavaScript on this page</h1>

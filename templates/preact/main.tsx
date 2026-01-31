@@ -1,7 +1,5 @@
-import "./main.css";
-
 import { render } from "preact";
 
-import { App } from "./App.tsx";
+import { Router } from "./router.tsx";
 
-render(<App path={window.location.pathname} />, document.body);
+render(<Router path={window.location.pathname} />, document.body);

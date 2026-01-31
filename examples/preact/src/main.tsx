@@ -1,12 +1,12 @@
 import { render } from "preact";
 
-import { App } from "./App";
-import { PreviewBanner } from "./Preview.jsx";
+import { Router } from "./router";
+import { PreviewBanner } from "./components/ui/preview-banner.jsx";
 
 render(
   <>
     <PreviewBanner />
-    <App path={window.location.pathname} />
+    <Router path={window.location.pathname} />
   </>,
   document.body,
 );
