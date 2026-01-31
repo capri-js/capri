@@ -1,5 +1,6 @@
-import type { ComponentType } from "preact";
 import "./global.css";
+
+import type { ComponentType } from "preact";
 
 /**
  * This is a super simple router that looks up pages based on their location

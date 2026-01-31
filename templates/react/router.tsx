@@ -1,5 +1,6 @@
-import { ComponentType } from "react";
 import "./global.css";
+
+import { ComponentType } from "react";
 
 /**
  * This is a super simple router that looks up pages based on their location

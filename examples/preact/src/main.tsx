@@ -1,7 +1,7 @@
 import { render } from "preact";
 
-import { Router } from "./router";
 import { PreviewBanner } from "./components/ui/preview-banner.jsx";
+import { Router } from "./router";
 
 render(
   <>

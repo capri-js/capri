@@ -130,7 +130,8 @@ Component.island.tsx
 
 Capri requires two entry points:
 
-1. **Client Entry (`main.tsx`)**: 
+1. **Client Entry (`main.tsx`)**:
+
    ```tsx
    import "./main.css";
    import { StrictMode } from "react";
@@ -144,7 +145,8 @@ Capri requires two entry points:
    );
    ```
 
-2. **Server Entry (`main.server.tsx`)**: 
+2. **Server Entry (`main.server.tsx`)**:
+
    ```tsx
    import "./main.css";
    import { StrictMode } from "react";
@@ -231,12 +233,12 @@ import { useState, useEffect } from "react";
 
 // Only hydrate when the island becomes visible
 export const options = {
-  loading: "visible"
+  loading: "visible",
 };
 
 export default function VisibleIsland() {
   const [hydrated, setHydrated] = useState(false);
-  
+
   useEffect(() => {
     setHydrated(true);
   }, []);
@@ -251,6 +253,7 @@ export default function VisibleIsland() {
 ```
 
 Available loading strategies:
+
 - `eager`: Hydrate immediately (default)
 - `idle`: Hydrate when the browser is idle
 - `visible`: Hydrate when the island enters the viewport
@@ -262,7 +265,7 @@ Islands can be conditionally hydrated based on viewport size using the `media` o
 ```tsx
 // MediaQuery.island.tsx
 export const options = {
-  media: "(max-width: 768px)"
+  media: "(max-width: 768px)",
 };
 
 export default function MediaQueryIsland() {
@@ -310,7 +313,7 @@ type Data = {
 
 export function Post() {
   const data = useFetch<Data>("https://api.example.com/post/1");
-  
+
   return (
     <article>
       <h1>{data.title}</h1>
@@ -327,12 +330,7 @@ You can define static paths for your site by exporting a `getStaticPaths` functi
 ```tsx
 // main.server.tsx
 export function getStaticPaths() {
-  return [
-    "/",
-    "/about",
-    "/blog/post-1",
-    "/blog/post-2",
-  ];
+  return ["/", "/about", "/blog/post-1", "/blog/post-2"];
 }
 
 export async function render(url: string) {
@@ -348,25 +346,25 @@ export async function render(url: string) {
 capri({
   // Whether to create index.html files for paths
   createIndexFiles: false,
-  
+
   // What paths to pre-render (string, array, function, or false)
   prerender: "/",
-  
+
   // Whether to follow links during pre-rendering to discover pages
   followLinks: true,
-  
+
   // Pattern to identify island components
   islandGlobPattern: "/src/**/*.island.*",
-  
+
   // Path for SPA mode (for previews)
   spa: "/preview",
-  
+
   // Whether to use CommonJS format for the SSR build
   commonJs: false,
-  
+
   // Whether to inline CSS into HTML
   inlineCss: false,
-  
+
   // Sitemap configuration
   sitemap: {
     origin: "https://example.com",
@@ -382,11 +380,13 @@ For more complex scenarios, you can dynamically generate paths:
 // main.server.tsx
 export async function getStaticPaths() {
   // Fetch data from an API or CMS
-  const posts = await fetch("https://api.example.com/posts").then(r => r.json());
-  
+  const posts = await fetch("https://api.example.com/posts").then((r) =>
+    r.json(),
+  );
+
   // Create paths for each post
-  const postPaths = posts.map(post => `/blog/${post.slug}`);
-  
+  const postPaths = posts.map((post) => `/blog/${post.slug}`);
+
   // Include standard pages
   return ["/", "/about", ...postPaths];
 }
@@ -402,7 +402,7 @@ You can combine loading strategies with media queries:
 // VisibleMedia.island.tsx
 export const options = {
   loading: "visible",
-  media: "(max-width: 1000px)"
+  media: "(max-width: 1000px)",
 };
 
 export default function VisibleMediaIsland() {
@@ -434,6 +434,7 @@ npm run build
 ```
 
 Deploy the `dist` directory to platforms like:
+
 - Netlify
 - Vercel
 - GitHub Pages
@@ -478,7 +479,7 @@ interface IslandOptions {
    * Media query that must match for the island to be hydrated
    */
   media?: string;
-  
+
   /**
    * Loading strategy for the island
    * - 'eager': Hydrate immediately (default)
@@ -504,11 +505,7 @@ interface CapriPluginOptions {
   sitemap?: SitemapOptions | false;
 }
 
-type PrerenderConfig =
-  | false
-  | string
-  | string[]
-  | GetStaticPathsFunction;
+type PrerenderConfig = false | string | string[] | GetStaticPathsFunction;
 
 type GetStaticPathsFunction = () => string[] | Promise<string[]>;
 

@@ -2,11 +2,11 @@ import CounterIsland from "../components/islands/counter.island.jsx";
 import ExpandableIsland from "../components/islands/expandable.island.jsx";
 import IdleIsland from "../components/islands/idle.island.jsx";
 import IdleMediaIsland from "../components/islands/idle-media.island.jsx";
-import { Link } from "../components/ui/link.jsx";
 import MediaQueryIsland from "../components/islands/media-query.island.jsx";
-import { Paragraph } from "../components/ui/paragraph.jsx";
 import VisibleIsland from "../components/islands/visible.island.jsx";
 import VisibleMediaIsland from "../components/islands/visible-media.island.jsx";
+import { Link } from "../components/ui/link.jsx";
+import { Paragraph } from "../components/ui/paragraph.jsx";
 
 export default function Page() {
   return (
