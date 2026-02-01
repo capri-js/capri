@@ -1,6 +1,6 @@
 {
   "name": "create-capri",
-  "version": "3.0.0-next.4",
+  "version": "3.0.0",
   "description": "Create Capri projects with a single command",
   "repository": {
     "type": "git",
