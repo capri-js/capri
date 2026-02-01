@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{r as d}from"./index-Dy6lLLXr.js";function o({title:t,children:s}){const[a,n]=d.useState(!1);return e.jsxs("div",{className:"expandable box","data-expanded":a?"true":"false",children:[e.jsx("button",{onClick:()=>n(!a),children:t}),e.jsx("div",{className:"expandable-content",children:s})]})}export{o as default};

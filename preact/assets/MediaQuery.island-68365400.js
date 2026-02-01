@@ -1,1 +1,0 @@
-import{h as o,p as n,u as i}from"./jsxRuntime.module-c2757ce1.js";import"./preact.module-5b5c6b29.js";const a={media:"(max-width:500px)"};function d(){const[e,t]=o("Resize your browser below 500px to hydrate this island.");return n(()=>{t("The island has been hydrated.")},[]),i("div",{className:"box",children:e})}export{d as default,a as options};

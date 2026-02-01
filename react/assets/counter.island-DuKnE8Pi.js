@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime-D_zvdyIk.js";import{r as s}from"./index-Dy6lLLXr.js";function u({start:e=0}){const[o,n]=s.useState(e);return t.jsxs("div",{className:"counter",children:[t.jsx("button",{onClick:()=>n(r=>r-1),children:"-"}),t.jsx("span",{children:o}),t.jsx("button",{onClick:()=>n(r=>r+1),children:"+"})]})}export{u as default};

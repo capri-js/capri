@@ -1,0 +1,1 @@
+import{h as c,u as n}from"./hooks.module-BaSe0zhO.js";import"./preact.module-DGm81ZvO.js";function l({start:r=0}){const[e,o]=c(r);return n("div",{className:"counter",children:[n("button",{onClick:()=>o(t=>t-1),children:"-"}),n("span",{children:e}),n("button",{onClick:()=>o(t=>t+1),children:"+"})]})}export{l as default};

@@ -1,1 +1,0 @@
-import{y as n,B as c}from"./preact.module-5b5c6b29.js";function d(t,e,r){return r.querySelector("capri-children")&&(e.children=n("capri-children",{style:{display:"contents"},dangerouslySetInnerHTML:{__html:""}})),c(n(t,e),r.parentElement)}export{d as default};

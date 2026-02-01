@@ -1,0 +1,1 @@
+import{h as l,u as e}from"./hooks.module-BaSe0zhO.js";import"./preact.module-DGm81ZvO.js";function r({title:n,children:d}){const[a,t]=l(!1);return e("div",{className:"expandable box","data-expanded":a?"true":"false",children:[e("button",{onClick:()=>t(!a),children:n}),e("div",{className:"expandable-content",children:d})]})}export{r as default};
