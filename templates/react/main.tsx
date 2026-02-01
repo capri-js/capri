@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
-import { Router } from "./router.tsx";
+import { Router } from "./router";
 
 ReactDOM.createRoot(document.getElementById("app")!).render(
   <StrictMode>

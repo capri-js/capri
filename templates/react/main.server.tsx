@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { prerenderToNodeStream } from "react-dom/static";
 
-import { Router } from "./router.tsx";
+import { Router } from "./router";
 
 export async function render(url: string) {
   const root = (

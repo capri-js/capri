@@ -2,10 +2,9 @@
   "compilerOptions": {
     "strict": true,
     "noEmit": true,
-    "target": "ES2021",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "allowImportingTsExtensions": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
     "skipLibCheck": true,

@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 
-import { Button } from "../ui/button.tsx";
+import { Button } from "../ui/button";
 
 type Props = {
   start?: number;

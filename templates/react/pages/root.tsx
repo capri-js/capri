@@ -1,4 +1,4 @@
-import CounterIsland from "../components/islands/counter.island.tsx";
+import CounterIsland from "../components/islands/counter.island";
 
 export default function Page() {
   return (

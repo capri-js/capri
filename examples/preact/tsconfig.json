@@ -2,9 +2,9 @@
   "compilerOptions": {
     "strict": true,
     "noEmit": true,
+    "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "target": "ES2017",
+    "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
     "skipLibCheck": true,

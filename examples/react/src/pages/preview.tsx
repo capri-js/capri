@@ -1,4 +1,4 @@
-import { Router } from "../router.jsx";
+import { Router } from "../router";
 
 export default function Page() {
   const url = new URL(window.location.href);

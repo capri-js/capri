@@ -1,5 +1,5 @@
-import { Digimon } from "../components/async/digimon.jsx";
-import { Link } from "../components/ui/link.jsx";
+import { Digimon } from "../components/async/digimon";
+import { Link } from "../components/ui/link";
 
 export default function Page() {
   return (

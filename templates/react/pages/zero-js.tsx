@@ -1,4 +1,4 @@
-import { Digimon } from "../components/async/digimon.tsx";
+import { Digimon } from "../components/async/digimon";
 
 export default function Page() {
   return (
