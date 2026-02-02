@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "classname-variants": "^1.0.0",
     "preact": "^10.8.2",
     "preact-iso": "^2.6.3"
   },
