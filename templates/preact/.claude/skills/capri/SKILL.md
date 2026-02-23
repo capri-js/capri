@@ -45,7 +45,7 @@ import { useState } from "preact/hooks";
 
 export default function Counter({ start = 0 }) {
   const [count, setCount] = useState(start);
-  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
+  return <button onClick={() => setCount((c) => c + 1)}>{count}</button>;
 }
 ```
 
@@ -55,8 +55,8 @@ Control when islands hydrate by exporting an `options` object:
 
 ```tsx
 export const options = {
-  loading: "visible",           // "eager" (default) | "idle" | "visible"
-  media: "(max-width: 768px)"   // Only hydrate when media query matches
+  loading: "visible", // "eager" (default) | "idle" | "visible"
+  media: "(max-width: 768px)", // Only hydrate when media query matches
 };
 ```
 
@@ -76,7 +76,7 @@ Fetch data at the top level of `main.server.tsx`:
 const posts = await fetchPosts(); // Runs once at build time
 
 export async function getStaticPaths() {
-  return ["/", ...posts.map(p => `/blog/${p.slug}`)];
+  return ["/", ...posts.map((p) => `/blog/${p.slug}`)];
 }
 ```
 
@@ -89,7 +89,10 @@ const cache = new Map();
 
 export function useFetch<T>(url: string): T {
   if (!cache.has(url)) {
-    cache.set(url, fetch(url).then(r => r.json()));
+    cache.set(
+      url,
+      fetch(url).then((r) => r.json()),
+    );
   }
   const result = cache.get(url);
   if (result instanceof Promise) throw result; // Suspense catches this
@@ -102,6 +105,7 @@ export function useFetch<T>(url: string): T {
 ### File-based routing
 
 Files in `pages/` map to routes:
+
 - `pages/root.tsx` → `/`
 - `pages/about.tsx` → `/about`
 - `pages/blog/post.tsx` → `/blog/post`
@@ -113,7 +117,7 @@ Export `getStaticPaths` from `main.server.tsx`:
 ```tsx
 export async function getStaticPaths() {
   const posts = await fetchAllPosts();
-  return ["/", "/about", ...posts.map(p => `/blog/${p.slug}`)];
+  return ["/", "/about", ...posts.map((p) => `/blog/${p.slug}`)];
 }
 ```
 
@@ -142,7 +146,7 @@ export async function render(url: string) {
   const { html } = await prerender(<App path={url} />);
   return {
     "#app": html,
-    "title": getPageTitle(url),
+    title: getPageTitle(url),
     "meta[name=description]": { content: getPageDescription(url) },
   };
 }
@@ -150,14 +154,14 @@ export async function render(url: string) {
 
 ## Common Tasks
 
-| Task | How |
-|------|-----|
-| Add a page | Create `pages/name.tsx` |
-| Add an island | Create `components/islands/name.island.tsx` |
-| Add static component | Create `components/ui/name.tsx` (no `.island` suffix) |
-| Lazy-load island | Add `export const options = { loading: "visible" }` |
-| Mobile-only island | Add `export const options = { media: "(max-width: 768px)" }` |
-| Add dynamic routes | Export `getStaticPaths()` from `main.server.tsx` |
+| Task                 | How                                                          |
+| -------------------- | ------------------------------------------------------------ |
+| Add a page           | Create `pages/name.tsx`                                      |
+| Add an island        | Create `components/islands/name.island.tsx`                  |
+| Add static component | Create `components/ui/name.tsx` (no `.island` suffix)        |
+| Lazy-load island     | Add `export const options = { loading: "visible" }`          |
+| Mobile-only island   | Add `export const options = { media: "(max-width: 768px)" }` |
+| Add dynamic routes   | Export `getStaticPaths()` from `main.server.tsx`             |
 
 ## Commands
 
@@ -177,9 +181,9 @@ export default {
   plugins: [
     preact(),
     capri({
-      prerender: ["/", "/about"],      // Explicit paths to render
-      followLinks: true,                // Auto-discover by crawling links
-      spa: "/preview",                  // Client-only SPA routes
+      prerender: ["/", "/about"], // Explicit paths to render
+      followLinks: true, // Auto-discover by crawling links
+      spa: "/preview", // Client-only SPA routes
       islandGlobPattern: "**/*.island.*",
       sitemap: { origin: "https://example.com" },
     }),
