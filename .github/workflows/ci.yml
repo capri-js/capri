@@ -8,6 +8,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,7 +20,6 @@ jobs:
       - run: npm run build
       - run: npm test
       - run: npm run examples
-      - run: npx playwright install --with-deps
       - run: npx playwright test
       - run: npm run release
         env:
