@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
-import type { PluginContext, RollupOptions } from "rollup";
-import type { Plugin } from "vite";
+import type { Plugin, Rollup } from "vite";
 
 import { getCssLinks, getEntryFile } from "./chunks.js";
 import { EntryScripts, getEntryScripts } from "./entry.js";
@@ -67,7 +66,7 @@ export function capri({
           const indexHtml = path.join(outDir, "index.html");
           template = fs.readFileSync(indexHtml, "utf8");
           fs.rmSync(indexHtml);
-          let rollupOptions: RollupOptions | undefined;
+          let rollupOptions: Rollup.RollupOptions | undefined;
           if (commonJs) {
             rollupOptions = {
               output: {
@@ -95,7 +94,7 @@ export function capri({
           };
         } else {
           // Client build ...
-          let rollupOptions: RollupOptions = {};
+          let rollupOptions: Rollup.RollupOptions = {};
           if (!entry.client) {
             // index.html points to a .server.* file
             if (spa) {
@@ -197,9 +196,12 @@ export function capri({
         if (id === "\0virtual:capri-hydration") {
           // Load the hydration script and inject the `islandGlobPattern`.
           const file = resolveRelative("./virtual/hydration.js");
-          return fs
-            .readFileSync(file, "utf8")
-            .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern);
+          return {
+            code: fs
+              .readFileSync(file, "utf8")
+              .replace(/%ISLAND_GLOB_PATTERN%/g, islandGlobPattern),
+            moduleType: "js",
+          };
         }
       },
 
@@ -234,7 +236,7 @@ function resolveRelative(src: string) {
   return new URL(src, import.meta.url).pathname;
 }
 
-async function resolveIndexHtml(ctx: PluginContext) {
+async function resolveIndexHtml(ctx: Rollup.PluginContext) {
   const index = await ctx.resolve("/index.html");
   if (!index) throw new Error("Can't resolve index.html");
   return index.id;

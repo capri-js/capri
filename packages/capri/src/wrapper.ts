@@ -1,7 +1,6 @@
 import fs from "fs";
 import micromatch from "micromatch";
-import type { PartialResolvedId } from "rollup";
-import { Plugin } from "vite";
+import type { Plugin, Rollup } from "vite";
 
 import { addUnwrapped } from "./path-utils.js";
 
@@ -97,7 +96,7 @@ export interface Wrapper {
   client?: string;
 }
 
-type ResolvedWrapperId = PartialResolvedId & WrapperInfo;
+type ResolvedWrapperId = Rollup.PartialResolvedId & WrapperInfo;
 
 interface WrapperMeta {
   wrapper: Wrapper;

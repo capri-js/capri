@@ -1,6 +1,6 @@
-import type { OutputAsset, OutputBundle, OutputChunk } from "rollup";
+import type { Rollup } from "vite";
 
-export function getEntryFile(bundle: OutputBundle) {
+export function getEntryFile(bundle: Rollup.OutputBundle) {
   for (const file in bundle) {
     const chunk = bundle[file];
     if (isOutputChunk(chunk) && chunk.isEntry) {
@@ -10,11 +10,13 @@ export function getEntryFile(bundle: OutputBundle) {
   throw new Error("Can't find entry file.");
 }
 
-function isOutputChunk(chunk: OutputAsset | OutputChunk): chunk is OutputChunk {
+function isOutputChunk(
+  chunk: Rollup.OutputAsset | Rollup.OutputChunk,
+): chunk is Rollup.OutputChunk {
   return chunk.type === "chunk";
 }
 
-export function getCssLinks(bundle: OutputBundle, base = "/") {
+export function getCssLinks(bundle: Rollup.OutputBundle, base = "/") {
   if (!base.endsWith("/")) {
     base += "/";
   }

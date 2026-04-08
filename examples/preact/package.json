@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@capri-js/preact": "*",
-    "@preact/preset-vite": "^2.9.4",
-    "vite": "^6.0.0"
+    "@preact/preset-vite": "^2.10.5",
+    "vite": "^8.0.0"
   }
 }
