@@ -25,6 +25,9 @@ jobs:
       - run: npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: install rsync
+        if: github.ref == 'refs/heads/main'
+        run: apt-get update && apt-get install -y rsync
       - name: deploy examples
         if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@v4.3.3
