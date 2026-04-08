@@ -1,0 +1,1 @@
+import{t as e}from"./react-Cwk5I5XK.js";import{t}from"./jsx-runtime-BLmYFs0q.js";var n=e(),r=t();function i({start:e=0}){let[t,i]=(0,n.useState)(e);return(0,r.jsxs)(`div`,{className:`counter`,children:[(0,r.jsx)(`button`,{onClick:()=>i(e=>e-1),children:`-`}),(0,r.jsx)(`span`,{children:t}),(0,r.jsx)(`button`,{onClick:()=>i(e=>e+1),children:`+`})]})}export{i as t};

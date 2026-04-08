@@ -1,0 +1,1 @@
+import{t as e}from"./react-Cwk5I5XK.js";import{t}from"./jsx-runtime-BLmYFs0q.js";var n=e(),r=t();function i({title:e,children:t}){let[i,a]=(0,n.useState)(!1);return(0,r.jsxs)(`div`,{className:`expandable box`,"data-expanded":i?`true`:`false`,children:[(0,r.jsx)(`button`,{onClick:()=>a(!i),children:e}),(0,r.jsx)(`div`,{className:`expandable-content`,children:t})]})}export{i as t};

@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./hooks.module-CVpCzF7R.js";import"./compat.module-z1WPxpGJ.js";var r={loading:`idle`};function i(){let[r,i]=n(!1);return e(()=>{i(!0)},[]),t(`div`,{className:`box`,children:[t(`p`,{children:`This island uses the idle loading strategy.`}),t(`p`,{children:[`Status: `,r?`Hydrated ✅`:`Not hydrated ⏳`]})]})}export{r as n,i as t};

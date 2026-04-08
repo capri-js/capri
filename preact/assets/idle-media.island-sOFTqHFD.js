@@ -1,0 +1,1 @@
+import{n as e,t}from"./idle-media.island-g7UZVASk.js";export{t as default,e as options};

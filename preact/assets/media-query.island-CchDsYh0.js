@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./hooks.module-CVpCzF7R.js";var r={media:`(max-width:500px)`};function i(){let[r,i]=n(`Resize your browser below 500px to hydrate this island.`);return e(()=>{i(`The island has been hydrated.`)},[]),t(`div`,{className:`box`,children:r})}export{r as n,i as t};

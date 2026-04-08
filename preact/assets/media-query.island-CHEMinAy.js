@@ -1,0 +1,1 @@
+import{n as e,t}from"./media-query.island-CchDsYh0.js";export{t as default,e as options};

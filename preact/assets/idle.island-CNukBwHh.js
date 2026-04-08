@@ -1,0 +1,1 @@
+import{n as e,t}from"./idle.island-DEq8VnWp.js";export{t as default,e as options};

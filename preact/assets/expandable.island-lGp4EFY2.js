@@ -1,0 +1,1 @@
+import{r as e,t}from"./hooks.module-CVpCzF7R.js";function n({title:n,children:r}){let[i,a]=t(!1);return e(`div`,{className:`expandable box`,"data-expanded":i?`true`:`false`,children:[e(`button`,{onClick:()=>a(!i),children:n}),e(`div`,{className:`expandable-content`,children:r})]})}export{n as t};

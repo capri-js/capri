@@ -1,0 +1,1 @@
+import{n as e,t}from"./idle.island-B1X50PBC.js";export{t as default,e as options};

@@ -1,0 +1,1 @@
+import{i as e,t}from"./react-Cwk5I5XK.js";import{t as n}from"./client-BnqPhg-g.js";var r=t(),i=e(n(),1);function a(e,t,n){return n.querySelector(`capri-children`)&&(t.children=(0,r.createElement)(`capri-children`,{style:{display:`contents`},dangerouslySetInnerHTML:{__html:``}})),(0,i.hydrateRoot)(n.parentElement,(0,r.createElement)(e,t))}export{a as default};

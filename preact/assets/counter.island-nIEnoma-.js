@@ -1,0 +1,1 @@
+import{r as e,t}from"./hooks.module-CVpCzF7R.js";function n({start:n=0}){let[r,i]=t(n);return e(`div`,{className:`counter`,children:[e(`button`,{onClick:()=>i(e=>e-1),children:`-`}),e(`span`,{children:r}),e(`button`,{onClick:()=>i(e=>e+1),children:`+`})]})}export{n as t};
