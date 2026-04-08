@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "cheerio": "^1.2.0",
-    "micromatch": "^4.0.5",
+    "micromatch": "^4.0.8",
     "sitemap": "^8.0.0",
     "url-join": "^5.0.0"
   },
